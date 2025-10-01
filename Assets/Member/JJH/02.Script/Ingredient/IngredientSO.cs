@@ -13,7 +13,7 @@ public class IngredientSO : ScriptableObject
 public enum FoodGroupType //식재료군
 {
     Vegetablse, //야채류
-    Meat, //고기류
+    Meat, //육류
     Fish, //어류
     Fruit, //과일류
     MSG //향신료
@@ -34,7 +34,7 @@ public enum FoodTextureType //식감
     Crispy, //바삭
     Cruncky, //아삭
     Chewy, //쫄깃
-    Tough, //질김
+    Dry, //퍽퍽
     Soft, //부드러움
     Hard //딱딱함
 }
