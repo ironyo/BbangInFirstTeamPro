@@ -16,13 +16,13 @@ public class ESCVolumeSetting : MonoBehaviour
     [Header("AudioMixer")]
     [SerializeField] private AudioMixer audioMixer;
 
-    enum ShowType
+    enum SettingType
     {
         Show,
         Hide
     }
 
-    private ShowType showType = ShowType.Hide;
+    private SettingType showType = SettingType.Hide;
 
     private void Start()
     {
@@ -37,23 +37,31 @@ public class ESCVolumeSetting : MonoBehaviour
 
     private void SetVolume()
     {
+        //슬라이더,오디오믹서 설정
+
         float bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
+        audioMixer.SetFloat("BGM", bgmVolume);
         bgmSlider.value = bgmVolume;
+
         float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        audioMixer.SetFloat("SFX", sfxVolume);
+        audioMixer.SetFloat("System", sfxVolume);
         sfxSlider.value = sfxVolume;
+
+
     }
 
     private void ESCPress()
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            showType = showType == ShowType.Show ? ShowType.Hide : ShowType.Show;
+            showType = showType == SettingType.Show ? SettingType.Hide : SettingType.Show;
         }
     }
 
     private void SetShowType()
     {
-        if (showType == ShowType.Show)
+        if (showType == SettingType.Show)
         {
             escButton.SetActive(false);
             settingPanel.SetActive(true);
@@ -69,28 +77,29 @@ public class ESCVolumeSetting : MonoBehaviour
     public void BGMSlider()
     {
         float volume = bgmSlider.value;
-        audioMixer.SetFloat("BGM", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("BGM", Mathf.Lerp(-80f, 10f, volume)); //오디오믹서 기준 -80~10까지 값 지정
         PlayerPrefs.SetFloat("BGMVolume", volume);
     }
 
     public void SFXSlider()
     {
         float volume = sfxSlider.value;
-        audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
-        audioMixer.SetFloat("System", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("SFX", Mathf.Lerp(-80f, 10f, volume)); //오디오믹서 기준 -80~10까지 값 지정
+        audioMixer.SetFloat("System", Mathf.Lerp(-80f, 10f, volume)); //오디오믹서 기준 -80~10까지 값 지정
         PlayerPrefs.SetFloat("SFXVolume", volume);
+        PlayerPrefs.SetFloat("System", volume);
     }
     #endregion
 
     #region Button
     public void ESCButton()
     {
-        showType = ShowType.Show;
+        showType = SettingType.Show;
     }
 
     public void BackButton()
     {
-        showType = ShowType.Hide;
+        showType = SettingType.Hide;
     }
     #endregion
 }

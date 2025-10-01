@@ -11,6 +11,4 @@ public class IngredientSO : ScriptableObject
         Fruit,
         MSG
     }
-
-
 }
