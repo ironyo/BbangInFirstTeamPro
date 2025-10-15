@@ -5,7 +5,7 @@ public class IngredientSO : ScriptableObject
 {
     public string foodName;
     public FoodGroupType foodGroup;
-    public FoodTasteType foodTaste;
+    public FoodTasteType[] foodTaste;
     public FoodTextureType foodTextureType;
     public FoodRarityType foodRarityType;
 }
@@ -16,7 +16,8 @@ public enum FoodGroupType //½ÄÀç·á±º
     Meat, //À°·ù
     Fish, //¾î·ù
     Fruit, //°úÀÏ·ù
-    MSG //Çâ½Å·á
+    MSG, //Çâ½Å·á
+    Space //¿Ü°è
 }
 
 public enum FoodTasteType //¸À
@@ -31,12 +32,15 @@ public enum FoodTasteType //¸À
 
 public enum FoodTextureType //½Ä°¨
 {
+    None, //¾øÀ½
     Crispy, //¹Ù»è
     Cruncky, //¾Æ»è
     Chewy, //ÂÌ±ê
     Dry, //ÆÜÆÜ
     Soft, //ºÎµå·¯¿ò
-    Hard //µüµüÇÔ
+    Hard, //µüµüÇÔ
+    Umami, //°¨Ä¥¸À
+    Perfact //È²È¦ÇÔ
 }
 
 public enum FoodRarityType
