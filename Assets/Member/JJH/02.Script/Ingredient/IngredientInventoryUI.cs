@@ -31,18 +31,15 @@ public class IngredientInventoryUI : MonoBehaviour
     {
         if (showType == ShowType.Show)
         {
-            inventoryPanel.SetActive(true);
             InventoryShow();
         }
         else if (showType == ShowType.Hide)
         {
-            inventoryPanel.SetActive(false);
         }
     }
 
     private void InventoryShow()
     {
-        InventoryImagePrefab
     }
 
     #region Button
