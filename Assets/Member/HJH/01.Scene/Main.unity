@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc41a557c1b9fb4bbb3e3e49764c44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customerTypeSOList: {fileID: 0}
+  customerTypeSOList: {fileID: 11400000, guid: 860328dd91726ab45b5f79642fcc91e9, type: 2}
   customerPrefab: {fileID: 8502579414151183494, guid: 61bb9716f56cdd74c8907bf7c5d1da87, type: 3}
 --- !u!4 &215827251
 Transform:
