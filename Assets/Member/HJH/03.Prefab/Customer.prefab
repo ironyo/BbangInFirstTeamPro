@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guestType: 0
   customerName: 
-  typeColor: {r: 0, g: 0, b: 0, a: 0}
+  typeColor: {r: 0, g: 0, b: 0, a: 1}
   nameText: {fileID: 6474132161787560667}
 --- !u!1 &8723314685249977651
 GameObject:

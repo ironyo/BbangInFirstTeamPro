@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbd2d4b0f8c0a6498a204fdce1af168, type: 3}
   m_Name: ObnoxiousCustomer
   m_EditorClassIdentifier: 
-  guestType: 0
-  customerName: []
+  guestType: 2
+  customerName:
+  - obn
   typeColor: {r: 0, g: 0, b: 0, a: 0}

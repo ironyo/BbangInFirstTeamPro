@@ -12,7 +12,7 @@ public class IngredientSO : ScriptableObject
 
 public enum FoodGroupType //½ÄÀç·á±º
 {
-    Vegetablse, //¾ßÃ¤·ù
+    vegetable, //¾ßÃ¤·ù
     Meat, //À°·ù
     Fish, //¾î·ù
     Fruit, //°úÀÏ·ù
@@ -27,7 +27,9 @@ public enum FoodTasteType //¸À
     Sweet, //´Ü¸À
     Sour, //½Å¸À
     Bitter, //¾´¸À
-    Nutty //°í¼ÒÇÑ¸À
+    Nutty, //°í¼ÒÇÑ¸À
+    Umami, //°¨Ä¥¸À
+    Perfact //È²È¦ÇÔ
 }
 
 public enum FoodTextureType //½Ä°¨
@@ -38,9 +40,7 @@ public enum FoodTextureType //½Ä°¨
     Chewy, //ÂÌ±ê
     Dry, //ÆÜÆÜ
     Soft, //ºÎµå·¯¿ò
-    Hard, //µüµüÇÔ
-    Umami, //°¨Ä¥¸À
-    Perfact //È²È¦ÇÔ
+    Hard //µüµüÇÔ
 }
 
 public enum FoodRarityType
