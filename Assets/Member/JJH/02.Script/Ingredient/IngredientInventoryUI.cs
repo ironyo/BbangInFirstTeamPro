@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,7 @@ public class IngredientInventoryUI : MonoBehaviour
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
+        rect.DOAnchorPos(new Vector2(-1354, -30), 0);
     }
 
     private void Update()
@@ -44,19 +46,19 @@ public class IngredientInventoryUI : MonoBehaviour
         }
         else if (showType == ShowType.Hide)
         {
-
+            rect.DOAnchorPos(new Vector2(-1354, -30), 0.7f);
         }
     }
 
     private void InventoryShow()
     {
+        rect.DOAnchorPos(new Vector2(-553, -30), 0.7f);
         foreach (KeyValuePair<IngredientSO, int> ingredient in IngredientInventoryManager.Instance.ingredientDictionary)
         {
             GameObject prefab = Instantiate(InventoryImagePrefab, gameObject.transform);
             IngredientInformation information = prefab.GetComponent<IngredientInformation>();
             information.Create(ingredient.Key);
         }
-        InventoryImagePrefab.GetComponent<IngredientInformation>();
     }
 
     #region Button

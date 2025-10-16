@@ -9,6 +9,9 @@ public class IngredientInventoryManager : MonoSingleton<IngredientInventoryManag
 
     public void AddInventoryIngredient(IngredientSO ingredient, int value)
     {
-        ingredientDictionary[ingredient] += value;
+        if (ingredientDictionary.TryGetValue(ingredient, out int nowValue))
+            ingredientDictionary[ingredient] = nowValue + value;
+        else
+            ingredientDictionary.Add(ingredient, value);
     }
 }
