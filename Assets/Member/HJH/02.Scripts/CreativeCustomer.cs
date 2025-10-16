@@ -14,7 +14,7 @@ public class CreativeCustomer : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.aKey.wasPressedThisFrame)
+        if (Keyboard.current.pKey.wasPressedThisFrame)
         {
             CreateCustomer();
         }
