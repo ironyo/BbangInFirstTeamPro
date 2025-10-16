@@ -8,6 +8,8 @@ public class CarMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 moveDir;
 
+    private bool canMove = false; 
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -15,6 +17,19 @@ public class CarMovement : MonoBehaviour
 
     private void Update()
     {
+        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            canMove = true;
+        }
+
+        if (!canMove)
+        {
+            moveDir = Vector2.zero;
+            return;
+        }
+
+        
         if (Input.GetKey(KeyCode.W))
         {
             moveDir = transform.up;
@@ -27,13 +42,17 @@ public class CarMovement : MonoBehaviour
         {
             moveDir = Vector2.zero;
         }
-
-        
     }
 
     private void FixedUpdate()
     {
-        _rb.linearVelocity = moveDir * moveSpeed * Time.fixedDeltaTime;
+        if (!canMove)
+        {
+            _rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        _rb.linearVelocity = moveDir * moveSpeed;
 
         if (Input.GetKey(KeyCode.A))
         {
