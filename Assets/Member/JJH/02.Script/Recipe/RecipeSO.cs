@@ -1,10 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "RecipeSO", menuName = "Scriptable Objects/RecipeSO")]
+[CreateAssetMenu(fileName = "RecipeSO", menuName = "JJH_SO/RecipeSO")]
 public class RecipeSO : ScriptableObject
 {
+    public string foodName;
     public IngredientSO[] ingredients;
-    public RecipeTasteType recipeFoodTaste;
+    public RecipeTasteType[] recipeFoodTaste;
     public RecipeTextureType recipeFoodTexture;
 }
 
@@ -15,7 +16,10 @@ public enum RecipeTasteType //¸À
     Sweet, //´Ü¸À
     Sour, //½Å¸À
     Bitter, //¾´¸À
-    Nutty //°í¼ÒÇÑ¸À
+    Nutty, //°í¼ÒÇÑ¸À
+    Umami, //°¨Ä¥¸À
+    Perfact, //È²È¦ÇÔ
+    Bad // ¸À¾øÀ½
 }
 
 public enum RecipeTextureType //½Ä°¨
