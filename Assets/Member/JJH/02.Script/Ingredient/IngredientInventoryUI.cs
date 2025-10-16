@@ -8,7 +8,8 @@ public class IngredientInventoryUI : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private GameObject InventoryImagePrefab;
 
-    private GameObject[] informations;
+    private List<GameObject> viewGameObjectList = new List<GameObject>();
+    private List<IngredientSO> viewList = new List<IngredientSO>();
     private RectTransform rect;
 
     private ShowType showType = ShowType.Hide;
@@ -20,6 +21,17 @@ public class IngredientInventoryUI : MonoBehaviour
     {
         Show,
         Hide
+    }
+
+    private void OnEnable()
+    {
+        IngredientInventoryManager.Instance.OnInventoryChanged += InventoryShow;
+    }
+
+    private void OnDisable()
+    {
+        if (IngredientInventoryManager.Instance != null)
+            IngredientInventoryManager.Instance.OnInventoryChanged -= InventoryShow;
     }
 
     private void Awake()
@@ -42,7 +54,7 @@ public class IngredientInventoryUI : MonoBehaviour
     {
         if (showType == ShowType.Show)
         {
-            InventoryShow();
+            rect.DOAnchorPos(new Vector2(-553, -30), 0.7f);
         }
         else if (showType == ShowType.Hide)
         {
@@ -52,12 +64,25 @@ public class IngredientInventoryUI : MonoBehaviour
 
     private void InventoryShow()
     {
-        rect.DOAnchorPos(new Vector2(-553, -30), 0.7f);
+        var infoList = GetComponentsInChildren<IngredientInformation>(true);
+
         foreach (KeyValuePair<IngredientSO, int> ingredient in IngredientInventoryManager.Instance.ingredientDictionary)
         {
-            GameObject prefab = Instantiate(InventoryImagePrefab, gameObject.transform);
-            IngredientInformation information = prefab.GetComponent<IngredientInformation>();
-            information.Create(ingredient.Key);
+            if (viewList.Contains(ingredient.Key))
+            {
+                int idx = viewList.IndexOf(ingredient.Key);
+                IngredientInformation information = viewGameObjectList[idx].GetComponent<IngredientInformation>();
+                information.Create(ingredient.Key, ingredient.Value);
+            }
+            else
+            {
+                GameObject prefab = Instantiate(InventoryImagePrefab, transform);
+                IngredientInformation information = prefab.GetComponent<IngredientInformation>();
+                information.Create(ingredient.Key, ingredient.Value);
+
+                viewGameObjectList.Add(prefab);
+                viewList.Add(ingredient.Key);
+            }
         }
     }
 

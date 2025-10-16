@@ -4,36 +4,39 @@ using UnityEngine.EventSystems;
 
 public class IngredientInformation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private string foodName;
-    private FoodGroupType foodGroup;
-    private FoodTasteType[] foodTaste;
-    private FoodTextureType foodTextureType;
-    private FoodRarityType foodRarityType;
-
+    [SerializeField] private GameObject panel;
     private TextMeshProUGUI text;
+
+    private IngredientSO information;
+    private int foodAmount = 1;
+
 
     private void Awake()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
+        panel.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        text.gameObject.SetActive(true);
-        text.text = $"{foodName}\n{foodGroup}\n{foodTaste}\n{foodTextureType}\n{foodRarityType}";
+        panel.SetActive(true);
+        text.text =
+            $"{information.foodName}\n" +
+            $"{information.foodGroup}\n" +
+            $"{information.foodTaste}\n" +
+            $"{information.foodTextureType}\n" +
+            $"{information.foodRarityType}\n" +
+            $"{foodAmount}";
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        text.gameObject.SetActive(false);
+        panel.SetActive(false);
     }
 
-    public void Create(IngredientSO ingredient)
+    public void Create(IngredientSO ingredient, int amount)
     {
-        foodName = ingredient.foodName;
-        foodGroup = ingredient.foodGroup;
-        foodTaste = ingredient.foodTaste;
-        foodTextureType = ingredient.foodTextureType;
-        foodRarityType = ingredient.foodRarityType;
+        information = ingredient;
+        foodAmount = amount;
     }
 }
