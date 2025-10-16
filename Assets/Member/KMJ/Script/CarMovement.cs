@@ -1,5 +1,4 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
@@ -8,7 +7,10 @@ public class CarMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 moveDir;
 
-    private bool canMove = false; 
+    public bool canMove = false; 
+    private bool isMoving = false;
+
+    public PlayerMovement player;
 
     private void Awake()
     {
@@ -17,30 +19,35 @@ public class CarMovement : MonoBehaviour
 
     private void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.F))
+        if (canMove && Input.GetKeyDown(KeyCode.F))
         {
-            canMove = true;
+            canMove = false;
+            player.enabled = true; 
+            Debug.Log("차량에서 내렸");
+            return;
         }
 
         if (!canMove)
         {
             moveDir = Vector2.zero;
+            isMoving = false;
             return;
         }
 
-        
         if (Input.GetKey(KeyCode.W))
         {
             moveDir = transform.up;
+            isMoving = true;
         }
         else if (Input.GetKey(KeyCode.S))
         {
             moveDir = -transform.up;
+            isMoving = true;
         }
         else
         {
             moveDir = Vector2.zero;
+            isMoving = false;
         }
     }
 
@@ -54,13 +61,13 @@ public class CarMovement : MonoBehaviour
 
         _rb.linearVelocity = moveDir * moveSpeed;
 
-        if (Input.GetKey(KeyCode.A))
+        if (isMoving)
         {
-            transform.eulerAngles += new Vector3(0, 0, rotationSpeed);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.eulerAngles += new Vector3(0, 0, -rotationSpeed);
+            if (Input.GetKey(KeyCode.A))
+                transform.eulerAngles += new Vector3(0, 0, rotationSpeed);
+
+            if (Input.GetKey(KeyCode.D))
+                transform.eulerAngles += new Vector3(0, 0, -rotationSpeed);
         }
     }
 }
