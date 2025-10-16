@@ -3,13 +3,18 @@ using System.Collections.Generic;
 
 public class AlbaSelectManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _albaSelectMenuObj = new List<GameObject>();
+    [SerializeField] private int nowPage = 1;
+    [SerializeField] private List<GameObject> _albaSelectMenuObj = new();
 
-    public void SelectMenuOpen()
+    public void Nextpage(bool isNexBt)
     {
-        for (int i = 0; i < _albaSelectMenuObj.Count; i++)
+        if (isNexBt && nowPage != 3)
         {
-            _albaSelectMenuObj[i].SetActive(true);
+            nowPage++;
+        }
+        else if (nowPage != 1)
+        {
+            nowPage--;
         }
     }
 }
