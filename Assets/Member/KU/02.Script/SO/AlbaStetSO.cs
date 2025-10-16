@@ -7,5 +7,4 @@ public class AlbaStetSO : ScriptableObject
 {
     public string name;
     public int age;
-    public List<string> _power = new List<string>();
 }
