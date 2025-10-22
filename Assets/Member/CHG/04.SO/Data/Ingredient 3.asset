@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9507b31fe0c3d841871b8047bf6ddcf, type: 3}
+  m_Name: Ingredient 3
+  m_EditorClassIdentifier: 
+  foodName: CCC
+  foodGroup: 3
+  foodTaste: 4
+  foodTextureType: 2
+  foodRarityType: 0
+  FoodSprite: {fileID: 21300000, guid: a363c054369a444bb9896c5e21aa3fdd, type: 3}
+  Price: 1000
+  Stock: 20
