@@ -60,9 +60,9 @@ public class CookGame : MonoBehaviour
         handle.SetActive(true);
     }
     
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        cookingFood = collision.gameObject;
+        cookingFood = other.gameObject;
         StartCoroutine(GameStart());
     }
 

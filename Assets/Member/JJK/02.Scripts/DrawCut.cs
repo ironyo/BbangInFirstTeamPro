@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 public class DrawCut : MonoBehaviour
 {
-   // public Transform boxVis;
     Vector3 pointA;
     Vector3 pointB;
 
     private LineRenderer cutRender;
     private bool animateCut;
+    private bool canCut = false;
 
     Camera cam;
 
-    void Start() {
+    void Start()
+    {
         cam = FindObjectOfType<Camera>();
         cutRender = GetComponent<LineRenderer>();
         cutRender.startWidth = .05f;
@@ -25,27 +27,35 @@ public class DrawCut : MonoBehaviour
         Vector3 mouse = Input.mousePosition;
         mouse.z = -cam.transform.position.z;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Keyboard.current.tKey.wasPressedThisFrame)
         {
-            pointA = cam.ScreenToWorldPoint(mouse);
+            canCut = !canCut;
         }
-
-        if (Input.GetMouseButton(0))
+        
+        if (canCut)
         {
-            animateCut = false;
-            cutRender.SetPosition(0,pointA);
-            cutRender.SetPosition(1,cam.ScreenToWorldPoint(mouse));
-            cutRender.startColor = Color.gray;
-            cutRender.endColor = Color.gray;
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                pointA = cam.ScreenToWorldPoint(mouse);
+            }
 
-        if (Input.GetMouseButtonUp(0)) {
-            pointB = cam.ScreenToWorldPoint(mouse);
-            CreateSlicePlane();
-            cutRender.positionCount = 2;
-            cutRender.SetPosition(0,pointA);
-            cutRender.SetPosition(1,pointB);
-            animateCut = true;
+            if (Input.GetMouseButton(0))
+            {
+                animateCut = false;
+                cutRender.SetPosition(0,pointA);
+                cutRender.SetPosition(1,cam.ScreenToWorldPoint(mouse));
+                cutRender.startColor = Color.gray;
+                cutRender.endColor = Color.gray;
+            }
+
+            if (Input.GetMouseButtonUp(0)) {
+                pointB = cam.ScreenToWorldPoint(mouse);
+                CreateSlicePlane();
+                cutRender.positionCount = 2;
+                cutRender.SetPosition(0,pointA);
+                cutRender.SetPosition(1,pointB);
+                animateCut = true;
+            }
         }
 
         if (animateCut)
