@@ -16,7 +16,6 @@ public class AlbaSelectMenu : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> _stetTex = new();
 
     [Header("Power")]
-    [field: Range(1, 3)]
     [SerializeField] private int _powerCount;
     [SerializeField] private List<string> _power = new(0);
     [SerializeField] private List<string> _powerKindString = new(9);
@@ -58,14 +57,12 @@ public class AlbaSelectMenu : MonoBehaviour
             _stetTex[i].text = $"{str} : {stetDic[str]} / 100";
         }
     }
-
     private string PowerStetReroll()
     {
         int radomNum = Random.Range(1, _powerKindString.Count);
         return albaPowerDic[radomNum];
     }
-
-    int StetStetReroll()
+    private int StetStetReroll()
     {
         int totalWeight = (100 * (100 + 1)) / 2;
 
