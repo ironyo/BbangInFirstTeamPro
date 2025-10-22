@@ -7,10 +7,13 @@ public class IngredientInventoryUI : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField] private GameObject InventoryImagePrefab;
+    [SerializeField] private RectTransform leftWindowRect;
+    [SerializeField] private RectTransform rightWindowRect;
+
+    private IngredientInformationUI ingredientInformationUI;
 
     private List<GameObject> viewGameObjectList = new List<GameObject>();
     private List<IngredientSO> viewList = new List<IngredientSO>();
-    private RectTransform rect;
 
     private ShowType showType = ShowType.Hide;
 
@@ -23,6 +26,11 @@ public class IngredientInventoryUI : MonoBehaviour
         Hide
     }
 
+    private void Awake()
+    {
+        ingredientInformationUI = rightWindowRect.gameObject.GetComponent<IngredientInformationUI>();
+    }
+
     private void OnEnable()
     {
         IngredientInventoryManager.Instance.OnInventoryChanged += InventoryShow;
@@ -32,12 +40,6 @@ public class IngredientInventoryUI : MonoBehaviour
     {
         if (IngredientInventoryManager.Instance != null)
             IngredientInventoryManager.Instance.OnInventoryChanged -= InventoryShow;
-    }
-
-    private void Awake()
-    {
-        rect = GetComponent<RectTransform>();
-        rect.DOAnchorPos(new Vector2(-1354, -30), 0);
     }
 
     private void Update()
@@ -54,36 +56,43 @@ public class IngredientInventoryUI : MonoBehaviour
     {
         if (showType == ShowType.Show)
         {
-            rect.DOAnchorPos(new Vector2(-553, -30), 0.7f);
+            leftWindowRect.DOAnchorPos(new Vector2(-600, -30), 0.7f);
+            rightWindowRect.DOAnchorPos(new Vector2(600, -30), 0.7f);
         }
         else if (showType == ShowType.Hide)
         {
-            rect.DOAnchorPos(new Vector2(-1354, -30), 0.7f);
+            leftWindowRect.DOAnchorPos(new Vector2(-1400, -30), 0.7f);
+            rightWindowRect.DOAnchorPos(new Vector2(1400, -30), 0.7f);
         }
     }
 
     private void InventoryShow()
     {
-        var infoList = GetComponentsInChildren<IngredientInformation>(true);
+        var infoList = GetComponentsInChildren<IngredientImageUI>(true);
 
         foreach (KeyValuePair<IngredientSO, int> ingredient in IngredientInventoryManager.Instance.ingredientDictionary)
         {
             if (viewList.Contains(ingredient.Key))
             {
                 int idx = viewList.IndexOf(ingredient.Key);
-                IngredientInformation information = viewGameObjectList[idx].GetComponent<IngredientInformation>();
+                IngredientImageUI information = viewGameObjectList[idx].GetComponent<IngredientImageUI>();
                 information.Create(ingredient.Key, ingredient.Value);
             }
             else
             {
-                GameObject prefab = Instantiate(InventoryImagePrefab, transform);
-                IngredientInformation information = prefab.GetComponent<IngredientInformation>();
+                GameObject prefab = Instantiate(InventoryImagePrefab, leftWindowRect.gameObject.transform);
+                IngredientImageUI information = prefab.GetComponent<IngredientImageUI>();
                 information.Create(ingredient.Key, ingredient.Value);
 
                 viewGameObjectList.Add(prefab);
                 viewList.Add(ingredient.Key);
             }
         }
+    }
+
+    public void ShowIngredientInformation(IngredientSO ingredient)
+    {
+        ingredientInformationUI.ShowIngredientInformation(ingredient);
     }
 
     #region Button
