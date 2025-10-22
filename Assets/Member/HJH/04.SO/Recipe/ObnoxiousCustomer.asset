@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dbd2d4b0f8c0a6498a204fdce1af168, type: 3}
-  m_Name: Customer
+  m_Script: {fileID: 11500000, guid: 114185636b2dd694b92efd95fb8afbf0, type: 3}
+  m_Name: ObnoxiousCustomer
   m_EditorClassIdentifier: 
-  guestType: 0
-  customerName:
-  - Customer1
-  - Customer2
-  - Customer3
-  typeColor: {r: 0, g: 0, b: 0, a: 0}
+  recipeSOList:
+  - {fileID: 11400000, guid: b06a853464c613945a194bcc314a5289, type: 2}

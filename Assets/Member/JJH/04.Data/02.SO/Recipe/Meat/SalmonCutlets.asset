@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bf2696cb3e2fd7e4fab9a9fc57b71b70, type: 2}
   recipeFoodTaste: 000000000500000006000000
   recipeFoodTexture: 0
+  recipeSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
