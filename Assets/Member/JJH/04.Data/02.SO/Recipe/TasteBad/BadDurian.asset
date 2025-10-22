@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28453b4275a01d4f8db2f30d60e07e6, type: 3}
+  m_Name: BadDurian
+  m_EditorClassIdentifier: 
+  foodName: "\uBCF4\uAE30\uB3C4 \uC5ED\uACA8\uC6B4 \uB450\uB9AC\uC548"
+  ingredients:
+  - {fileID: 11400000, guid: 68b29d60095a7ee4a8336e7f694d1c1b, type: 2}
+  - {fileID: 11400000, guid: bf2696cb3e2fd7e4fab9a9fc57b71b70, type: 2}
+  - {fileID: 11400000, guid: c6667755673b23949b71f6ad864838e0, type: 2}
+  recipeFoodTaste: 080000000000000001000000
+  recipeFoodTexture: 0
