@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbd2d4b0f8c0a6498a204fdce1af168, type: 3}
   m_Name: Rich
   m_EditorClassIdentifier: 
-  guestType: 3
+  guestType: 2
   customerName:
   - rich
   - rich2

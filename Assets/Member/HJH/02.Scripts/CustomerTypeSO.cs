@@ -1,7 +1,6 @@
 using UnityEngine;
 public enum GuestType
 {
-    None,// 없음
     customer, // 일반손님
     ObnoxiousCustomer, // 진상
     Rich, // 부자손님
