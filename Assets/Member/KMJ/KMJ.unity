@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 594689841}
   - component: {fileID: 594689842}
   - component: {fileID: 594689843}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,8 +333,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   rotationSpeed: 3
+  car: {fileID: 594689842}
   canMove: 0
-  player: {fileID: 1737111495}
+  Player: {fileID: 1737111495}
 --- !u!61 &594689843
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -369,7 +370,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00047577918, y: 0.000000014901161}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -379,7 +380,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.085, y: 0.1}
+  m_Size: {x: 0.10878855, y: 0.2107248}
   m_EdgeRadius: 0
 --- !u!1 &660956342
 GameObject:
@@ -391,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660956343}
   - component: {fileID: 660956344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1624685539}
   - component: {fileID: 1624685540}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FKeyforinplace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,6 +565,8 @@ MonoBehaviour:
   target: {fileID: 1737111494}
   interactRange: 2
   interactKey: 102
+  isNear: 0
+  player: {fileID: 1737111491}
 --- !u!1 &1737111491
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,9 +579,10 @@ GameObject:
   - component: {fileID: 1737111493}
   - component: {fileID: 1737111495}
   - component: {fileID: 1737111496}
+  - component: {fileID: 1737111497}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -666,7 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  car: {fileID: 594689842}
+  canMove: 1
 --- !u!58 &1737111496
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -703,6 +707,33 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!50 &1737111497
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737111491}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

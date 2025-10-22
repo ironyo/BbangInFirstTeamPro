@@ -6,27 +6,21 @@ public class CarMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
     private Rigidbody2D _rb;
     private Vector2 moveDir;
-
+    public CarMovement car;
     public bool canMove = false; 
     private bool isMoving = false;
 
-    public PlayerMovement player;
+    public PlayerMovement Player;
+    private InteractNearObject2D InteractNearObject;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        InteractNearObject = GetComponentInChildren<InteractNearObject2D>();
     }
 
     private void Update()
     {
-        if (canMove && Input.GetKeyDown(KeyCode.F))
-        {
-            canMove = false;
-            player.enabled = true; 
-            Debug.Log("차량에서 내렸");
-            return;
-        }
-
         if (!canMove)
         {
             moveDir = Vector2.zero;

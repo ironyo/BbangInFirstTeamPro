@@ -3,23 +3,21 @@
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] public float speed = 5f;
-    public CarMovement car; 
 
-    private bool canMove = true; 
+
+    
+
+    public bool canMove = true; 
 
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            
-            canMove = false;
-            car.canMove = true;
-            Debug.Log("차량에 탑승");
-            return;
-        }
-
-        
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    if (canMove)
+        //        canMove = false;
+        //    else
+        //        canMove = true;
+        //}
         if (!canMove) return;
 
         float x = Input.GetAxis("Horizontal");

@@ -7,13 +7,18 @@ public class InteractNearObject2D : MonoBehaviour
     public float interactRange = 2f;       
     public KeyCode interactKey = KeyCode.F;
 
-    private bool isNear = false;
+    public bool isNear = false;
 
     private CarMovement carMovement;
+
+    private PlayerMovement playerMovement;
+
+    [SerializeField] private GameObject player;
 
     private void Awake()
     {
         carMovement = GetComponentInParent<CarMovement>();
+        playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -35,13 +40,15 @@ public class InteractNearObject2D : MonoBehaviour
         if (isNear && Input.GetKeyDown(interactKey))
         {
             Interact();
+
         }
     }
 
     void Interact()
     {
-        Debug.Log($"{target.name}과(와) 상호작용했습니다!");
-        carMovement.canMove = true;
+        Debug.Log("a");
+        carMovement.canMove = !carMovement.canMove;
+        playerMovement.canMove = !playerMovement.canMove;
     }
 
     void OnDrawGizmosSelected()
