@@ -42,5 +42,6 @@ public class IngredientImageUI : MonoBehaviour, IPointerClickHandler, ISelectHan
     public void OnDeselect(BaseEventData eventData)
     {
         outline.enabled = false;
+        ingredientInventoryUI.NotShowIngredientInformation();
     }
 }

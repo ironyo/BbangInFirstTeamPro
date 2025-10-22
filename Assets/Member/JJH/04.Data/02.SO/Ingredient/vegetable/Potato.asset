@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Potato
   m_EditorClassIdentifier: 
   foodName: "\uAC10\uC790"
+  foodDescription: "\uC9C0\uD6C4\uC758 \uBA38\uB9AC\uCC98\uB7FC \uC0DD\uAE34 \uB465\uAE00\uB465\uAE00
+    \uAC10\uC790"
   foodGroup: 0
   foodTaste: 05000000
   foodTextureType: 5
   foodRarityType: 0
+  foodImage: {fileID: -5661783315169486296, guid: 58fef8c62c86e7e4b8fae967812bba42, type: 3}

@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9507b31fe0c3d841871b8047bf6ddcf, type: 3}
-  m_Name: chili
+  m_Name: Pepper
   m_EditorClassIdentifier: 
   foodName: "\uACE0\uCD94"
+  foodDescription: "\uB9E4\uC6B4\uB9DB\uC744 \uB2F4\uB2F9\uD558\uB294 \uACE0\uCD94.
+    \uC791\uC740 \uACE0\uCD94\uAC00 \uB9F5\uB2E4."
   foodGroup: 0
   foodTaste: 01000000
   foodTextureType: 2
   foodRarityType: 2
+  foodImage: {fileID: 2708099430083492396, guid: e89d3ae1823f4904181db74b36686707, type: 3}
