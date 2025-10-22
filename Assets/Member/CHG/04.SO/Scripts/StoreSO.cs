@@ -6,4 +6,6 @@ using UnityEngine;
 public class StoreSO : ScriptableObject
 {
     public List<IngredientSO> Ingredint;
+    public int ReRollPrice;
+    public int ReRollCount;
 }

@@ -16,3 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6dd8d0401ee6020428653cd62be6f6fa, type: 2}
   - {fileID: 11400000, guid: 341b2d82afda4084383e16764e33da2e, type: 2}
   - {fileID: 11400000, guid: 3b9b9714f5919ea4c8908f54620a0044, type: 2}
+  ReRollPrice: 5
+  ReRollCount: 10
