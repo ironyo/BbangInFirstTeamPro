@@ -13,7 +13,7 @@ public class CustomerPoolManager : MonoBehaviour
     public (GuestType, string) GetRandomCustomerData()
     {
         if (customerTypeSOList.customerTypeSOList.Length == 0)
-            return (GuestType.None, null);
+            return (GuestType.Alien, null);
 
         int typeIndex = Random.Range(0, customerTypeSOList.customerTypeSOList.Length);
         CustomerTypeSO chosenType = customerTypeSOList.customerTypeSOList[typeIndex];
