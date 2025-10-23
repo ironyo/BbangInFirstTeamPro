@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guestType: 3
   customerName:
-  - celebrity
+  - "\uC624\uC740\uC601"
+  - "\uC9C0\uD55C\uC774\uC5C4\uB9C8"
   typeColor: {r: 0, g: 0, b: 0, a: 0}
