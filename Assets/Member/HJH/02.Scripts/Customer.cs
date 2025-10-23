@@ -1,7 +1,8 @@
 using TMPro;
 using UnityEngine;
 public class Customer : MonoBehaviour
-{ public GuestType guestType;
+{ 
+    public GuestType guestType;
     public string customerName;
     public Color typeColor;
     public TextMeshPro nameText;
@@ -9,9 +10,8 @@ public class Customer : MonoBehaviour
     { 
         guestType = type;
         customerName = name;
-        switch (guestType) {
-            case GuestType.None:
-                break;
+        switch (guestType) 
+        {
             case GuestType.customer:
                 typeColor = Color.black;
                 break;

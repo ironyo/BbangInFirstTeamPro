@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "IngredientSO", menuName = "JJH_SO/IngredientSO")]
 public class IngredientSO : ScriptableObject
 {
+<<<<<<< HEAD
     public string foodName;
     public FoodGroupType foodGroup;
     public FoodTasteType[] foodTaste;
@@ -15,11 +16,20 @@ public class IngredientSO : ScriptableObject
     public int Price;
     public int Stock;
     
+=======
+    public string foodName; //음식 이름
+    public string foodDescription; //음식 설명
+    public FoodGroupType foodGroup; //음식 식재료군
+    public FoodTasteType[] foodTaste; //음식 맛
+    public FoodTextureType foodTextureType; //음식 식감
+    public FoodRarityType foodRarityType; //음식 희귀도
+    public Sprite foodImage;
+>>>>>>> Base
 }
 
 public enum FoodGroupType //식재료군
 {
-    vegetable, //야채류
+    Vegetable, //야채류
     Meat, //육류
     Fish, //어류
     Fruit, //과일류

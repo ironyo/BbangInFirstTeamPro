@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CustomerTypeSOList
   m_EditorClassIdentifier: 
   customerTypeSOList:
-  - {fileID: 11400000, guid: ffa043a0bf26bc5478fe85f41b777c58, type: 2}
-  - {fileID: 11400000, guid: 788de98898b642742809dcd10f9c6e90, type: 2}
-  - {fileID: 11400000, guid: 6003677a1f435fe429b77c9944e92cf9, type: 2}
   - {fileID: 11400000, guid: 33a08211ba77f7140b3d7a10bd2787e2, type: 2}
+  - {fileID: 11400000, guid: ffa043a0bf26bc5478fe85f41b777c58, type: 2}
   - {fileID: 11400000, guid: a9abc7b60337f7a49acaecea8ba3fa45, type: 2}
+  - {fileID: 11400000, guid: 6003677a1f435fe429b77c9944e92cf9, type: 2}
+  - {fileID: 11400000, guid: 788de98898b642742809dcd10f9c6e90, type: 2}
