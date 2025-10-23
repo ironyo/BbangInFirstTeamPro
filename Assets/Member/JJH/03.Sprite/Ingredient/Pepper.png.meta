@@ -103,10 +103,10 @@ TextureImporter:
       name: Pepper_0
       rect:
         serializedVersion: 2
-        x: 106
-        y: 70
-        width: 239
-        height: 360
+        x: 14
+        y: 24
+        width: 421
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
