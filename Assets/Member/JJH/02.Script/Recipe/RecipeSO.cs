@@ -4,6 +4,7 @@ using UnityEngine;
 public class RecipeSO : ScriptableObject
 {
     public string foodName;
+    public string foodDescription;
     public IngredientSO[] ingredients;
     public RecipeTasteType[] recipeFoodTaste;
     public RecipeTextureType recipeFoodTexture;

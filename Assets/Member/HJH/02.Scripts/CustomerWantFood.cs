@@ -8,7 +8,7 @@ public class CustomerWantFood : MonoBehaviour
     [SerializeField] private TextMeshPro foodName;
 
     public WantRecipeSOList wantRecipeSOList;
-    private RecipeSOList customerRecipeSOList;
+    private RecipeListSO customerRecipeSOList;
     private RecipeSO r;
 
     private Customer customer;

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: BadDurian
   m_EditorClassIdentifier: 
   foodName: "\uBCF4\uAE30\uB3C4 \uC5ED\uACA8\uC6B4 \uB450\uB9AC\uC548"
+  foodDescription: 
   ingredients:
   - {fileID: 11400000, guid: 68b29d60095a7ee4a8336e7f694d1c1b, type: 2}
   - {fileID: 11400000, guid: bf2696cb3e2fd7e4fab9a9fc57b71b70, type: 2}
   - {fileID: 11400000, guid: c6667755673b23949b71f6ad864838e0, type: 2}
   recipeFoodTaste: 080000000000000001000000
-  recipeFoodTexture: 0
-  recipeSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  recipeFoodTexture: 1
+  recipeImage: {fileID: -5859083586626064994, guid: 54129416db71c3e44b513b777b3b2eda, type: 3}

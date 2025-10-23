@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d28453b4275a01d4f8db2f30d60e07e6, type: 3}
-  m_Name: Steak
+  m_Name: GrilledSquid
   m_EditorClassIdentifier: 
-  foodName: "\uC2A4\uD14C\uC774\uD06C"
+  foodName: "\uC624\uC9D5\uC5B4 \uAD6C\uC774"
+  foodDescription: 
   ingredients:
-  - {fileID: 11400000, guid: 6387e4a288366aa4f9d019ae9d84f8b3, type: 2}
-  - {fileID: 11400000, guid: 5678f165645521446bb5af8f4461194d, type: 2}
-  - {fileID: 11400000, guid: 232e4addca8500a4db72be83dd5e0c83, type: 2}
+  - {fileID: 11400000, guid: d7c33b8da31e3384e95cdbabee4a4c97, type: 2}
+  - {fileID: 11400000, guid: c6667755673b23949b71f6ad864838e0, type: 2}
   - {fileID: 11400000, guid: bf2696cb3e2fd7e4fab9a9fc57b71b70, type: 2}
-  recipeFoodTaste: 0500000000000000
-  recipeFoodTexture: 0
-  recipeSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  recipeFoodTaste: 0000000001000000
+  recipeFoodTexture: 1
+  recipeImage: {fileID: -5859083586626064994, guid: 54129416db71c3e44b513b777b3b2eda, type: 3}
