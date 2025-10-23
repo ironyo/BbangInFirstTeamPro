@@ -25,7 +25,7 @@ public class CustomerWantFood : MonoBehaviour
 
         r = customerRecipeSOList.recipeSOList[Random.Range(0, customerRecipeSOList.recipeSOList.Length)];
 
-        foodImage.sprite = r.recipeSprite;
+        foodImage.sprite = r.recipeImage;
         foodName.text = r.foodName;
     }
 }

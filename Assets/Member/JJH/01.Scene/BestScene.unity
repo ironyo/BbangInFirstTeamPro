@@ -680,7 +680,7 @@ MonoBehaviour:
   tasteText: {fileID: 1589043463}
   textureText: {fileID: 1420204083}
   descriptionText: {fileID: 1467169699}
-  foodImage: {fileID: 1413957974}
+  foodImage: {fileID: 1413957976}
 --- !u!1 &829287100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1413957973}
   - component: {fileID: 1413957975}
-  - component: {fileID: 1413957974}
+  - component: {fileID: 1413957976}
   m_Layer: 5
   m_Name: FoodImage
   m_TagString: Untagged
@@ -1257,7 +1257,15 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: 64.99994}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1413957974
+--- !u!222 &1413957975
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413957972}
+  m_CullTransparentMesh: 1
+--- !u!114 &1413957976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1287,14 +1295,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &1413957975
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413957972}
-  m_CullTransparentMesh: 1
 --- !u!1 &1420204081
 GameObject:
   m_ObjectHideFlags: 0
