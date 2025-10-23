@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Cutter : MonoBehaviour
@@ -73,7 +75,12 @@ public class Cutter : MonoBehaviour
         }
         
         var rightRigidbody = right.AddComponent<Rigidbody>();
-        rightRigidbody.AddRelativeForce(-cutPlane.normal * 250f);
+        right.AddComponent<Drag>();
+        rightRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY  |
+                                     RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;;
+        rightRigidbody.AddForce(-cutPlane.normal * 3f, ForceMode.Impulse);
+        rightRigidbody.useGravity = false;
+        rightRigidbody.linearDamping = 5f;
         
         isBusy = false;
     }
