@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guestType: 4
   customerName:
-  - alien
+  - "\uC815\uC9C0\uD55C\uCE58\uC640\uC640"
+  - "\uC815\uD604\uC9C4\uCF54\uC54C\uB77C"
+  - "\uAE40\uC2DC\uC6D0\uC9C0\uB801\uC774"
+  - "\uC774\uD6C8\uC131\uCF54\uB07C\uB9AC"
+  - "\uAE40\uBBFC\uBCF5\uC5B4"
   typeColor: {r: 0, g: 0, b: 0, a: 0}

@@ -19,6 +19,7 @@ public class IngredientInventoryUI : MonoBehaviour
 
     [SerializeField] private IngredientSO potato;
     [SerializeField] private IngredientSO pepper;
+    [SerializeField] private IngredientSO carrot;
 
     enum ShowType
     {
@@ -108,6 +109,10 @@ public class IngredientInventoryUI : MonoBehaviour
     public void AddPepperButton()
     {
         IngredientInventoryManager.Instance.AddInventoryIngredient(pepper, 1);
+    }
+    public void AddCarrotButton()
+    {
+        IngredientInventoryManager.Instance.AddInventoryIngredient(carrot, 1);
     }
     #endregion
 }
