@@ -2,21 +2,20 @@
 
 public class CarMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;       
+    [SerializeField] private float rotationSpeed = 5f;   
+    [SerializeField] private float acceleration = 2f;    
+    [SerializeField] private float deceleration = 3f;    
+
     private Rigidbody2D _rb;
     private Vector2 moveDir;
-    public CarMovement car;
-    public bool canMove = false; 
+    private float currentSpeed = 0f;                     
+    public bool canMove = false;
     private bool isMoving = false;
-
-    public PlayerMovement Player;
-    private InteractNearObject2D InteractNearObject;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        InteractNearObject = GetComponentInChildren<InteractNearObject2D>();
     }
 
     private void Update()
@@ -28,40 +27,49 @@ public class CarMovement : MonoBehaviour
             return;
         }
 
+        moveDir = Vector2.zero;
+        isMoving = false;
+    }
+
+    private void FixedUpdate()
+    {
         if (Input.GetKey(KeyCode.W))
         {
             moveDir = transform.up;
             isMoving = true;
+
+            if (Input.GetKey(KeyCode.A))
+                transform.eulerAngles += new Vector3(0, 0, rotationSpeed);
+            if (Input.GetKey(KeyCode.D))
+                transform.eulerAngles += new Vector3(0, 0, -rotationSpeed);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             moveDir = -transform.up;
             isMoving = true;
+
+            if (Input.GetKey(KeyCode.A))
+                transform.eulerAngles += new Vector3(0, 0, -rotationSpeed);
+            if (Input.GetKey(KeyCode.D))
+                transform.eulerAngles += new Vector3(0, 0, rotationSpeed);
+        }
+
+        if (isMoving)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, moveSpeed, acceleration * Time.fixedDeltaTime);
         }
         else
         {
-            moveDir = Vector2.zero;
-            isMoving = false;
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, deceleration * Time.fixedDeltaTime);
         }
-    }
 
-    private void FixedUpdate()
-    {
+        
         if (!canMove)
         {
             _rb.linearVelocity = Vector2.zero;
             return;
         }
 
-        _rb.linearVelocity = moveDir * moveSpeed;
-
-        if (isMoving)
-        {
-            if (Input.GetKey(KeyCode.A))
-                transform.eulerAngles += new Vector3(0, 0, rotationSpeed);
-
-            if (Input.GetKey(KeyCode.D))
-                transform.eulerAngles += new Vector3(0, 0, -rotationSpeed);
-        }
+        _rb.linearVelocity = moveDir * currentSpeed;
     }
 }
