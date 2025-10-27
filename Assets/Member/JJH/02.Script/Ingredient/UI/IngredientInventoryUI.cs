@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class IngredientInventoryUI : MonoBehaviour
 {
     [Header("Objects")]
-    [SerializeField] private GameObject InventoryImagePrefab;
+    [SerializeField] private GameObject ianventoryImagePrefab;
     [SerializeField] private RectTransform leftWindowRect;
     [SerializeField] private RectTransform rightWindowRect;
 
@@ -81,7 +81,7 @@ public class IngredientInventoryUI : MonoBehaviour
             }
             else
             {
-                GameObject prefab = Instantiate(InventoryImagePrefab, leftWindowRect.gameObject.transform);
+                GameObject prefab = Instantiate(inventoryImagePrefab, leftWindowRect.gameObject.transform);
                 IngredientImageUI information = prefab.GetComponent<IngredientImageUI>();
                 information.Create(ingredient.Key, ingredient.Value);
 

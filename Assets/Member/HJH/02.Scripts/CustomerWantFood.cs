@@ -23,7 +23,7 @@ public class CustomerWantFood : MonoBehaviour
         int index = (int)customer.guestType;
         customerRecipeSOList = wantRecipeSOList.recipeSOLists[index];
 
-        r = customerRecipeSOList.recipeSOList[Random.Range(0, customerRecipeSOList.recipeSOList.Length)];
+        r = customerRecipeSOList.recipeList[Random.Range(0, customerRecipeSOList.recipeList.Length)];
 
         foodImage.sprite = r.recipeImage;
         foodName.text = r.foodName;
