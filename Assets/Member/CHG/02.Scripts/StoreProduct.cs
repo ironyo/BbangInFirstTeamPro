@@ -11,7 +11,6 @@ public class StoreProduct : MonoBehaviour
     [SerializeField] private TextMeshProUGUI StockText;
 
     [SerializeField] private Image IngredintImage; //재료 Sprite표시 Image
-    [SerializeField] private Image MoreInfomationBtn; //추가 정보창 버튼
 
     private IngredientSO _ingredientData; //재료 Data
     private StoreManager _storeManager;
@@ -69,6 +68,7 @@ public class StoreProduct : MonoBehaviour
     {
         _storeManager.MoreUICanvasGroup.alpha = 0;
     }
+
     #endregion
 
 
