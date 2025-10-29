@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,16 +13,9 @@ public class RecipeImageUI : MonoBehaviour, IPointerClickHandler, ISelectHandler
 
     public void Create(RecipeSO ingredient, int amount)
     {
-        amountText = GetComponentInChildren<TextMeshProUGUI>();
         outline = GetComponent<Outline>();
 
         outline.enabled = false;
-
-        image.sprite = ingredient.foodImage;
-        information = ingredient;
-        foodAmount = amount;
-
-        amountText.text = foodAmount.ToString();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -41,6 +33,5 @@ public class RecipeImageUI : MonoBehaviour, IPointerClickHandler, ISelectHandler
     public void OnDeselect(BaseEventData eventData)
     {
         outline.enabled = false;
-
     }
 }
