@@ -9,9 +9,8 @@ public class RecipeImageUI : MonoBehaviour, IPointerClickHandler, ISelectHandler
     private Outline outline;
 
     private RecipeSO information;
-    private int foodAmount = 1;
 
-    public void Create(RecipeSO ingredient, int amount)
+    public void Create(RecipeSO ingredient)
     {
         outline = GetComponent<Outline>();
 
