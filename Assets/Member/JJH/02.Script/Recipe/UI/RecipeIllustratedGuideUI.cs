@@ -28,7 +28,6 @@ public class RecipeIllustratedGuideUI : MonoBehaviour
 
         foreach (RecipeSO item in recipeListSO.recipeList)
             viewList.Add(item);
-
     }
 
     private void Update()
