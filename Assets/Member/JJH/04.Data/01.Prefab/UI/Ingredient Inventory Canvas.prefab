@@ -198,9 +198,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -5859083586626064994, guid: 54129416db71c3e44b513b777b3b2eda, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1577,7 +1577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949e3a45b18d99e4e95e53343174c846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryImagePrefab: {fileID: 344056451997274620, guid: 776e72734df9c524b8a9e13f3964769c, type: 3}
+  inventoryImagePrefab: {fileID: 344056451997274620, guid: 776e72734df9c524b8a9e13f3964769c, type: 3}
   leftWindowRect: {fileID: 5744175286789554514}
   rightWindowRect: {fileID: 563995912183106443}
   potato: {fileID: 11400000, guid: 9aaa9ad29b4406a48aad232cdaade10e, type: 2}
