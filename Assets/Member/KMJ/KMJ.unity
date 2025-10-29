@@ -285,7 +285,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12.8, y: 22, z: 1}
+  m_LocalScale: {x: 8.01, y: 12.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 660956343}
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  rotationSpeed: 3
+  rotationSpeed: 150
   acceleration: 10
   deceleration: 30
   canMove: 1
@@ -468,9 +468,77 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &985154750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 985154752}
+  - component: {fileID: 985154751}
+  - component: {fileID: 985154753}
+  m_Layer: 0
+  m_Name: TrainRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &985154751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985154750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5afabf18518c74da8df8ea19720fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 594689840}
+  cars: []
+  linkLength: 1.5
+  turnSpeed: 720
+  followTightness: 20
+  maxSnapPerFixed: 2
+--- !u!4 &985154752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985154750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.473501, y: 29.412651, z: -0.47528154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &985154753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985154750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a2ae9d09dd24a41a81c238afc95af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headMovement: {fileID: 594689842}
+  chain: {fileID: 985154751}
+  carPrefab: {fileID: 9014670965565765491, guid: 2b40880f0a8b9fd4f92f3dfdb60ea5c4, type: 3}
+  carCount: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 479729943}
   - {fileID: 594689840}
+  - {fileID: 985154752}
