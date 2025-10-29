@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class IngredientInventoryUI : MonoBehaviour
 {
     [Header("Objects")]
-    [SerializeField] private GameObject InventoryImagePrefab;
+    [SerializeField] private GameObject ianventoryImagePrefab;
     [SerializeField] private RectTransform leftWindowRect;
     [SerializeField] private RectTransform rightWindowRect;
 
@@ -19,6 +19,7 @@ public class IngredientInventoryUI : MonoBehaviour
 
     [SerializeField] private IngredientSO potato;
     [SerializeField] private IngredientSO pepper;
+    [SerializeField] private IngredientSO carrot;
 
     enum ShowType
     {
@@ -80,7 +81,7 @@ public class IngredientInventoryUI : MonoBehaviour
             }
             else
             {
-                GameObject prefab = Instantiate(InventoryImagePrefab, leftWindowRect.gameObject.transform);
+                GameObject prefab = Instantiate(inventoryImagePrefab, leftWindowRect.gameObject.transform);
                 IngredientImageUI information = prefab.GetComponent<IngredientImageUI>();
                 information.Create(ingredient.Key, ingredient.Value);
 
@@ -108,6 +109,10 @@ public class IngredientInventoryUI : MonoBehaviour
     public void AddPepperButton()
     {
         IngredientInventoryManager.Instance.AddInventoryIngredient(pepper, 1);
+    }
+    public void AddCarrotButton()
+    {
+        IngredientInventoryManager.Instance.AddInventoryIngredient(carrot, 1);
     }
     #endregion
 }

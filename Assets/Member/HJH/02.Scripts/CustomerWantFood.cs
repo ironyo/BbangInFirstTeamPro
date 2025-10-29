@@ -8,7 +8,7 @@ public class CustomerWantFood : MonoBehaviour
     [SerializeField] private TextMeshPro foodName;
 
     public WantRecipeSOList wantRecipeSOList;
-    private RecipeSOList customerRecipeSOList;
+    private RecipeListSO customerRecipeSOList;
     private RecipeSO r;
 
     private Customer customer;
@@ -23,9 +23,9 @@ public class CustomerWantFood : MonoBehaviour
         int index = (int)customer.guestType;
         customerRecipeSOList = wantRecipeSOList.recipeSOLists[index];
 
-        r = customerRecipeSOList.recipeSOList[Random.Range(0, customerRecipeSOList.recipeSOList.Length)];
+        r = customerRecipeSOList.recipeList[Random.Range(0, customerRecipeSOList.recipeList.Length)];
 
-        foodImage.sprite = r.recipeSprite;
+        foodImage.sprite = r.recipeImage;
         foodName.text = r.foodName;
     }
 }

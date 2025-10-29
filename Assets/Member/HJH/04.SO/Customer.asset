@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guestType: 0
   customerName:
-  - Customer1
-  - Customer2
-  - Customer3
+  - "\uC77C\uBC18\uC7781"
+  - "\uC77C\uBC18\uC7782"
+  - "\uC77C\uBC18\uC7783"
   typeColor: {r: 0, g: 0, b: 0, a: 0}

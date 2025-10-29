@@ -7,6 +7,7 @@ public class IngredientImageUI : MonoBehaviour, IPointerClickHandler, ISelectHan
 {
     private IngredientInventoryUI ingredientInventoryUI;
 
+    [SerializeField] private Image image;
     private TextMeshProUGUI amountText;
     private Outline outline;
 
@@ -21,6 +22,7 @@ public class IngredientImageUI : MonoBehaviour, IPointerClickHandler, ISelectHan
 
         outline.enabled = false;
 
+        image.sprite = ingredient.foodImage;
         information = ingredient;
         foodAmount = amount;
 

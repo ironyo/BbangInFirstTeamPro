@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: GarlicPotatoChicken
   m_EditorClassIdentifier: 
   foodName: "\uB9C8\uB298 \uD3EC\uD14C\uC774\uD1A0 \uCE58\uD0A8"
+  foodDescription: 
   ingredients:
   - {fileID: 11400000, guid: dd94f15bc47774d458398e56bb0745ba, type: 2}
   - {fileID: 11400000, guid: c6667755673b23949b71f6ad864838e0, type: 2}
   - {fileID: 11400000, guid: 9aaa9ad29b4406a48aad232cdaade10e, type: 2}
   recipeFoodTaste: 0100000005000000
-  recipeFoodTexture: 0
-  recipeSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  recipeFoodTexture: 1
+  recipeImage: {fileID: -5859083586626064994, guid: 54129416db71c3e44b513b777b3b2eda, type: 3}
