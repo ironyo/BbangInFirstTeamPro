@@ -1,14 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "RecipeSO", menuName = "JJH_SO/RecipeSO")]
 public class RecipeSO : ScriptableObject
 {
     public string foodName;
+    public string foodDescription;
     public IngredientSO[] ingredients;
     public RecipeTasteType[] recipeFoodTaste;
     public RecipeTextureType recipeFoodTexture;
-    public Sprite recipeSprite;
+    public Sprite recipeImage;
 }
 
 

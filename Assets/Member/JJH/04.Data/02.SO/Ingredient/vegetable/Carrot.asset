@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Carrot
   m_EditorClassIdentifier: 
   foodName: "\uB2F9\uADFC"
+  foodDescription: "\uB108\uBB34\uB9DB\uC788\uB294\uB2F9\uADFC. \uC8FC\uD669\uC0C9\uC774\uB2E4."
   foodGroup: 0
   foodTaste: 02000000
   foodTextureType: 2
   foodRarityType: 0
+  foodImage: {fileID: -5859083586626064994, guid: 54129416db71c3e44b513b777b3b2eda, type: 3}
