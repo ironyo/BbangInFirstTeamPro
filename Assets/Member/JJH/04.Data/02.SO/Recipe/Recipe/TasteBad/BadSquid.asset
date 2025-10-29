@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28453b4275a01d4f8db2f30d60e07e6, type: 3}
+  m_Name: BadSquid
+  m_EditorClassIdentifier: 
+  foodName: "\uD654\uB048\uD55C \uC624\uC9D5\uC5B4"
+  foodDescription: 
+  ingredients:
+  - {fileID: 11400000, guid: d7c33b8da31e3384e95cdbabee4a4c97, type: 2}
+  - {fileID: 11400000, guid: a6cd7906c0e3b1545b928a923edc6a11, type: 2}
+  - {fileID: 11400000, guid: f882fc54650a439499677a38de0d6dff, type: 2}
+  recipeFoodTaste: 0800000001000000
+  recipeFoodTexture: 1
+  recipeImage: {fileID: -5859083586626064994, guid: 54129416db71c3e44b513b777b3b2eda, type: 3}

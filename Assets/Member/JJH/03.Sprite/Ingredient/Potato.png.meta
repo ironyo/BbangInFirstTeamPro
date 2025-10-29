@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9071b8a9877a4ec4e8813101366123d7
+guid: 58fef8c62c86e7e4b8fae967812bba42
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1319192218694586480
-    second: "\uC2A4\uD06C\uB9B0\uC0F7 2025-10-01 192035_0"
+      213: -5661783315169486296
+    second: Potato_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC2A4\uD06C\uB9B0\uC0F7 2025-10-01 192035_0"
+      name: Potato_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 107
-        height: 223
+        x: 29
+        y: 45
+        width: 415
+        height: 301
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09fef3e9aa941bde0800000000000000
-      internalID: -1319192218694586480
+      spriteID: 82ad610821e4d61b0800000000000000
+      internalID: -5661783315169486296
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5aae8ec03007eb8489223704ca2c96ec
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uC2A4\uD06C\uB9B0\uC0F7 2025-10-01 192035_0": -1319192218694586480
+      Potato_0: -5661783315169486296
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
