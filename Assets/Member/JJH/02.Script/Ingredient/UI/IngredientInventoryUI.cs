@@ -95,6 +95,7 @@ public class IngredientInventoryUI : MonoBehaviour
     {
         ingredientInformationUI.ShowIngredientInformation(ingredient);
     }
+
     public void NotShowIngredientInformation()
     {
         ingredientInformationUI.NotShowIngredientInformation();

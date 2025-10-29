@@ -5,10 +5,15 @@ using UnityEngine.InputSystem;
 
 public class RecipeIllustratedGuideUI : MonoBehaviour
 {
+    [Header("Data")]
     [SerializeField] private RecipeListSO recipeListSO;
     [SerializeField] private GameObject recipeUIPrefab;
 
-    private RectTransform rect;
+    [Header("Objects")]
+    [SerializeField] private RectTransform illustratedGuideRect;
+    [SerializeField] private RectTransform descriptionRect;
+
+    private RecipeInformationUI recipeInformationUI;
 
     private ShowType showType = ShowType.Hide;
 
@@ -23,7 +28,6 @@ public class RecipeIllustratedGuideUI : MonoBehaviour
 
     private void Awake()
     {
-        rect = GetComponent<RectTransform>();
         StartInventoryShow();
 
         foreach (RecipeSO item in recipeListSO.recipeList)
@@ -44,11 +48,13 @@ public class RecipeIllustratedGuideUI : MonoBehaviour
     {
         if (showType == ShowType.Show)
         {
-            rect.DOAnchorPos(new Vector2(0, 0), 0.7f);
+            illustratedGuideRect.DOAnchorPos(new Vector2(-450, 0), 0.7f);
+            descriptionRect.DOAnchorPos(new Vector2(450, 0), 0.7f);
         }
         else if (showType == ShowType.Hide)
         {
-            rect.DOAnchorPos(new Vector2(0, 1200), 0.7f);
+            illustratedGuideRect.DOAnchorPos(new Vector2(-450, 1200), 0.7f);
+            descriptionRect.DOAnchorPos(new Vector2(450, 1200), 0.7f);
         }
     }
 
@@ -56,9 +62,20 @@ public class RecipeIllustratedGuideUI : MonoBehaviour
     {
         foreach (RecipeSO recipeSO in viewRecipeSOList)
         {
-            GameObject recipeImageUIPrefab = Instantiate(recipeUIPrefab, transform);
+            GameObject recipeImageUIPrefab = Instantiate(recipeUIPrefab, illustratedGuideRect.gameObject.transform);
+            viewGameObjectList.Add(recipeImageUIPrefab);
             RecipeImageUI recipeImageUI = recipeImageUIPrefab.GetComponent<RecipeImageUI>();
             recipeImageUI.Create(recipeSO);
         }
+    }
+
+    public void ShowIngredientInformation(RecipeSO ingredient)
+    {
+        recipeInformationUI.ShowIngredientInformation(ingredient);
+    }
+
+    public void NotShowIngredientInformation()
+    {
+        recipeInformationUI.NotShowIngredientInformation();
     }
 }
