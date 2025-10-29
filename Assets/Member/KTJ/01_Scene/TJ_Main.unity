@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e953d4c764e3448b6623e76cafa7a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RepairShop: {fileID: 0}
+  RepairShop: {fileID: 298255125}
 --- !u!4 &331286794
 Transform:
   m_ObjectHideFlags: 0
