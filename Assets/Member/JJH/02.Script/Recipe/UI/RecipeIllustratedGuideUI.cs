@@ -13,7 +13,7 @@ public class RecipeIllustratedGuideUI : MonoBehaviour
     private ShowType showType = ShowType.Hide;
 
     private List<GameObject> viewGameObjectList = new List<GameObject>();
-    private List<RecipeSO> viewList = new List<RecipeSO>();
+    private List<RecipeSO> viewRecipeSOList = new List<RecipeSO>();
 
     enum ShowType
     {
@@ -24,10 +24,10 @@ public class RecipeIllustratedGuideUI : MonoBehaviour
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
-        InventoryShow();
+        StartInventoryShow();
 
         foreach (RecipeSO item in recipeListSO.recipeList)
-            viewList.Add(item);
+            viewRecipeSOList.Add(item);
     }
 
     private void Update()
@@ -52,11 +52,13 @@ public class RecipeIllustratedGuideUI : MonoBehaviour
         }
     }
 
-    private void InventoryShow()
+    private void StartInventoryShow()
     {
-        foreach (GameObject recipeImage in viewGameObjectList)
+        foreach (RecipeSO recipeSO in viewRecipeSOList)
         {
-            RecipeImageUI recipeImageUI = recipeImage.GetComponent<RecipeImageUI>();
+            GameObject recipeImageUIPrefab = Instantiate(recipeUIPrefab, transform);
+            RecipeImageUI recipeImageUI = recipeImageUIPrefab.GetComponent<RecipeImageUI>();
+            recipeImageUI.Create(recipeSO);
         }
     }
 }
