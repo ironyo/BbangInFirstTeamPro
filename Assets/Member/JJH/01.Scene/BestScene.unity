@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41539cc11383a334fa9df54bb2ce2916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeListSO: {fileID: 0}
+  recipeListSO: {fileID: 11400000, guid: c64aea60b66dbe244b14b2e1150e7d77, type: 2}
+  recipeUIPrefab: {fileID: 0}
 --- !u!114 &1180260945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +705,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 569798678311611234, guid: 4caa66f4bdf81c645b82182a22664716, type: 3}
+      propertyPath: inventoryImagePrefab
+      value: 
+      objectReference: {fileID: 344056451997274620, guid: 776e72734df9c524b8a9e13f3964769c, type: 3}
     - target: {fileID: 990782889391293489, guid: 4caa66f4bdf81c645b82182a22664716, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -784,6 +789,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8342435330993280671, guid: 4caa66f4bdf81c645b82182a22664716, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5859083586626064994, guid: 54129416db71c3e44b513b777b3b2eda, type: 3}
+    - target: {fileID: 8342435330993280671, guid: 4caa66f4bdf81c645b82182a22664716, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8533285920260707888, guid: 4caa66f4bdf81c645b82182a22664716, type: 3}
       propertyPath: m_Name
       value: Ingredient Inventory Canvas
@@ -798,8 +811,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1403216974}
-  - {fileID: 1916532215047797066}
-  - {fileID: 6364652992618442592}
   - {fileID: 2038180113}
   - {fileID: 3449784740793151312}
+  - {fileID: 1916532215047797066}
+  - {fileID: 6364652992618442592}
   - {fileID: 1979415446}

@@ -2,58 +2,75 @@ using UnityEngine;
 
 public class InteractNearObject2D : MonoBehaviour
 {
-    [Header("Target Settings")]
-    public Transform target;               
-    public float interactRange = 2f;       
-    public KeyCode interactKey = KeyCode.F;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float acceleration = 2f;
+    [SerializeField] private float deceleration = 3f;
 
-    public bool isNear = false;
-
-    private CarMovement carMovement;
-
-    private PlayerMovement playerMovement;
-
-    [SerializeField] private GameObject player;
+    private Rigidbody2D _rb;
+    private Vector2 moveDir;
+    private float currentSpeed = 0f;
+    public bool canMove = false;
+    private bool isMoving = false;
 
     private void Awake()
     {
-        carMovement = GetComponentInParent<CarMovement>();
-        playerMovement = player.GetComponent<PlayerMovement>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (target == null) return;
-
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, interactRange, LayerMask.GetMask("Player"));
-
-        
-        if (hit != null && hit)
+        if (!canMove)
         {
-            isNear = true;
+            moveDir = Vector2.zero;
+            isMoving = false;
+            return;
+        }
+
+        moveDir = Vector2.zero;
+        isMoving = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            moveDir = transform.up;
+            isMoving = true;
+
+            if (Input.GetKey(KeyCode.A))
+                transform.eulerAngles += new Vector3(0, 0, rotationSpeed);
+            if (Input.GetKey(KeyCode.D))
+                transform.eulerAngles += new Vector3(0, 0, -rotationSpeed);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            moveDir = -transform.up;
+            isMoving = true;
+
+            if (Input.GetKey(KeyCode.A))
+                transform.eulerAngles += new Vector3(0, 0, -rotationSpeed);
+            if (Input.GetKey(KeyCode.D))
+                transform.eulerAngles += new Vector3(0, 0, rotationSpeed);
+        }
+
+        if (isMoving)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, moveSpeed, acceleration * Time.fixedDeltaTime);
         }
         else
         {
-            isNear = false;
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, deceleration * Time.fixedDeltaTime);
         }
 
-        if (isNear && Input.GetKeyDown(interactKey))
+
+        if (!canMove)
         {
-            Interact();
-
+            _rb.linearVelocity = Vector2.zero;
+            return;
         }
-    }
 
-    void Interact()
-    {
-        Debug.Log("a");
-        carMovement.canMove = !carMovement.canMove;
-        playerMovement.canMove = !playerMovement.canMove;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, interactRange);
+        _rb.linearVelocity = moveDir * currentSpeed;
     }
 }
+
