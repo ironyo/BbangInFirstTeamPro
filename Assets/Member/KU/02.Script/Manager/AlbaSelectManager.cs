@@ -2,13 +2,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Assertions.Must;
 using System;
+using TMPro;
 
 public class AlbaSelectManager : MonoBehaviour
 {
     [SerializeField] private int _nowPage = 1;
     [SerializeField] private List<AlbaSelectMenu> _albaSelectMenuObj = new(3);
 
-    private RectTransform _rectTransform;
+    [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private TextMeshProUGUI _nowPageTex;
 
     private Vector2 _pagePos = new Vector2(0, 0);
 
@@ -19,7 +21,11 @@ public class AlbaSelectManager : MonoBehaviour
         {
             _albaSelectMenuObj.Add(alba[i]);
         }
-        _rectTransform = GetComponent<RectTransform>();
+    }
+
+    private void Start()
+    {
+        _nowPageTex.text = $"Now Page : {_nowPage} / 3";
     }
 
     private void Update()
@@ -37,6 +43,7 @@ public class AlbaSelectManager : MonoBehaviour
     }
     private void PageMove()
     {
+        _nowPageTex.text = $"Now Page : {_nowPage} / 3";
         _rectTransform.anchoredPosition = Vector3.Lerp(_rectTransform.anchoredPosition, _pagePos, 0.05f);
     }
     public void Nextpage(bool isNexBt)
