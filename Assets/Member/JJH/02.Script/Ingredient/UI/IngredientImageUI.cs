@@ -7,7 +7,7 @@ public class IngredientImageUI : MonoBehaviour, IPointerClickHandler, ISelectHan
 {
     private IngredientInventoryUI ingredientInventoryUI;
 
-    [SerializeField] private Image image;
+    private Image image;
     private TextMeshProUGUI amountText;
     private Outline outline;
 
@@ -19,11 +19,13 @@ public class IngredientImageUI : MonoBehaviour, IPointerClickHandler, ISelectHan
         ingredientInventoryUI = GetComponentInParent<IngredientInventoryUI>();
         amountText = GetComponentInChildren<TextMeshProUGUI>();
         outline = GetComponent<Outline>();
+        image = GetComponent<Image>();
 
         outline.enabled = false;
 
-        image.sprite = ingredient.foodImage;
         information = ingredient;
+
+        image.sprite = information.foodImage;
         foodAmount = amount;
 
         amountText.text = foodAmount.ToString();

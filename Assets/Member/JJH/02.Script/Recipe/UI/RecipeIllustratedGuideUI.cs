@@ -5,15 +5,20 @@ using UnityEngine.InputSystem;
 
 public class RecipeIllustratedGuideUI : MonoBehaviour
 {
+    [Header("Data")]
     [SerializeField] private RecipeListSO recipeListSO;
     [SerializeField] private GameObject recipeUIPrefab;
 
-    private RectTransform rect;
+    [Header("Objects")]
+    [SerializeField] private RectTransform illustratedGuideRect;
+    [SerializeField] private RectTransform descriptionRect;
+
+    private RecipeInformationUI recipeInformationUI;
 
     private ShowType showType = ShowType.Hide;
 
     private List<GameObject> viewGameObjectList = new List<GameObject>();
-    private List<RecipeSO> viewList = new List<RecipeSO>();
+    private List<RecipeSO> viewRecipeSOList = new List<RecipeSO>();
 
     enum ShowType
     {
@@ -23,11 +28,10 @@ public class RecipeIllustratedGuideUI : MonoBehaviour
 
     private void Awake()
     {
-        rect = GetComponent<RectTransform>();
-        InventoryShow();
+        StartInventoryShow();
 
         foreach (RecipeSO item in recipeListSO.recipeList)
-            viewList.Add(item);
+            viewRecipeSOList.Add(item);
     }
 
     private void Update()
@@ -44,19 +48,34 @@ public class RecipeIllustratedGuideUI : MonoBehaviour
     {
         if (showType == ShowType.Show)
         {
-            rect.DOAnchorPos(new Vector2(0, 0), 0.7f);
+            illustratedGuideRect.DOAnchorPos(new Vector2(-450, 0), 0.7f);
+            descriptionRect.DOAnchorPos(new Vector2(450, 0), 0.7f);
         }
         else if (showType == ShowType.Hide)
         {
-            rect.DOAnchorPos(new Vector2(0, 1200), 0.7f);
+            illustratedGuideRect.DOAnchorPos(new Vector2(-450, 1200), 0.7f);
+            descriptionRect.DOAnchorPos(new Vector2(450, 1200), 0.7f);
         }
     }
 
-    private void InventoryShow()
+    private void StartInventoryShow()
     {
-        foreach (GameObject recipeImage in viewGameObjectList)
+        foreach (RecipeSO recipeSO in viewRecipeSOList)
         {
-            RecipeImageUI recipeImageUI = recipeImage.GetComponent<RecipeImageUI>();
+            GameObject recipeImageUIPrefab = Instantiate(recipeUIPrefab, illustratedGuideRect.gameObject.transform);
+            viewGameObjectList.Add(recipeImageUIPrefab);
+            RecipeImageUI recipeImageUI = recipeImageUIPrefab.GetComponent<RecipeImageUI>();
+            recipeImageUI.Create(recipeSO);
         }
+    }
+
+    public void ShowIngredientInformation(RecipeSO ingredient)
+    {
+        recipeInformationUI.ShowIngredientInformation(ingredient);
+    }
+
+    public void NotShowIngredientInformation()
+    {
+        recipeInformationUI.NotShowIngredientInformation();
     }
 }
