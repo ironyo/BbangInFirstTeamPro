@@ -96,9 +96,9 @@ public class IngredientInventoryUI : MonoBehaviour
         ingredientInformationUI.ShowIngredientInformation(ingredient);
     }
 
-    public void NotShowIngredientInformation()
+    public void HideIngredientInformation()
     {
-        ingredientInformationUI.NotShowIngredientInformation();
+        ingredientInformationUI.HideIngredientInformation();
     }
 
     #region Button
