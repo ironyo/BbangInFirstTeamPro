@@ -13,8 +13,8 @@ public class MoneyManager : MonoSingleton<MoneyManager>
         }
         set
         {
-            Debug.Log(value);
             _money = value;
+            _money = Mathf.Clamp(_money, 0, 9999);
         }
 
     }

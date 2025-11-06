@@ -1,10 +1,12 @@
+using System;
 using System.Text;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class StoreProduct : MonoBehaviour
+public class StoreProductBtn : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI NameText; //재료 이름
     [SerializeField] private TextMeshProUGUI PriceText;
@@ -17,11 +19,13 @@ public class StoreProduct : MonoBehaviour
     private int _stock; //한번에 판매하는 재료 개수
     private int _price; //가격
     private StringBuilder _sb = new();
-   
 
+    public UnityEvent<string> OnWorningMessage;
+    public UnityEvent<StringBuilder, RectTransform> InfoUIShow;
+    public UnityEvent InfoUiHide;
     public void Init(IngredientSO ingredientData, StoreManager storeManager)
     {
-        if (ingredientData == null && storeManager == null) return;
+        if (ingredientData == null || storeManager == null) return;
 
         
         this._storeManager = storeManager;
@@ -31,8 +35,6 @@ public class StoreProduct : MonoBehaviour
         _stock = _ingredientData.Stock;
         _price = _ingredientData.Price;
 
-        
-        
         TextSet();
     }
 
@@ -41,7 +43,6 @@ public class StoreProduct : MonoBehaviour
         NameText.text = _ingredientData.foodName;
         StockText.text = $"재료 개수: {_stock}";
         PriceText.text = $"가격: {_price}";
-        //CanBuyCheack();
 
     }
     #region MoreInfo
@@ -98,7 +99,7 @@ public class StoreProduct : MonoBehaviour
         // 돈이 부족하거나 재고가 없으면 구매 불가능
         if (moneyManager.Money < _ingredientData.Price || _stock <= 0)
         {
-            _storeManager.WarningTextShow("구매가 불가능 합니다.");
+            OnWorning?.Invoke("구매가 불가능합니다");
 
             return true; // 구매 불가능
         }
