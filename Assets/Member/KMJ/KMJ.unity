@@ -181,7 +181,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  rotationSpeed: 150
+  rotationSpeed: 100
   acceleration: 10
   deceleration: 30
   canMove: 1
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 594689840}
   cars: []
-  linkLength: 1.5
+  linkLength: 2.8
   turnSpeed: 720
   followTightness: 20
   maxSnapPerFixed: 2
@@ -534,7 +534,7 @@ MonoBehaviour:
   headMovement: {fileID: 594689842}
   chain: {fileID: 985154751}
   carPrefab: {fileID: 9014670965565765491, guid: 2b40880f0a8b9fd4f92f3dfdb60ea5c4, type: 3}
-  carCount: 4
+  carCount: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
