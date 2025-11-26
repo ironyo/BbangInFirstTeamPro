@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class IngredientInventoryUI : MonoBehaviour
 {
     [Header("Objects")]
-    [SerializeField] private GameObject ianventoryImagePrefab;
+    [SerializeField] private GameObject inventoryImagePrefab;
     [SerializeField] private RectTransform leftWindowRect;
     [SerializeField] private RectTransform rightWindowRect;
 
@@ -95,6 +95,7 @@ public class IngredientInventoryUI : MonoBehaviour
     {
         ingredientInformationUI.ShowIngredientInformation(ingredient);
     }
+
     public void NotShowIngredientInformation()
     {
         ingredientInformationUI.NotShowIngredientInformation();
