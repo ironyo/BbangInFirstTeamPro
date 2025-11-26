@@ -283,14 +283,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594689839}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8.01, y: 12.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 660956343}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!50 &594689841
 Rigidbody2D:
   serializedVersion: 5
@@ -331,9 +331,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  rotationSpeed: 100
   acceleration: 10
   deceleration: 30
+  steerAngle: -30
+  steerSpeed: 120
   canMove: 1
 --- !u!61 &594689843
 BoxCollider2D:
@@ -534,7 +535,7 @@ MonoBehaviour:
   headMovement: {fileID: 594689842}
   chain: {fileID: 985154751}
   carPrefab: {fileID: 9014670965565765491, guid: 2b40880f0a8b9fd4f92f3dfdb60ea5c4, type: 3}
-  carCount: 1
+  carCount: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

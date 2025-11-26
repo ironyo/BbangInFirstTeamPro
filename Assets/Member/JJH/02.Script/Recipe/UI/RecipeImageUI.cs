@@ -2,25 +2,25 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RecipeImageUI : MonoBehaviour, IPointerClickHandler, ISelectHandler, IDeselectHandler
+public class RecipeImageUI : MonoBehaviour
 {
-    private Image image;
-    private GameObject describeObject;
-    private Outline outline;
+    private RecipeInventoryUI recipeInventoryUI;
 
-    private RecipeIllustratedGuideUI recipeIllustratedGuideUI;
+    private Image image;
+    private Outline outline;
 
     private RecipeSO information;
 
     public void Create(RecipeSO recipe)
     {
+        recipeInventoryUI = GetComponentInParent<RecipeInventoryUI>();
         outline = GetComponent<Outline>();
         image = GetComponent<Image>();
-        recipeIllustratedGuideUI = GetComponent<RecipeIllustratedGuideUI>();
 
         outline.enabled = false;
 
         information = recipe;
+
         image.sprite = information.recipeImage;
     }
 
@@ -28,8 +28,7 @@ public class RecipeImageUI : MonoBehaviour, IPointerClickHandler, ISelectHandler
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(gameObject);
-
-        recipeIllustratedGuideUI.ShowIngredientInformation(information);
+        //recipeInventoryUI.ShowIngredientInformation(information);
     }
 
     public void OnSelect(BaseEventData eventData)
@@ -40,6 +39,6 @@ public class RecipeImageUI : MonoBehaviour, IPointerClickHandler, ISelectHandler
     public void OnDeselect(BaseEventData eventData)
     {
         outline.enabled = false;
-        recipeIllustratedGuideUI.NotShowIngredientInformation();
+        //recipeInventoryUI.HideIngredientInformation();
     }
 }
