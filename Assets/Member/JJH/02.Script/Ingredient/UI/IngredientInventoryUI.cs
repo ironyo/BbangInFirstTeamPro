@@ -7,6 +7,7 @@ public class IngredientInventoryUI : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField] private GameObject inventoryImagePrefab;
+    [SerializeField] private GameObject inventoryUIParent;
     [SerializeField] private RectTransform leftWindowRect;
     [SerializeField] private RectTransform rightWindowRect;
 
@@ -81,7 +82,7 @@ public class IngredientInventoryUI : MonoBehaviour
             }
             else
             {
-                GameObject prefab = Instantiate(inventoryImagePrefab, leftWindowRect.gameObject.transform);
+                GameObject prefab = Instantiate(inventoryImagePrefab, inventoryUIParent.transform);
                 IngredientImageUI information = prefab.GetComponent<IngredientImageUI>();
                 information.Create(ingredient.Key, ingredient.Value);
 
