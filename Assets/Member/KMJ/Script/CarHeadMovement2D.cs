@@ -4,18 +4,21 @@
 public class CarHeadMovement2D : MonoBehaviour
 {
     [Header("Speeds")]
-    [SerializeField] private float moveSpeed = 5f;       // 최고 속도
-    [SerializeField] private float rotationSpeed = 180f; // 도/초
-    [SerializeField] private float acceleration = 6f;    // 가속 (m/s^2)
-    [SerializeField] private float deceleration = 8f;    // 감속 (m/s^2)
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float acceleration = 6f;
+    [SerializeField] private float deceleration = 8f;
 
-    [Header("State")]
+    [Header("Steering")]
+    [SerializeField] private float steerAngle = 30f;     
+    [SerializeField] private float steerSpeed = 120f;    
+
     public bool canMove = true;
 
     private Rigidbody2D _rb;
     private float _currentSpeed;
     private Vector2 _moveDir;
-    private bool _isMoving;
+
+    private float _currentSteer = 0f; // 현재 조향각 (좌-/우+)
 
     private void Awake()
     {
@@ -30,43 +33,63 @@ public class CarHeadMovement2D : MonoBehaviour
         if (!canMove)
         {
             _moveDir = Vector2.zero;
-            _isMoving = false;
+            _currentSpeed = 0f;
             return;
         }
 
-        // W/S 전후, A/D 좌우 회전
         bool forward = Input.GetKey(KeyCode.W);
         bool backward = Input.GetKey(KeyCode.S);
         bool left = Input.GetKey(KeyCode.A);
         bool right = Input.GetKey(KeyCode.D);
 
-        _isMoving = false;
-        _moveDir = Vector2.zero;
+        if (left)
+        {
+            _currentSteer = Mathf.MoveTowards(
+                _currentSteer,
+                -steerAngle,
+                steerSpeed * Time.deltaTime
+            );
+        }
+        else if (right)
+        {
+            _currentSteer = Mathf.MoveTowards(
+                _currentSteer,
+                steerAngle,
+                steerSpeed * Time.deltaTime
+            );
+        }
+        else
+        {
+            // 아무 키도 안 누르면 자동 복귀 (0°로 돌아옴)
+            _currentSteer = Mathf.MoveTowards(
+                _currentSteer,
+                0f,
+                steerSpeed * Time.deltaTime
+            );
+        }
+
+        // 실제 오브젝트 회전값 적용
+        transform.rotation = Quaternion.Euler(0, 0, _currentSteer);
+
+        Vector2 dir = Vector2.zero;
+        bool isMoving = false;
 
         if (forward)
         {
-            _moveDir = transform.up;
-            _isMoving = true;
-
-            if (left) transform.rotation = Quaternion.Euler(0, 0,
-                transform.eulerAngles.z + rotationSpeed * Time.deltaTime);
-            if (right) transform.rotation = Quaternion.Euler(0, 0,
-                transform.eulerAngles.z - rotationSpeed * Time.deltaTime);
+            dir = transform.up;
+            isMoving = true;
         }
         else if (backward)
         {
-            _moveDir = -transform.up;
-            _isMoving = true;
-
-            if (left) transform.rotation = Quaternion.Euler(0, 0,
-                transform.eulerAngles.z - rotationSpeed * Time.deltaTime);
-            if (right) transform.rotation = Quaternion.Euler(0, 0,
-                transform.eulerAngles.z + rotationSpeed * Time.deltaTime);
+            dir = -transform.up;
+            isMoving = true;
         }
 
-        // 속도 가감속
-        float target = _isMoving ? moveSpeed : 0f;
-        float rate = _isMoving ? acceleration : deceleration;
+        _moveDir = dir;
+
+        float target = isMoving ? moveSpeed : 0f;
+        float rate = isMoving ? acceleration : deceleration;
+
         _currentSpeed = Mathf.MoveTowards(_currentSpeed, target, rate * Time.deltaTime);
     }
 
