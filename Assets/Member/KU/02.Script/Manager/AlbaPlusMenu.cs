@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AlbaSelectMenu : MonoBehaviour
+public class AlbaPlusMenu : MonoBehaviour
 {
     [Header("NowPage")]
     [SerializeField] private int thisPage = 1;
@@ -45,7 +45,8 @@ public class AlbaSelectMenu : MonoBehaviour
     public void AlbaReroll()
     {
         _stetSO.age = Random.Range(18, 40);
-        _stetSO._name = $"{selectManager.albaSungList[Random.Range(0, selectManager.albaSungList.Length - 1)]}{selectManager.albaNameList[Random.Range(0, selectManager.albaNameList.Length-1)]}";
+        _stetSO._name = $"{selectManager.albaSungList[Random.Range(0, selectManager.albaSungList.Count - 1)]}" +
+            $"{selectManager.albaNameList[Random.Range(0, selectManager.albaNameList.Count-1)]}";
         _powerCount = Random.Range(1, 4);
         _nameTex.text = _stetSO._name;
         _ageTex.text = "³ªÀÌ : "+ _stetSO.age.ToString();
