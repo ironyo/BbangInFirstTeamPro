@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class CustomerWantFood : MonoBehaviour
 {
-    [SerializeField] private Image foodImage;
+    [SerializeField] private SpriteRenderer foodImage;
     [SerializeField] private TextMeshPro foodName;
 
     public WantRecipeSOList wantRecipeSOList;
