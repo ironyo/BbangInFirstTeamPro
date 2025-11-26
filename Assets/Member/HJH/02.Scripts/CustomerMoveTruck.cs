@@ -1,62 +1,105 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Customer))]
+public enum FoodType
+{
+    Meat,
+    Fish,
+    Salad,
+    Dessert,
+    Alien
+}
 public class CustomerMoveTruck : MonoBehaviour
 {
-    [Header("이동 관련")]
+    [Header("기본 이동 설정")]
     [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private FoodType playerWantFoodType;
+    [SerializeField] private float arriveThreshold = 0.05f;
 
-    private FoodTruckPositionList positionList;
-    private Transform targetTruck;
+    [Header("트럭 위치 설정")]
+    [SerializeField] private Transform meatPos1;
+    [SerializeField] private Transform meatPos2;
+
+    [SerializeField] private Transform fishPos1;
+    [SerializeField] private Transform fishPos2;
+
+    [SerializeField] private Transform saladPos1;
+    [SerializeField] private Transform saladPos2;
+
+    [SerializeField] private Transform dessertPos1;
+    [SerializeField] private Transform dessertPos2;
+
+    [SerializeField] private Transform alienPos1;
+    [SerializeField] private Transform alienPos2;
+
+    private Transform target;
 
     private void Start()
     {
-        positionList = FindFirstObjectByType<FoodTruckPositionList>();
-
-        if (positionList == null)
-        {
-            return;
-        }
-
-        FindClosestTruck();
+        SetTargetPosition();
     }
 
     private void Update()
     {
-        if (targetTruck == null) return;
+        if (target == null) return;
 
         transform.position = Vector2.MoveTowards(
             transform.position,
-            targetTruck.position,
+            target.position,
             moveSpeed * Time.deltaTime
         );
+
+        float dist = Vector2.Distance(transform.position, target.position);
+        if (dist < arriveThreshold)
+        {
+            //도착 이벤트  
+        }
     }
 
-    // 가장 가까운 푸드 트럭 입구 찾기 메서드
-    private void FindClosestTruck()
+    private void SetTargetPosition()
     {
-        float closestDist = Mathf.Infinity;
-        Transform closest = null;
+        Transform posA = null;
+        Transform posB = null;
 
-        foreach (Transform truck in positionList.TruckPositions)
+        switch (playerWantFoodType)
         {
-            if (truck == null) continue;
+            case FoodType.Meat:
+                posA = meatPos1;
+                posB = meatPos2;
+                break;
 
-            float dist = Vector2.Distance(transform.position, truck.position);
-            if (dist < closestDist)
-            {
-                closestDist = dist;
-                closest = truck;
-            }
+            case FoodType.Fish:
+                posA = fishPos1;
+                posB = fishPos2;
+                break;
+
+            case FoodType.Salad:
+                posA = saladPos1;
+                posB = saladPos2;
+                break;
+
+            case FoodType.Dessert:
+                posA = dessertPos1;
+                posB = dessertPos2;
+                break;
+
+            case FoodType.Alien:
+                posA = alienPos1;
+                posB = alienPos2;
+                break;
         }
 
-        targetTruck = closest;
+        if (posA == null && posB == null) return;
+        if (posA != null && posB == null) { target = posA; return; }
+        if (posA == null && posB != null) { target = posB; return; }
+
+        float distA = Vector2.Distance(transform.position, posA.position);
+        float distB = Vector2.Distance(transform.position, posB.position);
+        target = (distA < distB) ? posA : posB;
     }
 
-
-    // 외부에서 다시 트럭 리스트가 갱신될 경우 갱신용
-    public void RefreshTarget()
+    public void SetFoodType(FoodType newType)
     {
-        FindClosestTruck();
+        playerWantFoodType = newType;
+        SetTargetPosition();
     }
 }

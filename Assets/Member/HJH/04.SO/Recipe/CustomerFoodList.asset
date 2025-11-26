@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 114185636b2dd694b92efd95fb8afbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: c50cb57d658db3a4bbea92171e1cdb42, type: 3}
   m_Name: CustomerFoodList
   m_EditorClassIdentifier: 
-  recipeSOList:
-  - {fileID: 11400000, guid: e0080ed14b76b4248b06363cf569ead3, type: 2}
-  - {fileID: 11400000, guid: 4d20600fd30b3974db2c06a72e9bf1f5, type: 2}
+  recipeList:
+  - {fileID: 11400000, guid: b06a853464c613945a194bcc314a5289, type: 2}

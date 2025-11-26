@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 114185636b2dd694b92efd95fb8afbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: c50cb57d658db3a4bbea92171e1cdb42, type: 3}
   m_Name: AlienFoodList
   m_EditorClassIdentifier: 
-  recipeSOList:
+  recipeList:
   - {fileID: 11400000, guid: b06a853464c613945a194bcc314a5289, type: 2}
-  - {fileID: 11400000, guid: 35f889afc6c6e2d42b44c4f99a14e0e6, type: 2}
-  - {fileID: 11400000, guid: 1552e328c05abf740b2dde9331eaeaff, type: 2}
-  - {fileID: 11400000, guid: 3e247eaae0dd7874d8ce6ecde9a8daee, type: 2}
