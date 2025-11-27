@@ -9,8 +9,9 @@ public class CarHeadMovement2D : MonoBehaviour
     [SerializeField] private float deceleration = 8f;
 
     [Header("Steering")]
-    [SerializeField] private float steerAngle = 30f;     
-    [SerializeField] private float steerSpeed = 120f;    
+    [SerializeField] private float steerAngle = 30f;
+    [SerializeField] private float steerSpeed = 120f;        // 좌우 회전 속도
+    [SerializeField] private float steerReturnSpeed = 60f;   // 복귀 속도 (느리게!)
 
     public bool canMove = true;
 
@@ -18,7 +19,7 @@ public class CarHeadMovement2D : MonoBehaviour
     private float _currentSpeed;
     private Vector2 _moveDir;
 
-    private float _currentSteer = 0f; // 현재 조향각 (좌-/우+)
+    private float _currentSteer = 0f;
 
     private void Awake()
     {
@@ -42,13 +43,16 @@ public class CarHeadMovement2D : MonoBehaviour
         bool left = Input.GetKey(KeyCode.A);
         bool right = Input.GetKey(KeyCode.D);
 
+        // -----------------------
+        // 좌/우 조향 + 자동 복귀
+        // -----------------------
         if (left)
         {
             _currentSteer = Mathf.MoveTowards(
                 _currentSteer,
                 -steerAngle,
                 steerSpeed * Time.deltaTime
-            );
+            );  
         }
         else if (right)
         {
@@ -60,15 +64,15 @@ public class CarHeadMovement2D : MonoBehaviour
         }
         else
         {
-            // 아무 키도 안 누르면 자동 복귀 (0°로 돌아옴)
+            // 입력 없을 때 더 느린 속도로 복귀
             _currentSteer = Mathf.MoveTowards(
                 _currentSteer,
                 0f,
-                steerSpeed * Time.deltaTime
+                steerReturnSpeed * Time.deltaTime
             );
         }
 
-        // 실제 오브젝트 회전값 적용
+        // 회전 적용
         transform.rotation = Quaternion.Euler(0, 0, _currentSteer);
 
         Vector2 dir = Vector2.zero;
