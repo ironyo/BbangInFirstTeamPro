@@ -22,8 +22,7 @@ public class KU_WeaponShooter : MonoBehaviour
 
     private void TryShooting()
     {
-        
-        //Shooting();
+        Shooting(GetNearestTarget());
     }
 
     Transform GetNearestTarget()
@@ -32,6 +31,8 @@ public class KU_WeaponShooter : MonoBehaviour
 
         Transform nearest = null;
         float nearestDist = Mathf.Infinity;
+
+        if (hitsList == null) return null;
 
         foreach (var hit in hitsList)
         {
@@ -48,6 +49,8 @@ public class KU_WeaponShooter : MonoBehaviour
 
     private void Shooting(Transform target)
     {
+        if(target == null) return;
+
         KU_Bullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_Bullet>();
         bullet.GetTarget(target);
     }
