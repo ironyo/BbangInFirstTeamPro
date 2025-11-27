@@ -21,10 +21,19 @@ public class CookGame : MonoBehaviour
     
     private float value;
     private float targetValue;
+    
     private GameObject cookingFood;
     private float cookingProgress = 0f;
     private Color _color;
-    
+    private CountDownUI _countDownUI;
+    private bool isEntered = false;
+
+    private void Awake()
+    {
+        _countDownUI = GetComponent<CountDownUI>();
+        value = Mathf.Clamp(value, 0, 1);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -52,12 +61,12 @@ public class CookGame : MonoBehaviour
             
         if (diff <= perfectRange)
         {
-            Debug.Log("Perfect");
+            StartCoroutine(_countDownUI.Result("Perfect"));
             _color = colors[2];
         }
         else if (diff <= goodRange)
         {
-            Debug.Log("Good");
+            StartCoroutine(_countDownUI.Result("Good"));
             
             if (value >= 0.5f)
                 _color = colors[3];
@@ -66,20 +75,22 @@ public class CookGame : MonoBehaviour
         }
         else
         {
-            Debug.Log("Bad");
+            StartCoroutine(_countDownUI.Result("Bad"));
             
             if (value >= 0.5f)
                 _color = colors[4];
             else
                 _color = colors[0];
         }
+
+        isEntered = false;
     }
 
     public IEnumerator GameStart()
     {
         SetRandomTimingZone();
+        yield return StartCoroutine(_countDownUI.StartCountDown());
         
-        yield return new WaitForSeconds(3f);
         value = 0;
         isPlaying = true;
         handle.SetActive(true);
@@ -89,12 +100,17 @@ public class CookGame : MonoBehaviour
     {
         targetValue = Random.Range(0f, 1f);
 
-        float posX = Mathf.Lerp(-48, 400, targetValue);
-        timingUI.anchoredPosition = new Vector2(posX, 0);
+        float posX = Mathf.Lerp(-225, 225, targetValue);
+        timingUI.anchoredPosition = new Vector2(posX, timingUI.anchoredPosition.y);
+
+        targetValue = targetValue / 2 + 0.25f;
     }
     
     private void OnTriggerEnter(Collider other)
     {
+        if (isEntered) return;
+        isEntered = true;
+        
         cookingFood = other.gameObject;
         StartCoroutine(GameStart());
     }
