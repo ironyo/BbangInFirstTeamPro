@@ -7,6 +7,7 @@ public class IngredientInventoryUI : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField] private GameObject inventoryImagePrefab;
+    [SerializeField] private GameObject inventoryUIParent;
     [SerializeField] private RectTransform leftWindowRect;
     [SerializeField] private RectTransform rightWindowRect;
 
@@ -67,11 +68,11 @@ public class IngredientInventoryUI : MonoBehaviour
         }
     }
 
-    private void InventoryShow()
+    private void InventoryShow(IngredientSO _,int __)
     {
         var infoList = GetComponentsInChildren<IngredientImageUI>(true);
 
-        foreach (KeyValuePair<IngredientSO, int> ingredient in IngredientInventoryManager.Instance.ingredientDictionary)
+        foreach (KeyValuePair<IngredientSO, int> ingredient in IngredientInventoryManager.Instance.IngredientDictionary)
         {
             if (viewList.Contains(ingredient.Key))
             {
@@ -81,7 +82,7 @@ public class IngredientInventoryUI : MonoBehaviour
             }
             else
             {
-                GameObject prefab = Instantiate(inventoryImagePrefab, leftWindowRect.gameObject.transform);
+                GameObject prefab = Instantiate(inventoryImagePrefab, inventoryUIParent.transform);
                 IngredientImageUI information = prefab.GetComponent<IngredientImageUI>();
                 information.Create(ingredient.Key, ingredient.Value);
 
@@ -95,9 +96,10 @@ public class IngredientInventoryUI : MonoBehaviour
     {
         ingredientInformationUI.ShowIngredientInformation(ingredient);
     }
-    public void NotShowIngredientInformation()
+
+    public void HideIngredientInformation()
     {
-        ingredientInformationUI.NotShowIngredientInformation();
+        ingredientInformationUI.HideIngredientInformation();
     }
 
     #region Button

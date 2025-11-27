@@ -24,7 +24,6 @@ public class IngredientInformationUI : MonoBehaviour
     {
         InformationActive(true);
 
-
         //음식 이미지
         foodImage.sprite = ingredient.foodImage;
 
@@ -154,7 +153,7 @@ public class IngredientInformationUI : MonoBehaviour
         descriptionText.text = ingredient.foodDescription;
     }
 
-    public void NotShowIngredientInformation()
+    public void HideIngredientInformation()
     {
         InformationActive(false);
     }

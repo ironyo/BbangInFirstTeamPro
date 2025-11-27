@@ -9,6 +9,9 @@ public class RecipeSO : ScriptableObject
     public RecipeTasteType[] recipeFoodTaste;
     public RecipeTextureType recipeFoodTexture;
     public Sprite recipeImage;
+
+    public int Price;
+
 }
 
 
