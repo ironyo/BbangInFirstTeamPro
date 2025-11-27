@@ -8,3 +8,9 @@ public class AlbaStetSO : ScriptableObject
     public string _name;
     public int age;
 }
+
+public class SaveAlbaStet
+{
+    public string albaName;
+    public int albaAge;
+}
