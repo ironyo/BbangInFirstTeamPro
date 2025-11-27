@@ -1481,21 +1481,15 @@ MonoBehaviour:
   PriceText: {fileID: 1699368673}
   StockText: {fileID: 462388556}
   IngredintImage: {fileID: 2013648624}
-  OnWorning:
+  OnWorningMessage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1998045522}
-        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: WarningTextShow
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  InfoUIShow:
+    m_PersistentCalls:
+      m_Calls: []
+  InfoUiHide:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &402690445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1902,7 +1896,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1998045522}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
         m_MethodName: ReRollProductBtn
         m_Mode: 1
@@ -3445,21 +3439,15 @@ MonoBehaviour:
   PriceText: {fileID: 174256352}
   StockText: {fileID: 797645026}
   IngredintImage: {fileID: 1075231516}
-  OnWorning:
+  OnWorningMessage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1998045522}
-        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: WarningTextShow
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  InfoUIShow:
+    m_PersistentCalls:
+      m_Calls: []
+  InfoUiHide:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &934148068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4479,21 +4467,15 @@ MonoBehaviour:
   PriceText: {fileID: 723006725}
   StockText: {fileID: 758840764}
   IngredintImage: {fileID: 853994526}
-  OnWorning:
+  OnWorningMessage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1998045522}
-        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: WarningTextShow
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  InfoUIShow:
+    m_PersistentCalls:
+      m_Calls: []
+  InfoUiHide:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1363389272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6530,14 +6512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb778c154726dc438bc22bd64243fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoreInfoUI: {fileID: 228604498}
   StoreData: {fileID: 11400000, guid: b95853eb8bc1c544ba1d05f962e092ce, type: 2}
-  ProductBtnGroup: {fileID: 246153287}
-  RecipeBtnGroup: {fileID: 325643036}
-  WarningText: {fileID: 455995740}
-  MoreUICanvasGroup: {fileID: 228604500}
-  MoreInfoUIText: {fileID: 1590831402}
-  ReRollBtn: {fileID: 457815077}
+  ProductBtnGroup: {fileID: 0}
+  RecipeBtnGroup: {fileID: 0}
+  WarningText: {fileID: 0}
+  ReRollBtn: {fileID: 0}
 --- !u!1 &2013648622
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,11 +67,11 @@ public class IngredientInventoryUI : MonoBehaviour
         }
     }
 
-    private void InventoryShow()
+    private void InventoryShow(IngredientSO _,int __)
     {
         var infoList = GetComponentsInChildren<IngredientImageUI>(true);
 
-        foreach (KeyValuePair<IngredientSO, int> ingredient in IngredientInventoryManager.Instance.ingredientDictionary)
+        foreach (KeyValuePair<IngredientSO, int> ingredient in IngredientInventoryManager.Instance.IngredientDictionary)
         {
             if (viewList.Contains(ingredient.Key))
             {

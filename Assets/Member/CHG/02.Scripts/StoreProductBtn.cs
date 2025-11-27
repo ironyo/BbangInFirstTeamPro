@@ -21,7 +21,7 @@ public class StoreProductBtn : MonoBehaviour
     private StringBuilder _sb = new();
 
     public UnityEvent<string> OnWorningMessage;
-    public UnityEvent<StringBuilder, RectTransform> InfoUIShow;
+    public UnityEvent<StringBuilder, RectTransform> InfoIShow;
     public UnityEvent InfoUiHide;
     public void Init(IngredientSO ingredientData, StoreManager storeManager)
     {
@@ -49,7 +49,7 @@ public class StoreProductBtn : MonoBehaviour
     public void MoreInfoBtnEnter(RectTransform pos)
     {
         
-        _storeManager.MoreUICanvasGroup.alpha = 1;
+        //_storeManager.MoreUICanvasGroup.alpha = 1;
 
         _sb.Clear();
         _sb.AppendFormat($"종류: {_ingredientData.foodGroup}\n");
@@ -60,14 +60,14 @@ public class StoreProductBtn : MonoBehaviour
             _sb.AppendFormat($"맛: {item}\n");
         }
 
-        _storeManager.MoreInfoUIText.text = _sb.ToString();
+        //_storeManager.MoreInfoUIText.text = _sb.ToString();
         
-        _storeManager.MoreInfoUI.rectTransform.position = pos.position;
+        //_storeManager.MoreInfoUI.rectTransform.position = pos.position;
     }
 
     public void MoreInfoBtnExit()
     {
-        _storeManager.MoreUICanvasGroup.alpha = 0;
+        //_storeManager.MoreUICanvasGroup.alpha = 0;
     }
 
     #endregion
@@ -99,7 +99,7 @@ public class StoreProductBtn : MonoBehaviour
         // 돈이 부족하거나 재고가 없으면 구매 불가능
         if (moneyManager.Money < _ingredientData.Price || _stock <= 0)
         {
-            OnWorning?.Invoke("구매가 불가능합니다");
+            //OnWorning?.Invoke("구매가 불가능합니다");
 
             return true; // 구매 불가능
         }

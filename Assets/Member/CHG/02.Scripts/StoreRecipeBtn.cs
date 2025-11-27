@@ -18,7 +18,7 @@ public class StoreRecipeBtn : MonoBehaviour
 
         _recipeData = recipeData;
         _storeManager = storeManager;
-        
+
         _price = _recipeData.Price;
         Image.sprite = recipeData.recipeImage;
 
@@ -35,23 +35,23 @@ public class StoreRecipeBtn : MonoBehaviour
     public void MoreInfoBtnEnter(RectTransform pos)
     {
 
-        _storeManager.MoreUICanvasGroup.alpha = 1;
+        //_storeManager.MoreUICanvasGroup.alpha = 1;
 
         _sb.Clear();
-        _sb.AppendFormat($"")
-        foreach (var item in _recipeData.foodTaste)
-        {
-            _sb.AppendFormat($"맛: {item}\n");
-        }
+        _sb.AppendFormat($"");
+        //    foreach (var item in _recipeData.foodTaste)
+        //{
+        //    _sb.AppendFormat($"맛: {item}\n");
+        //}
 
-        _storeManager.MoreInfoUIText.text = _sb.ToString();
+        //_storeManager.MoreInfoUIText.text = _sb.ToString();
 
-        _storeManager.MoreInfoUI.rectTransform.position = pos.position;
+        //_storeManager.MoreInfoUI.rectTransform.position = pos.position;
     }
 
     public void MoreInfoBtnExit()
     {
-        _storeManager.MoreUICanvasGroup.alpha = 0;
+        //_storeManager.MoreUICanvasGroup.alpha = 0;
     }
 
     #endregion
@@ -67,8 +67,8 @@ public class StoreRecipeBtn : MonoBehaviour
         MoneyManager.Instance.SpendMoney(_recipeData.Price);
 
 
-        _stock--;
-        StockText.text = $"재료 개수: {_stock}";
+        //_stock--;
+        //StockText.text = $"재료 개수: {_stock}";
         _storeManager.BuyIngredint();
         CanBuyCheck(); // 구매하고 다시 확인
     }
@@ -81,12 +81,12 @@ public class StoreRecipeBtn : MonoBehaviour
         Debug.Assert(moneyManager != null, "MoneyManager is null");
 
         // 돈이 부족하거나 재고가 없으면 구매 불가능
-        if (moneyManager.Money < _recipeData.Price || _stock <= 0)
-        {
-            OnWorning?.Invoke("구매가 불가능합니다");
+        //if (moneyManager.Money < _recipeData.Price || _stock <= 0)
+        //{
+        //    OnWorning?.Invoke("구매가 불가능합니다");
 
-            return true; // 구매 불가능
-        }
+        //    return true; // 구매 불가능
+        //}
 
         return false; // 구매 가능
     }
@@ -95,4 +95,4 @@ public class StoreRecipeBtn : MonoBehaviour
 
 
 
-}
+
