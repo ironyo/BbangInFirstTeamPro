@@ -1,8 +1,14 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "IngredientSO", menuName = "JJH_SO/IngredientSO")]
 public class IngredientSO : ScriptableObject
 {
+    [Header("상점용")]
+    public Sprite FoodSprite;
+    public int Price;
+    public int Stock;
+
     public string foodName; //음식 이름
     public string foodDescription; //음식 설명
     public FoodGroupType foodGroup; //음식 식재료군
