@@ -1,0 +1,19 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "GunDataSO", menuName = "JJK_SO/GunDataSO")]
+public class GunDataSO : ScriptableObject
+{
+    [field: SerializeField] public float CoolDown { get; set; }
+    [SerializeField] private int bulletCount;
+    [field: SerializeField] public float SpreadAngle { get; set; }
+    [field: SerializeField] public bool MultiFire { get; set; }
+    [field: SerializeField] public bool ThroughFire { get; set; }
+    
+    public int GetBullet()
+    {
+        if (MultiFire)
+            return bulletCount;
+        
+        return 1;
+    }
+}
