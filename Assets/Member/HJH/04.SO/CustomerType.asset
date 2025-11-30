@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dbd2d4b0f8c0a6498a204fdce1af168, type: 3}
-  m_Name: ObnoxiousCustomer
+  m_Script: {fileID: 11500000, guid: f7056b375a328494189b1db79f69a5cd, type: 3}
+  m_Name: CustomerType
   m_EditorClassIdentifier: 
-  guestType: 1
-  customerName:
-  - "\uC120\uD654"
-  - "\uBB38\uACBD"
-  - "\uC9C4\uB85C"
-  typeColor: {r: 0, g: 0, b: 0, a: 0}
+  customerCategory: 0
+  customerHP: 10
+  customerSpeed: 10
+  customerAttackSpeed: 10

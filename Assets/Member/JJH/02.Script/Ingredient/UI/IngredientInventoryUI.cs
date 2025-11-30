@@ -81,7 +81,7 @@ public class IngredientInventoryUI : MonoBehaviour
             }
             else
             {
-                GameObject prefab = Instantiate(ianventoryImagePrefab, leftWindowRect.gameObject.transform);
+                GameObject prefab = Instantiate(inventoryImagePrefab, leftWindowRect.gameObject.transform);
                 IngredientImageUI information = prefab.GetComponent<IngredientImageUI>();
                 information.Create(ingredient.Key, ingredient.Value);
 
