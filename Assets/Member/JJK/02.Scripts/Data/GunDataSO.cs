@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GunDataSO", menuName = "JJK_SO/GunDataSO")]
 public class GunDataSO : ScriptableObject
 {
+    [field: SerializeField] public BulletDataSO DefaultBullet { get; set; }
     [field: SerializeField] public float CoolDown { get; set; }
     [SerializeField] private int bulletCount;
     [field: SerializeField] public float SpreadAngle { get; set; }

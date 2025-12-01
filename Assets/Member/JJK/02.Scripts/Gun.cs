@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 public class Gun : MonoBehaviour
 {
     [SerializeField] private GunDataSO gunData;
-    [SerializeField] private BulletDataSO bulletData;
     [SerializeField] private Transform firePos;
 
     private void Update()
@@ -31,6 +30,7 @@ public class Gun : MonoBehaviour
     {
         for (int i = 0; i < gunData.GetBullet(); i++)
         {
+            var bulletData = gunData.DefaultBullet;
             GameObject bullet = Instantiate(bulletData.BulletPrefab, position, transform.rotation * CalculateAngle());
             bullet.GetComponent<Bullet>().SetData(bulletData, gunData.ThroughFire);
         }

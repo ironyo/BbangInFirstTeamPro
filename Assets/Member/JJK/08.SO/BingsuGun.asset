@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04537ae5fa12464780b3f641b9c8268, type: 3}
   m_Name: BingsuGun
   m_EditorClassIdentifier: 
-  <CoolDown>k__BackingField: 0
-  bulletCount: 0
-  <SpreadAngle>k__BackingField: 0
-  <MultiFire>k__BackingField: 0
-  <ThroughFire>k__BackingField: 0
+  <DefaultBullet>k__BackingField: {fileID: 11400000, guid: 20d8dde52fe5a4b42b7b1d8a0481f9f5, type: 2}
+  <CoolDown>k__BackingField: 1
+  bulletCount: 10
+  <SpreadAngle>k__BackingField: 20
+  <MultiFire>k__BackingField: 1
+  <ThroughFire>k__BackingField: 1
