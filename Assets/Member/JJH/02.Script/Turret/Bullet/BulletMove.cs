@@ -12,6 +12,6 @@ public class BulletMove : MonoBehaviour
 
     private void Update()
     {
-        rigid.linearVelocity = speed * Vector3.up;
+        rigid.linearVelocity = speed * transform.up;
     }
 }

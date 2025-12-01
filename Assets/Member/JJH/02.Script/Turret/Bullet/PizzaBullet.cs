@@ -7,10 +7,13 @@ public class PizzaBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        for (int i = 0; i < 8; i += 45)
+        if (collision.CompareTag("Enemy"))
         {
-            Instantiate(childrenBullet, transform.position + new Vector3(10, 0, 0), Quaternion.Euler(0, 0, i));
+            for (int i = 0; i <= 360; i += 45)
+            {
+                Instantiate(childrenBullet, transform.position, Quaternion.Euler(0, 0, i));
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
