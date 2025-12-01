@@ -1,11 +1,14 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
+using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
 
 public class CameraEffectManager : MonoSingleton<CameraEffectManager>
 {
     [SerializeField] private Camera _camera;
-    private Coroutine _zoomCoroutine;
-    private Coroutine _moveCoroutine;
+    private CancellationTokenSource _zoomCoroutine;
+    private CancellationTokenSource _moveCoroutine;
 
     /// <summary>
     /// 카메라 줌인을 자연스럽게 이어준다.
@@ -14,11 +17,11 @@ public class CameraEffectManager : MonoSingleton<CameraEffectManager>
     /// <param name="Time"> 줌인 시간. </param>
     public void CameraZoom(float Amount, float Time)
     {
-        if (_zoomCoroutine != null)
-        {
-            StopCoroutine(_zoomCoroutine);
-        }
-        _zoomCoroutine = StartCoroutine(ZoomCoroutine(Amount, Time));
+        _zoomCoroutine?.Cancel();
+        _zoomCoroutine?.Dispose();
+        _zoomCoroutine = new CancellationTokenSource();
+
+        ZoomCoroutine(Amount, Time, _zoomCoroutine.Token).Forget();
     }
 
     /// <summary>
@@ -28,14 +31,13 @@ public class CameraEffectManager : MonoSingleton<CameraEffectManager>
     /// <param name="Time"> 카메라 이동 시간을 지정한다. </param>
     public void CameraMoveTarget(Vector3 Target, float Time)
     {
-        if (_moveCoroutine != null)
-        {
-            StopCoroutine(_moveCoroutine);
-        }
-        _moveCoroutine = StartCoroutine(TargetZoomCoroutine(Target, Time));
+        _moveCoroutine?.Cancel();
+        _moveCoroutine?.Dispose();
+        _moveCoroutine = new CancellationTokenSource();
+        TargetZoomCoroutine(Target, Time, _moveCoroutine.Token).Forget();
     }
 
-    private IEnumerator ZoomCoroutine(float amount, float duration)
+    private async UniTask ZoomCoroutine(float amount, float duration, CancellationToken token)
     {
         float startSize = _camera.orthographicSize;
         float targetSize = amount;
@@ -43,15 +45,19 @@ public class CameraEffectManager : MonoSingleton<CameraEffectManager>
 
         while (t < 1f)
         {
+            _zoomCoroutine.Token.ThrowIfCancellationRequested();
+
             t += Time.deltaTime / duration;
             _camera.orthographicSize = Mathf.Lerp(startSize, targetSize, t);
-            yield return null;
+
+            await UniTask.Yield(PlayerLoopTiming.Update);
         }
 
         _camera.orthographicSize = targetSize;
     }
 
-    private IEnumerator TargetZoomCoroutine(Vector3 Target, float duration)
+
+    private async UniTask TargetZoomCoroutine(Vector3 Target, float duration, CancellationToken token)
     {
         Vector2 startPos = _camera.transform.position;
         Vector2 targetPos = Target;
@@ -59,9 +65,12 @@ public class CameraEffectManager : MonoSingleton<CameraEffectManager>
 
         while (t < 1f)
         {
+            _zoomCoroutine.Token.ThrowIfCancellationRequested();
+
             t += Time.deltaTime / duration;
             _camera.transform.position = Vector3.Lerp(new Vector3(startPos.x, startPos.y, -10), new Vector3(targetPos.x, targetPos.y, -10), t);
-            yield return null;
+
+            await UniTask.Yield(PlayerLoopTiming.Update);
         }
 
         targetPos = Target;
