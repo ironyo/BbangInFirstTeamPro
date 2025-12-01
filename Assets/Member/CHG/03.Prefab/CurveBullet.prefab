@@ -179,7 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cfacd1293f11e40915b6f73f263628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitEffect: {fileID: 5101705269206886598, guid: e74ab162829e38144b69a3765c7ade53, type: 3}
-  _arcHeight: 4.4
-  MaxScale: {x: 0.3502867, y: 0.3502867}
+  MaxScale: {x: 0.38, y: 0.38}
+  ArcHeight: 10
+  MinDuration: 0.5
+  Angle: 45
   BombExplosion: {fileID: 4477128774240100492, guid: 40f7bbe2e92c79c499799ec20af84647, type: 3}
+  HitEffect: {fileID: 5101705269206886598, guid: e74ab162829e38144b69a3765c7ade53, type: 3}

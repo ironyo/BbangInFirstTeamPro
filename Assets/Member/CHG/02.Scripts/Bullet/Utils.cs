@@ -56,7 +56,8 @@ namespace Assets.Member.CHG._02.Scripts.Bullet
         public static Vector2 CubicCurve(Vector2 a, Vector2 b, Vector2 c, Vector2 d, float t)
         {
             Vector2 p1 = QuadraticCurve(a, b, c, t);
-            Vector2 p2 = QuadraticCurve(a, c, b, t);
+            //Vector2 p2 = QuadraticCurve(a, c, b, t);
+            Vector2 p2 = QuadraticCurve(b, c, d, t);
 
             return Lerp(p1, p2, t);
         }
