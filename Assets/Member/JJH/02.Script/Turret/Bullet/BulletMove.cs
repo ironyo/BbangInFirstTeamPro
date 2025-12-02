@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BulletMove : MonoBehaviour
 {
     private Rigidbody2D rigid;
@@ -12,6 +13,6 @@ public class BulletMove : MonoBehaviour
 
     private void Update()
     {
-        rigid.linearVelocity = speed * Vector3.up;
+        rigid.linearVelocity = speed * transform.up;
     }
 }
