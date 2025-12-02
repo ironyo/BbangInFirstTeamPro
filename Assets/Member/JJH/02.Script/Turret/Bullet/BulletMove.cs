@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), (typeof(BoxCollider2D)))]
 public class BulletMove : MonoBehaviour
 {
     private Rigidbody2D rigid;
