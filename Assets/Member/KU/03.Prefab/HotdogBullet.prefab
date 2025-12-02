@@ -257,3 +257,4 @@ MonoBehaviour:
   _moveSpeed: 10
   _redSourcePref: {fileID: 6474800333962078892, guid: c84e85f6faa123948b4fd5f7cf097b99, type: 3}
   _yellowSourcePref: {fileID: 3128056967197634047, guid: f924cc54268fa9c4e9e59a9648626c57, type: 3}
+  _particlePref: {fileID: 6964940704016246265, guid: 8f49fbe0d7743e344a7723eedb34a493, type: 3}

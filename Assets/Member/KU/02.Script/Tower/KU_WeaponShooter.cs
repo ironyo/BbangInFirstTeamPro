@@ -30,14 +30,14 @@ public class KU_WeaponShooter : MonoBehaviour
         Collider2D[] hitsList = Physics2D.OverlapCircleAll(transform.position, angle, _enemyLayer);
 
         Transform nearest = null;
-        float nearestDist = Mathf.Infinity;
+        float nearestDist = -Mathf.Infinity;
 
         if (hitsList == null) return null;
 
         foreach (var hit in hitsList)
         {
             float dist = Vector2.Distance(transform.position, hit.transform.position);
-            if (dist < nearestDist)
+            if (dist > nearestDist)
             {
                 nearestDist = dist;
                 nearest = hit.transform;
