@@ -35,6 +35,7 @@ public class StageManager : MonoSingleton<StageManager>
         OnStageRoadStart?.Invoke(_current.RoadTotalLength);
         SetUIStage?.Invoke(_previous.Name, _current.Name);
         CameraEffectManager.Instance.CameraZoom(7, 1f);
+        CameraEffectManager.Instance.CameraMoveTarget(CameraEffectManager.Instance.CameraTarget.gameObject);
     }
 
     public void EndStage()

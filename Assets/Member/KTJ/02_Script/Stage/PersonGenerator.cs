@@ -14,7 +14,7 @@ public class PersonGenerator : MonoBehaviour
 
     public Action OnSavePointStart;
 
-    private List<AgentMovement> _spawnedPerson = new List<AgentMovement>();
+    private List<(AgentMovement, Person)> _spawnedPerson = new List<(AgentMovement, Person)>();
 
     private void Awake()
     {
@@ -32,29 +32,33 @@ public class PersonGenerator : MonoBehaviour
         per_1.transform.position = _spawnPos.transform.position;
 
         AgentMovement am = null;
+        Person pers = null;
 
         if (per_1.TryGetComponent<AgentMovement>(out AgentMovement am_1))
         {
             am_1.MoveTo(_targetPos.position, 4f);
             am = am_1;
         }
+        if (per_1.TryGetComponent<Person>(out Person per))
+        {
+            pers = per;
+        }
+        _spawnedPerson.Add((am, pers));
 
         yield return new WaitForSeconds(2f);
 
-        if (per_1.TryGetComponent<Person>(out Person per))
-        {
-            per.Clicked();
-        }
-
-        _spawnedPerson.Add(am);
+        per.Clicked();
     }
 
     private void OnStageStart(int a)
     {
         if (_spawnedPerson.Count > 0)
         {
-            _spawnedPerson.ForEach((x) => x.MoveTo(_spawnPos.position, 7f));
+            _spawnedPerson.ForEach((x) => x.Item1.MoveTo(_spawnPos.position, 7f));
+            _spawnedPerson.ForEach((x) => x.Item2.UnClicked());
             _spawnedPerson.Clear();
+
+            
         }
     }
 }
