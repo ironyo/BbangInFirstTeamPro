@@ -8,7 +8,7 @@ public class Cheese : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            Instantiate(cheesePuddle);
+            Instantiate(cheesePuddle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

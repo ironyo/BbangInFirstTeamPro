@@ -20,6 +20,7 @@ public class Customer : MonoBehaviour
     public Transform[] hitTagets;
 
     [SerializeField] private LayerMask truckMask;
+    [SerializeField] private LayerMask closeMask;
 
     private IEnemyState currentState;
 
@@ -27,6 +28,7 @@ public class Customer : MonoBehaviour
     public AttackState AttackState { get; set; } // 닿았을 떄, 공격
     public ClearState ClearState{ get; set; } // 적의 포만감을 다 채웠을 때, 자동으로 떠남
     public CloseState CloseState { get; set; } // 가까이 왔을 때, 트럭으로 이동
+    public DeadState DeadState { get; set; } // 죽었을 때
 
     [SerializeField] private CustomerType customerType;
     [SerializeField] private TextMeshPro hpText;
@@ -35,14 +37,11 @@ public class Customer : MonoBehaviour
     public int customerHP { get; set; }
     private int maxHp => customerType.customerHP;
 
-    private float customerSpeed;
+    public float customerSpeed { get; set; }
     private float customerAttackSpeed;
 
     private void Awake()
     {
-        runTargets = CustomerSpawner.Instance.runTargets;
-        hitTagets = CustomerSpawner.Instance.heatTargets;
-
         customerHP = customerType.customerHP;
         customerSpeed = customerType.customerSpeed;
         customerAttackSpeed = customerType.customerAttackSpeed;
@@ -51,9 +50,15 @@ public class Customer : MonoBehaviour
         AttackState = new AttackState(this);
         ClearState = new ClearState(this);
         CloseState = new CloseState(this);
+        DeadState = new DeadState(this);
     }
     private bool isCleared = false;
 
+    private void OnEnable()
+    {
+        runTargets = CustomerSpawner.Instance.runTargets;
+        hitTagets = CustomerSpawner.Instance.heatTargets;
+    }
     private void Start()
     {
         ChangeState(RunState);
@@ -70,6 +75,7 @@ public class Customer : MonoBehaviour
     public void ChangeState(IEnemyState newState)
     {
         if (isCleared) return;
+        Debug.Log(newState.ToString());
 
         currentState?.Exit();
         currentState = newState;
@@ -86,20 +92,26 @@ public class Customer : MonoBehaviour
 
     public Collider2D IsCloseTargetInRange()
     {
-        return Physics2D.OverlapCircle(transform.position, closeRange.x, truckMask);
+        return Physics2D.OverlapCircle(transform.position, closeRange.x, closeMask);
     }
 
-    /// 총 맞으면 이거 사용해
+    // 총 맞으면 이거 사용해
     public void TakeDamage(int damage)
     {
         customerHP -= damage;
 
         if (customerHP <= 0)
         {
-            Debug.Log("에너미 죽음");
+            ChangeState(DeadState);
             deadMotion.Play();
-            Destroy(gameObject);
+        }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("DeadZone"))
+        {
+            Destroy(gameObject);
         }
     }
 

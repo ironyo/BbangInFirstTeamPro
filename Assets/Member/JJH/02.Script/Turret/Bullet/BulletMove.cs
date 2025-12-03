@@ -4,7 +4,18 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     private Rigidbody2D rigid;
-    [SerializeField] private int speed = 5;
+    private float speed = 5;
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+        set
+        {
+            speed = value;
+        }
+    }
 
     private void Awake()
     {
