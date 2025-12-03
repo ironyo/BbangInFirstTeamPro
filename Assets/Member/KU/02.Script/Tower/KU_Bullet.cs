@@ -10,6 +10,7 @@ public class KU_Bullet : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private GameObject _redSourcePref;
     [SerializeField] private GameObject _yellowSourcePref;
+    [SerializeField] private GameObject _particlePref;
 
     private bool nowSourceFlag = true;
 
@@ -25,6 +26,7 @@ public class KU_Bullet : MonoBehaviour
     }
     private void Start()
     {
+        Instantiate(_particlePref, transform.position, Quaternion.identity, transform);
         SpawnSource().Forget();
     }
 
