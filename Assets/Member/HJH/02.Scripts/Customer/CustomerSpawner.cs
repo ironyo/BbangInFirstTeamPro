@@ -26,6 +26,6 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
 
         Customer customer = obj.GetComponent<Customer>();
         customer.runTargets = runTargets;
-        customer.heatTagets = heatTargets;
+        customer.hitTagets = heatTargets;
     }
 }
