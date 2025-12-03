@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class PersonGenerator : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class PersonGenerator : MonoBehaviour
 
     private void OnStageEnd()
     {
+        StartCoroutine(OnStageEndIEnum());
+    }
+    IEnumerator OnStageEndIEnum()
+    {
         GameObject per_1 = Instantiate(_mechanic, _spawnPos);
         per_1.transform.position = _spawnPos.transform.position;
 
@@ -32,6 +37,13 @@ public class PersonGenerator : MonoBehaviour
         {
             am_1.MoveTo(_targetPos.position, 4f);
             am = am_1;
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        if (per_1.TryGetComponent<Person>(out Person per))
+        {
+            per.Clicked();
         }
 
         _spawnedPerson.Add(am);
