@@ -4,6 +4,7 @@ using UnityEngine;
 public class AttackState : IEnemyState
 {
     private Customer customer;
+    private Rigidbody2D rb;
 
     public AttackState(Customer customer)
     {
@@ -13,6 +14,8 @@ public class AttackState : IEnemyState
     public void Enter()
     {
         Debug.Log("Enemy¿¡¼­ Attack");
+        rb = customer.GetComponent<Rigidbody2D>();
+        rb.linearVelocity = Vector2.zero;
     }
 
     public void Update() 

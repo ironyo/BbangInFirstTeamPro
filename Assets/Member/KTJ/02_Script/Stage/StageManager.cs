@@ -4,7 +4,9 @@ using UnityEngine;
 public class StageManager : MonoSingleton<StageManager>
 {
     public event Action<int> OnStageRoadStart;
+    public event Action<string, string> SetUIStage;
     public Action OnStageRoadEnd;
+
 
     private StageData _current;
     private StageData _previous;
@@ -31,8 +33,8 @@ public class StageManager : MonoSingleton<StageManager>
         _current = _generator.CreateRandomStage();   // ★ Stage 생성 책임 분리
 
         OnStageRoadStart?.Invoke(_current.RoadTotalLength);
-
-        CameraEffectManager.Instance.CameraZoom(5, 1f);
+        SetUIStage?.Invoke(_previous.Name, _current.Name);
+        CameraEffectManager.Instance.CameraZoom(7, 1f);
     }
 
     public void EndStage()
@@ -41,7 +43,7 @@ public class StageManager : MonoSingleton<StageManager>
 
         _isRunning = false;
         _clearStage++;
-        CameraEffectManager.Instance.CameraZoom(7, 1f);
+        CameraEffectManager.Instance.CameraZoom(5, 1f);
     }
 
     public StageData GetCurrent() => _current;
