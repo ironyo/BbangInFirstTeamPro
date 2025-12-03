@@ -17,7 +17,7 @@ public class Customer : MonoBehaviour
 
     [Header("Run Targets")]
     public Transform[] runTargets;
-    public Transform[] heatTagets;
+    public Transform[] hitTagets;
 
     [SerializeField] private LayerMask truckMask;
 
@@ -30,6 +30,7 @@ public class Customer : MonoBehaviour
 
     [SerializeField] private CustomerType customerType;
     [SerializeField] private TextMeshPro hpText;
+    [SerializeField] private ParticleSystem deadMotion;
 
     public int customerHP { get; set; }
     private int maxHp => customerType.customerHP;
@@ -40,7 +41,7 @@ public class Customer : MonoBehaviour
     private void Awake()
     {
         runTargets = CustomerSpawner.Instance.runTargets;
-        heatTagets = CustomerSpawner.Instance.heatTargets;
+        hitTagets = CustomerSpawner.Instance.heatTargets;
 
         customerHP = customerType.customerHP;
         customerSpeed = customerType.customerSpeed;
@@ -86,6 +87,20 @@ public class Customer : MonoBehaviour
     public Collider2D IsCloseTargetInRange()
     {
         return Physics2D.OverlapCircle(transform.position, closeRange.x, truckMask);
+    }
+
+    /// 총 맞으면 이거 사용해
+    public void TakeDamage(int damage)
+    {
+        customerHP -= damage;
+
+        if (customerHP <= 0)
+        {
+            Debug.Log("에너미 죽음");
+            deadMotion.Play();
+            Destroy(gameObject);
+
+        }
     }
 
     private void OnDrawGizmos()
