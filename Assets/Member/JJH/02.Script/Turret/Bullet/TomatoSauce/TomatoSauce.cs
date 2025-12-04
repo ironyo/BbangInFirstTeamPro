@@ -22,6 +22,7 @@ public class TomatoSauce : MonoBehaviour
 
     private void Update()
     {
+        //³ªÁß¿¡ ÃÑÀ¸·Î ½ò¶§·Î ¹Ù²ãÁÖ±â
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             ShotTomatoSauce();

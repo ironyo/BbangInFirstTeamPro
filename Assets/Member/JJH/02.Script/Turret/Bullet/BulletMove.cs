@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), (typeof(BoxCollider2D)))]
+[RequireComponent(typeof(Rigidbody2D), (typeof(Collider2D)))]
 public class BulletMove : MonoBehaviour
 {
     private Rigidbody2D rigid;
-    private float speed = 5;
+    [SerializeField] private float speed = 5;
     public float Speed
     {
         get

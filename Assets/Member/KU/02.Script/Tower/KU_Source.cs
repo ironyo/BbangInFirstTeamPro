@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class KU_Source : MonoBehaviour
 {
-    private CancellationTokenSource cancellationTokenSource;
     private Rigidbody2D _rigidbodyCompo;
 
     private HashSet<KU_Enemy> insideEnemies = new HashSet<KU_Enemy>();
@@ -37,7 +36,8 @@ public class KU_Source : MonoBehaviour
         while (!token.IsCancellationRequested)
         {
             await UniTask.WaitForSeconds(1f, cancellationToken: token);
-            Debug.Log($"Attack to {enemy.name}");
+            enemy.MinusHP(2);
+            Debug.Log($"Attack: {enemy.name}");
         }
     }
 

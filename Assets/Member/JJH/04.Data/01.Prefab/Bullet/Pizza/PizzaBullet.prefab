@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 463274515027770095}
   - component: {fileID: 7492884807549850571}
-  - component: {fileID: 8748022615320861241}
+  - component: {fileID: 8592777933765400473}
   - component: {fileID: 4515890292049282590}
   - component: {fileID: 2224165896983223209}
   - component: {fileID: 9882921656283419}
@@ -92,8 +92,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8748022615320861241
-BoxCollider2D:
+--- !u!58 &8592777933765400473
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,17 +127,7 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
 --- !u!50 &4515890292049282590
 Rigidbody2D:
   serializedVersion: 5
@@ -191,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childrenBullet: {fileID: 4929954181208091069, guid: d5ec889fd10c40c4aac672a865fc9053, type: 3}
+  tomatoSauce: {fileID: 5572346658622393130, guid: 22653064bb3a7274d8f0ee2295de8d60, type: 3}
 --- !u!96 &-2838647056204454372
 TrailRenderer:
   serializedVersion: 3

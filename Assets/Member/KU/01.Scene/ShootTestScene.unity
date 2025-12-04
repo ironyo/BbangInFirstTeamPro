@@ -1270,6 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPref: {fileID: 8138199493044080686, guid: 598ca4af660e1484084c16ec12f16abb, type: 3}
+  _shootParticlePref: {fileID: 4584179723775988070, guid: 2e5d46f6730f7b94db965e78ee9f4c57, type: 3}
   firePos: {fileID: 106530443}
   angle: 15
   _enemyLayer:
