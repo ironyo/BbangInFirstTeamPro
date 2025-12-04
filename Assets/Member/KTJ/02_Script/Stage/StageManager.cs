@@ -10,7 +10,7 @@ public class StageManager : MonoSingleton<StageManager>
 
     private StageData _current;
     private StageData _previous;
-    private bool _isRunning = false;
+    public bool IsRunning { get; private set; } = false;
     private int _clearStage = 0;
 
     [SerializeField] private StageGenerator _generator; // ★ 의존성 분리
@@ -22,9 +22,9 @@ public class StageManager : MonoSingleton<StageManager>
 
     public void StartStage()
     {
-        if (_isRunning) return;
+        if (IsRunning) return;
 
-        _isRunning = true;
+        IsRunning = true;
 
         _previous = _clearStage == 0
             ? StageData.Create("출발지점", 0)
@@ -35,13 +35,14 @@ public class StageManager : MonoSingleton<StageManager>
         OnStageRoadStart?.Invoke(_current.RoadTotalLength);
         SetUIStage?.Invoke(_previous.Name, _current.Name);
         CameraEffectManager.Instance.CameraZoom(7, 1f);
+        CameraEffectManager.Instance.CameraMoveTarget(CameraEffectManager.Instance.CameraTarget.gameObject);
     }
 
     public void EndStage()
     {
-        if (!_isRunning) return;
+        if (!IsRunning) return;
 
-        _isRunning = false;
+        IsRunning = false;
         _clearStage++;
         CameraEffectManager.Instance.CameraZoom(5, 1f);
     }

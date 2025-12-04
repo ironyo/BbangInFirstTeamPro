@@ -51,7 +51,7 @@ public class KU_WeaponShooter : MonoBehaviour
     {
         if(target == null) return;
 
-        KU_Bullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_Bullet>();
+        KU_HatDogBullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_HatDogBullet>();
         bullet.GetTarget(target);
     }
 
