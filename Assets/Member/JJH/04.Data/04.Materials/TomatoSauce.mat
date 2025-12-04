@@ -23,6 +23,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - MainTex:
+        m_Texture: {fileID: 2800000, guid: 5d52d81712220d84490632629429bc52, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AlphaTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -53,6 +57,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - EdgeSoftness: 0.05
+    - HalfHeight: 0.5
+    - Intensity: 1
     - _EdgeSoftness: 0.05
     - _EnableExternalAlpha: 0
     - _HalfHeight: 0.5
