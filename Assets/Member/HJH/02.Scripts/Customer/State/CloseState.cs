@@ -8,11 +8,12 @@ public class CloseState : IEnemyState
     private Vector2 currentDir;
     private float turnSpeed = 4f;
 
-    private float currentSpeed = 2.5f;   // 시작 속도
-    private float maxSpeed = 4.5f;       // 목표 속도
-    private float accelRate = 1.5f;      // 가속 속도
+    private float currentSpeed = 4f;
+    private float maxSpeed = 5.5f;
+    private float accelRate = 1.5f;
 
     private Rigidbody2D rb;
+    private float random;
 
     public CloseState(Customer customer)
     {
@@ -20,18 +21,16 @@ public class CloseState : IEnemyState
         rb = customer.GetComponent<Rigidbody2D>();
     }
 
-    float random = 0;
     public void Enter()
     {
+        Debug.Log("Customer CloseState Enter");
         target = GetClosestTarget();
-        currentDir = customer.transform.right;
         currentSpeed = 2.5f;
-        random = Random.Range(-5f, 5f);
-    }
 
-    public void Exit() 
-    { 
-        rb.linearVelocity = Vector2.zero;
+        if (target != null)
+            currentDir = (target.position - customer.transform.position).normalized;
+
+        random = Random.Range(-2f, 4f); // 오프셋 감소
     }
 
     public void Update()
@@ -44,15 +43,18 @@ public class CloseState : IEnemyState
             return;
         }
 
-        Vector2 targetDir = (target.position + new Vector3(random, 0) - customer.transform.position).normalized;
+        Vector2 targetDir =
+            ((Vector2)target.position + new Vector2(random, 0f) -
+            (Vector2)customer.transform.position).normalized;
 
-        // 부드러운 회전
-        currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * turnSpeed).normalized;
+        // Lerp만 적용
+        currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * turnSpeed);
 
         // 가속
         currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, accelRate * Time.deltaTime);
 
-        rb.linearVelocity = (currentDir * currentSpeed);
+        // 최종 이동
+        rb.linearVelocity = currentDir.normalized * currentSpeed;
     }
 
     private Transform GetClosestTarget()
@@ -60,7 +62,7 @@ public class CloseState : IEnemyState
         Transform closest = null;
         float minDist = Mathf.Infinity;
 
-        foreach (var t in customer.hitTagets)
+        foreach (Transform t in customer.hitTagets)
         {
             float dist = Vector2.Distance(customer.transform.position, t.position);
             if (dist < minDist)
@@ -71,4 +73,6 @@ public class CloseState : IEnemyState
         }
         return closest;
     }
+
+    public void Exit() { }
 }

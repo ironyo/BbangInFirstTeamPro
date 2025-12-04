@@ -37,7 +37,7 @@ public class KU_Source : MonoBehaviour
         while (!token.IsCancellationRequested)
         {
             await UniTask.WaitForSeconds(1f, cancellationToken: token);
-            Debug.Log($"Attack to {enemy.name}");
+            Debug.Log($"Attack: {enemy.name}");
         }
     }
 
