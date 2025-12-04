@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System.Net.NetworkInformation;
 using System.Threading;
 using UnityEngine;
 
@@ -10,7 +11,9 @@ public class KU_HatDogBullet : KU_Bullet
     [SerializeField] private GameObject _yelSourcePref;
     [SerializeField] private GameObject _particlePref;
 
-    private bool nowSourceFlag = true;
+    [SerializeField] private int _sourceCount = 2;
+
+    private bool _nowSourceFlag = true;
 
     private CancellationTokenSource cancellationTokenSource;
 
@@ -37,13 +40,15 @@ public class KU_HatDogBullet : KU_Bullet
 
                 if (this == null) return;
                 if (transform == null) return;
+                if (_sourceCount <= 0) return;
 
+                _sourceCount--;
                 GameObject obj = Instantiate(
-                    nowSourceFlag ? _redSourcePref : _yelSourcePref, 
+                    _nowSourceFlag ? _redSourcePref : _yelSourcePref, 
                     transform.position, 
                     transform.rotation);
 
-                nowSourceFlag = !nowSourceFlag;
+                _nowSourceFlag = !_nowSourceFlag;
 
                 Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
                 rb.linearVelocity = transform.right * _moveSpeed;
@@ -57,8 +62,10 @@ public class KU_HatDogBullet : KU_Bullet
     private async UniTask NowDeadTime(CancellationToken cancelToken)
     {
         _rigidbodyCompo.linearVelocity = Vector2.zero;
+        StopBullet();
+
         transform.DOScale(Vector3.zero, 1);
-        await UniTask.WaitForSeconds(1f, cancellationToken: cancelToken);
+        await UniTask.WaitForSeconds(0.5f, cancellationToken: cancelToken);
         Destroy(gameObject);
     }
 
@@ -66,6 +73,9 @@ public class KU_HatDogBullet : KU_Bullet
     {
         if (collision.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
         {
+            if (enemy != targetEnemy) return;
+            
+            enemy.MinusHP(5);
             NowDeadTime(cancellationTokenSource.Token).Forget();
         }
     }
