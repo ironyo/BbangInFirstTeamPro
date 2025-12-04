@@ -6,9 +6,8 @@ public class CloseState : IEnemyState
     private Transform target;
 
     private Vector2 currentDir;
-    private float turnSpeed = 4f;
 
-    private float currentSpeed = 4f;
+    private float moveSpeed;
     private float maxSpeed = 5.5f;
     private float accelRate = 1.5f;
 
@@ -19,13 +18,13 @@ public class CloseState : IEnemyState
     {
         this.customer = customer;
         rb = customer.GetComponent<Rigidbody2D>();
+        moveSpeed = customer.customerSpeed - 2;
     }
 
     public void Enter()
     {
         Debug.Log("Customer CloseState Enter");
         target = GetClosestTarget();
-        currentSpeed = 2.5f;
 
         if (target != null)
             currentDir = (target.position - customer.transform.position).normalized;
@@ -47,14 +46,14 @@ public class CloseState : IEnemyState
             ((Vector2)target.position + new Vector2(random, 0f) -
             (Vector2)customer.transform.position).normalized;
 
-        // Lerp만 적용
-        currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * turnSpeed);
+        // Lerp
+        currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * moveSpeed);
 
         // 가속
-        currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, accelRate * Time.deltaTime);
+        moveSpeed = Mathf.MoveTowards(moveSpeed, maxSpeed, accelRate * Time.deltaTime);
 
         // 최종 이동
-        rb.linearVelocity = currentDir.normalized * currentSpeed;
+        rb.linearVelocity = currentDir.normalized * moveSpeed;
     }
 
     private Transform GetClosestTarget()

@@ -26,14 +26,16 @@ public class Customer : MonoBehaviour
 
     public RunState RunState { get; set; } // 달려가는 기본 추격
     public AttackState AttackState { get; set; } // 닿았을 떄, 공격
-    public ClearState ClearState{ get; set; } // 적의 포만감을 다 채웠을 때, 자동으로 떠남
+    public ClearState ClearState{ get; set; } // 적의 포 만감을 다 채웠을 때, 자동으로 떠남
     public CloseState CloseState { get; set; } // 가까이 왔을 때, 트럭으로 이동
     public DeadState DeadState { get; set; } // 죽었을 때
 
-    [SerializeField] private CustomerType customerType;
     [SerializeField] private TextMeshPro hpText;
     [SerializeField] private ParticleSystem deadMotion;
 
+    [SerializeField] private CustomerTypeList customerTypeList;
+
+    private CustomerType customerType;
     public int customerHP { get; set; }
     private int maxHp => customerType.customerHP;
 
@@ -42,6 +44,8 @@ public class Customer : MonoBehaviour
 
     private void Awake()
     {
+        customerType = GetRandomCustomerType();
+
         customerHP = customerType.customerHP;
         customerSpeed = customerType.customerSpeed;
         customerAttackSpeed = customerType.customerAttackSpeed;
@@ -121,5 +125,24 @@ public class Customer : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position,attackRange.x);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,closeRange.x);
+    }
+    private CustomerType GetRandomCustomerType()
+    {
+        float totalWeight = 0f;
+
+        foreach (var entry in customerTypeList.customerTypes)
+            totalWeight += entry.weight;
+
+        float randomValue = Random.value * totalWeight;
+        float current = 0f;
+
+        foreach (var entry in customerTypeList.customerTypes)
+        {
+            current += entry.weight;
+            if (randomValue <= current)
+                return entry.type;
+        }
+
+        return customerTypeList.customerTypes[0].type;
     }
 }

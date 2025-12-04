@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7056b375a328494189b1db79f69a5cd, type: 3}
-  m_Name: CustomerType
+  m_Name: FatCustomerType
   m_EditorClassIdentifier: 
-  customerCategory: 0
-  customerHP: 10
-  customerSpeed: 6
-  customerAttackSpeed: 10
+  customerCategory: 1
+  customerHP: 50
+  customerSpeed: 4
+  customerAttackSpeed: 5
