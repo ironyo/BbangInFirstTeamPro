@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 1721168145}
   - component: {fileID: 1721168147}
   - component: {fileID: 1721168148}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Truck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

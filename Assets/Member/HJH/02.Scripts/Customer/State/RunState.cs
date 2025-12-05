@@ -6,7 +6,6 @@ public class RunState : IEnemyState
     private Transform target;
 
     private Vector2 currentDir;
-    private float rotateSpeed = 6f;
     private float moveSpeed;
     private Rigidbody2D rb;
 
@@ -24,6 +23,9 @@ public class RunState : IEnemyState
 
         if (target != null)
             currentDir = (target.position - customer.transform.position).normalized;
+
+        rb.linearVelocity = currentDir.normalized * 10f;
+
     }
 
     public void Update()
@@ -38,9 +40,7 @@ public class RunState : IEnemyState
 
         Vector2 targetDir = (target.position - customer.transform.position).normalized;
 
-        currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * rotateSpeed);
-
-        rb.linearVelocity = currentDir.normalized * moveSpeed;
+        currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * moveSpeed);
     }
 
     public void Exit()
