@@ -25,6 +25,8 @@ public class PizzaBullet : IncreaseSpeed
     {
         if (collision.CompareTag("Enemy"))
         {
+            CameraShake.Instance.ImpulseForce(3f);
+
             float offset = 1.5f;
             for (int i = 0; i <= 360; i += 45)
             {
