@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b04537ae5fa12464780b3f641b9c8268, type: 3}
-  m_Name: BingsuGun
+  m_Name: IceGun
   m_EditorClassIdentifier: 
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: 20d8dde52fe5a4b42b7b1d8a0481f9f5, type: 2}
-  <CoolDown>k__BackingField: 1
-  bulletCount: 10
-  <SpreadAngle>k__BackingField: 20
-  <MultiFire>k__BackingField: 1
+  <MuzzleFlash>k__BackingField: {fileID: 0}
+  <CoolDown>k__BackingField: 1.5
+  <DetectRange>k__BackingField: 7
+  <CameraShakeForce>k__BackingField: 0.05
+  bulletCount: 0
+  <SpreadAngle>k__BackingField: 0
+  <MultiFire>k__BackingField: 0
   <ThroughFire>k__BackingField: 1
