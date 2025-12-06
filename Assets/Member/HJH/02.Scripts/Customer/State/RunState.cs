@@ -6,24 +6,30 @@ public class RunState : IEnemyState
     private Transform target;
 
     private Vector2 currentDir;
-    private float rotateSpeed = 6f;
     private float moveSpeed;
     private Rigidbody2D rb;
 
-    public RunState(Customer enemy)
+    private Animator animator;
+
+    public RunState(Customer customer)
     {
-        this.customer = enemy;
-        rb = customer.GetComponent<Rigidbody2D>();
-        moveSpeed = enemy.customerSpeed;
+        animator = customer._animator;
+        this.customer = customer;
+        rb = this.customer.GetComponent<Rigidbody2D>();
+        moveSpeed = customer.customerSpeed;
     }
 
     public void Enter()
     {
+        animator.SetBool("OnWalk", true);
         Debug.Log("Customer RunState Enter");
         target = GetClosestTarget();
 
         if (target != null)
             currentDir = (target.position - customer.transform.position).normalized;
+
+        rb.linearVelocity = currentDir.normalized * 10f;
+
     }
 
     public void Update()
@@ -38,9 +44,7 @@ public class RunState : IEnemyState
 
         Vector2 targetDir = (target.position - customer.transform.position).normalized;
 
-        currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * rotateSpeed);
-
-        rb.linearVelocity = currentDir.normalized * moveSpeed;
+        currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * moveSpeed);
     }
 
     public void Exit()
