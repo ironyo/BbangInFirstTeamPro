@@ -532,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _previousStageTxt: {fileID: 1084759762}
   _currentStageTxt: {fileID: 1337122883}
+  _setUIStage: {fileID: 0}
 --- !u!1 &185606745
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +980,8 @@ MonoBehaviour:
   _manager: {fileID: 1488315630}
   _slider: {fileID: 1941529980}
   _leftText: {fileID: 1743023778}
+  _onLeftDistanceChanged: {fileID: 11400000, guid: 052391e474ab6f0478afd8a261f9c762, type: 2}
+  _onSpeedChanged: {fileID: 11400000, guid: 12c9bf86d1afe5143adac665b6ec2a03, type: 2}
 --- !u!1 &377854675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1715,7 @@ Transform:
   m_GameObject: {fileID: 690395445}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1932,6 +1935,8 @@ MonoBehaviour:
   _spawnPos: {fileID: 781486043}
   _targetPos: {fileID: 690395446}
   _mechanic: {fileID: 6523386967505903744, guid: 8f15841569cc800458064fbde8ed8450, type: 3}
+  _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
+  _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
 --- !u!1 &788734199
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,6 +3636,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _generator: {fileID: 1062537614}
+  _onRoadFinished: {fileID: 11400000, guid: 8ce04edf61fcfec408fb7d70a726dd4d, type: 2}
+  _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
+  _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
+  _setUIStage: {fileID: 0}
 --- !u!1 &1397188207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3844,6 +3853,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
+  _onRoadFinished: {fileID: 11400000, guid: 8ce04edf61fcfec408fb7d70a726dd4d, type: 2}
+  OnLeftDistanceChanged: {fileID: 11400000, guid: 052391e474ab6f0478afd8a261f9c762, type: 2}
+  OnSpeedChanged: {fileID: 11400000, guid: 12c9bf86d1afe5143adac665b6ec2a03, type: 2}
+  _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
+  _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
 --- !u!4 &1488315631
 Transform:
   m_ObjectHideFlags: 0

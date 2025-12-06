@@ -11,15 +11,16 @@ public class PersonGenerator : MonoBehaviour
     [SerializeField] private Transform _targetPos;
     [Header("Prefabs")]
     [SerializeField] private GameObject _mechanic;
-
-    public Action OnSavePointStart;
+    [Header("Event")]
+    [SerializeField] private EventChannelSO_T<int> _onStageRoadStart;
+    [SerializeField] private EventChannelSO _onStageRoadEnd;
 
     private List<(AgentMovement, Person)> _spawnedPerson = new List<(AgentMovement, Person)>();
 
     private void Awake()
     {
-        StageManager.Instance.OnStageRoadStart += OnStageStart;
-        StageManager.Instance.OnStageRoadEnd += OnStageEnd;
+        _onStageRoadStart.OnEventRaised += OnStageStart;
+        _onStageRoadEnd.OnEventRaised += OnStageEnd;
     }
 
     private void OnStageEnd()
