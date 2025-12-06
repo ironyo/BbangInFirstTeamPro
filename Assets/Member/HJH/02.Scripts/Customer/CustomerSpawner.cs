@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class CustomerSpawner : MonoSingleton<CustomerSpawner>
 {
-    [SerializeField] private GameObject customerPrefab;
+    [SerializeField] private GameObject[] customerPrefab;
     [SerializeField] private Transform[] spawnPoints;
 
     [Header("Target References")]
@@ -22,7 +22,8 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
 
     public void CustomerSpawn(int num)
     {
-        GameObject obj = Instantiate(customerPrefab, spawnPoints[num].position, Quaternion.identity);
+        int rnd = Random.Range(0, customerPrefab.Length);
+        GameObject obj = Instantiate(customerPrefab[rnd], spawnPoints[num].position, Quaternion.identity);
 
         Customer customer = obj.GetComponent<Customer>();
         customer.runTargets = runTargets;

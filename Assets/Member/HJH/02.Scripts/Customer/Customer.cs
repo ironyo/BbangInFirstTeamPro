@@ -35,7 +35,9 @@ public class Customer : MonoBehaviour
 
     [SerializeField] private CustomerTypeList customerTypeList;
 
-    private CustomerType customerType;
+    public Animator _animator;
+
+    [SerializeField]private CustomerType customerType;
     public int customerHP { get; set; }
     private int maxHp => customerType.customerHP;
 
@@ -44,8 +46,6 @@ public class Customer : MonoBehaviour
 
     private void Awake()
     {
-        customerType = GetRandomCustomerType();
-
         customerHP = customerType.customerHP;
         customerSpeed = customerType.customerSpeed;
         customerAttackSpeed = customerType.customerAttackSpeed;
@@ -125,24 +125,5 @@ public class Customer : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position,attackRange.x);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,closeRange.x);
-    }
-    private CustomerType GetRandomCustomerType()
-    {
-        float totalWeight = 0f;
-
-        foreach (var entry in customerTypeList.customerTypes)
-            totalWeight += entry.weight;
-
-        float randomValue = Random.value * totalWeight;
-        float current = 0f;
-
-        foreach (var entry in customerTypeList.customerTypes)
-        {
-            current += entry.weight;
-            if (randomValue <= current)
-                return entry.type;
-        }
-
-        return customerTypeList.customerTypes[0].type;
     }
 }

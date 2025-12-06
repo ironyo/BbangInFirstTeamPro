@@ -45,22 +45,28 @@ public class AttackState : IEnemyState
         isAttacking = true;
         Sequence tween = DOTween.Sequence();
 
-        tween.AppendCallback(() => Debug.Log("애니메이션"));
+        // 때리는 애니메이션 넣기
 
         tween.AppendInterval(0.75f);
 
         tween.AppendCallback(() =>
         {
-            float y = customer.transform.position.y;
-            Vector3 offset;
-
-            if (y < 0f)
-                offset = new Vector3(-10f, -3f, 0f);
-            else
-                offset = new Vector3(-10f, 3f, 0f);
-
-            customer.StartCoroutine(BackOffRoutine(offset, 0.5f));
+            BackMotion();
         });
+    }
+
+    private void BackMotion()
+    {
+        // 빠지는 애니메이션 넣기
+        float y = customer.transform.position.y;
+        Vector3 offset;
+
+        if (y < 0f)
+            offset = new Vector3(-10f, -3f, 0f);
+        else
+            offset = new Vector3(-10f, 3f, 0f);
+
+        customer.StartCoroutine(BackOffRoutine(offset, 0.5f));
     }
 
     private IEnumerator BackOffRoutine(Vector3 offset, float duration)

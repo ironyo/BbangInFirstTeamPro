@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3535975797766400408}
   - component: {fileID: 7480093067012579887}
   m_Layer: 7
-  m_Name: Customer
+  m_Name: FatCustomer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   deadMotion: {fileID: 0}
   customerTypeList: {fileID: 11400000, guid: cd6d6a39a5c49e445b92903c34a76ff6, type: 2}
   _animator: {fileID: 3454013481859027561}
-  customerType: {fileID: 11400000, guid: 076098317ae51104991b7641dd8ddbfe, type: 2}
+  customerType: {fileID: 11400000, guid: 326340cfd55b5674bb5eac32b2a5ca4b, type: 2}
 --- !u!114 &4750885722810583720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,7 +580,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cc162eefe5ee3644bbbaf98c74cb60f7, type: 3}
+  m_Sprite: {fileID: -4006501973546558777, guid: 7dfaa6499fa62d94db638c409141c87c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -601,7 +601,7 @@ Animator:
   m_GameObject: {fileID: 4794993469236932888}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d9f6d8eac056bde43b809fccbfb63869, type: 2}
+  m_Controller: {fileID: 9100000, guid: 67bd369e39e191440be08067f253ce72, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

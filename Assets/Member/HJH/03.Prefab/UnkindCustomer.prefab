@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3535975797766400408}
   - component: {fileID: 7480093067012579887}
   m_Layer: 7
-  m_Name: Customer
+  m_Name: UnkindCustomer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   deadMotion: {fileID: 0}
   customerTypeList: {fileID: 11400000, guid: cd6d6a39a5c49e445b92903c34a76ff6, type: 2}
   _animator: {fileID: 3454013481859027561}
-  customerType: {fileID: 11400000, guid: 076098317ae51104991b7641dd8ddbfe, type: 2}
+  customerType: {fileID: 11400000, guid: dcb14877dd4aa534fa86762463cbb992, type: 2}
 --- !u!114 &4750885722810583720
 MonoBehaviour:
   m_ObjectHideFlags: 0
