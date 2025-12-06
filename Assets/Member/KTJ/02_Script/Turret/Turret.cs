@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public abstract class Turret : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public abstract class Turret : MonoBehaviour
         }
         set
         {
-
+            _turretLevel = Mathf.Clamp(value, 0, _maxTurretLevel);
         }
     }
 

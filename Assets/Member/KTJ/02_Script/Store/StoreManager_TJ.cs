@@ -29,7 +29,5 @@ public class StoreManager_TJ : MonoSingleton<StoreManager_TJ>
     public void Exit()
     {
         _currentEnterStore = null;
-
-        Debug.Log("aa");
     }
 }
