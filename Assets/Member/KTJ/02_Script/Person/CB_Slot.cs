@@ -35,6 +35,6 @@ public class CB_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void SetStretchRec(int sLength)
     {
-        StretchRec.DOSizeDelta(new Vector2(0.2f + sLength * 0.2f, StretchRec.sizeDelta.y), 0.5f);
+        StretchRec.DOSizeDelta(new Vector2(0.2f + sLength * 0.2f, StretchRec.sizeDelta.y), 0.2f);
     }
 }

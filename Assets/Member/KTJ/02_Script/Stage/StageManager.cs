@@ -15,6 +15,11 @@ public class StageManager : MonoSingleton<StageManager>
 
     [SerializeField] private StageGenerator _generator; // ★ 의존성 분리
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     private void Start()
     {
         OnStageRoadEnd += EndStage;

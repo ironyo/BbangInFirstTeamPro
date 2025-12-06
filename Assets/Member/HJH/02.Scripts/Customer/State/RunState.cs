@@ -9,15 +9,19 @@ public class RunState : IEnemyState
     private float moveSpeed;
     private Rigidbody2D rb;
 
-    public RunState(Customer enemy)
+    private Animator animator;
+
+    public RunState(Customer customer)
     {
-        this.customer = enemy;
-        rb = customer.GetComponent<Rigidbody2D>();
-        moveSpeed = enemy.customerSpeed;
+        animator = customer._animator;
+        this.customer = customer;
+        rb = this.customer.GetComponent<Rigidbody2D>();
+        moveSpeed = customer.customerSpeed;
     }
 
     public void Enter()
     {
+        animator.SetBool("OnWalk", true);
         Debug.Log("Customer RunState Enter");
         target = GetClosestTarget();
 
@@ -38,6 +42,8 @@ public class RunState : IEnemyState
             return;
         }
 
+        Debug.Log("moveSpeedRun :" + moveSpeed);
+
         Vector2 targetDir = (target.position - customer.transform.position).normalized;
 
         currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * moveSpeed);
@@ -46,6 +52,7 @@ public class RunState : IEnemyState
     public void Exit()
     {
         rb.linearVelocity = Vector2.zero;
+        animator.SetBool("OnWalk", false);
     }
 
     private Transform GetClosestTarget()

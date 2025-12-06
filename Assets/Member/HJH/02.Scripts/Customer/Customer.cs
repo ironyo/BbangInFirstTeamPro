@@ -1,7 +1,9 @@
 using NUnit.Framework.Interfaces;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public interface IEnemyState
 {
@@ -35,17 +37,20 @@ public class Customer : MonoBehaviour
 
     [SerializeField] private CustomerTypeList customerTypeList;
 
-    private CustomerType customerType;
+    public Animator _animator;
+
+    [SerializeField]private CustomerType customerType;
     public int customerHP { get; set; }
     private int maxHp => customerType.customerHP;
 
     public float customerSpeed { get; set; }
     private float customerAttackSpeed;
 
+    [SerializeField]private SpriteRenderer sr;
+    private Color originalColor;
+
     private void Awake()
     {
-        customerType = GetRandomCustomerType();
-
         customerHP = customerType.customerHP;
         customerSpeed = customerType.customerSpeed;
         customerAttackSpeed = customerType.customerAttackSpeed;
@@ -55,6 +60,8 @@ public class Customer : MonoBehaviour
         ClearState = new ClearState(this);
         CloseState = new CloseState(this);
         DeadState = new DeadState(this);
+
+        originalColor = sr.color;
     }
     private bool isCleared = false;
 
@@ -70,10 +77,17 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
+        customerHP = Mathf.Clamp(customerHP, 0, maxHp);
+
         hpText.text = $"{customerHP.ToString()}/{maxHp}";
         currentState?.Update();
         IsAttackTargetInRange();
         IsCloseTargetInRange();
+
+        if (Keyboard.current.pKey.wasPressedThisFrame)
+        {
+            TakeDamage(1);
+        }
     }
 
     public void ChangeState(IEnemyState newState)
@@ -104,6 +118,8 @@ public class Customer : MonoBehaviour
     {
         customerHP -= damage;
 
+        StartCoroutine(HitColorEffect());
+
         if (customerHP <= 0)
         {
             ChangeState(DeadState);
@@ -126,23 +142,23 @@ public class Customer : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,closeRange.x);
     }
-    private CustomerType GetRandomCustomerType()
+
+    private IEnumerator HitColorEffect()
     {
-        float totalWeight = 0f;
+        sr.color = Color.red;
 
-        foreach (var entry in customerTypeList.customerTypes)
-            totalWeight += entry.weight;
+        yield return new WaitForSeconds(0.1f);
 
-        float randomValue = Random.value * totalWeight;
-        float current = 0f;
+        float t = 0f;
+        float duration = 0.15f;
 
-        foreach (var entry in customerTypeList.customerTypes)
+        while (t < duration)
         {
-            current += entry.weight;
-            if (randomValue <= current)
-                return entry.type;
+            t += Time.deltaTime;
+            sr.color = Color.Lerp(Color.red, originalColor, t / duration);
+            yield return null;
         }
 
-        return customerTypeList.customerTypes[0].type;
+        sr.color = originalColor;
     }
 }

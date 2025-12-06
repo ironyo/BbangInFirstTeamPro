@@ -8,28 +8,35 @@ public class CloseState : IEnemyState
     private Vector2 currentDir;
 
     private float moveSpeed;
-    private float maxSpeed = 5.5f;
+    private float maxSpeed;
     private float accelRate = 1.5f;
 
     private Rigidbody2D rb;
     private float random;
 
+    private Animator animator;
+
     public CloseState(Customer customer)
     {
         this.customer = customer;
         rb = customer.GetComponent<Rigidbody2D>();
-        moveSpeed = customer.customerSpeed - 2;
+        animator = customer._animator;
     }
 
     public void Enter()
     {
+        animator.SetBool("OnWalk", true);
         Debug.Log("Customer CloseState Enter");
+
+        moveSpeed = customer.customerSpeed - 2;
+        maxSpeed = customer.customerSpeed * 0.4f;
+
         target = GetClosestTarget();
 
         if (target != null)
             currentDir = (target.position - customer.transform.position).normalized;
 
-        random = Random.Range(-2f, 4f); // 오프셋 감소
+        random = Random.Range(-1.25f, 1.25f);
     }
 
     public void Update()
@@ -44,15 +51,12 @@ public class CloseState : IEnemyState
 
         Vector2 targetDir =
             ((Vector2)target.position + new Vector2(random, 0f) -
-            (Vector2)customer.transform.position).normalized;
+             (Vector2)customer.transform.position).normalized;
 
-        // Lerp
         currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * moveSpeed);
 
-        // 가속
         moveSpeed = Mathf.MoveTowards(moveSpeed, maxSpeed, accelRate * Time.deltaTime);
 
-        // 최종 이동
         rb.linearVelocity = currentDir.normalized * moveSpeed;
     }
 
@@ -73,5 +77,8 @@ public class CloseState : IEnemyState
         return closest;
     }
 
-    public void Exit() { }
+    public void Exit()
+    {
+        animator.SetBool("OnWalk", false);
+    }
 }

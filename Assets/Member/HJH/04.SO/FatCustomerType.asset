@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerCategory: 1
   customerHP: 50
-  customerSpeed: 4
+  customerSpeed: 6
   customerAttackSpeed: 5

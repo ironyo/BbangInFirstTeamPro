@@ -15,7 +15,7 @@ public class StoreProductBtn : MonoBehaviour
     [SerializeField] private Image IngredintImage; //재료 Sprite표시 Image
 
     private IngredientSO _ingredientData; //재료 Data
-    private StoreManager _storeManager;
+    private StoreManager_TJa _storeManager;
     private int _stock; //한번에 판매하는 재료 개수
     private int _price; //가격
     private StringBuilder _sb = new();
@@ -23,7 +23,7 @@ public class StoreProductBtn : MonoBehaviour
     public UnityEvent<string> OnWorningMessage;
     public UnityEvent<StringBuilder, RectTransform> InfoIShow;
     public UnityEvent InfoUiHide;
-    public void Init(IngredientSO ingredientData, StoreManager storeManager)
+    public void Init(IngredientSO ingredientData, StoreManager_TJa storeManager)
     {
         if (ingredientData == null || storeManager == null) return;
 
