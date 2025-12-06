@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class TomatoSauce : MonoBehaviour
 {
@@ -20,16 +19,7 @@ public class TomatoSauce : MonoBehaviour
         target = GameObject.Find("Enemy").transform;
     }
 
-    private void Update()
-    {
-        //≥™¡ﬂø° √—¿∏∑Œ ΩÚ∂ß∑Œ πŸ≤„¡÷±‚
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            ShotTomatoSauce();
-        }
-    }
-
-    private void ShotTomatoSauce()
+    public void ShotTomatoSauce()
     {
         Vector3 dir = target.position - origin.position;
         float dist = dir.magnitude; //∫§≈Õ ≈©±‚ ±∏«œ±‚
