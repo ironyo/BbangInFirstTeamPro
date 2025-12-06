@@ -1,7 +1,9 @@
 using NUnit.Framework.Interfaces;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public interface IEnemyState
 {
@@ -44,6 +46,9 @@ public class Customer : MonoBehaviour
     public float customerSpeed { get; set; }
     private float customerAttackSpeed;
 
+    [SerializeField]private SpriteRenderer sr;
+    private Color originalColor;
+
     private void Awake()
     {
         customerHP = customerType.customerHP;
@@ -55,6 +60,8 @@ public class Customer : MonoBehaviour
         ClearState = new ClearState(this);
         CloseState = new CloseState(this);
         DeadState = new DeadState(this);
+
+        originalColor = sr.color;
     }
     private bool isCleared = false;
 
@@ -70,10 +77,17 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
+        customerHP = Mathf.Clamp(customerHP, 0, maxHp);
+
         hpText.text = $"{customerHP.ToString()}/{maxHp}";
         currentState?.Update();
         IsAttackTargetInRange();
         IsCloseTargetInRange();
+
+        if (Keyboard.current.pKey.wasPressedThisFrame)
+        {
+            TakeDamage(1);
+        }
     }
 
     public void ChangeState(IEnemyState newState)
@@ -104,6 +118,8 @@ public class Customer : MonoBehaviour
     {
         customerHP -= damage;
 
+        StartCoroutine(HitColorEffect());
+
         if (customerHP <= 0)
         {
             ChangeState(DeadState);
@@ -125,5 +141,24 @@ public class Customer : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position,attackRange.x);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,closeRange.x);
+    }
+
+    private IEnumerator HitColorEffect()
+    {
+        sr.color = Color.red;
+
+        yield return new WaitForSeconds(0.1f);
+
+        float t = 0f;
+        float duration = 0.15f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            sr.color = Color.Lerp(Color.red, originalColor, t / duration);
+            yield return null;
+        }
+
+        sr.color = originalColor;
     }
 }

@@ -42,6 +42,8 @@ public class RunState : IEnemyState
             return;
         }
 
+        Debug.Log("moveSpeedRun :" + moveSpeed);
+
         Vector2 targetDir = (target.position - customer.transform.position).normalized;
 
         currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * moveSpeed);
@@ -50,6 +52,7 @@ public class RunState : IEnemyState
     public void Exit()
     {
         rb.linearVelocity = Vector2.zero;
+        animator.SetBool("OnWalk", false);
     }
 
     private Transform GetClosestTarget()
