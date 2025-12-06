@@ -1,11 +1,29 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class ShotPepperoni : MonoBehaviour, IShotBullet
+public class ShotPepperoni : FindCloseEnemy, IShotBullet
 {
     [SerializeField] private GameObject pepperoni;
 
+    private void Update()
+    {
+        if (Keyboard.current.aKey.wasPressedThisFrame)
+        {
+            ShotBullet();
+        }
+    }
+
     public void ShotBullet()
     {
-        Instantiate(pepperoni, transform.position, transform.rotation);
+        Transform enemy = FindCloseEnemyTrans();
+
+        if (enemy == null)
+            return;
+
+        Vector3 dir = (enemy.position - transform.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        Instantiate(pepperoni, transform.position, rotation);
     }
 }

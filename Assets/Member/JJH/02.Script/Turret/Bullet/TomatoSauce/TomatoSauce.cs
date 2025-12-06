@@ -3,7 +3,6 @@ using UnityEngine;
 public class TomatoSauce : MonoBehaviour
 {
     [SerializeField] private Transform origin;
-    [SerializeField] private Transform target;
 
     private SpriteRenderer sprite;
 
@@ -14,12 +13,10 @@ public class TomatoSauce : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
 
         //스프라이트가 화면에서 차지하는 가로 크기
-        baseLength = sprite.bounds.size.x;
-
-        target = GameObject.Find("Enemy").transform;
+        baseLength = sprite.size.x;
     }
 
-    public void ShotTomatoSauce()
+    public void ShotTomatoSauce(Transform target)
     {
         Vector3 dir = target.position - origin.position;
         float dist = dir.magnitude; //벡터 크기 구하기
