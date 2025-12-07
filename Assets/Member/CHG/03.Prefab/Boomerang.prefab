@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6856611375793059518
+--- !u!1 &7151069113013574790
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5459349379534056023}
-  - component: {fileID: 1493476778462189784}
-  - component: {fileID: 5446658677946712770}
-  - component: {fileID: 7249625875036881473}
-  - component: {fileID: 4916480771256157537}
-  - component: {fileID: 8459654588034460755}
+  - component: {fileID: 6129872162139696044}
+  - component: {fileID: 598062289869080280}
+  - component: {fileID: 4399981211747056287}
+  - component: {fileID: 8449228511398750758}
+  - component: {fileID: 8301990812312556499}
+  - component: {fileID: 598882530482697224}
   m_Layer: 0
-  m_Name: CurveBulletShadow
+  m_Name: Boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5459349379534056023
+--- !u!4 &6129872162139696044
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6856611375793059518}
+  m_GameObject: {fileID: 7151069113013574790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.3, z: 0.35028666}
+  m_LocalScale: {x: 0.35028666, y: 0.35028666, z: 0.35028666}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1493476778462189784
+--- !u!212 &598062289869080280
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6856611375793059518}
+  m_GameObject: {fileID: 7151069113013574790}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91,14 +91,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &5446658677946712770
+--- !u!50 &4399981211747056287
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6856611375793059518}
+  m_GameObject: {fileID: 7151069113013574790}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -118,13 +118,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &7249625875036881473
+--- !u!58 &8449228511398750758
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6856611375793059518}
+  m_GameObject: {fileID: 7151069113013574790}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -154,32 +154,29 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &4916480771256157537
+--- !u!114 &8301990812312556499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6856611375793059518}
+  m_GameObject: {fileID: 7151069113013574790}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9395bd96f7b0a845bd2d73607c6749f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
---- !u!114 &8459654588034460755
+  moveSpeed: 6.78
+--- !u!114 &598882530482697224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6856611375793059518}
+  m_GameObject: {fileID: 7151069113013574790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0475cda74a4a10448fbc76fd48d4bcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 575a0129acb3a8d4fb2fca43317f870b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxScale: {x: 0.5, y: 0.28}
-  MinScale: {x: 0.32, y: 0.14}
-  MaxAlpha: 1
-  MinAlpha: 0.3
+  ReturnTime: 1.65

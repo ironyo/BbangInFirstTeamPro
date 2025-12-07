@@ -7,7 +7,7 @@ namespace Assets.Member.CHG._02.Scripts.Bullet
     {
         [SerializeField] private float moveSpeed = 10f;
         private Rigidbody2D rigid2D;
-
+        private Vector3 dir;
         public float MoveSpeed => moveSpeed;
 
         private void Awake()
@@ -18,6 +18,13 @@ namespace Assets.Member.CHG._02.Scripts.Bullet
         public void MoveTo(Vector3 direction)
         {
             rigid2D.linearVelocity = direction * moveSpeed;
+            dir = direction;        
+        }
+
+        public void ChangeSpeed(float speed)
+        {
+            moveSpeed = speed;
+            MoveTo(dir);
         }
     }
 }
