@@ -25,6 +25,8 @@ public class ShotCheese : FindCloseEnemy, IShotBullet
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
+        CameraShake.Instance.ImpulseForce(0.5f);
+
         SpawnCheese(rotation);
         SpawnCheese(rotation * Quaternion.Euler(0, 0, -spread));
         SpawnCheese(rotation * Quaternion.Euler(0, 0, spread));

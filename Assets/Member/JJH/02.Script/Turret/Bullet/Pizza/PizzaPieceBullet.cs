@@ -8,6 +8,8 @@ public class PizzaPieceBullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
+            CameraShake.Instance.ImpulseForce(0.1f);
+
             Instantiate(cheeseExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
