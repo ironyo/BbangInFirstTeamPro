@@ -1,26 +1,69 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public abstract class Person : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [Header("Setting")]
+    [SerializeField] protected TextMeshPro nameTxt;
     [SerializeField] protected string personName;
     [SerializeField] protected string description;
 
-    protected abstract void Clicked();
+    [Header("ClickedUI")]
+    [SerializeField] protected GameObject _clickedUI;
+
+    private bool _isClicked = false;
+
+    private void Awake()
+    {
+        nameTxt.text = personName;
+    }
+
+    //private void Update()
+    //{
+    //    if (_isClicked == true)
+    //    {
+    //        if (Input.GetMouseButtonDown(0))
+    //        {
+    //            if (StageManager.Instance.IsRunning) return;
+    //            UnClicked();
+    //        }
+    //    }
+    //}
+
+    public virtual void Clicked()
+    {
+        CameraEffectManager.Instance.CameraMoveTarget(gameObject);
+        CameraEffectManager.Instance.CameraZoom(2f, 0.1f);
+        _clickedUI.SetActive(true);
+
+        _isClicked = true;
+    }
+
+    public virtual void UnClicked()
+    {
+        CameraEffectManager.Instance.CameraMoveTarget(CameraEffectManager.Instance.CameraTarget.gameObject);
+        CameraEffectManager.Instance.CameraZoom(5f, 0.1f);
+        _clickedUI.SetActive(false);
+
+        _isClicked = false;
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Clicked();
-        Debug.Log("나는 " +  name + "이고, 나의 기능은 다음과 같아. \n " + description);
+        //if (StageManager.Instance.IsRunning) return;
+        //Clicked();
+        //_isClicked = true;
+        //Debug.Log("나는 " +  name + "이고, 나의 기능은 다음과 같아. \n " + description);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log(personName + "에 마우스를 올림");
+        //Debug.Log(personName + "에 마우스를 올림");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log(personName + "에 마우스를 내림");
+        //Debug.Log(personName + "에 마우스를 내림");
     }
 }

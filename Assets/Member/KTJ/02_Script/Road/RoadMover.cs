@@ -27,7 +27,7 @@ public class RoadMover : MonoBehaviour
         {
             road.position += Vector3.left * moveValue;
 
-            if (road.position.x <= leftPos.x)
+            if (road.position.x <= leftPos.x - _roadLength/2)
             {
                 road.position += Vector3.right * _roadLength * _roads.Length;
             }

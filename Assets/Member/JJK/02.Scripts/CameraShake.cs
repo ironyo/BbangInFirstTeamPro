@@ -1,7 +1,4 @@
-using System;
-using UnityEngine;
 using Unity.Cinemachine;
-using UnityEngine.InputSystem;
 
 public class CameraShake : MonoSingleton<CameraShake>
 {

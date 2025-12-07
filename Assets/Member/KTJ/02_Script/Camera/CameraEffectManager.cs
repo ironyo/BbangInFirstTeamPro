@@ -9,6 +9,7 @@ using UnityEngine;
 public class CameraEffectManager : MonoSingleton<CameraEffectManager>
 {
     [SerializeField] private CinemachineCamera _camera;
+    public Transform CameraTarget;
     private CancellationTokenSource _zoomCoroutine;
 
     /// <summary>

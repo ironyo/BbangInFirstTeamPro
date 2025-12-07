@@ -9,10 +9,10 @@ public class StoreRecipeBtn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI PriceText;
     [SerializeField] private Image Image;
     private RecipeSO _recipeData;
-    private StoreManager _storeManager;
+    private StoreManager_TJa _storeManager;
     private int _price;
     private StringBuilder _sb;
-    public void Init(RecipeSO recipeData, StoreManager storeManager)
+    public void Init(RecipeSO recipeData, StoreManager_TJa storeManager)
     {
         if (recipeData == null || storeManager == null) return;
 
