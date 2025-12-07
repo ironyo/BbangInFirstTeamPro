@@ -5,6 +5,7 @@ public class BulletMove : MonoBehaviour
 {
     private Rigidbody2D rigid;
     [SerializeField] private float speed = 5;
+    private float nomalSpeed;
     public float Speed
     {
         get
@@ -19,7 +20,13 @@ public class BulletMove : MonoBehaviour
 
     private void Awake()
     {
+        nomalSpeed = Speed;
         rigid = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnDisable()
+    {
+        Speed = nomalSpeed;
     }
 
     private void Update()

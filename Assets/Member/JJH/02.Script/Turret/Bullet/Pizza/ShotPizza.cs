@@ -1,9 +1,16 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ShotPizza : FindCloseEnemy, IShotBullet
 {
     [SerializeField] private GameObject pizza;
+    Factory factory;
+
+    private void Start()
+    {
+        factory = new Factory(pizza, 15);
+    }
 
     private void Update()
     {
@@ -26,6 +33,8 @@ public class ShotPizza : FindCloseEnemy, IShotBullet
 
         CameraShake.Instance.ImpulseForce(0.5f);
 
-        Instantiate(pizza, transform.position, rotation);
+        IRecycleObject obj = factory.Get();
+        obj.GameObject.transform.position = transform.position;
+        obj.GameObject.transform.rotation = rotation;
     }
 }

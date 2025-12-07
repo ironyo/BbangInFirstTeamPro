@@ -1,11 +1,26 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
 using UnityEngine;
 
-public class PizzaBullet : IncreaseSpeed
+public class PizzaBullet : IncreaseSpeed, IRecycleObject
 {
     [SerializeField] private GameObject childrenBullet;
     [SerializeField] private GameObject tomatoSauce;
 
+    Factory pizzaPieceFactory;
+    Factory tomatoSauceFactory;
+
     private BulletMove bulletMove;
+
+    public Action<IRecycleObject> Destroyed { get; set; }
+
+    public GameObject GameObject => gameObject;
+
+    private void Start()
+    {
+        pizzaPieceFactory = new Factory(childrenBullet, 8);
+        tomatoSauceFactory = new Factory(childrenBullet, 8);
+    }
 
     private void OnEnable()
     {
@@ -37,11 +52,15 @@ public class PizzaBullet : IncreaseSpeed
                 // 현재 위치에 위치 +해주기
                 Vector3 spawnPos = transform.position + dir * offset;
 
-                Instantiate(childrenBullet, spawnPos, Quaternion.Euler(0, 0, i - 90));
-                Instantiate(tomatoSauce, transform.position, Quaternion.Euler(0, 0, i));
-            }
+                IRecycleObject pizzaObj = pizzaPieceFactory.Get();
+                pizzaObj.GameObject.transform.position = spawnPos;
+                pizzaObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i - 90);
 
-            Destroy(gameObject);
+                IRecycleObject tomatoObj = tomatoSauceFactory.Get();
+                pizzaObj.GameObject.transform.position = transform.position;
+                pizzaObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i);
+            }
+            Destroyed?.Invoke(this);
         }
     }
 }

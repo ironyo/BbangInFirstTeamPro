@@ -1,12 +1,17 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
 using UnityEngine;
 
-public class TomatoSauce : MonoBehaviour
+public class TomatoSauce : MonoBehaviour, IRecycleObject
 {
     [SerializeField] private Transform origin;
 
     private SpriteRenderer sprite;
 
     private float baseLength;
+
+    public Action<IRecycleObject> Destroyed { get; set; }
+    public GameObject GameObject => gameObject;
 
     private void Awake()
     {
