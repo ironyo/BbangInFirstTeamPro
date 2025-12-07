@@ -1,16 +1,25 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class JJK_Gun : MonoBehaviour
+public class Gun : MonoBehaviour
 {
     [SerializeField] private GunDataSO gunData;
     [SerializeField] private Transform firePos;
+    [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private float rotationSpeed = 20f;
     [SerializeField] private LayerMask enemyLayer;
+    
+    [Header("반동")]
+    [SerializeField] private float recoilBackAmount = 0.1f;
+    [SerializeField] private float recoilBackTime = 0.05f;
+    [SerializeField] private float recoilReturnTime = 0.15f;
 
     private GameObject _target;
     private float _lastFireTime;
+    private Tween recoilTween;
+
 
     private void Start()
     {
@@ -83,9 +92,10 @@ public class JJK_Gun : MonoBehaviour
             GameObject bullet = Instantiate(bulletData.BulletPrefab, position, transform.rotation * CalculateAngle(i));
             bullet.GetComponent<JJK_Bullet>().SetData(bulletData, gunData.ThroughFire);
         }
-
-        //Instantiate(gunData.MuzzleFlash, firePos.position, Quaternion.identity);
+        
+        Instantiate(muzzleFlash, firePos.position, transform.rotation);
         CameraShake.Instance.ImpulseForce(gunData.CameraShakeForce);
+        DoRecoil();
     }
 
     private Quaternion CalculateAngle(float num)
@@ -96,5 +106,17 @@ public class JJK_Gun : MonoBehaviour
             spreadAngle = Mathf.Lerp(-gunData.SpreadAngle, gunData.SpreadAngle, num / (gunData.GetBullet() - 1));
         
         return Quaternion.Euler(0, 0, spreadAngle);
+    }
+    
+    private void DoRecoil()
+    {
+        recoilTween?.Kill();
+
+        Vector3 originalPos = transform.localPosition;
+        Vector3 recoilPos = originalPos - transform.right * recoilBackAmount;
+        
+        recoilTween = DOTween.Sequence()
+            .Append(transform.DOLocalMove(recoilPos, recoilBackTime).SetEase(Ease.OutCubic))
+            .Append(transform.DOLocalMove(originalPos, recoilReturnTime).SetEase(Ease.InOutSine));
     }
 }
