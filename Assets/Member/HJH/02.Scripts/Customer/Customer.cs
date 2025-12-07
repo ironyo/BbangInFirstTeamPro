@@ -1,7 +1,9 @@
 using NUnit.Framework.Interfaces;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public interface IEnemyState
 {
@@ -26,19 +28,26 @@ public class Customer : MonoBehaviour
 
     public RunState RunState { get; set; } // 달려가는 기본 추격
     public AttackState AttackState { get; set; } // 닿았을 떄, 공격
-    public ClearState ClearState{ get; set; } // 적의 포만감을 다 채웠을 때, 자동으로 떠남
+    public ClearState ClearState{ get; set; } // 적의 포 만감을 다 채웠을 때, 자동으로 떠남
     public CloseState CloseState { get; set; } // 가까이 왔을 때, 트럭으로 이동
     public DeadState DeadState { get; set; } // 죽었을 때
 
-    [SerializeField] private CustomerType customerType;
     [SerializeField] private TextMeshPro hpText;
     [SerializeField] private ParticleSystem deadMotion;
 
+    [SerializeField] private CustomerTypeList customerTypeList;
+
+    public Animator _animator;
+
+    [SerializeField]private CustomerType customerType;
     public int customerHP { get; set; }
     private int maxHp => customerType.customerHP;
 
     public float customerSpeed { get; set; }
     private float customerAttackSpeed;
+
+    [SerializeField]private SpriteRenderer sr;
+    private Color originalColor;
 
     private void Awake()
     {
@@ -51,6 +60,8 @@ public class Customer : MonoBehaviour
         ClearState = new ClearState(this);
         CloseState = new CloseState(this);
         DeadState = new DeadState(this);
+
+        originalColor = sr.color;
     }
     private bool isCleared = false;
 
@@ -66,10 +77,17 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
+        customerHP = Mathf.Clamp(customerHP, 0, maxHp);
+
         hpText.text = $"{customerHP.ToString()}/{maxHp}";
         currentState?.Update();
         IsAttackTargetInRange();
         IsCloseTargetInRange();
+
+        if (Keyboard.current.pKey.wasPressedThisFrame)
+        {
+            TakeDamage(1);
+        }
     }
 
     public void ChangeState(IEnemyState newState)
@@ -100,6 +118,8 @@ public class Customer : MonoBehaviour
     {
         customerHP -= damage;
 
+        StartCoroutine(HitColorEffect());
+
         if (customerHP <= 0)
         {
             ChangeState(DeadState);
@@ -121,5 +141,24 @@ public class Customer : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position,attackRange.x);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,closeRange.x);
+    }
+
+    private IEnumerator HitColorEffect()
+    {
+        sr.color = Color.red;
+
+        yield return new WaitForSeconds(0.1f);
+
+        float t = 0f;
+        float duration = 0.15f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            sr.color = Color.Lerp(Color.red, originalColor, t / duration);
+            yield return null;
+        }
+
+        sr.color = originalColor;
     }
 }

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoreManager : MonoBehaviour
+public class StoreManager_TJa : MonoBehaviour
 {
     
     public StoreSO StoreData;

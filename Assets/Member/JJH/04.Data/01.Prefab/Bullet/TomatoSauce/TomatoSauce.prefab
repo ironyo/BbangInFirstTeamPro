@@ -134,7 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 7686486280057522760}
-  target: {fileID: 0}
 --- !u!114 &6807429226648760078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,5 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12573d54b3ba96544a55a657685266cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 0.2
+  startDelay: 0.1
+  expandTime: 0.3
   fadeTime: 0.5
