@@ -3,21 +3,25 @@ using UnityEngine;
 
 public class StageManager : MonoSingleton<StageManager>
 {
-    public event Action<int> OnStageRoadStart;
-    public event Action<string, string> SetUIStage;
-    public Action OnStageRoadEnd;
-
-
     private StageData _current;
     private StageData _previous;
     public bool IsRunning { get; private set; } = false;
     private int _clearStage = 0;
 
     [SerializeField] private StageGenerator _generator; // ★ 의존성 분리
+    [SerializeField] private EventChannelSO _onRoadFinished;
+    [SerializeField] private EventChannelSO _onStageRoadEnd;
+    [SerializeField] private EventChannelSO_T<int> _onStageRoadStart;
+    [SerializeField] private EventChannel_TT<string, string> _setUIStage;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     private void Start()
     {
-        OnStageRoadEnd += EndStage;
+        _onRoadFinished.OnEventRaised += EndStage;
     }
 
     public void StartStage()
@@ -32,8 +36,8 @@ public class StageManager : MonoSingleton<StageManager>
 
         _current = _generator.CreateRandomStage();   // ★ Stage 생성 책임 분리
 
-        OnStageRoadStart?.Invoke(_current.RoadTotalLength);
-        SetUIStage?.Invoke(_previous.Name, _current.Name);
+        _onStageRoadStart.RaiseEvent(_current.RoadTotalLength);
+        _setUIStage.RaiseEvent(_previous.Name, _current.Name);
         CameraEffectManager.Instance.CameraZoom(7, 1f);
         CameraEffectManager.Instance.CameraMoveTarget(CameraEffectManager.Instance.CameraTarget.gameObject);
     }

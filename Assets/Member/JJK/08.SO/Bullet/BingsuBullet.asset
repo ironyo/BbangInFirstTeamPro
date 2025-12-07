@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b4d4df300dc6d4f961039242cbe352, type: 3}
+  m_Name: BingsuBullet
+  m_EditorClassIdentifier: 
+  <BulletPrefab>k__BackingField: {fileID: 7223630651044081690, guid: 5092b03400f0fe148ae1d580a7f7423b, type: 3}
+  <CollisionParticle>k__BackingField: {fileID: 584123716942813891, guid: 68d2eeb6522d15b49b47a493f7973dee, type: 3}
+  <Damage>k__BackingField: 10
+  <LifeTime>k__BackingField: 3
+  <Speed>k__BackingField: 8
+  <CameraShakeForce>k__BackingField: 0.15

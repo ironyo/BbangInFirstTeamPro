@@ -8,16 +8,24 @@ public class RoadUI : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private TextMeshProUGUI _leftText;
 
+    [SerializeField] EventChannelSO_T<float> _onLeftDistanceChanged;
+    [SerializeField] EventChannelSO_T<float> _onSpeedChanged;
+
+
     private void Awake()
     {
-        _manager.OnLeftDistanceChanged += UpdateLeftDistance;
-        _manager.OnSpeedChanged += UpdateSpeedUI;
+        _onLeftDistanceChanged.OnEventRaised += UpdateLeftDistance;
+        _onSpeedChanged.OnEventRaised += UpdateSpeedUI;
     }
 
     private void OnDestroy()
     {
-        _manager.OnLeftDistanceChanged -= UpdateLeftDistance;
-        _manager.OnSpeedChanged -= UpdateSpeedUI;
+        if (StageManager.Instance == null)
+        {
+            Debug.Log("스테이지 매니저의 인스턴스가 널입니다");
+        }
+        _onLeftDistanceChanged.OnEventRaised += UpdateLeftDistance;
+        _onSpeedChanged.OnEventRaised += UpdateSpeedUI;
     }
 
     private void UpdateLeftDistance(float left)

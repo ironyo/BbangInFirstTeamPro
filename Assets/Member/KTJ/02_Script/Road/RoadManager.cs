@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class RoadManager : MonoBehaviour
 {
-    public event Action<float> OnLeftDistanceChanged;
-    public event Action OnRoadFinished;
-    public event Action<float> OnSpeedChanged;
-
     [SerializeField] private float _speed;
+    [SerializeField] EventChannelSO _onRoadFinished;
+    [SerializeField] EventChannelSO_T<float> OnLeftDistanceChanged;
+    [SerializeField] EventChannelSO_T<float> OnSpeedChanged;
+    [SerializeField] private EventChannelSO_T<int> _onStageRoadStart;
+    [SerializeField] private EventChannelSO _onStageRoadEnd;
+
     public float Speed => _speed;
 
     private float _currentSpeed = 0f;
@@ -21,12 +23,12 @@ public class RoadManager : MonoBehaviour
 
     private void OnEnable()
     {
-        StageManager.Instance.OnStageRoadStart += StartMove;
+        _onStageRoadStart.OnEventRaised += StartMove;
     }
 
     private void OnDisable()
     {
-        StageManager.Instance.OnStageRoadStart -= StartMove;
+        _onStageRoadStart.OnEventRaised -= StartMove;
     }
 
     public void StartMove(int roadLength)
@@ -49,8 +51,8 @@ public class RoadManager : MonoBehaviour
         {
             _isDecreasing = false;
             _isMoving = false;
-            OnRoadFinished?.Invoke();
-            StageManager.Instance.OnStageRoadEnd.Invoke();
+            _onRoadFinished.RaiseEvent();
+            _onStageRoadEnd.RaiseEvent();
         }));
     }
 
@@ -63,7 +65,7 @@ public class RoadManager : MonoBehaviour
             _currentTime += Time.deltaTime;
             float leftDistance = _targetedTime - _currentTime;
 
-            OnLeftDistanceChanged?.Invoke(leftDistance);
+            OnLeftDistanceChanged.RaiseEvent(leftDistance);
 
             if (_currentTime > _targetedTime)
                 StopMove();
@@ -83,7 +85,7 @@ public class RoadManager : MonoBehaviour
                 ? Mathf.Lerp(0f, _speed, t)
                 : Mathf.Lerp(_speed, 0f, t);
 
-            OnSpeedChanged?.Invoke(_currentSpeed);
+            OnSpeedChanged.RaiseEvent(_currentSpeed);
 
             yield return null;
         }

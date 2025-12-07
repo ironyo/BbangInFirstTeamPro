@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class CheesePuddle : MonoBehaviour
 
     private void OnEnable()
     {
+        gameObject.transform.DOScale(1.5f, 0.15f);
         StartCoroutine(DestroyCoroutine());
     }
 
