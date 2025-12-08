@@ -19,7 +19,7 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
     private void Start()
     {
         pizzaPieceFactory = new Factory(childrenBullet, 8);
-        tomatoSauceFactory = new Factory(childrenBullet, 8);
+        tomatoSauceFactory = new Factory(tomatoSauce, 8);
     }
 
     private void OnEnable()
@@ -57,8 +57,8 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
                 pizzaObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i - 90);
 
                 IRecycleObject tomatoObj = tomatoSauceFactory.Get();
-                pizzaObj.GameObject.transform.position = transform.position;
-                pizzaObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i);
+                tomatoObj.GameObject.transform.position = transform.position;
+                tomatoObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i);
             }
             Destroyed?.Invoke(this);
         }

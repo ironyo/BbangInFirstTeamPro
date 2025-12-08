@@ -1,17 +1,12 @@
-using Assets.Member.CHG._02.Scripts.Pooling;
-using System;
 using UnityEngine;
 
-public class TomatoSauce : MonoBehaviour, IRecycleObject
+public class TomatoSauce : MonoBehaviour
 {
     [SerializeField] private Transform origin;
 
     private SpriteRenderer sprite;
 
     private float baseLength;
-
-    public Action<IRecycleObject> Destroyed { get; set; }
-    public GameObject GameObject => gameObject;
 
     private void Awake()
     {
@@ -37,6 +32,7 @@ public class TomatoSauce : MonoBehaviour, IRecycleObject
         scale.x = dist / baseLength;
         transform.localScale = scale;
 
-        GetComponent<LaserFade>().enabled = true;
+        if (gameObject.TryGetComponent<LaserFade>(out LaserFade laser))
+            laser.enabled = true;
     }
 }

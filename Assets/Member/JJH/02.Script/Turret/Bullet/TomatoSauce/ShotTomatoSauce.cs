@@ -5,12 +5,14 @@ using UnityEngine.InputSystem;
 public class ShotTomatoSauce : FindCloseEnemy, IShotBullet
 {
     [SerializeField] private GameObject tomatoSauce;
+
     Factory factory;
 
     private void Start()
     {
         factory = new Factory(tomatoSauce, 5);
     }
+
     private void Update()
     {
         if (Keyboard.current.dKey.wasPressedThisFrame)

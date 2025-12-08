@@ -25,6 +25,7 @@ public class PizzaPieceBullet : MonoBehaviour, IRecycleObject
             IRecycleObject obj = factory.Get();
             obj.GameObject.transform.position = transform.position;
             obj.GameObject.transform.rotation = Quaternion.identity;
+
             Destroyed?.Invoke(this);
         }
     }
