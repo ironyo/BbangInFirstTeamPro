@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 840d63f46ee279542922d6b4a9ab0189, type: 3}
   m_Color: {r: 0.8113208, g: 0.66139024, b: 0.36585975, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.55, y: 1}
   m_Direction: 0
 --- !u!50 &3054674704923114836
 Rigidbody2D:
@@ -166,3 +166,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfde3b977f5e21043bda58c2b8cb6aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _explosionPref: {fileID: 6349553283840770036, guid: e5dbae5091afb734c8802efb8f8356c5, type: 3}
+  _explosionSize: {x: 3, y: 3, z: 3}
