@@ -24,6 +24,6 @@ public class DeadState : IEnemyState
 
     public void Update()
     {
-        rb.linearVelocity = new Vector2(-2,0);
+        rb.linearVelocity = new Vector2(-3.5f,0);
     }
 }
