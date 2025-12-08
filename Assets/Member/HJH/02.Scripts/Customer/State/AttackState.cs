@@ -6,11 +6,13 @@ public class AttackState : IEnemyState
 {
     private Customer customer;
     private Rigidbody2D rb;
+    private Animator animator;
 
     private bool isAttacking = false;
 
     public AttackState(Customer customer)
     {
+        animator = customer._animator;
         this.customer = customer;
     }
 
@@ -37,15 +39,18 @@ public class AttackState : IEnemyState
             AttackDotween();
         }
     }
-    public void Exit() { }
+    public void Exit() 
+    {
+        animator.SetBool("isAttack", false);
+    }
 
     public void AttackDotween()
     {
         if (isAttacking) return;
         isAttacking = true;
         Sequence tween = DOTween.Sequence();
-
-        // 때리는 애니메이션 넣기
+        
+        tween.AppendCallback(()=>animator.SetBool("isAttack", true));
 
         tween.AppendInterval(0.75f);
 
