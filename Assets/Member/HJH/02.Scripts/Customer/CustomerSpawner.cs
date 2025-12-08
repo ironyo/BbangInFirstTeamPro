@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,31 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
             CustomerSpawn(spawnNum);
         }
     }
+
+
+    // 이거 트럭 추가 시키면, 이거 실행시키면 됨.
+    // 근데 꼭 트럭에 자식으로 붙어야하는게 있음, 이거 사용할 떄 나 불러.
+    public void AddTargets(GameObject parent)
+    {
+        List<Transform> runList = new List<Transform>();
+        List<Transform> heatList = new List<Transform>();
+
+        foreach (Transform child in parent.GetComponentsInChildren<Transform>())
+        {
+            if (child.CompareTag("RunTarget"))
+            {
+                runList.Add(child);
+            }
+            else if (child.CompareTag("CloseTarget"))
+            {
+                heatList.Add(child);
+            }
+        }
+
+        runTargets = runList.ToArray();
+        heatTargets = heatList.ToArray();
+    }
+
 
     public void CustomerSpawn(int num)
     {

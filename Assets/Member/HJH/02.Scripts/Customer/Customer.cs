@@ -44,16 +44,14 @@ public class Customer : MonoBehaviour
     private int maxHp => customerType.customerHP;
 
     public float customerSpeed { get; set; }
-    private float customerAttackSpeed;
 
     [SerializeField]private SpriteRenderer sr;
-    private Color originalColor;
+    private Color originalColor; 
 
     private void Awake()
     {
         customerHP = customerType.customerHP;
         customerSpeed = customerType.customerSpeed;
-        customerAttackSpeed = customerType.customerAttackSpeed;
 
         RunState = new RunState(this);
         AttackState = new AttackState(this);
@@ -88,6 +86,11 @@ public class Customer : MonoBehaviour
         {
             TakeDamage(1);
         }
+
+        /*if (µµÂøÇÔ)
+        {
+            ChangeState(ClearState);
+        }*/
     }
 
     public void ChangeState(IEnemyState newState)
@@ -127,7 +130,7 @@ public class Customer : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("DeadZone"))
         {
