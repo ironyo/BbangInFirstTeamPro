@@ -1,34 +1,36 @@
-using System;
+    using System;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Gun : MonoBehaviour
+public class Gun : FindCloseEnemy, IShotBullet
 {
     [SerializeField] private GunDataSO gunData;
     [SerializeField] private Transform firePos;
     [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private float rotationSpeed = 20f;
-    [SerializeField] private LayerMask enemyLayer;
     
     [Header("반동")]
     [SerializeField] private float recoilBackAmount = 0.1f;
     [SerializeField] private float recoilBackTime = 0.05f;
     [SerializeField] private float recoilReturnTime = 0.15f;
 
-    private GameObject _target;
+    private Transform _target;
     private float _lastFireTime;
-    private Tween recoilTween;
-
+    private Tween _recoilTween;
+    private float _desireAngle;
+    private float _offset = 90f;
 
     private void Start()
     {
         _lastFireTime = -gunData.CoolDown; //처음 발사는 쿨타임X
+        
+        
     }
 
     private void Update()
     {
-        _target = FindNearestEnemy();
+        _target = FindCloseEnemyTrans();
 
         if (_target != null)
         {
@@ -38,41 +40,17 @@ public class Gun : MonoBehaviour
             {
                 if (Time.time - _lastFireTime > gunData.CoolDown)
                 {
-                    ShootBullet(firePos.position);
+                    ShotBullet();
                     _lastFireTime = Time.time;
                 }
             }
         }
     }
-    
-    private GameObject FindNearestEnemy()
-    {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, gunData.DetectRange, enemyLayer);
-
-        if (hits.Length == 0)
-            return null;
-
-        float minDist = float.MaxValue;
-        GameObject nearest = null;
-
-        foreach (Collider2D hit in hits)
-        {
-            float dist = Vector2.Distance(transform.position, hit.transform.position);
-
-            if (dist < minDist)
-            {
-                minDist = dist;
-                nearest = hit.gameObject;
-            }
-        }
-
-        return nearest;
-    }
 
     private bool IsAimTarget()
     {
-        Vector2 targetDir = _target.transform.position - transform.position;
-        float diff = Vector2.Angle(transform.right, targetDir);
+        Vector2 targetDir = _target.transform.position - firePos.position;
+        float diff = Vector2.Angle(transform.up, targetDir);
         
         return diff < 3f;
     }
@@ -80,20 +58,20 @@ public class Gun : MonoBehaviour
     private void GunRotation()
     {
         Vector2 dir =  _target.transform.position - firePos.position;
-        float desireAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.parent.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, desireAngle), Time.deltaTime * rotationSpeed);
+        _desireAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - _offset;
+        transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, Quaternion.Euler(0, 0, _desireAngle), Time.deltaTime * rotationSpeed);
     }
 
-    private void ShootBullet(Vector3 position)
+    public void ShotBullet()
     {
         for (int i = 0; i < gunData.GetBullet(); i++)
         {
             var bulletData = gunData.DefaultBullet;
-            GameObject bullet = Instantiate(bulletData.BulletPrefab, position, transform.rotation * CalculateAngle(i));
+            GameObject bullet = Instantiate(bulletData.BulletPrefab, firePos.position, transform.rotation * CalculateAngle(i));
             bullet.GetComponent<JJK_Bullet>().SetData(bulletData, gunData.ThroughFire);
         }
         
-        Instantiate(muzzleFlash, firePos.position, transform.rotation);
+        SpawnMuzzleParticle();
         CameraShake.Instance.ImpulseForce(gunData.CameraShakeForce);
         DoRecoil();
     }
@@ -108,15 +86,22 @@ public class Gun : MonoBehaviour
         return Quaternion.Euler(0, 0, spreadAngle);
     }
     
+    private void SpawnMuzzleParticle()
+    {
+        GameObject muzzleParticle = Instantiate(muzzleFlash, firePos.position, Quaternion.Euler(0, 0, _desireAngle + _offset));
+        
+        int flip = _desireAngle > 0 ? -1 : 1;
+        muzzleParticle.transform.localScale = new Vector3(transform.localScale.x, flip * Mathf.Abs(transform.localScale.y), transform.localScale.z);
+    }
+    
     private void DoRecoil()
     {
-        recoilTween?.Kill();
+        _recoilTween?.Kill();
+        Vector3 originPos = transform.localPosition;
+        Vector3 recoilPos = originPos - Vector3.up * recoilBackAmount;
 
-        Vector3 originalPos = transform.localPosition;
-        Vector3 recoilPos = originalPos - transform.right * recoilBackAmount;
-        
-        recoilTween = DOTween.Sequence()
-            .Append(transform.DOLocalMove(recoilPos, recoilBackTime).SetEase(Ease.OutCubic))
-            .Append(transform.DOLocalMove(originalPos, recoilReturnTime).SetEase(Ease.InOutSine));
+        _recoilTween = DOTween.Sequence()
+            .Append(transform.DOLocalMove(recoilPos, recoilBackTime))
+            .Append(transform.DOLocalMove(originPos, recoilReturnTime));
     }
 }
