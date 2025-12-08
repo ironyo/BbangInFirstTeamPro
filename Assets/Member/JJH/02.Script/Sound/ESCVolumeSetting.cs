@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
@@ -5,6 +6,9 @@ using UnityEngine.UI;
 
 public class ESCVolumeSetting : MonoBehaviour
 {
+    [Header("InGame?")]
+    [SerializeField] private bool inGame = false;
+
     [Header("GameObject")]
     [SerializeField] private GameObject escButton;
     [SerializeField] private GameObject settingPanel;
@@ -16,6 +20,8 @@ public class ESCVolumeSetting : MonoBehaviour
     [Header("AudioMixer")]
     [SerializeField] private AudioMixer audioMixer;
 
+    private RectTransform panelRect;
+
     enum SettingType
     {
         Show,
@@ -26,34 +32,32 @@ public class ESCVolumeSetting : MonoBehaviour
 
     private void Start()
     {
+        panelRect = settingPanel.GetComponent<RectTransform>();
         SetVolume();
     }
 
     private void Update()
     {
         ESCPress();
-        SetShowType();
+        if (inGame)
+            SetShowType();
     }
 
     private void SetVolume()
     {
-        //슬라이더,오디오믹서 설정
-
         float bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
-        audioMixer.SetFloat("BGM", bgmVolume);
-        bgmSlider.value = bgmVolume;
-
         float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
-        audioMixer.SetFloat("SFX", sfxVolume);
-        audioMixer.SetFloat("System", sfxVolume);
+
+        bgmSlider.value = bgmVolume;
         sfxSlider.value = sfxVolume;
 
-
+        SetBGMToMixer(bgmVolume);
+        SetSFXToMixer(sfxVolume);
     }
 
     private void ESCPress()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && inGame)
         {
             showType = showType == SettingType.Show ? SettingType.Hide : SettingType.Show;
         }
@@ -65,29 +69,50 @@ public class ESCVolumeSetting : MonoBehaviour
         {
             escButton.SetActive(false);
             settingPanel.SetActive(true);
+            panelRect.DOAnchorPos(new Vector3(960, 540, 0), 0.3f).SetUpdate(true);
+            Time.timeScale = 0f;
         }
         else
         {
             escButton.SetActive(true);
-            settingPanel.SetActive(false);
+            panelRect.DOAnchorPos(new Vector3(960, 1700, 0), 0.3f).SetUpdate(true)
+                .OnComplete(() => settingPanel.SetActive(false));
+            Time.timeScale = 1f;
         }
+    }
+
+    private void SetBGMToMixer(float volume)
+    {
+        if (volume <= 0.0001f)
+            volume = -80f;
+        else
+            volume = Mathf.Log10(volume) * 20f;
+        audioMixer.SetFloat("BGM", volume);
+    }
+
+    private void SetSFXToMixer(float volume)
+    {
+        if (volume <= 0.0001f)
+            volume = -80f;
+        else
+            volume = Mathf.Log10(volume) * 20f;
+        audioMixer.SetFloat("SFX", volume);
+        audioMixer.SetFloat("System", volume);
     }
 
     #region Slider
     public void BGMSlider()
     {
         float volume = bgmSlider.value;
-        audioMixer.SetFloat("BGM", Mathf.Lerp(-80f, 10f, volume)); //오디오믹서 기준 -80~10까지 값 지정
+        SetBGMToMixer(volume);
         PlayerPrefs.SetFloat("BGMVolume", volume);
     }
 
     public void SFXSlider()
     {
-        float volume = sfxSlider.value;
-        audioMixer.SetFloat("SFX", Mathf.Lerp(-80f, 10f, volume)); //오디오믹서 기준 -80~10까지 값 지정
-        audioMixer.SetFloat("System", Mathf.Lerp(-80f, 10f, volume)); //오디오믹서 기준 -80~10까지 값 지정
+        float volume = sfxSlider.value; // 0~1
+        SetSFXToMixer(volume);
         PlayerPrefs.SetFloat("SFXVolume", volume);
-        PlayerPrefs.SetFloat("System", volume);
     }
     #endregion
 
@@ -100,6 +125,11 @@ public class ESCVolumeSetting : MonoBehaviour
     public void BackButton()
     {
         showType = SettingType.Hide;
+    }
+
+    public void LobbyButton()
+    {
+        //씬 이동(메인 화면으로 나가기)
     }
     #endregion
 }
