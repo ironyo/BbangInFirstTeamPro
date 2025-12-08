@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5604224012180502385}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5178984803438690138
@@ -79,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4b2b46be8946b2847b3b0eb750b5f881, type: 3}
+  m_Sprite: {fileID: 4082340720116302823, guid: 4b2b46be8946b2847b3b0eb750b5f881, type: 3}
   m_Color: {r: 0.5471698, g: 0.3631298, b: 0.14763258, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.34615386, y: 0.96153843}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -151,7 +152,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.02, y: 0.02}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.3, y: 0.98}
   m_Direction: 0
 --- !u!114 &7166602549364711247
@@ -166,4 +167,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317ae0b69628d774ca6b50e9f912bef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveParticlePref: {fileID: 1006771869666165488, guid: e3561e5011e947245a9c0499dfefc6f4, type: 3}
+  _boomParticlePref: {fileID: 8887972855755377375, guid: 55b91124ad0fd8142b442091f700ff04, type: 3}
+  _particlePoint: {fileID: 5604224012180502385}
   _bounceCount: 3
+--- !u!1 &5029909601019461807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5604224012180502385}
+  m_Layer: 0
+  m_Name: ParticlePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5604224012180502385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029909601019461807}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7266737009947382961}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

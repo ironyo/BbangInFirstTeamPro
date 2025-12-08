@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4b2b46be8946b2847b3b0eb750b5f881
+guid: b230592231a92ac44978a818a15f72c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4082340720116302823
-    second: Sausage_0
+      213: -3886367074860183767
+    second: KatcupShot_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 26
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sausage_0
+      name: KatcupShot_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 3
-        width: 9
-        height: 25
+        x: 0
+        y: 0
+        width: 30
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7e305aa714367a830800000000000000
-      internalID: 4082340720116302823
+      spriteID: 92f4f2c7cb9d01ac0800000000000000
+      internalID: -3886367074860183767
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sausage_0: 4082340720116302823
+      KatcupShot_0: -3886367074860183767
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

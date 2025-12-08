@@ -7,6 +7,7 @@ public class KU_Exprison : KU_Bullet
 {
     private void Start()
     {
+        CameraShake.Instance.ImpulseForce(0.5f);
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.DOFade(0, 0.5f).OnComplete(() =>
         {
