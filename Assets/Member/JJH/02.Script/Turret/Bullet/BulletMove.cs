@@ -24,6 +24,11 @@ public class BulletMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable()
+    {
+        Speed = nomalSpeed;
+    }
+
     private void OnDisable()
     {
         Speed = nomalSpeed;

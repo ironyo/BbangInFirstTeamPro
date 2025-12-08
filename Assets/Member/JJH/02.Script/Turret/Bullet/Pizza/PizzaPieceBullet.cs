@@ -21,6 +21,11 @@ public class PizzaPieceBullet : MonoBehaviour, IRecycleObject
         factory = new Factory(cheeseExplosion, 1);
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(DeadCoroutine());
+    }
+
     private void OnDisable()
     {
         isAttack = false;
@@ -52,5 +57,11 @@ public class PizzaPieceBullet : MonoBehaviour, IRecycleObject
         isAttack = true;
         yield return new WaitForSeconds(0.01f);
         isAttack = false;
+    }
+
+    private IEnumerator DeadCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroyed?.Invoke(this);
     }
 }

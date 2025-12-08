@@ -29,7 +29,12 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
     private void OnEnable()
     {
         bulletMove = GetComponent<BulletMove>();
-        bulletSpeed = bulletMove.Speed;
+        bulletSpeed = 0f;
+        timer = 0f;
+
+        bulletMove.Speed = 0f;
+
+        StartCoroutine(DeadCoroutine());
     }
 
     private void OnDisable()
@@ -84,5 +89,11 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
         isAttack = true;
         yield return new WaitForSeconds(0.01f);
         isAttack = false;
+    }
+
+    private IEnumerator DeadCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroyed?.Invoke(this);
     }
 }

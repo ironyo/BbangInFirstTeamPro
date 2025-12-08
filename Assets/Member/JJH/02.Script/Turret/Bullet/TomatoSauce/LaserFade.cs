@@ -45,6 +45,8 @@ public class LaserFade : MonoBehaviour, IRecycleObject
 
         timer = 0f;
         state = FadeState.Expand;
+
+        StartCoroutine(DeadCoroutine());
     }
 
     private void OnDisable()
@@ -110,5 +112,11 @@ public class LaserFade : MonoBehaviour, IRecycleObject
         isAttack = true;
         yield return new WaitForSeconds(0.01f);
         isAttack = false;
+    }
+
+    private IEnumerator DeadCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroyed?.Invoke(this);
     }
 }

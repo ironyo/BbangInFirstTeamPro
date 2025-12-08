@@ -20,6 +20,11 @@ public class Cheese : MonoBehaviour, IRecycleObject
         factory = new Factory(cheeseExplosion, 1);
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(DeadCoroutine());
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
@@ -44,5 +49,11 @@ public class Cheese : MonoBehaviour, IRecycleObject
         isAttack = true;
         yield return new WaitForSeconds(0.01f);
         isAttack = false;
+    }
+
+    private IEnumerator DeadCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroyed?.Invoke(this);
     }
 }

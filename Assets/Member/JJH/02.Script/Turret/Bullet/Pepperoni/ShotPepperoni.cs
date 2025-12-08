@@ -9,7 +9,7 @@ public class ShotPepperoni : FindCloseEnemy, IShotBullet
 
     private void Start()
     {
-        factory = new Factory(pepperoni, 15);
+        factory = new Factory(pepperoni, 10);
     }
 
     private void Update()
