@@ -1,10 +1,17 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ShotCheese : FindCloseEnemy, IShotBullet
 {
     [SerializeField] private GameObject cheese;
+    Factory factory;
     private float spread = 15f;
+
+    private void Start()
+    {
+        factory = new Factory(cheese, 15);
+    }
 
     private void Update()
     {
@@ -25,13 +32,17 @@ public class ShotCheese : FindCloseEnemy, IShotBullet
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
+        CameraShake.Instance.ImpulseForce(0.5f);
+
         SpawnCheese(rotation);
         SpawnCheese(rotation * Quaternion.Euler(0, 0, -spread));
         SpawnCheese(rotation * Quaternion.Euler(0, 0, spread));
     }
 
-    private void SpawnCheese(Quaternion quaternion)
+    private void SpawnCheese(Quaternion rotation)
     {
-        Instantiate(cheese, transform.position, quaternion);
+        IRecycleObject obj = factory.Get();
+        obj.GameObject.transform.position = transform.position;
+        obj.GameObject.transform.rotation = rotation;
     }
 }

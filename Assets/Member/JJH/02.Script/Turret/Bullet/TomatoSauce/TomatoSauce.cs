@@ -32,6 +32,7 @@ public class TomatoSauce : MonoBehaviour
         scale.x = dist / baseLength;
         transform.localScale = scale;
 
-        GetComponent<LaserFade>().enabled = true;
+        if (gameObject.TryGetComponent<LaserFade>(out LaserFade laser))
+            laser.enabled = true;
     }
 }

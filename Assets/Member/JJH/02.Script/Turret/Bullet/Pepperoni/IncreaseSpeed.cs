@@ -7,6 +7,11 @@ public abstract class IncreaseSpeed : MonoBehaviour
     protected float maxSpeed { get; set; } = 80f;
     protected float timer { get; set; }
 
+    private void OnDisable()
+    {
+        timer = 0f;
+    }
+
     protected float IncreaseSpeedInTime()
     {
         timer += Time.deltaTime;

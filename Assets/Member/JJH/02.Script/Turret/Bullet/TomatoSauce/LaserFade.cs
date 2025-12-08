@@ -1,6 +1,8 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
 using UnityEngine;
 
-public class LaserFade : MonoBehaviour
+public class LaserFade : MonoBehaviour, IRecycleObject
 {
     private SpriteRenderer sprite;
     private Material material;
@@ -19,17 +21,26 @@ public class LaserFade : MonoBehaviour
     }
     private FadeState state = FadeState.Expand;
 
+    public Action<IRecycleObject> Destroyed { get; set; }
+
+    public GameObject GameObject => gameObject;
+
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         material = sprite.material;
-
-        material.SetFloat("HalfHeight", 0f);
     }
 
     private void OnEnable()
     {
+        if (sprite == null)
+            sprite = GetComponent<SpriteRenderer>();
+
+        if (material == null && sprite != null)
+            material = sprite.material;
+
         timer = 0f;
+        state = FadeState.Expand;
     }
 
     private void Update()
@@ -67,7 +78,7 @@ public class LaserFade : MonoBehaviour
                     material.SetFloat("HalfHeight", half);
 
                     if (t >= 1f)
-                        Destroy(gameObject);
+                        Destroyed?.Invoke(this);
                 }
                 break;
         }

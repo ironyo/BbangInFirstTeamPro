@@ -1,9 +1,16 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ShotPepperoni : FindCloseEnemy, IShotBullet
 {
     [SerializeField] private GameObject pepperoni;
+    Factory factory;
+
+    private void Start()
+    {
+        factory = new Factory(pepperoni, 15);
+    }
 
     private void Update()
     {
@@ -24,6 +31,10 @@ public class ShotPepperoni : FindCloseEnemy, IShotBullet
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        Instantiate(pepperoni, transform.position, rotation);
+        CameraShake.Instance.ImpulseForce(0.5f);
+
+        IRecycleObject obj = factory.Get();
+        obj.GameObject.transform.position = transform.position;
+        obj.GameObject.transform.rotation = rotation;
     }
 }

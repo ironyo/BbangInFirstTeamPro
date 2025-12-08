@@ -1,9 +1,17 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ShotTomatoSauce : FindCloseEnemy, IShotBullet
 {
-    [SerializeField] private TomatoSauce tomatoSauce;
+    [SerializeField] private GameObject tomatoSauce;
+
+    Factory factory;
+
+    private void Start()
+    {
+        factory = new Factory(tomatoSauce, 5);
+    }
 
     private void Update()
     {
@@ -24,7 +32,11 @@ public class ShotTomatoSauce : FindCloseEnemy, IShotBullet
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        TomatoSauce tomato = Instantiate(tomatoSauce, transform.position, rotation);
-        tomato.ShotTomatoSauce(FindCloseEnemyTrans());
+        CameraShake.Instance.ImpulseForce(0.5f);
+
+        IRecycleObject obj = factory.Get();
+        obj.GameObject.transform.position = transform.position;
+        obj.GameObject.transform.rotation = rotation;
+        obj.GameObject.GetComponent<TomatoSauce>().ShotTomatoSauce(FindCloseEnemyTrans());
     }
 }
