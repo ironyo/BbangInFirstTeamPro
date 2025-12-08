@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cc59d136ccb954dbc419d15dd2a35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveParticlePref: {fileID: 6964940704016246265, guid: 8f49fbe0d7743e344a7723eedb34a493, type: 3}
+  _boomParticlePref: {fileID: 4251989243184176687, guid: d562ae3c835c8ba4cadb564a7d413105, type: 3}
   _particlePoint: {fileID: 3976869113926765946}
   _sourcePref: {fileID: 6474800333962078892, guid: c84e85f6faa123948b4fd5f7cf097b99, type: 3}
-  _moveParticlePref: {fileID: 6964940704016246265, guid: 8f49fbe0d7743e344a7723eedb34a493, type: 3}
-  _boomParticlePref: {fileID: 4922002407087915942, guid: c14c76015fe192948ad5555548e05321, type: 3}
-  _sourceCount: 2
+  _sourceCount: 3

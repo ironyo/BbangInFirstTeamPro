@@ -1,8 +1,10 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class KU_SausageBullet : KU_Bullet
 {
     [SerializeField] private int _bounceCount = 2;
+
     private int _startCount = 0;
     protected override void Awake()
     {
@@ -16,8 +18,11 @@ public class KU_SausageBullet : KU_Bullet
         {
             if (enemy != targetEnemy && _startCount == _bounceCount) return;
 
+            StartCoroutine(LifeTime());
             enemy.MinusHP(3);
             _bounceCount--;
+            transform.DOScale(new Vector3(transform.lossyScale.x-1f/(float)(_startCount-1), transform.lossyScale.y-1f/(float)(_startCount-1)), 0.3f);
+            BoomParticle();
             if(_bounceCount <= 0)
             {
                 Destroy(gameObject);

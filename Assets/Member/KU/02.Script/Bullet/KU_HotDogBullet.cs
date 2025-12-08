@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.Triggers;
 using DG.Tweening;
 using System.Net.NetworkInformation;
 using System.Threading;
@@ -6,14 +7,8 @@ using UnityEngine;
 
 public class KU_HotDogBullet : KU_Bullet
 {
-    [SerializeField] private Transform _particlePoint;
     [SerializeField] private GameObject _sourcePref;
-    [SerializeField] private GameObject _moveParticlePref;
-    [SerializeField] private GameObject _boomParticlePref;
-
     [SerializeField] private int _sourceCount = 2;
-
-    //private bool _nowSourceFlag = true;
 
     private CancellationTokenSource cancellationTokenSource;
 
@@ -22,13 +17,8 @@ public class KU_HotDogBullet : KU_Bullet
     {
         base.Awake();
         cancellationTokenSource = new CancellationTokenSource();
-    }
-    private void Start()
-    {
-        Instantiate(_moveParticlePref, _particlePoint.transform.position, Quaternion.identity, _particlePoint.transform);
         SpawnSource(cancellationTokenSource.Token).Forget();
     }
-
 
     private async UniTask SpawnSource(CancellationToken cancelToken)
     {
@@ -36,7 +26,7 @@ public class KU_HotDogBullet : KU_Bullet
         {
             while (!cancellationTokenSource.IsCancellationRequested)
             {
-                float waitTime = Random.Range(0.1f, 0.3f);
+                float waitTime = Random.Range(0.2f, 0.4f);
                 await UniTask.WaitForSeconds(waitTime, cancellationToken: cancelToken);
 
                 if (this == null) return;
@@ -46,7 +36,6 @@ public class KU_HotDogBullet : KU_Bullet
                 _sourceCount--;
                 GameObject obj = Instantiate(_sourcePref, transform.position, transform.rotation);
 
-                //_nowSourceFlag = !_nowSourceFlag;
 
                 Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
                 rb.linearVelocity = transform.right * moveSpeed;
@@ -61,8 +50,7 @@ public class KU_HotDogBullet : KU_Bullet
     {
         _rigidbodyCompo.linearVelocity = Vector2.zero;
         StopBullet();
-        Instantiate(_boomParticlePref, transform.position, Quaternion.identity);
-
+        BoomParticle();
 
         await transform.DOScale(Vector3.zero, 0.5f);
         await UniTask.WaitForSeconds(0, cancellationToken: cancelToken);
