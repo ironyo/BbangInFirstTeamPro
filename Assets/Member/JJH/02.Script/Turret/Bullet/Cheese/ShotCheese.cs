@@ -1,23 +1,48 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ShotCheese : MonoBehaviour
+public class ShotCheese : FindCloseEnemy, IShotBullet
 {
     [SerializeField] private GameObject cheese;
+    Factory factory;
     private float spread = 15f;
+
+    private void Start()
+    {
+        factory = new Factory(cheese, 15);
+    }
 
     private void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.sKey.wasPressedThisFrame)
         {
-            SpawnCheese(transform.rotation);
-            SpawnCheese(transform.rotation * Quaternion.Euler(0, 0, -spread));
-            SpawnCheese(transform.rotation * Quaternion.Euler(0, 0, spread));
+            ShotBullet();
         }
     }
 
-    private void SpawnCheese(Quaternion quaternion)
+    public void ShotBullet()
     {
-        Instantiate(cheese, transform.position, quaternion);
+        Transform enemy = FindCloseEnemyTrans();
+
+        if (enemy == null)
+            return;
+
+        Vector3 dir = (enemy.position - transform.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        CameraShake.Instance.ImpulseForce(0.5f);
+
+        SpawnCheese(rotation);
+        SpawnCheese(rotation * Quaternion.Euler(0, 0, -spread));
+        SpawnCheese(rotation * Quaternion.Euler(0, 0, spread));
+    }
+
+    private void SpawnCheese(Quaternion rotation)
+    {
+        IRecycleObject obj = factory.Get();
+        obj.GameObject.transform.position = transform.position;
+        obj.GameObject.transform.rotation = rotation;
     }
 }

@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class KU_Source : MonoBehaviour
 {
+    [SerializeField] private Sprite _katcupSprite;
+
+    private SpriteRenderer _spriteRendererCompo;
     private Rigidbody2D _rigidbodyCompo;
 
     private HashSet<KU_Enemy> insideEnemies = new HashSet<KU_Enemy>();
@@ -15,6 +18,7 @@ public class KU_Source : MonoBehaviour
     private void Awake()
     {
         _rigidbodyCompo = GetComponent<Rigidbody2D>();
+        _spriteRendererCompo = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -25,6 +29,7 @@ public class KU_Source : MonoBehaviour
     private async UniTask DropSource()
     {
         await UniTask.WaitForSeconds(0.5f);
+        _spriteRendererCompo.sprite = _katcupSprite;
         _rigidbodyCompo.linearVelocity = Vector2.zero;
         transform.DOScale(new Vector3(2, 2, 2), 1f);
         await UniTask.WaitForSeconds(3f);

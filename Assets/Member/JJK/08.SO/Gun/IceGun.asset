@@ -16,7 +16,7 @@ MonoBehaviour:
   <MuzzleFlash>k__BackingField: {fileID: 0}
   <CoolDown>k__BackingField: 1.5
   <DetectRange>k__BackingField: 7
-  <CameraShakeForce>k__BackingField: 0.05
+  <CameraShakeForce>k__BackingField: 0.1
   bulletCount: 0
   <SpreadAngle>k__BackingField: 0
   <MultiFire>k__BackingField: 0

@@ -400,7 +400,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 2ca2b29d1f354b044a2c40518c685e27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f608f7dbb0881e4c90dcfca8ede9aff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -532,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _previousStageTxt: {fileID: 1084759762}
   _currentStageTxt: {fileID: 1337122883}
+  _setUIStage: {fileID: 0}
 --- !u!1 &185606745
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +638,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1051886510}
-  - {fileID: 520104686}
+  - {fileID: 377854676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -657,6 +658,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e012a75bc3617624c8a0643ddb3815bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  truckBody: {fileID: 7358360582083906835, guid: 82f2a9594ce99d9498c04ea797d2091a, type: 3}
+  truckBodySpawnTran: {fileID: 377854676}
 --- !u!1 &223515243
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +927,7 @@ Transform:
   m_GameObject: {fileID: 267267121}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.724, y: -0.28, z: 0}
+  m_LocalPosition: {x: 1.207, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -977,6 +980,43 @@ MonoBehaviour:
   _manager: {fileID: 1488315630}
   _slider: {fileID: 1941529980}
   _leftText: {fileID: 1743023778}
+  _onLeftDistanceChanged: {fileID: 11400000, guid: 052391e474ab6f0478afd8a261f9c762, type: 2}
+  _onSpeedChanged: {fileID: 11400000, guid: 12c9bf86d1afe5143adac665b6ec2a03, type: 2}
+--- !u!1 &377854675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 377854676}
+  m_Layer: 0
+  m_Name: Bodys
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &377854676
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377854675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 216930879}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.882, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &399794727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,14 +1297,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520104685}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5.682956}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1759484691}
   - {fileID: 267267123}
-  m_Father: {fileID: 216930879}
+  m_Father: {fileID: 1051886510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1675,7 +1715,7 @@ Transform:
   m_GameObject: {fileID: 690395445}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1895,6 +1935,8 @@ MonoBehaviour:
   _spawnPos: {fileID: 781486043}
   _targetPos: {fileID: 690395446}
   _mechanic: {fileID: 6523386967505903744, guid: 8f15841569cc800458064fbde8ed8450, type: 3}
+  _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
+  _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
 --- !u!1 &788734199
 GameObject:
   m_ObjectHideFlags: 0
@@ -2869,7 +2911,7 @@ GameObject:
   - component: {fileID: 1051886510}
   - component: {fileID: 1051886511}
   m_Layer: 0
-  m_Name: Body
+  m_Name: TruckHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2883,17 +2925,18 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051886509}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 8.524434}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 977416585}
   - {fileID: 1690968422}
   - {fileID: 2034446252}
   - {fileID: 784424438}
+  - {fileID: 520104686}
   m_Father: {fileID: 216930879}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1051886511
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2938,7 +2981,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a01230c1f4ecf394eb3f1b3e1d3a670d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae7556312ebbbe8469d5e31c4756f4ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3593,6 +3636,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _generator: {fileID: 1062537614}
+  _onRoadFinished: {fileID: 11400000, guid: 8ce04edf61fcfec408fb7d70a726dd4d, type: 2}
+  _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
+  _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
+  _setUIStage: {fileID: 0}
 --- !u!1 &1397188207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,6 +3853,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
+  _onRoadFinished: {fileID: 11400000, guid: 8ce04edf61fcfec408fb7d70a726dd4d, type: 2}
+  OnLeftDistanceChanged: {fileID: 11400000, guid: 052391e474ab6f0478afd8a261f9c762, type: 2}
+  OnSpeedChanged: {fileID: 11400000, guid: 12c9bf86d1afe5143adac665b6ec2a03, type: 2}
+  _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
+  _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
 --- !u!4 &1488315631
 Transform:
   m_ObjectHideFlags: 0
@@ -4241,7 +4293,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: b8dae4dc67eefc74095da70831b527b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f608f7dbb0881e4c90dcfca8ede9aff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4689,7 +4741,7 @@ Transform:
   m_GameObject: {fileID: 1759484689}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.724, y: 0.28, z: 0}
+  m_LocalPosition: {x: 1.207, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

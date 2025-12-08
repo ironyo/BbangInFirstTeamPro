@@ -5,9 +5,9 @@ public abstract class KU_Bullet : MonoBehaviour
     public Rigidbody2D _rigidbodyCompo { get; private set; }
 
     private Vector2 _moveDir;
-    public float _moveSpeed { get; private set; } = 5;
+    public float moveSpeed { get; private set; } = 5;
 
-    private Vector3 rotationSpeed = new Vector3(0, 0, 10);
+    private Vector3 rotationSpeed = new Vector3(0, 0, 5);
 
     public KU_Enemy targetEnemy { get; private set; }
 
@@ -28,13 +28,13 @@ public abstract class KU_Bullet : MonoBehaviour
     {
         targetEnemy = pos;
         _moveDir = pos.gameObject.transform.position - transform.position;
-        _rigidbodyCompo.linearVelocity = _moveDir.normalized * _moveSpeed;
+        _rigidbodyCompo.linearVelocity = _moveDir.normalized * moveSpeed;
     }
 
     public void StopBullet()
     {
         rotationSpeed = Vector3.zero;
-        _moveSpeed = 0;
+        moveSpeed = 0;
         _rigidbodyCompo.linearVelocity = Vector3.zero;
     }
 }

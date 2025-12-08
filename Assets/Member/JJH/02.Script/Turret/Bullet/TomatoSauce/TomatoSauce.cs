@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class TomatoSauce : MonoBehaviour
 {
     [SerializeField] private Transform origin;
-    [SerializeField] private Transform target;
 
     private SpriteRenderer sprite;
 
@@ -15,21 +13,10 @@ public class TomatoSauce : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
 
         //스프라이트가 화면에서 차지하는 가로 크기
-        baseLength = sprite.bounds.size.x;
-
-        target = GameObject.Find("Enemy").transform;
+        baseLength = sprite.size.x;
     }
 
-    private void Update()
-    {
-        //나중에 총으로 쏠때로 바꿔주기
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            ShotTomatoSauce();
-        }
-    }
-
-    private void ShotTomatoSauce()
+    public void ShotTomatoSauce(Transform target)
     {
         Vector3 dir = target.position - origin.position;
         float dist = dir.magnitude; //벡터 크기 구하기
@@ -45,6 +32,7 @@ public class TomatoSauce : MonoBehaviour
         scale.x = dist / baseLength;
         transform.localScale = scale;
 
-        GetComponent<LaserFade>().enabled = true;
+        if (gameObject.TryGetComponent<LaserFade>(out LaserFade laser))
+            laser.enabled = true;
     }
 }

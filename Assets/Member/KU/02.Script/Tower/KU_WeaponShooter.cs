@@ -7,7 +7,6 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class KU_WeaponShooter : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPref;
-    [SerializeField] private GameObject _shootParticlePref;
     [SerializeField] private Transform firePos;
 
     [SerializeField] private float angle;
@@ -51,7 +50,11 @@ public class KU_WeaponShooter : MonoBehaviour
     private void Shooting(Transform target)
     {
         if(target == null) return;
-        Instantiate(_shootParticlePref, firePos.transform.position, Quaternion.identity, transform);
+
+        Vector2 dir = target.position - firePos.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
         KU_Bullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_Bullet>();
         if (target.gameObject.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
         {

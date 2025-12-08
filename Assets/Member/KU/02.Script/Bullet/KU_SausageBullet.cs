@@ -27,7 +27,7 @@ public class KU_SausageBullet : KU_Bullet
             float angle = Random.Range(-90f, 90f);
             Vector2 reflect = Quaternion.Euler(0, 0, angle) * -incoming;
 
-            _rigidbodyCompo.linearVelocity = reflect * _moveSpeed;
+            _rigidbodyCompo.linearVelocity = reflect * moveSpeed;
         }
     }
 }
