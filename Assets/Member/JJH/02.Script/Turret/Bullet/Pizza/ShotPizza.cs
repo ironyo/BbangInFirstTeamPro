@@ -14,7 +14,7 @@ public class ShotPizza : FindCloseEnemy, IShotBullet
 
     private void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             ShotBullet();
         }

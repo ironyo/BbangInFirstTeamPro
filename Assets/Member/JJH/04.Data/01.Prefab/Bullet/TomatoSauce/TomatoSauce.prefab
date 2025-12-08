@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 3545081177974765793}
   - component: {fileID: 7658710945403402705}
   - component: {fileID: 6807429226648760078}
+  - component: {fileID: 8044472645943801171}
   m_Layer: 0
   m_Name: TomatoSauce
   m_TagString: Untagged
@@ -149,3 +150,17 @@ MonoBehaviour:
   startDelay: 0.1
   expandTime: 0.3
   fadeTime: 0.5
+  damage: 1
+--- !u!114 &8044472645943801171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839038540016175084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29dc52e439b887d4b9118a95ec952a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitParticle: {fileID: 69911336265201575, guid: 32dab21e2ca76a1428b7f38410dc2e38, type: 3}
