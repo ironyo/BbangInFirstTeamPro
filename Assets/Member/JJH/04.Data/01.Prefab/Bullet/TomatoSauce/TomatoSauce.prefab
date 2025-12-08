@@ -149,3 +149,4 @@ MonoBehaviour:
   startDelay: 0.1
   expandTime: 0.3
   fadeTime: 0.5
+  damage: 1

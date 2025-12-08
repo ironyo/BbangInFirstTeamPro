@@ -114,4 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 0.1
+  expandTime: 0.3
   fadeTime: 0.3
+  damage: 1

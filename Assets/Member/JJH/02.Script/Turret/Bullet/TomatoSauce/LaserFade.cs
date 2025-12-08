@@ -1,5 +1,6 @@
 using Assets.Member.CHG._02.Scripts.Pooling;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class LaserFade : MonoBehaviour, IRecycleObject
@@ -10,6 +11,9 @@ public class LaserFade : MonoBehaviour, IRecycleObject
     [SerializeField] private float startDelay = 0.2f;
     [SerializeField] private float expandTime = 0.3f;
     [SerializeField] private float fadeTime = 1.5f;
+    [SerializeField] private int damage = 2;
+
+    private bool isAttack = false;
 
     private float timer = 0f;
 
@@ -41,6 +45,11 @@ public class LaserFade : MonoBehaviour, IRecycleObject
 
         timer = 0f;
         state = FadeState.Expand;
+    }
+
+    private void OnDisable()
+    {
+        isAttack = false;
     }
 
     private void Update()
@@ -82,5 +91,24 @@ public class LaserFade : MonoBehaviour, IRecycleObject
                 }
                 break;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            if (!isAttack)
+            {
+                collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
+                StartCoroutine(AttackCooltimeCoroutine());
+            }
+        }
+    }
+
+    private IEnumerator AttackCooltimeCoroutine()
+    {
+        isAttack = true;
+        yield return new WaitForSeconds(0.01f);
+        isAttack = false;
     }
 }

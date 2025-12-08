@@ -1,11 +1,13 @@
 using Assets.Member.CHG._02.Scripts.Pooling;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PizzaBullet : IncreaseSpeed, IRecycleObject
 {
     [SerializeField] private GameObject childrenBullet;
     [SerializeField] private GameObject tomatoSauce;
+    [SerializeField] private int damage = 3;
 
     Factory pizzaPieceFactory;
     Factory tomatoSauceFactory;
@@ -15,6 +17,8 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
     public Action<IRecycleObject> Destroyed { get; set; }
 
     public GameObject GameObject => gameObject;
+
+    private bool isAttack = false;
 
     private void Start()
     {
@@ -26,6 +30,11 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
     {
         bulletMove = GetComponent<BulletMove>();
         bulletSpeed = bulletMove.Speed;
+    }
+
+    private void OnDisable()
+    {
+        isAttack = false;
     }
 
     private void Update()
@@ -40,6 +49,12 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
     {
         if (collision.CompareTag("Enemy"))
         {
+            if (!isAttack)
+            {
+                collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
+                StartCoroutine(AttackCooltimeCoroutine());
+            }
+
             CameraShake.Instance.ImpulseForce(3f);
 
             float offset = 1.5f;
@@ -62,5 +77,12 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
             }
             Destroyed?.Invoke(this);
         }
+    }
+
+    private IEnumerator AttackCooltimeCoroutine()
+    {
+        isAttack = true;
+        yield return new WaitForSeconds(0.01f);
+        isAttack = false;
     }
 }
