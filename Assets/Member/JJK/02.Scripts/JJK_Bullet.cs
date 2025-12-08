@@ -9,17 +9,17 @@ public class JJK_Bullet : MonoBehaviour
     private float _timer = 0f;
     private bool _throughFire;
     private BulletDataSO _bulletData;
+    private BulletMove _bulletMove;
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _bulletMove = GetComponentInChildren<BulletMove>();
     }
 
     private void Update()
     {
-        _rb.linearVelocity = transform.right * _bulletData.Speed;
         _timer += Time.deltaTime;
-
+        
         if (_timer > _lifeTime)
         {
             _timer = 0;
@@ -32,11 +32,12 @@ public class JJK_Bullet : MonoBehaviour
         _bulletData = bulletData;
         _throughFire = throughFire;
         _lifeTime = bulletData.LifeTime;
+        _bulletMove.Speed = bulletData.Speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Customer"))
+        if (collision.CompareTag("Enemy"))
         {
             if (_bulletData.CollisionParticle != null)
                 Instantiate(_bulletData.CollisionParticle, transform.position, Quaternion.identity);
@@ -46,7 +47,7 @@ public class JJK_Bullet : MonoBehaviour
             if (_throughFire)
             {
                 Debug.Log($"Damage: {_bulletData.Damage}");
-                return;
+                ThroughShot(collision.transform.position);
             }
             else
             {
@@ -64,5 +65,10 @@ public class JJK_Bullet : MonoBehaviour
                 
             Destroy(gameObject);
         }
+    }
+
+    private void ThroughShot(Vector2 shotPos)
+    {
+        
     }
 }

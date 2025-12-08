@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - DeadZone
+  - RunTarget
+  - CloseTarget
   layers:
   - Default
   - TransparentFX

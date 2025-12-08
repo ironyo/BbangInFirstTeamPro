@@ -1,9 +1,17 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ShotTomatoSauce : FindCloseEnemy, IShotBullet
 {
-    [SerializeField] private TomatoSauce tomatoSauce;
+    [SerializeField] private GameObject tomatoSauce;
+
+    Factory factory;
+
+    private void Start()
+    {
+        factory = new Factory(tomatoSauce, 5);
+    }
 
     private void Update()
     {
@@ -26,7 +34,9 @@ public class ShotTomatoSauce : FindCloseEnemy, IShotBullet
 
         CameraShake.Instance.ImpulseForce(0.5f);
 
-        TomatoSauce tomato = Instantiate(tomatoSauce, transform.position, rotation);
-        tomato.ShotTomatoSauce(FindCloseEnemyTrans());
+        IRecycleObject obj = factory.Get();
+        obj.GameObject.transform.position = transform.position;
+        obj.GameObject.transform.rotation = rotation;
+        obj.GameObject.GetComponent<TomatoSauce>().ShotTomatoSauce(FindCloseEnemyTrans());
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4515890292049282590}
   - component: {fileID: 2224165896983223209}
   - component: {fileID: 9882921656283419}
+  - component: {fileID: 816011216870257099}
   m_Layer: 0
   m_Name: PizzaBullet
   m_TagString: Untagged
@@ -182,6 +183,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childrenBullet: {fileID: 4929954181208091069, guid: d5ec889fd10c40c4aac672a865fc9053, type: 3}
   tomatoSauce: {fileID: 5572346658622393130, guid: 22653064bb3a7274d8f0ee2295de8d60, type: 3}
+  damage: 3
+--- !u!114 &816011216870257099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116081282322743765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29dc52e439b887d4b9118a95ec952a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitParticle: {fileID: 69911336265201575, guid: 32dab21e2ca76a1428b7f38410dc2e38, type: 3}
 --- !u!1 &7483984270160791339
 GameObject:
   m_ObjectHideFlags: 0

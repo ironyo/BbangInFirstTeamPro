@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4751070850858089338}
   - component: {fileID: 7028548090047014215}
   - component: {fileID: 7817647956141096028}
+  - component: {fileID: -836480249830201773}
   m_Layer: 0
   m_Name: Pepperoni
   m_TagString: Untagged
@@ -180,6 +181,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0039aa2b8d2af6e40811a34e51ece5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+--- !u!114 &-836480249830201773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4696753182146962447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29dc52e439b887d4b9118a95ec952a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitParticle: {fileID: 69911336265201575, guid: 32dab21e2ca76a1428b7f38410dc2e38, type: 3}
 --- !u!1 &4993315867536089517
 GameObject:
   m_ObjectHideFlags: 0

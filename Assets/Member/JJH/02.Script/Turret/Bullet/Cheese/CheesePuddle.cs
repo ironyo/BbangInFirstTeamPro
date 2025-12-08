@@ -1,10 +1,28 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
 using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 
-public class CheesePuddle : MonoBehaviour
+public class CheesePuddle : MonoBehaviour, IRecycleObject
 {
+    private SpriteRenderer spriteRenderer;
+
     private float lifeTime = 3f;
+
+    public Action<IRecycleObject> Destroyed { get; set; }
+    public GameObject GameObject => gameObject;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnDisable()
+    {
+        spriteRenderer.DOFade(1f, 0f);
+        gameObject.transform.DOScale(1f, 0f);
+    }
 
     private void OnEnable()
     {
@@ -15,7 +33,7 @@ public class CheesePuddle : MonoBehaviour
     private IEnumerator DestroyCoroutine()
     {
         yield return new WaitForSeconds(lifeTime);
-        Destroy(gameObject);
+        spriteRenderer.DOFade(0f, 0.2f).OnComplete(() => Destroyed?.Invoke(this));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

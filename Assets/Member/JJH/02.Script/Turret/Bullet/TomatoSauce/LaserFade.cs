@@ -1,6 +1,9 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
+using System.Collections;
 using UnityEngine;
 
-public class LaserFade : MonoBehaviour
+public class LaserFade : MonoBehaviour, IRecycleObject
 {
     private SpriteRenderer sprite;
     private Material material;
@@ -8,6 +11,9 @@ public class LaserFade : MonoBehaviour
     [SerializeField] private float startDelay = 0.2f;
     [SerializeField] private float expandTime = 0.3f;
     [SerializeField] private float fadeTime = 1.5f;
+    [SerializeField] private int damage = 2;
+
+    private bool isAttack = false;
 
     private float timer = 0f;
 
@@ -19,17 +25,33 @@ public class LaserFade : MonoBehaviour
     }
     private FadeState state = FadeState.Expand;
 
+    public Action<IRecycleObject> Destroyed { get; set; }
+
+    public GameObject GameObject => gameObject;
+
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         material = sprite.material;
-
-        material.SetFloat("HalfHeight", 0f);
     }
 
     private void OnEnable()
     {
+        if (sprite == null)
+            sprite = GetComponent<SpriteRenderer>();
+
+        if (material == null && sprite != null)
+            material = sprite.material;
+
         timer = 0f;
+        state = FadeState.Expand;
+
+        StartCoroutine(DeadCoroutine());
+    }
+
+    private void OnDisable()
+    {
+        isAttack = false;
     }
 
     private void Update()
@@ -67,9 +89,34 @@ public class LaserFade : MonoBehaviour
                     material.SetFloat("HalfHeight", half);
 
                     if (t >= 1f)
-                        Destroy(gameObject);
+                        Destroyed?.Invoke(this);
                 }
                 break;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            if (!isAttack)
+            {
+                collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
+                StartCoroutine(AttackCooltimeCoroutine());
+            }
+        }
+    }
+
+    private IEnumerator AttackCooltimeCoroutine()
+    {
+        isAttack = true;
+        yield return new WaitForSeconds(0.01f);
+        isAttack = false;
+    }
+
+    private IEnumerator DeadCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroyed?.Invoke(this);
     }
 }
