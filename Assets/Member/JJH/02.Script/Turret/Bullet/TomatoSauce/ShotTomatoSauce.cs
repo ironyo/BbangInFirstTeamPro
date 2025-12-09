@@ -24,6 +24,6 @@ public class ShotTomatoSauce : TurretBase
         IRecycleObject obj = factory.Get();
         obj.GameObject.transform.position = firePos.position;
         obj.GameObject.transform.rotation = rotation;
-        obj.GameObject.GetComponent<TomatoSauce>().ShotTomatoSauce(Target);
+        obj.GameObject.GetComponent<TomatoSauce>().ShotTomatoSauce(Target, firePos);
     }
 }
