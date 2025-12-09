@@ -7,6 +7,7 @@ public class KU_BreadBullet : KU_Bullet
 {
     [SerializeField] private GameObject _explosionPref;
     [SerializeField] private Vector3 _explosionSize = new Vector3(3, 3, 3);
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
@@ -16,6 +17,7 @@ public class KU_BreadBullet : KU_Bullet
             enemy.MinusHP(3);
             GameObject obj = Instantiate(_explosionPref, transform.position, Quaternion.identity);
             obj.transform.localScale = _explosionSize;
+            BoomParticle();
             StartCoroutine(DestroyObj(obj));
             Destroy(gameObject);
             return;
