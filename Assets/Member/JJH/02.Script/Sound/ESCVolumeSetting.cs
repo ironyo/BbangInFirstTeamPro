@@ -39,8 +39,6 @@ public class ESCVolumeSetting : MonoBehaviour
     private void Update()
     {
         ESCPress();
-        if (inGame)
-            SetShowType();
     }
 
     private void SetVolume()
@@ -60,6 +58,7 @@ public class ESCVolumeSetting : MonoBehaviour
         if (Keyboard.current.escapeKey.wasPressedThisFrame && inGame)
         {
             showType = showType == SettingType.Show ? SettingType.Hide : SettingType.Show;
+            SetShowType();
         }
     }
 
@@ -69,13 +68,13 @@ public class ESCVolumeSetting : MonoBehaviour
         {
             escButton.SetActive(false);
             settingPanel.SetActive(true);
-            panelRect.DOAnchorPos(new Vector3(960, 540, 0), 0.3f).SetUpdate(true);
+            panelRect.DOAnchorPos(new Vector3(0, 0, 0), 0.3f).SetUpdate(true);
             Time.timeScale = 0f;
         }
         else
         {
             escButton.SetActive(true);
-            panelRect.DOAnchorPos(new Vector3(960, 1700, 0), 0.3f).SetUpdate(true)
+            panelRect.DOAnchorPos(new Vector3(0, 1200, 0), 0.3f).SetUpdate(true)
                 .OnComplete(() => settingPanel.SetActive(false));
             Time.timeScale = 1f;
         }
