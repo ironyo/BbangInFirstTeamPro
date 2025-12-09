@@ -1,0 +1,88 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
+using UnityEngine;
+
+public abstract class TurretBase : MonoBehaviour
+{
+    private bool _targetingClosed = true;
+    private float _attackRange;
+    private float _cooldownTime = 2f;
+    private float _currentCoolTime = 0;
+    protected ProjectileSO _projectileSO;
+    protected Transform Target;
+    public LayerMask CustomerLayer = 7;
+    private bool IsSkillAcailable => (Time.time - _currentCoolTime > _cooldownTime);
+    protected Factory _projectileFactory;
+    public void Init(TurretSO turretData)
+    {
+        _targetingClosed = turretData.TargetingClosedEnemy;
+        _attackRange = turretData.AttackRange;
+        _currentCoolTime = turretData.AttackCoolTime;
+
+        _projectileSO = turretData.ProjectileSO;
+        _projectileFactory = new Factory(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+        //PoolManager.Instance.RegisterPool(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+    }
+
+    protected void Update()
+    {
+
+        Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, _attackRange, CustomerLayer);
+
+        if (enemys.Length <= 0) return;
+
+        if (_targetingClosed)
+        {
+            Transform closestTarget = null;
+            float shortDistance = Mathf.Infinity;
+
+            foreach (var item in enemys)
+            {
+                float distance = Vector3.Distance(transform.position, item.transform.position);
+
+                if (distance < shortDistance)
+                {
+                    shortDistance = distance;
+                    closestTarget = item.gameObject.transform;
+                }
+            }
+            Target = closestTarget;
+        }
+        else
+        {
+            Transform farTarget = null;
+            float longDistance = 0;
+            foreach (var item in enemys)
+            {
+                float distance = Vector3.Distance(transform.position, item.transform.position);
+                if (distance > longDistance)
+                {
+                    longDistance = distance;
+                    farTarget = item.gameObject.transform;
+                }
+            }
+            Target = farTarget;
+        }
+
+        Vector3 dir = Target.position - transform.position;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        if (IsSkillAcailable)
+        {
+            Shoot();
+            _currentCoolTime = Time.time;
+        }
+
+
+    }
+
+    public abstract void Shoot();
+
+
+    protected void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _attackRange);
+    }
+}
