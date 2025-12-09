@@ -9,12 +9,12 @@ public class ProjectileBoomerang : ProjectileBase
     [SerializeField] private float ReturnTime;
     private float _duration;
     private float _t;
-    private bool _canShoot = false;
+    private bool _isLaunched = false;
     private bool _isHit = false;
     private float _speed;
-    public override void SetUp(Transform shooter ,Transform target, float damage, int maxCount = 1, int index = 0)
+    public override void SetUp(Transform shooter ,Transform target)
     {
-        base.SetUp(shooter, target, damage);
+        base.SetUp(shooter, target);
 
         _start = transform.position;
         _end = target.position;
@@ -24,12 +24,12 @@ public class ProjectileBoomerang : ProjectileBase
         _movementRigidBody.MoveTo((_end - _start).normalized);
 
         _speed = _movementRigidBody.MoveSpeed;
-        _canShoot = true;
+        _isLaunched = true;
     }
 
     private void Update()
     {
-        if (_canShoot)
+        if (_isLaunched)
             Process();
     }
     public override void Process()
@@ -59,7 +59,4 @@ public class ProjectileBoomerang : ProjectileBase
         }
     }
 
-    protected override void OnExit(Collider2D collision)
-    {
-    }
 }
