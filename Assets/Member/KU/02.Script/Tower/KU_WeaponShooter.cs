@@ -58,7 +58,7 @@ public class KU_WeaponShooter : MonoBehaviour
         KU_Bullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_Bullet>();
         if (target.gameObject.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
         {
-            bullet.GetTarget(enemy);
+            bullet.GetTarget(enemy, angle);
         }
     }
 }

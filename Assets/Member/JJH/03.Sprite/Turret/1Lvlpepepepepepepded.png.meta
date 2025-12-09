@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 58fef8c62c86e7e4b8fae967812bba42
+guid: 249b41e3e3e917641a139eef4e4f5370
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5661783315169486296
-    second: Potato_0
+      213: -7233585573080940528
+    second: 1Lvlpepepepepepepded_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 19
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Potato_0
+      name: 1Lvlpepepepepepepded_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 45
-        width: 415
-        height: 301
+        x: 6
+        y: 13
+        width: 7
+        height: 15
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82ad610821e4d61b0800000000000000
-      internalID: -5661783315169486296
+      spriteID: 010ce181f342d9b90800000000000000
+      internalID: -7233585573080940528
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5aae8ec03007eb8489223704ca2c96ec
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Potato_0: -5661783315169486296
+      1Lvlpepepepepepepded_0: -7233585573080940528
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
