@@ -168,6 +168,7 @@ MonoBehaviour:
   CustomerLayer:
     serializedVersion: 2
     m_Bits: 128
+  muzzle: {fileID: 1182441120616193345}
   pepperoni: {fileID: 4696753182146962447, guid: dc4dd855b6fab6c4397e07efc7b576fc, type: 3}
   firePos: {fileID: 9076225916266739549}
 --- !u!1 &6999891191593389057
