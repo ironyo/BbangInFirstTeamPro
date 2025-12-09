@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class ShotCheese : FindCloseEnemy, IShotBullet
 {
     [SerializeField] private GameObject cheese;
+    [SerializeField] private Transform firePos;
     Factory factory;
     private float spread = 15f;
 
@@ -46,7 +47,7 @@ public class ShotCheese : FindCloseEnemy, IShotBullet
     private void SpawnCheese(Quaternion rotation)
     {
         IRecycleObject obj = factory.Get();
-        obj.GameObject.transform.position = transform.position;
+        obj.GameObject.transform.position = firePos.position;
         obj.GameObject.transform.rotation = rotation;
     }
 }
