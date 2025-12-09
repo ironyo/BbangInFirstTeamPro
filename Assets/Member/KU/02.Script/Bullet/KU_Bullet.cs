@@ -40,21 +40,26 @@ public abstract class KU_Bullet : MonoBehaviour
     {
         Instantiate(_boomParticlePref, transform.position, Quaternion.identity);
     }
-    public void GetTarget(KU_Enemy pos)
+    public void GetTarget(KU_Enemy pos, float angle)
     {
         targetEnemy = pos;
         _moveDir = pos.gameObject.transform.position - transform.position;
         _rigidbodyCompo.linearVelocity = _moveDir.normalized * moveSpeed;
         _nowTargetSet = true;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public void StopBullet()
     {
-        rotationSpeed = Vector3.zero;
-        moveSpeed = 0;
+        RotationStop();
+        //moveSpeed = 0;
         _rigidbodyCompo.linearVelocity = Vector3.zero;
     }
-    
+    public void RotationStop()
+    {
+        rotationSpeed = Vector3.zero;
+    }
+
     public IEnumerator LifeTime()
     {
         _nowTargetSet = false;

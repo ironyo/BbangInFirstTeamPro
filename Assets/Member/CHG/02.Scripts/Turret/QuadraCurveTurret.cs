@@ -1,6 +1,6 @@
+using UnityEngine;
 using Assets.Member.CHG._02.Scripts.Pooling;
 using DG.Tweening;
-using UnityEngine;
 
 public enum TestProjectileType
 {
@@ -14,6 +14,7 @@ public enum TestProjectileType
 
 public class QuadraCurveTurret : TurretBase
 {
+    [SerializeField] private GameObject ProjectilePrefab;
     //private void BoomerangShoot()
     //{
     //GameObject projectile = GameObject.Instantiate(ProjectilePrefab[0], SkillSpawnPoint.position, Quaternion.identity);
@@ -37,6 +38,12 @@ public class QuadraCurveTurret : TurretBase
     //projectile1.SetUp(transform, Target);
     //projectile2.SetUp(transform, Target);
     //}
+
+    private Factory _projectileFactory;
+    private void OnEnable()
+    {
+        _projectileFactory = new Factory(ProjectilePrefab, 4);
+    }
 
     private void QuadraCurveShoot()
     {

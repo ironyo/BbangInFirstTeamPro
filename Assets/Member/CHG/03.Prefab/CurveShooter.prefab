@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9109415808251344611}
   - component: {fileID: 6376873450535249050}
   m_Layer: 8
-  m_Name: Shooter
+  m_Name: CurveShooter
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,10 +107,8 @@ MonoBehaviour:
   CustomerLayer:
     serializedVersion: 2
     m_Bits: 128
-  _projectileType: 3
-  ProjectilePrefab:
-  - {fileID: 7151069113013574790, guid: e7564f4a5b698d648a2bedae3ff850f3, type: 3}
-  - {fileID: 6856611375793059518, guid: 89a1b87c71856a740b7377c84a68caf1, type: 3}
+  muzzle: {fileID: 4110228318303331439}
+  ProjectilePrefab: {fileID: 6856611375793059518, guid: 89a1b87c71856a740b7377c84a68caf1, type: 3}
 --- !u!61 &4669467369367711181
 BoxCollider2D:
   m_ObjectHideFlags: 0
