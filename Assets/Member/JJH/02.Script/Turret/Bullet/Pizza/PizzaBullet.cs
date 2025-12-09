@@ -1,16 +1,45 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
+using System.Collections;
 using UnityEngine;
 
-public class PizzaBullet : IncreaseSpeed
+public class PizzaBullet : IncreaseSpeed, IRecycleObject
 {
     [SerializeField] private GameObject childrenBullet;
     [SerializeField] private GameObject tomatoSauce;
+    [SerializeField] private int damage = 3;
+
+    Factory pizzaPieceFactory;
+    Factory tomatoSauceFactory;
 
     private BulletMove bulletMove;
+
+    public Action<IRecycleObject> Destroyed { get; set; }
+
+    public GameObject GameObject => gameObject;
+
+    private bool isAttack = false;
+
+    private void Start()
+    {
+        pizzaPieceFactory = new Factory(childrenBullet, 8);
+        tomatoSauceFactory = new Factory(tomatoSauce, 8);
+    }
 
     private void OnEnable()
     {
         bulletMove = GetComponent<BulletMove>();
-        bulletSpeed = bulletMove.Speed;
+        bulletSpeed = 0f;
+        timer = 0f;
+
+        bulletMove.Speed = 0f;
+
+        StartCoroutine(DeadCoroutine());
+    }
+
+    private void OnDisable()
+    {
+        isAttack = false;
     }
 
     private void Update()
@@ -25,6 +54,12 @@ public class PizzaBullet : IncreaseSpeed
     {
         if (collision.CompareTag("Enemy"))
         {
+            if (!isAttack)
+            {
+                collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
+                StartCoroutine(AttackCooltimeCoroutine());
+            }
+
             CameraShake.Instance.ImpulseForce(3f);
 
             float offset = 1.5f;
@@ -37,11 +72,28 @@ public class PizzaBullet : IncreaseSpeed
                 // 현재 위치에 위치 +해주기
                 Vector3 spawnPos = transform.position + dir * offset;
 
-                Instantiate(childrenBullet, spawnPos, Quaternion.Euler(0, 0, i - 90));
-                Instantiate(tomatoSauce, transform.position, Quaternion.Euler(0, 0, i));
-            }
+                IRecycleObject pizzaObj = pizzaPieceFactory.Get();
+                pizzaObj.GameObject.transform.position = spawnPos;
+                pizzaObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i - 90);
 
-            Destroy(gameObject);
+                IRecycleObject tomatoObj = tomatoSauceFactory.Get();
+                tomatoObj.GameObject.transform.position = transform.position;
+                tomatoObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i);
+            }
+            Destroyed?.Invoke(this);
         }
+    }
+
+    private IEnumerator AttackCooltimeCoroutine()
+    {
+        isAttack = true;
+        yield return new WaitForSeconds(0.01f);
+        isAttack = false;
+    }
+
+    private IEnumerator DeadCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroyed?.Invoke(this);
     }
 }
