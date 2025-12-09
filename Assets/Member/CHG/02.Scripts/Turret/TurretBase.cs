@@ -1,4 +1,6 @@
+using System;
 using Assets.Member.CHG._02.Scripts.Pooling;
+using DG.Tweening;
 using UnityEngine;
 
 public abstract class TurretBase : MonoBehaviour
@@ -7,10 +9,12 @@ public abstract class TurretBase : MonoBehaviour
     private float _attackRange;
     private float _cooldownTime = 2f;
     private float _currentCoolTime = 0;
-    protected ProjectileSO _projectileSO;
     protected Transform Target;
     public LayerMask CustomerLayer = 7;
     private bool IsSkillAcailable => (Time.time - _currentCoolTime > _cooldownTime);
+    [SerializeField] private Transform muzzle;
+    private Vector3 startPos;
+
     //protected Factory _projectileFactory;
     public void Init(TurretSO turretData)
     {
@@ -69,6 +73,10 @@ public abstract class TurretBase : MonoBehaviour
 
         if (IsSkillAcailable)
         {
+            muzzle.transform.DOLocalMove(startPos + new Vector3(0, -0.5f, 0), 0.05f)
+            .OnComplete(() =>
+                muzzle.transform.DOLocalMove(startPos, 0.1f)
+            );
             Shoot();
             _currentCoolTime = Time.time;
         }
@@ -77,6 +85,13 @@ public abstract class TurretBase : MonoBehaviour
     }
 
     public abstract void Shoot();
+
+    private void OnEnable()
+    {
+        startPos = muzzle.transform.localPosition;
+    }
+
+
 
 
     protected void OnDrawGizmos()
