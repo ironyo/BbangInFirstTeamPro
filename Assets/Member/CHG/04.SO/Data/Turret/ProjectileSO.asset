@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: ProjectileSO
   m_EditorClassIdentifier: 
   ProjectileSprite: {fileID: -41970534257140035, guid: 71b17cfb51697a148b8a86e91c6feab2, type: 3}
-  ProjectilePrice: 0
+  ProjectilePrice: 26
   ProjectilePrefab: {fileID: 6856611375793059518, guid: 89a1b87c71856a740b7377c84a68caf1, type: 3}
+  PoolSize: 4

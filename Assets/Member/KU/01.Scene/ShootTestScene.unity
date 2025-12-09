@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251c0b51156ac304f8a4a9ee32e60a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPref: {fileID: 8138199493044080686, guid: 598ca4af660e1484084c16ec12f16abb, type: 3}
+  bulletPref: {fileID: 6474800333962078892, guid: c84e85f6faa123948b4fd5f7cf097b99, type: 3}
   firePos: {fileID: 106530443}
   angle: 10
   _enemyLayer:

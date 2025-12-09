@@ -7,6 +7,5 @@ public class ProjectileSO : ScriptableObject
     public int ProjectilePrice;
 
     public GameObject ProjectilePrefab;
-    public TestProjectileType ProjectileType;
     public int PoolSize;
 }
