@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
-  m_Name: PepperoniTurret
+  m_Name: CheeseTurret
   m_EditorClassIdentifier: 
   TurretSprite: {fileID: 0}
   TurretPrice: 0
-  TurretPrefab: {fileID: 4871472531971685378, guid: 4769cc60ea7d9f243be6ed42e3e79a07, type: 3}
-  AttackCoolTime: 0.5
+  TurretPrefab: {fileID: 2450411391319919705, guid: 4ec1ca1635a63264b8846fe373e9425f, type: 3}
+  AttackCoolTime: 1
   AttackRange: 7
   TargetingClosedEnemy: 1
