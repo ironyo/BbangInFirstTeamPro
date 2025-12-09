@@ -1,4 +1,5 @@
 using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,8 @@ public class ShotCheese : FindCloseEnemy, IShotBullet
     [SerializeField] private GameObject cheese;
     Factory factory;
     private float spread = 15f;
+
+    public Action OnShot;
 
     private void Start()
     {
@@ -17,6 +20,7 @@ public class ShotCheese : FindCloseEnemy, IShotBullet
     {
         if (Keyboard.current.sKey.wasPressedThisFrame)
         {
+            OnShot?.Invoke();
             ShotBullet();
         }
     }
