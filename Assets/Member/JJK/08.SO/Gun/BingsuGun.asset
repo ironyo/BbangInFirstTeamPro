@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BingsuGun
   m_EditorClassIdentifier: 
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: b747cd44a6f0eac43ba684a66c34e8b7, type: 2}
+  <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 54fc967c455dfdb4d97502f795633010, type: 3}
   <CoolDown>k__BackingField: 1.5
   <DetectRange>k__BackingField: 7
   <CameraShakeForce>k__BackingField: 0.15

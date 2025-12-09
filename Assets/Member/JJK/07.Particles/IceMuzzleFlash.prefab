@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6815408187954351444}
   - component: {fileID: 8551993683700159026}
   m_Layer: 0
-  m_Name: MuzzleParticle
+  m_Name: IceMuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4884,7 +4884,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 561752fcdb735cf4193064c28771ec01, type: 2}
+  - {fileID: 2100000, guid: 456b4f55f02beef419f4781fc9a9f904, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

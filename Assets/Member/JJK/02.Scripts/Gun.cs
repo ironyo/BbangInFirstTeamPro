@@ -1,13 +1,11 @@
-    using System;
+using Assets.Member.CHG._02.Scripts.Pooling;
 using DG.Tweening;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Gun : FindCloseEnemy, IShotBullet
 {
     [SerializeField] private GunDataSO gunData;
     [SerializeField] private Transform firePos;
-    [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private float rotationSpeed = 20f;
     
     [Header("반동")]
@@ -24,8 +22,6 @@ public class Gun : FindCloseEnemy, IShotBullet
     private void Start()
     {
         _lastFireTime = -gunData.CoolDown; //처음 발사는 쿨타임X
-        
-        
     }
 
     private void Update()
@@ -67,7 +63,10 @@ public class Gun : FindCloseEnemy, IShotBullet
         for (int i = 0; i < gunData.GetBullet(); i++)
         {
             var bulletData = gunData.DefaultBullet;
-            GameObject bullet = Instantiate(bulletData.BulletPrefab, firePos.position, transform.rotation * CalculateAngle(i));
+            var bullet = BulletPoolManager.Instance.Get(bulletData.BulletPrefab).GameObject;
+
+            bullet.transform.position = firePos.position;
+            bullet.transform.rotation = transform.rotation * CalculateAngle(i);
             bullet.GetComponent<JJK_Bullet>().SetData(bulletData, gunData.ThroughFire);
         }
         
@@ -88,10 +87,10 @@ public class Gun : FindCloseEnemy, IShotBullet
     
     private void SpawnMuzzleParticle()
     {
-        GameObject muzzleParticle = Instantiate(muzzleFlash, firePos.position, Quaternion.Euler(0, 0, _desireAngle + _offset));
+        GameObject muzzleParticle = Instantiate(gunData.MuzzleFlash, firePos.position, Quaternion.Euler(0, 0, _desireAngle + _offset));
         
-        int flip = _desireAngle > 0 ? -1 : 1;
-        muzzleParticle.transform.localScale = new Vector3(transform.localScale.x, flip * Mathf.Abs(transform.localScale.y), transform.localScale.z);
+        int flip = _desireAngle > 0 && _desireAngle < 180 ? -1 : 1;
+        muzzleParticle.transform.localScale = new Vector3( transform.localScale.x, flip * Mathf.Abs(transform.localScale.y), transform.localScale.z);
     }
     
     private void DoRecoil()

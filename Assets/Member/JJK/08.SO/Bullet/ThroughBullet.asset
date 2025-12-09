@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97b4d4df300dc6d4f961039242cbe352, type: 3}
-  m_Name: BingsuBullet
+  m_Name: ThroughBullet
   m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7223630651044081690, guid: 5092b03400f0fe148ae1d580a7f7423b, type: 3}
+  <BulletPrefab>k__BackingField: {fileID: 7223630651044081690, guid: 7377d0d2e96962744aea7e8bb5bd547c, type: 3}
   <CollisionParticle>k__BackingField: {fileID: 584123716942813891, guid: cf961b618efa20f4199eabb38db8a89d, type: 3}
   <DisableParticle>k__BackingField: {fileID: 584123716942813891, guid: 4092f5081b597c140a16bfb1fffa4aa0, type: 3}
   <Damage>k__BackingField: 10
-  <LifeTime>k__BackingField: 2
-  <Speed>k__BackingField: 8
-  <CameraShakeForce>k__BackingField: 0.15
+  <LifeTime>k__BackingField: 0.6
+  <Speed>k__BackingField: 12
+  <CameraShakeForce>k__BackingField: 0.1
   <ThroughShotData>k__BackingField:
-    <BulletData>k__BackingField: {fileID: 11400000, guid: 58f5cc253a5cb1b40a722aa4877374a6, type: 2}
-    <BulletCount>k__BackingField: 3
-    <SpreadAngle>k__BackingField: 15
+    <BulletData>k__BackingField: {fileID: 0}
+    <BulletCount>k__BackingField: 0
+    <SpreadAngle>k__BackingField: 0
