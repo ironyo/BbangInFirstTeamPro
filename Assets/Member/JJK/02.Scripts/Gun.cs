@@ -1,8 +1,7 @@
-using Assets.Member.CHG._02.Scripts.Pooling;
 using DG.Tweening;
 using UnityEngine;
 
-public class Gun : FindCloseEnemy, IShotBullet
+public class Gun : TurretBase
 {
     [SerializeField] private GunDataSO gunData;
     [SerializeField] private Transform firePos;
@@ -12,53 +11,12 @@ public class Gun : FindCloseEnemy, IShotBullet
     [SerializeField] private float recoilBackAmount = 0.1f;
     [SerializeField] private float recoilBackTime = 0.05f;
     [SerializeField] private float recoilReturnTime = 0.15f;
-
-    private Transform _target;
-    private float _lastFireTime;
+    
     private Tween _recoilTween;
     private float _desireAngle;
     private float _offset = 90f;
-
-    private void Start()
-    {
-        _lastFireTime = -gunData.CoolDown; //처음 발사는 쿨타임X
-    }
-
-    private void Update()
-    {
-        _target = FindCloseEnemyTrans();
-
-        if (_target != null)
-        {
-            GunRotation();
-            
-            if (IsAimTarget())
-            {
-                if (Time.time - _lastFireTime > gunData.CoolDown)
-                {
-                    ShotBullet();
-                    _lastFireTime = Time.time;
-                }
-            }
-        }
-    }
-
-    private bool IsAimTarget()
-    {
-        Vector2 targetDir = _target.transform.position - firePos.position;
-        float diff = Vector2.Angle(transform.up, targetDir);
-        
-        return diff < 3f;
-    }
-
-    private void GunRotation()
-    {
-        Vector2 dir =  _target.transform.position - firePos.position;
-        _desireAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - _offset;
-        transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, Quaternion.Euler(0, 0, _desireAngle), Time.deltaTime * rotationSpeed);
-    }
-
-    public void ShotBullet()
+    
+    public override void Shoot()
     {
         for (int i = 0; i < gunData.GetBullet(); i++)
         {

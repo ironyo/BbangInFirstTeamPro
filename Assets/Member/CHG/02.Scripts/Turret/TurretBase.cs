@@ -8,19 +8,28 @@ public abstract class TurretBase : MonoBehaviour
     private float _cooldownTime = 2f;
     private float _currentCoolTime = 0;
     protected ProjectileSO _projectileSO;
+    protected BulletDataSO _bulletDataSO;
     protected Transform Target;
     public LayerMask CustomerLayer = 7;
     private bool IsSkillAcailable => (Time.time - _currentCoolTime > _cooldownTime);
     protected Factory _projectileFactory;
-    public void Init(TurretSO turretData)
+    public void Init(TurretSO turretData, GunDataSO gunData)
     {
-        _targetingClosed = turretData.TargetingClosedEnemy;
-        _attackRange = turretData.AttackRange;
-        _currentCoolTime = turretData.AttackCoolTime;
+        if (gunData == null)
+        {
+            _targetingClosed = turretData.TargetingClosedEnemy;
+            _attackRange = turretData.AttackRange;
+            _currentCoolTime = turretData.AttackCoolTime;
 
-        _projectileSO = turretData.ProjectileSO;
-        _projectileFactory = new Factory(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
-        //PoolManager.Instance.RegisterPool(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+            _projectileSO = turretData.ProjectileSO;
+            _projectileFactory = new Factory(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+            //PoolManager.Instance.RegisterPool(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+        }
+        else
+        {
+            _attackRange = gunData.DetectRange;
+            _currentCoolTime = gunData.CoolDown;
+        }
     }
 
     protected void Update()
@@ -73,8 +82,6 @@ public abstract class TurretBase : MonoBehaviour
             Shoot();
             _currentCoolTime = Time.time;
         }
-
-
     }
 
     public abstract void Shoot();

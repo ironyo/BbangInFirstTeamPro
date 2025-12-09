@@ -11,4 +11,5 @@ public class TurretSO : ScriptableObject
     public float AttackRange;
     public bool TargetingClosedEnemy;
     public ProjectileSO ProjectileSO;
+    public GunDataSO GunData;
 }

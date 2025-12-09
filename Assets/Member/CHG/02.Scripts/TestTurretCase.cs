@@ -15,7 +15,7 @@ namespace Assets.Member.CHG._02.Scripts
             GameObject obj = Instantiate(_turretSO.TurretPrefab, transform.position, Quaternion.identity);
             TurretBase turret = obj.GetComponent<TurretBase>();
 
-            turret.Init(_turretSO);
+            turret.Init(_turretSO, null);
 
 
         }
