@@ -11,15 +11,14 @@ public abstract class TurretBase : MonoBehaviour
     protected Transform Target;
     public LayerMask CustomerLayer = 7;
     private bool IsSkillAcailable => (Time.time - _currentCoolTime > _cooldownTime);
-    protected Factory _projectileFactory;
+    //protected Factory _projectileFactory;
     public void Init(TurretSO turretData)
     {
         _targetingClosed = turretData.TargetingClosedEnemy;
         _attackRange = turretData.AttackRange;
         _currentCoolTime = turretData.AttackCoolTime;
 
-        _projectileSO = turretData.ProjectileSO;
-        _projectileFactory = new Factory(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+        //_projectileFactory = new Factory(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
         //PoolManager.Instance.RegisterPool(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
     }
 
