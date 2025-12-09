@@ -2580,7 +2580,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a0868debdc51945428830da66dbf1745, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10eb1addc7a21a640b68a61572e3708d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3865,44 +3865,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1213736144}
-  - component: {fileID: 1213736143}
   - component: {fileID: 1213736142}
-  - component: {fileID: 1213736141}
-  - component: {fileID: 1213736140}
-  - component: {fileID: 1213736145}
   m_Layer: 0
-  m_Name: BulletShot
+  m_Name: PepperoniTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1213736140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213736139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bdefbaea368a0c418634bb768d9032b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tomatoSauce: {fileID: 6839038540016175084, guid: 009455c267243814eb1fc053fd7579d3, type: 3}
---- !u!114 &1213736141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213736139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 149089b3ed162d9448c238ffe91646bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pizza: {fileID: 116081282322743765, guid: ebb06785b0e44fa44bbc15836ca61012, type: 3}
 --- !u!114 &1213736142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3915,20 +3885,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2526b4f26f1e34e80c11885b037ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CustomerLayer:
+    serializedVersion: 2
+    m_Bits: 128
   pepperoni: {fileID: 4696753182146962447, guid: dc4dd855b6fab6c4397e07efc7b576fc, type: 3}
---- !u!114 &1213736143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213736139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dacae3b5c2111d47b07b8a49c3b35db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cheese: {fileID: 3874708064934454426, guid: 7701cb9ffe9c5b144add834501fa16da, type: 3}
   firePos: {fileID: 1802198011}
 --- !u!4 &1213736144
 Transform:
@@ -3947,20 +3907,6 @@ Transform:
   - {fileID: 812308034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1213736145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213736139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a75a5c466ce1d6498b05be30cd14026, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turret: {fileID: 1692288439}
-  muzzle: {fileID: 812308034}
 --- !u!1 &1227393701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,7 +5493,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7d1453018da8e3b4491991313afbe513, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32bf8b79f7cb52b4db6320bba6974a7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6813,5 +6759,5 @@ SceneRoots:
   - {fileID: 1811160052}
   - {fileID: 237504326}
   - {fileID: 440499966}
-  - {fileID: 1213736144}
   - {fileID: 1502320758}
+  - {fileID: 1213736144}
