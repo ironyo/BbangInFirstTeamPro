@@ -3929,6 +3929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cheese: {fileID: 3874708064934454426, guid: 7701cb9ffe9c5b144add834501fa16da, type: 3}
+  firePos: {fileID: 1802198011}
 --- !u!4 &1213736144
 Transform:
   m_ObjectHideFlags: 0
