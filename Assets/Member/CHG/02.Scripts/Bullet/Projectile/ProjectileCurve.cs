@@ -13,6 +13,7 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
     private Transform _target;
     private bool _isLaunched = false;
     private bool _isHit = false;
+    private bool _isReturn = false;
     private const float defaultAngle = 35f;
     public float Angle = defaultAngle;
     [SerializeField] private float RotateSpeed;
@@ -23,12 +24,11 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
     public Action<IRecycleObject> Destroyed { get; set; }
     GameObject IRecycleObject.GameObject => base.gameObject;
 
-    public override void SetUp(Transform shooter, Transform target, float damage, int maxCount = 1, int index = 0)
+    public override void SetUp(Transform shooter, Transform target)
     {
-        Debug.Log("SetUp");
         ResetState(shooter);
 
-        base.SetUp(shooter, target, damage);
+        base.SetUp(shooter, target);
 
         _target = target;
         _start = shooter.position;
@@ -36,7 +36,6 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
 
         float distance = Vector3.Distance(_start, _end);
         _duration = distance / _movementRigidBody.MoveSpeed;
-
 
         float shootAngle = Angle + Utils.GetAngleFromPosition(_start, _end);
         _point = Utils.GetNewPoint(_start, shootAngle, distance * _startHigh);
@@ -62,16 +61,30 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
 
     public override void Process()
     {
-        _end = _target.position;
         _t += Time.deltaTime / _duration;
 
+        IsArrivedToTarget();
         if (!_isHit)
+        {
             transform.position = Utils.QuadraticCurve(_start, _point, _end, _t);
+        }
         else if (_isHit)
+        {
             transform.position = Utils.QuadraticCurve(_end, _point, _start, _t);
+        }
 
         transform.Rotate(0, 0, RotateSpeed * Time.deltaTime);
 
+    }
+
+    private void IsArrivedToTarget()
+    {
+        float distance = Vector3.Distance(transform.position, _end);
+
+        if (distance < 0.1f)
+        {
+            ProjectileReturn();
+        }
     }
 
     protected override void OnHit(Collider2D collision)
@@ -80,35 +93,40 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
         {
             Vector3 particleDirection = collision.transform.position - transform.position;
             float ParticleAngle = Mathf.Atan2(particleDirection.y, particleDirection.x) * Mathf.Rad2Deg;
-            Instantiate(HitParticle, collision.transform.position, Quaternion.Euler(0,0,ParticleAngle));
-            
+            Instantiate(HitParticle, collision.transform.position, Quaternion.Euler(0, 0, ParticleAngle));
+
             //데미지 적용
-            
+
+            CameraShake.Instance.ImpulseForce(0.03f);
+
             if (_isHit) return;
-            float distance = Vector3.Distance(_end, _start) * _returnPower;
-            _duration = distance / _movementRigidBody.MoveSpeed;
-
-            float reverseAngle = -Angle;
-
-            float baseAngle = Utils.GetAngleFromPosition(_end, _start);
-
-            float shootAngle = reverseAngle + baseAngle;
-
-            _point = Utils.GetNewPoint(_end, shootAngle, -distance * _backHigh);
-
-            _t = 0;
-            _isHit = true;
-
+            ProjectileReturn();
         }
         else if (collision.CompareTag("Player"))
         {
             if (_isHit)
+            {
                 Destroyed?.Invoke(this);
+            }
         }
     }
 
-    protected override void OnExit(Collider2D collision)
+    private void ProjectileReturn()
     {
-    }
+        if (_isHit) return;
+        float distance = Vector3.Distance(_end, _start) * _returnPower;
+        _duration = distance / _movementRigidBody.MoveSpeed;
 
+        float reverseAngle = -Angle;
+
+        float baseAngle = Utils.GetAngleFromPosition(_end, _start);
+
+        float shootAngle = reverseAngle + baseAngle;
+
+        _point = Utils.GetNewPoint(_end, shootAngle, -distance * _backHigh);
+
+        _t = 0;
+        _isHit = true;
+        _isReturn = true;
+    }
 }
