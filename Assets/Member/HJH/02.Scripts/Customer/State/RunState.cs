@@ -29,7 +29,6 @@ public class RunState : IEnemyState
             currentDir = (target.position - customer.transform.position).normalized;
 
         rb.linearVelocity = currentDir.normalized * 10f;
-
     }
 
     public void Update()
