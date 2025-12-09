@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class DoubleCurveShooter : TurretBase
 {
+    [SerializeField] private GameObject ProjectilePrefab;
+    private Factory _projectileFactory;
 
+    private void OnEnable()
+    {
+        _projectileFactory = new Factory(ProjectilePrefab, 4);
+    }
 
     public override void Shoot()
     {
