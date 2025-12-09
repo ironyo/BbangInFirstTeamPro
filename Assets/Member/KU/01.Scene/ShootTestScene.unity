@@ -1066,6 +1066,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1084543341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084543343}
+  - component: {fileID: 1084543342}
+  m_Layer: 0
+  m_Name: Turret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1084543342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084543341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e2018b5c213a046aaa73398cde3964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _turretSO: {fileID: 11400000, guid: 9edd4e5fd8ba6a84cb0c857534ab4f15, type: 2}
+--- !u!4 &1084543343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084543341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1105590479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,6 +1392,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251c0b51156ac304f8a4a9ee32e60a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CustomerLayer:
+    serializedVersion: 2
+    m_Bits: 7
+  muzzle: {fileID: 106530443}
   bulletPref: {fileID: 6474800333962078892, guid: c84e85f6faa123948b4fd5f7cf097b99, type: 3}
   firePos: {fileID: 106530443}
   angle: 10
@@ -1897,3 +1946,4 @@ SceneRoots:
   - {fileID: 986265267}
   - {fileID: 975301150}
   - {fileID: 628713035}
+  - {fileID: 1084543343}
