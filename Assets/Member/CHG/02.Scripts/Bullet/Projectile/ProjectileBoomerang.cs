@@ -1,19 +1,29 @@
+using System;
 using Assets.Member.CHG._02.Scripts.Bullet;
+using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 
-public class ProjectileBoomerang : ProjectileBase
+public class ProjectileBoomerang : ProjectileBase, IRecycleObject
 {
     private Vector2 _start;
     private Vector2 _end;
 
     [SerializeField] private float ReturnTime;
+    [SerializeField] private float RotateSpeed = 360f;
+    [SerializeField] private float MoveSpeed = 6f;
     private float _duration;
     private float _t;
     private bool _isLaunched = false;
     private bool _isHit = false;
     private float _speed;
+    public Action<IRecycleObject> Destroyed { get; set; }
+
+    public GameObject GameObject => gameObject;
+
     public override void SetUp(Transform shooter ,Transform target)
     {
+        ResetState(shooter);
+        
         base.SetUp(shooter, target);
 
         _start = transform.position;
@@ -26,7 +36,14 @@ public class ProjectileBoomerang : ProjectileBase
         _speed = _movementRigidBody.MoveSpeed;
         _isLaunched = true;
     }
-
+    private void ResetState(Transform shooter)
+    {
+        transform.position = shooter.position;
+        _movementRigidBody.ChangeSpeed(MoveSpeed);
+        _isLaunched = false;
+        _isHit = false;
+        _t = 0;
+    }
     private void Update()
     {
         if (_isLaunched)
@@ -43,11 +60,12 @@ public class ProjectileBoomerang : ProjectileBase
 
             _movementRigidBody.ChangeSpeed(newSpeed);
         }
+
+        transform.Rotate(0, 0, RotateSpeed * Time.deltaTime);
     }
 
     protected override void OnHit(Collider2D collision)
     {
-        Debug.Log("Hit");
         if (collision.CompareTag("Enemy"))
         {
             _isHit = true;
@@ -55,7 +73,7 @@ public class ProjectileBoomerang : ProjectileBase
         else if (collision.CompareTag("Player"))
         {
             if (_isHit)
-                Destroy(gameObject);
+                Destroyed?.Invoke(this);
         }
     }
 
