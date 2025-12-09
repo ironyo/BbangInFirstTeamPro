@@ -4,6 +4,7 @@ using UnityEngine;
 public class ShotTomatoSauce : TurretBase
 {
     [SerializeField] private GameObject tomatoSauce;
+    [SerializeField] private Transform firePos;
 
     Factory factory;
 
@@ -21,7 +22,7 @@ public class ShotTomatoSauce : TurretBase
         CameraShake.Instance.ImpulseForce(0.5f);
 
         IRecycleObject obj = factory.Get();
-        obj.GameObject.transform.position = transform.position;
+        obj.GameObject.transform.position = firePos.position;
         obj.GameObject.transform.rotation = rotation;
         obj.GameObject.GetComponent<TomatoSauce>().ShotTomatoSauce(Target);
     }
