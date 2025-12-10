@@ -93,6 +93,8 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
         _setTurretOnTruck.RaiseEvent(turSO, truckNum);
         TruckManager.Instance.SetTurret(truckNum, turSO);
 
+        CameraShake.Instance.ImpulseForce(0.3f);
+
         SetTruckLabelUI();
     }
 

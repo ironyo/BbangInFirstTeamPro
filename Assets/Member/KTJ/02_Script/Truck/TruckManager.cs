@@ -8,7 +8,7 @@ public class TruckManager : MonoSingleton<TruckManager>
     [SerializeField] private Transform truckBodySpawnTran;
 
     private List<(TurretSpawner, TurretSO_TJ)> _truckBodyList = new List<(TurretSpawner, TurretSO_TJ)>();
-    private int _maxTruckCount = 10;
+    private int _maxTruckCount = 5;
 
     private int _curHealth = 100;
     public int CurHealth
@@ -38,10 +38,20 @@ public class TruckManager : MonoSingleton<TruckManager>
     protected override void Awake()
     {
         base.Awake();
+        CurTruckCount++;
+    }
 
+    public void AddTruck()
+    {
         CurTruckCount++;
-        CurTruckCount++;
-        CurTruckCount++;
+    }
+
+    public bool CheckIsTruckFull()
+    {
+        if (_curTruckCount >= _maxTruckCount)
+            return true;
+
+        return false;
     }
 
     private void AddTruckBody()

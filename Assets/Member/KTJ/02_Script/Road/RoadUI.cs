@@ -20,10 +20,10 @@ public class RoadUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (StageManager.Instance == null)
-        {
-            Debug.Log("스테이지 매니저의 인스턴스가 널입니다");
-        }
+        //if (StageManager.Instance == null)
+        //{
+        //    Debug.Log("스테이지 매니저의 인스턴스가 널입니다");
+        //}
         _onLeftDistanceChanged.OnEventRaised += UpdateLeftDistance;
         _onSpeedChanged.OnEventRaised += UpdateSpeedUI;
     }
