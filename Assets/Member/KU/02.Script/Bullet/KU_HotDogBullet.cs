@@ -10,6 +10,8 @@ public class KU_HotDogBullet : KU_Bullet
     [SerializeField] private GameObject _sourcePref;
     [SerializeField] private int _sourceCount = 2;
 
+    private SpriteRenderer _spriteRenderer;
+
     private CancellationTokenSource cancellationTokenSource;
 
 
@@ -18,6 +20,7 @@ public class KU_HotDogBullet : KU_Bullet
         base.Awake();
         cancellationTokenSource = new CancellationTokenSource();
         SpawnSource(cancellationTokenSource.Token).Forget();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private async UniTask SpawnSource(CancellationToken cancelToken)
@@ -52,7 +55,9 @@ public class KU_HotDogBullet : KU_Bullet
         StopBullet();
         BoomParticle();
 
-        await transform.DOScale(Vector3.zero, 0.5f);
+        transform.DOScale(new Vector3(transform.localScale.x+0.1f, transform.localScale.y + 0.1f), 0.2f);
+        await _spriteRenderer.DOFade(0, 0.2f);
+
         await UniTask.WaitForSeconds(0, cancellationToken: cancelToken);
         Destroy(gameObject);
     }
