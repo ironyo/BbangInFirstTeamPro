@@ -32,7 +32,7 @@ public abstract class TurretBase : MonoBehaviour
     {
         _gunData = gunData;
         _attackRange = gunData.AttackRange;
-        _currentCoolTime = gunData.CoolDown;
+        _cooldownTime = gunData.CoolDown;
     }
 
     protected void Update()
