@@ -7,6 +7,7 @@ using UnityEngine;
 public class CheesePuddle : MonoBehaviour, IRecycleObject
 {
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rigid;
 
     private float lifeTime = 3f;
 
@@ -15,6 +16,7 @@ public class CheesePuddle : MonoBehaviour, IRecycleObject
 
     private void Start()
     {
+        rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -22,6 +24,11 @@ public class CheesePuddle : MonoBehaviour, IRecycleObject
     {
         spriteRenderer.DOFade(1f, 0f);
         gameObject.transform.DOScale(1f, 0f);
+    }
+
+    private void Update()
+    {
+        rigid.linearVelocity = new Vector2(-3.5f, 0);
     }
 
     private void OnEnable()
