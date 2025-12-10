@@ -25,6 +25,11 @@ public class Cheese : MonoBehaviour, IRecycleObject
         StartCoroutine(DeadCoroutine());
     }
 
+    private void OnDisable()
+    {
+        isAttack = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
@@ -32,7 +37,7 @@ public class Cheese : MonoBehaviour, IRecycleObject
             if (!isAttack)
             {
                 collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
-                StartCoroutine(AttackCooltimeCoroutine());
+                isAttack = true;
             }
 
             CameraShake.Instance.ImpulseForce(0.1f);
@@ -42,13 +47,6 @@ public class Cheese : MonoBehaviour, IRecycleObject
             obj.GameObject.transform.rotation = Quaternion.identity;
             Destroyed?.Invoke(this);
         }
-    }
-
-    private IEnumerator AttackCooltimeCoroutine()
-    {
-        isAttack = true;
-        yield return new WaitForSeconds(0.01f);
-        isAttack = false;
     }
 
     private IEnumerator DeadCoroutine()
