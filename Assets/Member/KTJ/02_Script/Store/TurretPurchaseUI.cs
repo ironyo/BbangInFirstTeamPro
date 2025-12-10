@@ -10,10 +10,10 @@ public class TurretPurchaseUI : MonoBehaviour
     [SerializeField] private GameObject Uis;
 
     [Header("Event")]
-    [SerializeField] private EventChannel_TT<TurretSO_TJ, Action> _setTruckLabel;
+    [SerializeField] private EventChannel_TTT<TurretSO_TJ, Action, bool> _setTruckLabel;
     [SerializeField] private EventChannelSO _onRepairStoreUIClose;
     [SerializeField] private EventChannelSO _onRepairStoreUIReady;
-    [SerializeField] private EventChannelSO _onPageDown;
+    [SerializeField] private EventChannelSO _removeLabels;
 
     private List<GameObject> _labels = new List<GameObject>();
 
@@ -31,11 +31,10 @@ public class TurretPurchaseUI : MonoBehaviour
             Uis.gameObject.SetActive(false);
         };
 
-        _onPageDown.OnEventRaised += RemoveTruckLabel;
-        _onRepairStoreUIClose.OnEventRaised += RemoveTruckLabel;
+        _removeLabels.OnEventRaised += RemoveTruckLabel;
     }
 
-    private void SetLabel(TurretSO_TJ _turret, Action _act)
+    private void SetLabel(TurretSO_TJ _turret, Action _act, bool _isLocked)
     {
         TurretLabel _tl = Instantiate(_labelPref, _labelSpawnPos).GetComponent<TurretLabel>();
 
@@ -43,7 +42,7 @@ public class TurretPurchaseUI : MonoBehaviour
         int _cost = _turret.TurretCost;
         Sprite _sprite = _turret.TurretImage;
 
-        _tl.SetLabel(_tname, _cost, _sprite);
+        _tl.SetLabel(_tname, _cost, _sprite, _isLocked);
 
         _tl.PurchaseBtn.onClick.AddListener(() =>
         {

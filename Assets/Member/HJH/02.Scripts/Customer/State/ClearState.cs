@@ -20,7 +20,7 @@ public class ClearState : IEnemyState
 
     public void Update()
     { 
-        rb.linearVelocity = new Vector2(-2,0);
+        rb.linearVelocity = new Vector2(-8,0);
     }
     public void Exit() { }
 }

@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,17 +25,24 @@ public class KU_Source : KU_Bullet
 
     private void Start()
     {
-        if(!_isOnly)
-            DropSource().Forget();
+        _rigidbodyCompo.linearVelocity = _rigidbodyCompo.linearVelocity.normalized * 10;
+        if (!_isOnly)
+        {
+            StartCoroutine(DropSource());
+            DOTween.To(() => _rigidbodyCompo.linearVelocity.magnitude, s =>
+            {
+                _rigidbodyCompo.linearVelocity = _rigidbodyCompo.linearVelocity.normalized * s;
+            }, 2, 0.5f);
+        }
 
         RotationStop();
     }
 
-    private async UniTask DropSource()
+    private IEnumerator DropSource()
     {
-        await UniTask.WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
         StopSource();
-        await UniTask.WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 
@@ -68,7 +76,7 @@ public class KU_Source : KU_Bullet
 
             if (enemy != targetEnemy) return;
 
-            DropSource().Forget();
+            StartCoroutine(DropSource());
             StopSource();
         }
     }

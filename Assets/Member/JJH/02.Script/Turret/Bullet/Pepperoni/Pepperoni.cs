@@ -7,6 +7,7 @@ public class Pepperoni : IncreaseSpeed, IRecycleObject
 {
     [SerializeField] private int damage = 1;
     private BulletMove bulletMove;
+    private TrailRenderer trail;
 
     public Action<IRecycleObject> Destroyed { get; set; }
     public GameObject GameObject => gameObject;
@@ -15,11 +16,15 @@ public class Pepperoni : IncreaseSpeed, IRecycleObject
 
     private void OnEnable()
     {
+        trail = GetComponent<TrailRenderer>();
         bulletMove = GetComponent<BulletMove>();
         bulletSpeed = 0f;
         timer = 0f;
 
         bulletMove.Speed = 0f;
+
+        trail.Clear();
+        trail.enabled = true;
 
         StartCoroutine(DeadCoroutine());
     }
@@ -27,6 +32,7 @@ public class Pepperoni : IncreaseSpeed, IRecycleObject
 
     private void OnDisable()
     {
+        trail.enabled = false;
         isAttack = false;
     }
 

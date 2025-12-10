@@ -15,6 +15,8 @@ public class DeadState : IEnemyState
     public void Enter()
     {
         animator.SetBool("isDead", true);
+        customer.tag = "DeadCustomer";
+        customer.gameObject.layer = LayerMask.NameToLayer("DeadCustomer");
     }
 
     public void Exit()
