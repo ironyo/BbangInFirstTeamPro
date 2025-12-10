@@ -26,7 +26,7 @@ public class KU_HotDogBullet : KU_Bullet
         {
             while (!cancellationTokenSource.IsCancellationRequested)
             {
-                float waitTime = Random.Range(0.2f, 0.4f);
+                float waitTime = Random.Range(0.1f, 0.3f);
                 await UniTask.WaitForSeconds(waitTime, cancellationToken: cancelToken);
 
                 if (this == null) return;

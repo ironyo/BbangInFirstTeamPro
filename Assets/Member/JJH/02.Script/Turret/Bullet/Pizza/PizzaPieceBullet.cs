@@ -38,7 +38,7 @@ public class PizzaPieceBullet : MonoBehaviour, IRecycleObject
             if (!isAttack)
             {
                 collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
-                StartCoroutine(AttackCooltimeCoroutine());
+                isAttack = true;
             }
 
 
@@ -50,13 +50,6 @@ public class PizzaPieceBullet : MonoBehaviour, IRecycleObject
 
             Destroyed?.Invoke(this);
         }
-    }
-
-    private IEnumerator AttackCooltimeCoroutine()
-    {
-        isAttack = true;
-        yield return new WaitForSeconds(0.01f);
-        isAttack = false;
     }
 
     private IEnumerator DeadCoroutine()

@@ -102,16 +102,9 @@ public class LaserFade : MonoBehaviour, IRecycleObject
             if (!isAttack)
             {
                 collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
-                StartCoroutine(AttackCooltimeCoroutine());
+                isAttack = true;
             }
         }
-    }
-
-    private IEnumerator AttackCooltimeCoroutine()
-    {
-        isAttack = true;
-        yield return new WaitForSeconds(0.01f);
-        isAttack = false;
     }
 
     private IEnumerator DeadCoroutine()

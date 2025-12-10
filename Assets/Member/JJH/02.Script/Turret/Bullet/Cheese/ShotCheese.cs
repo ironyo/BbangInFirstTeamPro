@@ -1,10 +1,10 @@
 using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class ShotCheese : FindCloseEnemy, IShotBullet
+public class ShotCheese : TurretBase
 {
     [SerializeField] private GameObject cheese;
+    [SerializeField] private Transform firePos;
     Factory factory;
     private float spread = 15f;
 
@@ -13,22 +13,9 @@ public class ShotCheese : FindCloseEnemy, IShotBullet
         factory = new Factory(cheese, 15);
     }
 
-    private void Update()
+    public override void Shoot()
     {
-        if (Keyboard.current.sKey.wasPressedThisFrame)
-        {
-            ShotBullet();
-        }
-    }
-
-    public void ShotBullet()
-    {
-        Transform enemy = FindCloseEnemyTrans();
-
-        if (enemy == null)
-            return;
-
-        Vector3 dir = (enemy.position - transform.position).normalized;
+        Vector3 dir = (Target.position - transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
@@ -42,7 +29,7 @@ public class ShotCheese : FindCloseEnemy, IShotBullet
     private void SpawnCheese(Quaternion rotation)
     {
         IRecycleObject obj = factory.Get();
-        obj.GameObject.transform.position = transform.position;
+        obj.GameObject.transform.position = firePos.position;
         obj.GameObject.transform.rotation = rotation;
     }
 }
