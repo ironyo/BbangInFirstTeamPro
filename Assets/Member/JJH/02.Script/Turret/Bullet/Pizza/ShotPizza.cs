@@ -1,0 +1,27 @@
+using Assets.Member.CHG._02.Scripts.Pooling;
+using UnityEngine;
+
+public class ShotPizza : TurretBase
+{
+    [SerializeField] private GameObject pizza;
+    [SerializeField] private Transform firePos;
+    Factory factory;
+
+    private void Start()
+    {
+        factory = new Factory(pizza, 15);
+    }
+
+    public override void Shoot()
+    {
+        Vector3 dir = (Target.position - transform.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        CameraShake.Instance.ImpulseForce(0.5f);
+
+        IRecycleObject obj = factory.Get();
+        obj.GameObject.transform.position = firePos.position;
+        obj.GameObject.transform.rotation = rotation;
+    }
+}

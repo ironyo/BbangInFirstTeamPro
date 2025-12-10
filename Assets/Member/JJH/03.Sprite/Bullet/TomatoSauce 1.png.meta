@@ -103,13 +103,13 @@ TextureImporter:
       name: TomatoSauce 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 26
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        x: 1
+        y: 1
+        width: 24
+        height: 4
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 1, y: 0, z: 1, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0b5917357dcc6b142b1ae2204ffcb251
     internalID: 0
     vertices: []
     indices: 
@@ -136,6 +136,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       TomatoSauce 1_0: 3576262343990350573
+      TomatoSauce 1_1: 147980403
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

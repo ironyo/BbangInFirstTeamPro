@@ -4,29 +4,36 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class KU_Source : MonoBehaviour
+public class KU_Source : KU_Bullet
 {
-    private Rigidbody2D _rigidbodyCompo;
+    [SerializeField] private bool _isOnly;
+    [SerializeField] private Sprite _katcupSprite;
+
+    private SpriteRenderer _spriteRendererCompo;
 
     private HashSet<KU_Enemy> insideEnemies = new HashSet<KU_Enemy>();
     private Dictionary<KU_Enemy, CancellationTokenSource> enemyTokens = new Dictionary<KU_Enemy, CancellationTokenSource>();
 
-    private void Awake()
+    protected override void Awake()
     {
-        _rigidbodyCompo = GetComponent<Rigidbody2D>();
+        base.Awake();
+        _spriteRendererCompo = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
-        DropSource().Forget();
+        if(!_isOnly)
+            DropSource().Forget();
+
+        RotationStop();
     }
 
     private async UniTask DropSource()
     {
         await UniTask.WaitForSeconds(0.5f);
-        _rigidbodyCompo.linearVelocity = Vector2.zero;
-        transform.DOScale(new Vector3(2, 2, 2), 1f);
+        StopSource();
         await UniTask.WaitForSeconds(3f);
         Destroy(gameObject);
     }
@@ -41,6 +48,13 @@ public class KU_Source : MonoBehaviour
         }
     }
 
+    private void StopSource()
+    {
+        _spriteRendererCompo.sprite = _katcupSprite;
+        StopBullet();
+        transform.DOScale(new Vector3(2, 2, 2), 1f);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
@@ -51,6 +65,11 @@ public class KU_Source : MonoBehaviour
                 enemyTokens[enemy] = cts;
                 StartAttackLoop(enemy, cts.Token).Forget();
             }
+
+            if (enemy != targetEnemy) return;
+
+            DropSource().Forget();
+            StopSource();
         }
     }
 

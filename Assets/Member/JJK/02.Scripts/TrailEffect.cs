@@ -1,22 +1,19 @@
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class TrailEffect : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem trailEffect;
-    [SerializeField] private float delay;
+    [SerializeField] private GameObject trailPrefab;
+    [SerializeField] float spawnInterval = 0.05f;
+    private float _timer;
 
-    private void OnEnable()
+    private void Update()
     {
-        StartCoroutine(SpawnTrail());
-    }
+        _timer += Time.deltaTime;
 
-    private IEnumerator SpawnTrail()
-    {
-        var ptc =  Instantiate(trailEffect, transform.position, transform.rotation);
-        yield return new WaitForSeconds(delay);
-        StartCoroutine(SpawnTrail());
+        if (_timer >= spawnInterval)
+        {
+            _timer = 0f;
+            var obj = Instantiate(trailPrefab, transform.position, transform.rotation);
+        }
     }
 }

@@ -82,7 +82,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _HalfHeight: 0.5
     - _Intencity: 5
-    - _Intensity: 2
+    - _Intensity: 1.65
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
