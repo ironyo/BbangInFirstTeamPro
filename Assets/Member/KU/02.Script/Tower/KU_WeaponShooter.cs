@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.EventSystems.EventTrigger;
 
-public class KU_WeaponShooter : MonoBehaviour
+public class KU_WeaponShooter : TurretBase
 {
     [SerializeField] private GameObject bulletPref;
     [SerializeField] private Transform firePos;
@@ -12,17 +12,19 @@ public class KU_WeaponShooter : MonoBehaviour
     [SerializeField] private float angle;
     [SerializeField] private LayerMask _enemyLayer;
 
-    private void Update()
-    {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            TryShooting();
-        }
-    }
+    //protected override void Update()
+    //{
+    //    base.Update();
+    //    if (Keyboard.current.spaceKey.wasPressedThisFrame)
+    //    {
+    //        TryShooting();
+    //    }
+    //}
 
     private void TryShooting()
     {
-        Shooting(GetNearestTarget());
+        //Shooting(GetNearestTarget());
+        Shoot();
     }
 
     Transform GetNearestTarget()
@@ -49,14 +51,19 @@ public class KU_WeaponShooter : MonoBehaviour
 
     private void Shooting(Transform target)
     {
-        if(target == null) return;
 
-        Vector2 dir = target.position - firePos.position;
+    }
+
+    public override void Shoot()
+    {
+        if (Target == null) return;
+
+        Vector2 dir = Target.position - firePos.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         KU_Bullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_Bullet>();
-        if (target.gameObject.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
+        if (Target.gameObject.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
         {
             bullet.GetTarget(enemy, angle);
         }

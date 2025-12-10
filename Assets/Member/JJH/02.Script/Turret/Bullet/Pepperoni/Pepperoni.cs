@@ -45,18 +45,11 @@ public class Pepperoni : IncreaseSpeed, IRecycleObject
             if (!isAttack)
             {
                 collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
-                StartCoroutine(AttackCooltimeCoroutine());
+                isAttack = true;
             }
 
             Destroyed?.Invoke(this);
         }
-    }
-
-    private IEnumerator AttackCooltimeCoroutine()
-    {
-        isAttack = true;
-        yield return new WaitForSeconds(0.01f);
-        isAttack = false;
     }
 
     private IEnumerator DeadCoroutine()
