@@ -31,7 +31,7 @@ public class Customer : MonoBehaviour
     public ClearState ClearState{ get; set; } // 적의 포 만감을 다 채웠을 때, 자동으로 떠남
     public CloseState CloseState { get; set; } // 가까이 왔을 때, 트럭으로 이동
     public DeadState DeadState { get; set; } // 죽었을 때
-
+    
     [SerializeField] private TextMeshPro hpText;
     [SerializeField] private ParticleSystem deadMotion;
 
@@ -42,11 +42,13 @@ public class Customer : MonoBehaviour
     [SerializeField]private CustomerType customerType;
     public int customerHP { get; set; }
     private int maxHp => customerType.customerHP;
-
+    
     public float customerSpeed { get; set; }
 
     [SerializeField]private SpriteRenderer sr;
-    private Color originalColor; 
+    private Color originalColor;
+
+    public GameObject avatar;
 
     private void Awake()
     {
