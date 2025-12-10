@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9abfd70f208b742499a607cdd5583a90
+guid: a1cf99e0cd05c454199e0a7c43bb8302
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8468332471978679503
-    second: 1Lvlpepepepepepepde_cd_vcfdvf_0
+      213: -5885634386154053523
+    second: laserkatchupFVDSRDSFC_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1Lvlpepepepepepepde_cd_vcfdvf_0
+      name: laserkatchupFVDSRDSFC_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 15
-        height: 19
+        x: 4
+        y: 13
+        width: 11
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fccd130248f858570800000000000000
-      internalID: 8468332471978679503
+      spriteID: d60a67f85b6025ea0800000000000000
+      internalID: -5885634386154053523
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1Lvlpepepepepepepde_cd_vcfdvf_0: 8468332471978679503
+      laserkatchupFVDSRDSFC_0: -5885634386154053523
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
