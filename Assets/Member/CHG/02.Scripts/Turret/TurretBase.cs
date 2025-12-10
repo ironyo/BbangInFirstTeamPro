@@ -10,6 +10,7 @@ public abstract class TurretBase : MonoBehaviour
     private float _cooldownTime = 2f;
     private float _currentCoolTime = 0;
     protected Transform Target;
+    protected GunDataSO _gunData;
     public LayerMask CustomerLayer = 7;
     private bool IsSkillAcailable => (Time.time - _currentCoolTime > _cooldownTime);
     [SerializeField] private Transform muzzle;
@@ -24,6 +25,13 @@ public abstract class TurretBase : MonoBehaviour
 
         //_projectileFactory = new Factory(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
         //PoolManager.Instance.RegisterPool(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+    }
+
+    public void Init2(GunDataSO gunData)
+    {
+        _gunData = gunData;
+        _attackRange = gunData.AttackRange;
+        _currentCoolTime = gunData.CoolDown;
     }
 
     protected void Update()

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Gun : TurretBase
 {
-    [SerializeField] private GunDataSO gunData;
+    
     [SerializeField] private Transform firePos;
     [SerializeField] private float rotationSpeed = 20f;
     
@@ -13,41 +13,41 @@ public class Gun : TurretBase
     [SerializeField] private float recoilReturnTime = 0.15f;
     
     private Tween _recoilTween;
-    private float _desireAngle;
     private float _offset = 90f;
     
     public override void Shoot()
     {
-        for (int i = 0; i < gunData.GetBullet(); i++)
+        for (int i = 0; i < _gunData.GetBullet(); i++)
         {
-            var bulletData = gunData.DefaultBullet;
+            var bulletData = _gunData.DefaultBullet;
             var bullet = BulletPoolManager.Instance.Get(bulletData.BulletPrefab).GameObject;
 
             bullet.transform.position = firePos.position;
             bullet.transform.rotation = transform.rotation * CalculateAngle(i);
-            bullet.GetComponent<JJK_Bullet>().SetData(bulletData, gunData.ThroughFire);
+            bullet.GetComponent<JJK_Bullet>().SetData(bulletData, _gunData.ThroughFire);
         }
         
         SpawnMuzzleParticle();
-        CameraShake.Instance.ImpulseForce(gunData.CameraShakeForce);
-        DoRecoil();
+        CameraShake.Instance.ImpulseForce(_gunData.CameraShakeForce);
+        //DoRecoil();
     }
 
     private Quaternion CalculateAngle(float num)
     {
         float spreadAngle = 0;
 
-        if (gunData.MultiFire)
-            spreadAngle = Mathf.Lerp(-gunData.SpreadAngle, gunData.SpreadAngle, num / (gunData.GetBullet() - 1));
+        if (_gunData.MultiFire)
+            spreadAngle = Mathf.Lerp(-_gunData.SpreadAngle, _gunData.SpreadAngle, num / (_gunData.GetBullet() - 1));
         
-        return Quaternion.Euler(0, 0, spreadAngle);
+        return Quaternion.Euler(0, 0, spreadAngle - _offset);
     }
     
     private void SpawnMuzzleParticle()
     {
-        GameObject muzzleParticle = Instantiate(gunData.MuzzleFlash, firePos.position, Quaternion.Euler(0, 0, _desireAngle + _offset));
+        GameObject muzzleParticle = Instantiate(_gunData.MuzzleFlash, firePos.position, transform.rotation);
+        float angle = transform.rotation.z;
         
-        int flip = _desireAngle > 0 && _desireAngle < 180 ? -1 : 1;
+        int flip = angle > 90 && angle < 180 ? -1 : 1;
         muzzleParticle.transform.localScale = new Vector3( transform.localScale.x, flip * Mathf.Abs(transform.localScale.y), transform.localScale.z);
     }
     
