@@ -7,20 +7,30 @@ public class KU_BreadBullet : KU_Bullet
 {
     [SerializeField] private GameObject _explosionPref;
     [SerializeField] private Vector3 _explosionSize = new Vector3(3, 3, 3);
+    [SerializeField] private int damage = 1;
+
+    private bool isAttack = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
+        if (collision.CompareTag("Enemy"))
         {
-            if (enemy != targetEnemy) return;
+            if (collision.gameObject.TryGetComponent<Customer>(out Customer customer))
+            {
+                if (!isAttack)
+                {
+                    if (customer != targetEnemy) return;
 
-            enemy.MinusHP(3);
-            GameObject obj = Instantiate(_explosionPref, transform.position, Quaternion.identity);
-            obj.transform.localScale = _explosionSize;
-            BoomParticle();
-            StartCoroutine(DestroyObj(obj));
-            Destroy(gameObject);
-            return;
+                    customer.TakeDamage(damage);
+                    GameObject obj = Instantiate(_explosionPref, transform.position, Quaternion.identity);
+                    obj.transform.localScale = _explosionSize;
+                    isAttack = true;
+                    BoomParticle();
+                    StartCoroutine(DestroyObj(obj));
+                    Destroy(gameObject);
+                    return;
+                }
+            }
         }
     }
     

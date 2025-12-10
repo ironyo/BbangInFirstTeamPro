@@ -12,7 +12,7 @@ public abstract class KU_Bullet : MonoBehaviour
 
     private float _lifeTime = 3;
 
-    public KU_Enemy targetEnemy { get; private set; }
+    public Customer targetEnemy { get; private set; }
     private bool _nowTargetSet = false;
 
     [SerializeField] private GameObject _moveParticlePref;
@@ -40,7 +40,7 @@ public abstract class KU_Bullet : MonoBehaviour
     {
         Instantiate(_boomParticlePref, transform.position, Quaternion.identity);
     }
-    public void GetTarget(KU_Enemy pos, float angle)
+    public void GetTarget(Customer pos, float angle)
     {
         targetEnemy = pos;
         _moveDir = pos.gameObject.transform.position - transform.position;

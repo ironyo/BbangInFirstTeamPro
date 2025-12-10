@@ -9,8 +9,11 @@ public class KU_HotDogBullet : KU_Bullet
 {
     [SerializeField] private GameObject _sourcePref;
     [SerializeField] private int _sourceCount = 2;
+    [SerializeField] private int damage = 1;
 
     private SpriteRenderer _spriteRenderer;
+
+    private bool isAttack = false;
 
     private CancellationTokenSource cancellationTokenSource;
 
@@ -63,12 +66,17 @@ public class KU_HotDogBullet : KU_Bullet
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
+        if (collision.CompareTag("Enemy"))
         {
-            if (enemy != targetEnemy) return;
-
-            enemy.MinusHP(5);
-            NowDeadTime(cancellationTokenSource.Token).Forget();
+            if (collision.gameObject.TryGetComponent<Customer>(out Customer customer))
+            {
+                if (!isAttack)
+                {
+                    customer.TakeDamage(damage);
+                    NowDeadTime(cancellationTokenSource.Token).Forget();
+                    isAttack = true;
+                }
+            }
         }
     }
 
