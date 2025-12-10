@@ -594,7 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e2018b5c213a046aaa73398cde3964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turretSO: {fileID: 11400000, guid: 5b090d47de5a00549b24a817b95e4218, type: 2}
+  _turretSO: {fileID: 11400000, guid: 1780c37b5ab0f9f419207e5acd752123, type: 2}
 --- !u!4 &842150864
 Transform:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
     [SerializeField] private float ReturnTime;
     [SerializeField] private float RotateSpeed = 360f;
     [SerializeField] private float MoveSpeed = 6f;
-    private float _duration;
+    [SerializeField] private GameObject HitParticle;
     private float _t;
     private bool _isLaunched = false;
     private bool _isHit = false;
@@ -30,7 +30,6 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
         _end = target.position;
 
         float distance = Vector2.Distance(_start, _end);
-        _duration = distance / _movementRigidBody.MoveSpeed;
         _movementRigidBody.MoveTo((_end - _start).normalized);
 
         _speed = _movementRigidBody.MoveSpeed;
@@ -39,7 +38,7 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
     private void ResetState(Transform shooter)
     {
         transform.position = shooter.position;
-        _movementRigidBody.ChangeSpeed(MoveSpeed);
+        
         _isLaunched = false;
         _isHit = false;
         _t = 0;
@@ -51,6 +50,7 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
     }
     public override void Process()
     {
+        IsArrivedToTarget();
         if (_isHit)
         {
             _t += Time.deltaTime;
@@ -63,17 +63,34 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
 
         transform.Rotate(0, 0, RotateSpeed * Time.deltaTime);
     }
+    private void IsArrivedToTarget()
+    {
+        float distance = Vector3.Distance(transform.position, _end);
 
+        if (distance < 0.1f)
+        {
+            _isHit = true;
+        }
+    }
     protected override void OnHit(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            _isHit = true;
+            Vector3 particleDirection = collision.transform.position - transform.position;
+            float ParticleAngle = Mathf.Atan2(particleDirection.y, particleDirection.x) * Mathf.Rad2Deg;
+            Instantiate(HitParticle, collision.transform.position, Quaternion.Euler(0, 0, ParticleAngle));
+
+            //데미지 적용
+
+            CameraShake.Instance.ImpulseForce(0.03f);
         }
         else if (collision.CompareTag("Player"))
         {
             if (_isHit)
+            {
+                _movementRigidBody.ChangeSpeed(MoveSpeed);
                 Destroyed?.Invoke(this);
+            }
         }
     }
 

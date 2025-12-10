@@ -14917,7 +14917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReturnTime: 1
-  RotateSpeed: 360
+  RotateSpeed: 720
   MoveSpeed: 6
 --- !u!1 &8428790152061250200
 GameObject:
