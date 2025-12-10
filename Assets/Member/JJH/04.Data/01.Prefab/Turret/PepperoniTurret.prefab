@@ -107,7 +107,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 10eb1addc7a21a640b68a61572e3708d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
     m_Bits: 128
   muzzle: {fileID: 1182441120616193345}
   pepperoni: {fileID: 4696753182146962447, guid: dc4dd855b6fab6c4397e07efc7b576fc, type: 3}
+  shotParticle: {fileID: 8103605189167414420, guid: 507086721f0a2104292da50a91f06d4a, type: 3}
   firePos: {fileID: 9076225916266739549}
 --- !u!1 &6999891191593389057
 GameObject:
@@ -246,7 +247,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 32bf8b79f7cb52b4db6320bba6974a7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

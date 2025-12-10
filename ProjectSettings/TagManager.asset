@@ -8,6 +8,7 @@ TagManager:
   - DeadZone
   - RunTarget
   - CloseTarget
+  - 'DeadCustomer '
   layers:
   - Default
   - TransparentFX
