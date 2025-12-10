@@ -6,7 +6,7 @@ public abstract class KU_Bullet : MonoBehaviour
     public Rigidbody2D _rigidbodyCompo { get; private set; }
 
     private Vector2 _moveDir;
-    public float moveSpeed { get; private set; } = 5;
+    public float moveSpeed { get; set; } = 5;
 
     private Vector3 rotationSpeed = new Vector3(0, 0, 5);
 
