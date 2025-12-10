@@ -1,5 +1,3 @@
-using System;
-using Assets.Member.CHG._02.Scripts.Pooling;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,11 +6,13 @@ public abstract class TurretBase : MonoBehaviour
     private bool _targetingClosed = true;
     private float _attackRange;
     private float _cooldownTime = 2f;
-    private float _currentCoolTime = 0;
+
+    private float _t;
     protected Transform Target;
+    protected GunDataSO _gunData;
     public LayerMask CustomerLayer = 7;
-    private bool IsSkillAcailable => (Time.time - _currentCoolTime > _cooldownTime);
-    [SerializeField] private Transform muzzle;
+    private bool IsSkillAcailable => (_t > _cooldownTime);
+    [SerializeField] protected Transform muzzle;
     private Vector3 startPos;
 
     //protected Factory _projectileFactory;
@@ -20,10 +20,17 @@ public abstract class TurretBase : MonoBehaviour
     {
         _targetingClosed = turretData.TargetingClosedEnemy;
         _attackRange = turretData.AttackRange;
-        _currentCoolTime = turretData.AttackCoolTime;
+        _cooldownTime = turretData.AttackCoolTime;
 
         //_projectileFactory = new Factory(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
         //PoolManager.Instance.RegisterPool(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+    }
+
+    public void Init2(GunDataSO gunData)
+    {
+        _gunData = gunData;
+        _attackRange = gunData.AttackRange;
+        _cooldownTime = gunData.CoolDown;
     }
 
     protected void Update()
@@ -71,15 +78,16 @@ public abstract class TurretBase : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         angle -= 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
-
+        _t += Time.deltaTime;
         if (IsSkillAcailable)
         {
             muzzle.transform.DOLocalMove(startPos + new Vector3(0, -0.5f, 0), 0.05f)
             .OnComplete(() =>
                 muzzle.transform.DOLocalMove(startPos, 0.1f)
             );
+
             Shoot();
-            _currentCoolTime = Time.time;
+            _t = 0;
         }
 
 

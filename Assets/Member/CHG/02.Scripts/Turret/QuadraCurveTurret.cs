@@ -15,29 +15,6 @@ public enum TestProjectileType
 public class QuadraCurveTurret : TurretBase
 {
     [SerializeField] private GameObject ProjectilePrefab;
-    //private void BoomerangShoot()
-    //{
-    //GameObject projectile = GameObject.Instantiate(ProjectilePrefab[0], SkillSpawnPoint.position, Quaternion.identity);
-    //projectile.GetComponent<ProjectileBase>().SetUp(transform, Target);
-    //}
-
-    //private void DoubleCurveShoot()
-    //{
-    //IRecycleObject recycleObject1 = PoolManager.Instance..Get();
-    //ProjectileCurve projectile1 = recycleObject1.GameObject.GetComponent<ProjectileCurve>();
-
-    //projectile1.Angle = 45f;
-    //float angle = projectile1.Angle;
-
-    //IRecycleObject recycleObject2 = _curveProjectileFactory.Get();
-    //ProjectileCurve projectile2 = recycleObject2.GameObject.GetComponent<ProjectileCurve>();
-
-    //projectile2.Angle = 45f;
-    //projectile2.Angle = -angle; // -45f
-
-    //projectile1.SetUp(transform, Target);
-    //projectile2.SetUp(transform, Target);
-    //}
 
     private Factory _projectileFactory;
     private void OnEnable()
@@ -73,16 +50,16 @@ public class QuadraCurveTurret : TurretBase
         projectile4.SetUp(transform, Target);
     }
 
-    private void ShooterShake()
-    {
-        transform.DOPunchPosition(-transform.right, 0.3f, 1, 1f);
-    }
+    //private void ShooterShake()
+    //{
+    //    transform.DOPunchPosition(-transform.right, 0.3f, 1, 1f);
+    //}
 
     public override void Shoot()
     {
         QuadraCurveShoot();
         CameraShake.Instance.ImpulseForce(0.1f);
-        ShooterShake();
+        //ShooterShake();
     }
 
 }

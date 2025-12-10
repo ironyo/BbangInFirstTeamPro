@@ -1,32 +1,48 @@
+using System;
 using Assets.Member.CHG._02.Scripts.Bullet;
+using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 
-public class ProjectileBoomerang : ProjectileBase
+public class ProjectileBoomerang : ProjectileBase, IRecycleObject
 {
     private Vector2 _start;
     private Vector2 _end;
 
     [SerializeField] private float ReturnTime;
-    private float _duration;
+    [SerializeField] private float RotateSpeed = 360f;
+    [SerializeField] private float MoveSpeed = 6f;
+    [SerializeField] private GameObject HitParticle;
     private float _t;
     private bool _isLaunched = false;
     private bool _isHit = false;
     private float _speed;
+    public Action<IRecycleObject> Destroyed { get; set; }
+
+    public GameObject GameObject => gameObject;
+
     public override void SetUp(Transform shooter ,Transform target)
     {
+        ResetState(shooter);
+        
         base.SetUp(shooter, target);
 
         _start = transform.position;
         _end = target.position;
 
         float distance = Vector2.Distance(_start, _end);
-        _duration = distance / _movementRigidBody.MoveSpeed;
         _movementRigidBody.MoveTo((_end - _start).normalized);
 
         _speed = _movementRigidBody.MoveSpeed;
         _isLaunched = true;
     }
-
+    private void ResetState(Transform shooter)
+    {
+        transform.position = shooter.position;
+        
+        _isLaunched = false;
+        _isHit = false;
+        _t = 0;
+    }
     private void Update()
     {
         if (_isLaunched)
@@ -34,6 +50,7 @@ public class ProjectileBoomerang : ProjectileBase
     }
     public override void Process()
     {
+        IsArrivedToTarget();
         if (_isHit)
         {
             _t += Time.deltaTime;
@@ -43,19 +60,37 @@ public class ProjectileBoomerang : ProjectileBase
 
             _movementRigidBody.ChangeSpeed(newSpeed);
         }
-    }
 
-    protected override void OnHit(Collider2D collision)
+        transform.Rotate(0, 0, RotateSpeed * Time.deltaTime);
+    }
+    private void IsArrivedToTarget()
     {
-        Debug.Log("Hit");
-        if (collision.CompareTag("Enemy"))
+        float distance = Vector3.Distance(transform.position, _end);
+
+        if (distance < 0.1f)
         {
             _isHit = true;
+        }
+    }
+    protected override void OnHit(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            Vector3 particleDirection = collision.transform.position - transform.position;
+            float ParticleAngle = Mathf.Atan2(particleDirection.y, particleDirection.x) * Mathf.Rad2Deg;
+            Instantiate(HitParticle, collision.transform.position, Quaternion.Euler(0, 0, ParticleAngle));
+
+            //데미지 적용
+
+            CameraShake.Instance.ImpulseForce(0.03f);
         }
         else if (collision.CompareTag("Player"))
         {
             if (_isHit)
-                Destroy(gameObject);
+            {
+                _movementRigidBody.ChangeSpeed(MoveSpeed);
+                Destroyed?.Invoke(this);
+            }
         }
     }
 
