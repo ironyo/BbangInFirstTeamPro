@@ -1,39 +1,21 @@
 using Assets.Member.CHG._02.Scripts.Pooling;
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class ShotCheese : FindCloseEnemy, IShotBullet
+public class ShotCheese : TurretBase
 {
     [SerializeField] private GameObject cheese;
     [SerializeField] private Transform firePos;
     Factory factory;
     private float spread = 15f;
 
-    public Action OnShot;
-
     private void Start()
     {
         factory = new Factory(cheese, 15);
     }
 
-    private void Update()
+    public override void Shoot()
     {
-        if (Keyboard.current.sKey.wasPressedThisFrame)
-        {
-            OnShot?.Invoke();
-            ShotBullet();
-        }
-    }
-
-    public void ShotBullet()
-    {
-        Transform enemy = FindCloseEnemyTrans();
-
-        if (enemy == null)
-            return;
-
-        Vector3 dir = (enemy.position - transform.position).normalized;
+        Vector3 dir = (Target.position - transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 

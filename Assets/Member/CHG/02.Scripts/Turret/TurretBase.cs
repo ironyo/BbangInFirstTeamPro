@@ -77,6 +77,7 @@ public abstract class TurretBase : MonoBehaviour
         Vector3 dir = Target.position - transform.position;
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        angle -= 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         if (IsSkillAcailable)
