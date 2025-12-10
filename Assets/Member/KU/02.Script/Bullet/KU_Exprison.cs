@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class KU_Exprison : KU_Bullet
 {
+    [SerializeField] private int damage = 1;
+
+    private bool isAttack = false;
+
     private void Start()
     {
         CameraShake.Instance.ImpulseForce(0.5f);
@@ -17,9 +21,12 @@ public class KU_Exprison : KU_Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
+        if (collision.CompareTag("Enemy"))
         {
-            enemy.MinusHP(3);
+            if (collision.TryGetComponent<Customer>(out Customer customer))
+            {
+                customer.TakeDamage(damage);
+            }
         }
     }
 }
