@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public interface IEnemyState
@@ -13,6 +14,8 @@ public interface IEnemyState
 }
 public class Customer : MonoBehaviour
 {
+    public event System.Action OnClearRequested;
+
     [Header("Gizmo Range")]
     [SerializeField] private Vector2 closeRange;
     [SerializeField] private Vector2 attackRange;
@@ -50,6 +53,7 @@ public class Customer : MonoBehaviour
 
     public GameObject avatar;
 
+    private bool isCleared = false;
     private void Awake()
     {
         customerHP = customerType.customerHP;
@@ -63,13 +67,12 @@ public class Customer : MonoBehaviour
 
         originalColor = sr.color;
     }
-    private bool isCleared = false;
-
     private void OnEnable()
     {
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTagets = CustomerSpawner.Instance.heatTargets;
     }
+
     private void Start()
     {
         ChangeState(RunState);
@@ -165,5 +168,14 @@ public class Customer : MonoBehaviour
         }
 
         sr.color = originalColor;
+    }
+    public void RequestClear()
+    {
+        OnClearRequested?.Invoke();
+    }
+
+    public void HandleClearRequested()
+    {
+        ChangeState(ClearState);
     }
 }
