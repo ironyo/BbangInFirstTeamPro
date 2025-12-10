@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
-  m_Name: TurretSO 1
+  m_Name: KU_Sasauge_TurretSO
   m_EditorClassIdentifier: 
-  TurretSprite: {fileID: 21300000, guid: 81defa5dc937d344284090c5f22a0a0e, type: 3}
-  TurretPrice: 11
-  TurretPrefab: {fileID: 8273767610423354489, guid: f32f0bee93965104e9edfa442e89454b, type: 3}
+  TurretSprite: {fileID: -41970534257140035, guid: 71b17cfb51697a148b8a86e91c6feab2, type: 3}
+  TurretPrice: 0
+  TurretPrefab: {fileID: 5905195679837564984, guid: 592b3a64ebfdd63489a1be8eae279edd, type: 3}
   AttackCoolTime: 2
-  AttackRange: 4.78
+  AttackRange: 10
   TargetingClosedEnemy: 0

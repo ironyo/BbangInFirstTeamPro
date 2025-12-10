@@ -4,6 +4,7 @@ using UnityEngine;
 public class DoubleCurveShooter : TurretBase
 {
     [SerializeField] private GameObject ProjectilePrefab;
+
     private Factory _projectileFactory;
 
     private void OnEnable()
@@ -22,5 +23,8 @@ public class DoubleCurveShooter : TurretBase
         IRecycleObject projectile2Recycle = _projectileFactory.Get();
         ProjectileCurve projectile2 = projectile2Recycle.GameObject.GetComponent<ProjectileCurve>();
         projectile2.Angle = -angel;
+
+        projectile1.SetUp(muzzle, Target);
+        projectile2.SetUp(muzzle,Target);
     }
 }

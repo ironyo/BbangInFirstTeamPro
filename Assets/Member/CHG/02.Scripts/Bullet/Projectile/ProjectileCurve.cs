@@ -10,10 +10,8 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
     private Vector2 _point;
     private float _duration;
     private float _t;
-    private Transform _target;
     private bool _isLaunched = false;
     private bool _isHit = false;
-    private bool _isReturn = false;
     private const float defaultAngle = 35f;
     public float Angle = defaultAngle;
     [SerializeField] private float RotateSpeed;
@@ -30,7 +28,6 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
 
         base.SetUp(shooter, target);
 
-        _target = target;
         _start = shooter.position;
         _end = target.position;
 
@@ -127,6 +124,5 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
 
         _t = 0;
         _isHit = true;
-        _isReturn = true;
     }
 }

@@ -9,9 +9,6 @@ public class KU_WeaponShooter : TurretBase
     [SerializeField] private GameObject bulletPref;
     [SerializeField] private Transform firePos;
 
-    [SerializeField] private float angle;
-    [SerializeField] private LayerMask _enemyLayer;
-
     //protected override void Update()
     //{
     //    base.Update();
@@ -27,27 +24,27 @@ public class KU_WeaponShooter : TurretBase
         Shoot();
     }
 
-    Transform GetNearestTarget()
-    {
-        Collider2D[] hitsList = Physics2D.OverlapCircleAll(transform.position, angle, _enemyLayer);
+    //Transform GetNearestTarget()
+    //{
+    //    Collider2D[] hitsList = Physics2D.OverlapCircleAll(transform.position, angle, _enemyLayer);
 
-        Transform nearest = null;
-        float nearestDist = -Mathf.Infinity;
+    //    Transform nearest = null;
+    //    float nearestDist = -Mathf.Infinity;
 
-        if (hitsList == null) return null;
+    //    if (hitsList == null) return null;
 
-        foreach (var hit in hitsList)
-        {
-            float dist = Vector2.Distance(transform.position, hit.transform.position);
-            if (dist > nearestDist)
-            {
-                nearestDist = dist;
-                nearest = hit.transform;
-            }
-        }
+    //    foreach (var hit in hitsList)
+    //    {
+    //        float dist = Vector2.Distance(transform.position, hit.transform.position);
+    //        if (dist > nearestDist)
+    //        {
+    //            nearestDist = dist;
+    //            nearest = hit.transform;
+    //        }
+    //    }
 
-        return nearest;
-    }
+    //    return nearest;
+    //}
 
     private void Shooting(Transform target)
     {
