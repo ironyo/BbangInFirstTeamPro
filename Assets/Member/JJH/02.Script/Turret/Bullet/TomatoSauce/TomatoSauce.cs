@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class TomatoSauce : MonoBehaviour
 {
-    [SerializeField] private Transform origin;
-
     private SpriteRenderer sprite;
-
+    private Vector3 originalScale;
     private float baseLength;
 
     private void Awake()
@@ -14,14 +12,20 @@ public class TomatoSauce : MonoBehaviour
 
         //스프라이트가 화면에서 차지하는 가로 크기
         baseLength = sprite.size.x;
+        originalScale = transform.localScale;
     }
 
-    public void ShotTomatoSauce(Transform target)
+    private void OnEnable()
+    {
+        transform.localScale = originalScale;
+    }
+
+    public void ShotTomatoSauce(Transform target, Transform origin)
     {
         Vector3 dir = target.position - origin.position;
         float dist = dir.magnitude; //벡터 크기 구하기
 
-        transform.position = origin.position;
+        transform.position = origin.position - transform.up * 0.85f;
 
         //적쪽으로 회전
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

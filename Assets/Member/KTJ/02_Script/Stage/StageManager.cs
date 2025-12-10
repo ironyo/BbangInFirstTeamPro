@@ -8,7 +8,7 @@ public class StageManager : MonoSingleton<StageManager>
     public bool IsRunning { get; private set; } = false;
     private int _clearStage = 0;
 
-    [SerializeField] private StageGenerator _generator; // ★ 의존성 분리
+    [SerializeField] private StageGenerator _generator;
     [SerializeField] private EventChannelSO _onRoadFinished;
     [SerializeField] private EventChannelSO _onStageRoadEnd;
     [SerializeField] private EventChannelSO_T<int> _onStageRoadStart;
