@@ -532,7 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _previousStageTxt: {fileID: 1084759762}
   _currentStageTxt: {fileID: 1337122883}
-  _setUIStage: {fileID: 0}
+  _setUIStage: {fileID: 11400000, guid: ebc70b53cacdf66468b3f27fe18145c1, type: 2}
 --- !u!1 &185606745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,7 +3639,7 @@ MonoBehaviour:
   _onRoadFinished: {fileID: 11400000, guid: 8ce04edf61fcfec408fb7d70a726dd4d, type: 2}
   _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
   _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
-  _setUIStage: {fileID: 0}
+  _setUIStage: {fileID: 11400000, guid: ebc70b53cacdf66468b3f27fe18145c1, type: 2}
 --- !u!1 &1397188207
 GameObject:
   m_ObjectHideFlags: 0
