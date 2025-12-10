@@ -4,6 +4,7 @@ using UnityEngine;
 public class DoubleCurveShooter : TurretBase
 {
     [SerializeField] private GameObject ProjectilePrefab;
+
     private Factory _projectileFactory;
 
     private void OnEnable()

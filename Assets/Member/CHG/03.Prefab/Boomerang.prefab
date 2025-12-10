@@ -14919,6 +14919,7 @@ MonoBehaviour:
   ReturnTime: 1
   RotateSpeed: 720
   MoveSpeed: 6
+  HitParticle: {fileID: 676734728730603934, guid: 607d3eada1c7f224387720d3f4256d95, type: 3}
 --- !u!1 &8428790152061250200
 GameObject:
   m_ObjectHideFlags: 0
