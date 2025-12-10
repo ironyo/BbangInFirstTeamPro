@@ -15,6 +15,6 @@ MonoBehaviour:
   TurretSprite: {fileID: 0}
   TurretPrice: 0
   TurretPrefab: {fileID: 4871472531971685378, guid: 4769cc60ea7d9f243be6ed42e3e79a07, type: 3}
-  AttackCoolTime: 0.2
-  AttackRange: 7
+  AttackCoolTime: 0.3
+  AttackRange: 8
   TargetingClosedEnemy: 1

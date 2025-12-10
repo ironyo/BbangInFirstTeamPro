@@ -9,6 +9,7 @@ public class Cheese : MonoBehaviour, IRecycleObject
     [SerializeField] private int damage = 1;
 
     Factory factory;
+    private TrailRenderer trail;
 
     public Action<IRecycleObject> Destroyed { get; set; }
     public GameObject GameObject => gameObject;
@@ -22,11 +23,17 @@ public class Cheese : MonoBehaviour, IRecycleObject
 
     private void OnEnable()
     {
+        trail = GetComponent<TrailRenderer>();
+
+        trail.Clear();
+        trail.enabled = true;
+
         StartCoroutine(DeadCoroutine());
     }
 
     private void OnDisable()
     {
+        trail.enabled = false;
         isAttack = false;
     }
 

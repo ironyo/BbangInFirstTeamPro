@@ -27,11 +27,5 @@ namespace Assets.Member.CHG._02.Scripts
                 turret.Init2(_gunDataSO);
             }
         }
-
-        private void Update()
-        {
-            if (Keyboard.current.tKey.wasPressedThisFrame)
-                TestStart();
-        }
     }
 }
