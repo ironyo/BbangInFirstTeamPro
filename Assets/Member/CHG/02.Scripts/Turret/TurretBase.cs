@@ -3,6 +3,7 @@ using Assets.Member.CHG._02.Scripts.Pooling;
 using DG.Tweening;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public abstract class TurretBase : MonoBehaviour
 {
     private bool _targetingClosed = true;
@@ -16,15 +17,17 @@ public abstract class TurretBase : MonoBehaviour
     [SerializeField] protected Transform muzzle;
     private Vector3 startPos;
 
-    //protected Factory _projectileFactory;
+    private LineRenderer _lineRenderer;
+
     public void Init(TurretSO turretData)
     {
         _targetingClosed = turretData.TargetingClosedEnemy;
         _attackRange = turretData.AttackRange;
         _cooldownTime = turretData.AttackCoolTime;
 
-        //_projectileFactory = new Factory(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
-        //PoolManager.Instance.RegisterPool(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, muzzle.position);
     }
 
     protected void Update()
@@ -32,9 +35,13 @@ public abstract class TurretBase : MonoBehaviour
 
         Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, _attackRange, CustomerLayer);
 
-        if (enemys.Length <= 0) return;
+        if (enemys.Length <= 0)
+        {
+            _lineRenderer.SetPosition(1, muzzle.position);
+            return;
+        }
 
-        if (_targetingClosed)
+            if (_targetingClosed)
         {
             Transform closestTarget = null;
             float shortDistance = Mathf.Infinity;
@@ -72,6 +79,10 @@ public abstract class TurretBase : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         angle -= 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        _lineRenderer.SetPosition(1, Target.position);
+
+
         _t += Time.deltaTime;
         if (IsSkillAcailable)
         {
