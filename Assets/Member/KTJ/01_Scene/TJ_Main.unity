@@ -1816,6 +1816,7 @@ Transform:
   m_Children:
   - {fileID: 401701812}
   - {fileID: 1582198053}
+  - {fileID: 935536237}
   m_Father: {fileID: 1651808607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &781486042
@@ -2359,6 +2360,9 @@ GameObject:
   - component: {fileID: 931026775}
   - component: {fileID: 931026774}
   - component: {fileID: 931026773}
+  - component: {fileID: 931026778}
+  - component: {fileID: 931026777}
+  - component: {fileID: 931026776}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -2455,6 +2459,95 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1802844183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &931026776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931026772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630060f4a9aef054e895573a9c6e67f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &931026777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931026772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 2
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &931026778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931026772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &935536236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,11 +2579,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1651808607}
+  m_Father: {fileID: 702509203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -854, y: 389}
+  m_AnchoredPosition: {x: -44, y: 439}
   m_SizeDelta: {x: 238.44, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &935536238
@@ -4268,7 +4361,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 143157379}
-  - {fileID: 935536237}
   - {fileID: 1327116207}
   - {fileID: 702509203}
   m_Father: {fileID: 834698887}
@@ -4934,7 +5026,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.3333333, g: 0.3333333, b: 0.3333333, a: 0}
+  m_BackGroundColor: {r: 0.48427665, g: 0.48427665, b: 0.48427665, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5634,10 +5726,10 @@ MonoBehaviour:
   _labelSpawnPos: {fileID: 401701812}
   _labelPref: {fileID: 9067606041771444873, guid: fd0a303e7da9d7e40aaef9bf2cf1f99c, type: 3}
   Uis: {fileID: 702509202}
-  _setTruckLabel: {fileID: 11400000, guid: 232101faf3680374d984475d824847b7, type: 2}
+  _setTruckLabel: {fileID: 11400000, guid: 88b39b812829ce345a83de2728bc0129, type: 2}
   _onRepairStoreUIClose: {fileID: 11400000, guid: 518b8f866eac79d49be11e6b4d3bdfa9, type: 2}
   _onRepairStoreUIReady: {fileID: 11400000, guid: 0c95291488f74fb47be8dcf2a7d10cd1, type: 2}
-  _onPageDown: {fileID: 11400000, guid: 534abf9d483feb3448d8223928078533, type: 2}
+  _removeLabels: {fileID: 11400000, guid: 534abf9d483feb3448d8223928078533, type: 2}
 --- !u!1 &1941529978
 GameObject:
   m_ObjectHideFlags: 0
@@ -6063,32 +6155,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turrets:
-  - TurretCurrentLevel: 0
-    TurretGroupName: "\uB5A1\uBCF6\uC774"
+  - TurretGroupName: "\uD14C\uC2A4\uD305_1"
     Turrets:
     - {fileID: 11400000, guid: faf8822a5f38ac740a5f330ed4c76ead, type: 2}
     - {fileID: 11400000, guid: 6e52a161eae247843822c92642b4d8c6, type: 2}
-  - TurretCurrentLevel: 1
-    TurretGroupName: "\uD325\uBE59\uC218"
+    - {fileID: 11400000, guid: 734873c0218ec374fbb4520052f247bd, type: 2}
+  - TurretGroupName: "\uD14C\uC2A4\uD305_2"
     Turrets:
-    - {fileID: 11400000, guid: faf8822a5f38ac740a5f330ed4c76ead, type: 2}
-    - {fileID: 11400000, guid: 6e52a161eae247843822c92642b4d8c6, type: 2}
-  - TurretCurrentLevel: 1
-    TurretGroupName: "\uD53C\uC790"
-    Turrets:
-    - {fileID: 11400000, guid: faf8822a5f38ac740a5f330ed4c76ead, type: 2}
-    - {fileID: 11400000, guid: 6e52a161eae247843822c92642b4d8c6, type: 2}
-    - {fileID: 11400000, guid: 6e52a161eae247843822c92642b4d8c6, type: 2}
-  - TurretCurrentLevel: 0
-    TurretGroupName: "\uD56B\uB3C4\uADF8"
-    Turrets:
-    - {fileID: 11400000, guid: faf8822a5f38ac740a5f330ed4c76ead, type: 2}
+    - {fileID: 11400000, guid: 94545d6da4ff61a4f83e948522531701, type: 2}
+    - {fileID: 11400000, guid: 212017e096ae2964793d4a03b3fd1eac, type: 2}
+    - {fileID: 11400000, guid: 1d9056315b1d376468f17026983e7739, type: 2}
   _onRepairStoreUIReady: {fileID: 11400000, guid: 0c95291488f74fb47be8dcf2a7d10cd1, type: 2}
-  _setTruckLabel: {fileID: 11400000, guid: 232101faf3680374d984475d824847b7, type: 2}
+  _setTruckLabel: {fileID: 11400000, guid: 88b39b812829ce345a83de2728bc0129, type: 2}
   _onLabelClick: {fileID: 11400000, guid: 63c13f5cd43c7ae498569a83f820c03c, type: 2}
   _onTryPurchase: {fileID: 11400000, guid: f1fb4ff3b959b3d4fa6efca8a2ddee84, type: 2}
   _setTurretOnTruck: {fileID: 11400000, guid: ae354f3e958f98346847fac90dc7ba86, type: 2}
-  _onPageDown: {fileID: 11400000, guid: 534abf9d483feb3448d8223928078533, type: 2}
+  _removeLabels: {fileID: 11400000, guid: 534abf9d483feb3448d8223928078533, type: 2}
   _pageDownBtn: {fileID: 4919436455457947588}
   _turretName: {fileID: 3455969272923651052}
 --- !u!224 &1924239025479029039
