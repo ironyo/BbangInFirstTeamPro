@@ -4844,7 +4844,7 @@ GameObject:
   - component: {fileID: 2606364547722406401}
   - component: {fileID: 2748429057781348160}
   - component: {fileID: 5922287287367475679}
-  - component: {fileID: -7768339401821488947}
+  - component: {fileID: 5690072230908904859}
   - component: {fileID: 8533206666562964718}
   - component: {fileID: 4103072391087913912}
   - component: {fileID: 9009230182507019165}
@@ -4916,12 +4916,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 67d19ada50b1c8d4ba849318e223143d, type: 3}
+  m_Sprite: {fileID: 6582011127417039112, guid: 67d19ada50b1c8d4ba849318e223143d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1.7333333}
+  m_Size: {x: 1.2, y: 1.3333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4954,8 +4954,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &-7768339401821488947
-BoxCollider2D:
+--- !u!60 &5690072230908904859
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4988,18 +4988,27 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00000010430813, y: 0.009819508}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.7333333}
-    newSize: {x: 1, y: 1.7333333}
+    oldSize: {x: 1.2, y: 1.3333334}
+    newSize: {x: 1.2, y: 1.3333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.88216674, y: 1.6220462}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.32873866, y: 0.67208123}
+      - {x: -0.60933477, y: 0.47137576}
+      - {x: -0.6107489, y: 0.20359969}
+      - {x: -0.060263768, y: -0.67472845}
+      - {x: 0.068794645, y: -0.6721951}
+      - {x: 0.6028293, y: 0.19484985}
+      - {x: 0.59999985, y: 0.4653644}
+      - {x: 0.3366509, y: 0.6747284}
+  m_UseDelaunayMesh: 0
 --- !u!114 &8533206666562964718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5095,7 +5104,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5245703
+        value: 0.29142362
         inSlope: 0
         outSlope: 0
         tangentMode: 0
