@@ -14,6 +14,11 @@ public class RepairStore_UI : Store_UI
     [SerializeField] private TruckSlot _truckSlotPref;
     private List<TruckSlot> _truckSlots = new();
 
+    [Header("Event")]
+    [SerializeField] private EventChannelSO _onRepairStoreUIReady;
+    [SerializeField] private EventChannelSO _onRepairStoreUIClose;
+    [SerializeField] private EventChannel_TT<TurretSO_TJ, int> _setTurretOnTruck;
+
 
     private DG.Tweening.Sequence _seq;
     private bool _canClickPerson = false;
@@ -35,6 +40,8 @@ public class RepairStore_UI : Store_UI
 
         _canClickPerson = false;
         _isActiveUI = false;
+
+        _onRepairStoreUIClose.RaiseEvent();
     }
 
     public override void OpenUI()
@@ -75,6 +82,7 @@ public class RepairStore_UI : Store_UI
         yield return exitSeq.WaitForCompletion();
 
         SetTruckUI();
+        _onRepairStoreUIReady.RaiseEvent();
     }
 
     private void SetUIOrizin()
@@ -83,7 +91,7 @@ public class RepairStore_UI : Store_UI
         _repairMan.transform.rotation = Quaternion.Euler(0f, 0f, -90);
     }
 
-    private void SetTruckUI()
+    private void SetTruckUI() // 여기 열때마다 호출해줌.
     {
         ResetTrucSlotUI();
 
@@ -91,10 +99,32 @@ public class RepairStore_UI : Store_UI
 
         for (int i = 1; i <= _truckCount; i++)
         {
-             TruckSlot slot = Instantiate(_truckSlotPref.gameObject, _truckSlotSpawn).GetComponent<TruckSlot>();
-             slot.SetSlotNum(i);
+            int slotIndex = i; // 클로저 문제 해결하는 핵심
+
+            TruckSlot slot = Instantiate(_truckSlotPref.gameObject, _truckSlotSpawn).GetComponent<TruckSlot>();
+            slot.SetSlotNum(slotIndex);
 
             _truckSlots.Add(slot);
+
+            slot.GetAddBtn().onClick.AddListener(() =>
+            {
+                Debug.Log(slotIndex + "번 트럭에 터렛이 설치됨");
+            });
+
+            StartCoroutine(SendTruckSlotSetEvent(slotIndex));
+        }
+    }
+
+    private IEnumerator SendTruckSlotSetEvent(int slotIndex)
+    {
+        yield return new WaitForEndOfFrame();
+
+        var turSO = TruckManager.Instance.CheckIdxTurret(slotIndex - 1);
+
+        if (turSO != null)
+        {
+            _setTurretOnTruck.RaiseEvent(turSO, slotIndex); // 이제 정확한 슬롯으로 전달됨ㄹ
+            Debug.Log("이미지 세팅 이벤트 전송" + turSO.TurretName.ToString() + ", " + slotIndex);
         }
     }
 
