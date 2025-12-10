@@ -19,7 +19,6 @@ public class RepairStore_UI : Store_UI
     [SerializeField] private EventChannelSO _onRepairStoreUIClose;
     [SerializeField] private EventChannel_TT<TurretSO_TJ, int> _setTurretOnTruck;
 
-
     private DG.Tweening.Sequence _seq;
     private bool _canClickPerson = false;
     private bool _isActiveUI = false;
@@ -34,6 +33,7 @@ public class RepairStore_UI : Store_UI
             }
         }
     }
+
     public override void CloseUI()
     {
         UI.SetActive(false);
