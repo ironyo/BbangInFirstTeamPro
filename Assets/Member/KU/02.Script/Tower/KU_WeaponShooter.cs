@@ -6,8 +6,9 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class KU_WeaponShooter : TurretBase
 {
-    [SerializeField] private GameObject bulletPref;
     [SerializeField] private Transform firePos;
+    [SerializeField] private GameObject bulletPref;
+    [SerializeField] private GameObject shootParticlePref;
 
     //protected override void Update()
     //{
@@ -60,7 +61,9 @@ public class KU_WeaponShooter : TurretBase
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         KU_Bullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_Bullet>();
-        if (Target.gameObject.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
+        Instantiate(shootParticlePref, firePos.position, Quaternion.identity);
+
+        if (Target.gameObject.TryGetComponent<Customer>(out Customer enemy))
         {
             bullet.GetTarget(enemy, angle);
         }

@@ -9,6 +9,11 @@ public class KU_HotDogBullet : KU_Bullet
 {
     [SerializeField] private GameObject _sourcePref;
     [SerializeField] private int _sourceCount = 2;
+    [SerializeField] private int damage = 1;
+
+    private SpriteRenderer _spriteRenderer;
+
+    private bool isAttack = false;
 
     private CancellationTokenSource cancellationTokenSource;
 
@@ -18,6 +23,7 @@ public class KU_HotDogBullet : KU_Bullet
         base.Awake();
         cancellationTokenSource = new CancellationTokenSource();
         SpawnSource(cancellationTokenSource.Token).Forget();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private async UniTask SpawnSource(CancellationToken cancelToken)
@@ -52,18 +58,25 @@ public class KU_HotDogBullet : KU_Bullet
         StopBullet();
         BoomParticle();
 
-        await transform.DOScale(Vector3.zero, 0.5f);
+        transform.DOScale(new Vector3(transform.localScale.x+0.1f, transform.localScale.y + 0.1f), 0.2f);
+        await _spriteRenderer.DOFade(0, 0.2f);
+
         await UniTask.WaitForSeconds(0, cancellationToken: cancelToken);
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
+        if (collision.CompareTag("Enemy"))
         {
-            if (enemy != targetEnemy) return;
-
-            enemy.MinusHP(5);
-            NowDeadTime(cancellationTokenSource.Token).Forget();
+            if (collision.gameObject.TryGetComponent<Customer>(out Customer customer))
+            {
+                if (!isAttack)
+                {
+                    customer.TakeDamage(damage);
+                    NowDeadTime(cancellationTokenSource.Token).Forget();
+                    isAttack = true;
+                }
+            }
         }
     }
 
