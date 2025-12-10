@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceGun
   m_EditorClassIdentifier: 
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: 20d8dde52fe5a4b42b7b1d8a0481f9f5, type: 2}
-  <TurretPrefab>k__BackingField: {fileID: 8885798609124011066, guid: ee7bd858049938d4a97345b847e0121c, type: 3}
+  <TurretPrefab>k__BackingField: {fileID: 8885798609124011066, guid: d0f0ef4c21326704590e9640797fbfd1, type: 3}
   <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 54fc967c455dfdb4d97502f795633010, type: 3}
   <CoolDown>k__BackingField: 1.5
   <AttackRange>k__BackingField: 10
