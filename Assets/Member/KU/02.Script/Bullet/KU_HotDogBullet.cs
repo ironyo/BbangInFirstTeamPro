@@ -8,8 +8,12 @@ using UnityEngine;
 public class KU_HotDogBullet : KU_Bullet
 {
     [SerializeField] private GameObject _sourcePref;
+    [SerializeField] private GameObject _explosionPref;
+    [SerializeField] private GameObject _sasuagePref;
+
     [SerializeField] private int _sourceCount = 2;
     [SerializeField] private int damage = 1;
+    [SerializeField] private Vector3 _explosionSize = new Vector3(3, 3, 3);
 
     private SpriteRenderer _spriteRenderer;
 
@@ -42,7 +46,6 @@ public class KU_HotDogBullet : KU_Bullet
                 _sourceCount--;
                 GameObject obj = Instantiate(_sourcePref, transform.position, transform.rotation);
 
-
                 Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
                 rb.linearVelocity = transform.right * moveSpeed;
             }
@@ -72,6 +75,12 @@ public class KU_HotDogBullet : KU_Bullet
             {
                 if (!isAttack)
                 {
+                    GameObject obj = Instantiate(_explosionPref, transform.position, Quaternion.identity);
+                    obj.transform.localScale = _explosionSize;
+                    GameObject sasuage = Instantiate(_sasuagePref, transform.position, Quaternion.identity);
+                    Rigidbody2D rb = sasuage.GetComponent<Rigidbody2D>();
+                    rb.linearVelocity = new Vector2(1,1) * moveSpeed;
+
                     customer.TakeDamage(damage);
                     NowDeadTime(cancellationTokenSource.Token).Forget();
                     isAttack = true;
