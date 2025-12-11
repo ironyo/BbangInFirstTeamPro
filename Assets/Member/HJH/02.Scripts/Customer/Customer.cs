@@ -80,6 +80,8 @@ public class Customer : MonoBehaviour
     }
     private void OnEnable()
     {
+        runTargets = CustomerSpawner.Instance.runTargets;
+        hitTagets = CustomerSpawner.Instance.heatTargets;
     }
 
     private void Start()
@@ -91,8 +93,6 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
-        runTargets = CustomerSpawner.Instance.runTargets;
-        hitTagets = CustomerSpawner.Instance.heatTargets;
 
         customerHP = Mathf.Clamp(customerHP, 0, maxHp);
         healthParent.transform.localScale = new Vector3(customerHP / maxHp, 1 , 1);
