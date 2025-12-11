@@ -15,4 +15,4 @@ MonoBehaviour:
   AffixSprite: {fileID: 21300000, guid: de80d08f4fefd034e9deca204d22ccf6, type: 3}
   AffixPrice: 4
   AffixType: 2
-  Value: 1.05
+  Value: 0.54
