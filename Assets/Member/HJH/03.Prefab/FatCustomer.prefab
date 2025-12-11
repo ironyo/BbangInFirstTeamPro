@@ -332,14 +332,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5065707676273653239}
     m_Modifications:
-    - target: {fileID: 419613953588274365, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 419613953588274365, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -912915521
-      objectReference: {fileID: 0}
     - target: {fileID: 672918146519184575, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.015
@@ -380,33 +372,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2177299211626482702, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2177299211626482702, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -912915521
-      objectReference: {fileID: 0}
     - target: {fileID: 5055019405660783837, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
       propertyPath: m_Name
       value: HealthBar (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 6176517514848271416, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6176517514848271416, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -912915521
-      objectReference: {fileID: 0}
-    - target: {fileID: 8320156203660300158, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8320156203660300158, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -912915521
+    - target: {fileID: 7028949205060568150, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.286
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
