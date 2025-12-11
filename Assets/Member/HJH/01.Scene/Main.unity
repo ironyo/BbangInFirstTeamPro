@@ -660,8 +660,8 @@ MonoBehaviour:
   - "\uC640\uB530\uB9C8\uC744"
   - "\uBFE1\uBFE1\uB9C8\uC744"
   - "\uD0DC\uC900\uB9C8\uC744"
-  minLength: 3
-  maxLength: 5
+  minLength: 10
+  maxLength: 20
 --- !u!4 &223912128
 Transform:
   m_ObjectHideFlags: 0
@@ -1669,7 +1669,7 @@ MonoBehaviour:
   m_Intensity: 4.53
   m_LightVolumeIntensity: 0
   m_LightVolumeEnabled: 1
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000bf0396c9
   m_LightCookieSprite: {fileID: 21300000, guid: 119f93d0bcbf1e743bf5fcf237507d39, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2032,6 +2032,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &497267377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4781694807186075522, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+  m_PrefabInstance: {fileID: 1019201161}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d2aff08d9e3ce46ad51d30a4635970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &525029556
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,8 +2912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerSpawner: {fileID: 1887200129}
-  _onStageRoadEnd: {fileID: 0}
-  _onStageRoadStart: {fileID: 0}
+  _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
+  _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
 --- !u!4 &792866232
 Transform:
   m_ObjectHideFlags: 0
@@ -3579,6 +3590,75 @@ Transform:
   - {fileID: 1180246240}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1019201161
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1402475380841491785, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_Name
+      value: Customer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1478643758609469959, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299176909449941412, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: hitParticle
+      value: 
+      objectReference: {fileID: 497267377}
+    m_RemovedComponents:
+    - {fileID: 8132095477529645903, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4410795742738595450, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
 --- !u!1 &1033735870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3893,7 +3973,7 @@ MonoBehaviour:
   m_Intensity: 0.4
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000bf0396c9
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -5657,6 +5737,7 @@ MonoBehaviour:
   _repairMan: {fileID: 2034312730}
   _truckSlotSpawn: {fileID: 2135832610}
   _truckSlotPref: {fileID: 71264224490121634, guid: c5b535c8914f16c47add3d1828bb7af3, type: 3}
+  _truckAddBtn: {fileID: 0}
   _onRepairStoreUIReady: {fileID: 11400000, guid: 0c95291488f74fb47be8dcf2a7d10cd1, type: 2}
   _onRepairStoreUIClose: {fileID: 11400000, guid: 518b8f866eac79d49be11e6b4d3bdfa9, type: 2}
   _setTurretOnTruck: {fileID: 11400000, guid: ae354f3e958f98346847fac90dc7ba86, type: 2}
@@ -6637,7 +6718,7 @@ MonoBehaviour:
   m_Intensity: 4.53
   m_LightVolumeIntensity: 0
   m_LightVolumeEnabled: 1
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000bf0396c9
   m_LightCookieSprite: {fileID: 21300000, guid: 119f93d0bcbf1e743bf5fcf237507d39, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -7386,3 +7467,4 @@ SceneRoots:
   - {fileID: 1291771054}
   - {fileID: 1120343376}
   - {fileID: 792866232}
+  - {fileID: 1019201161}

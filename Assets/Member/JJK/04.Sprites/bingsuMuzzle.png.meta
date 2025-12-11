@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4081d16050aa7d34da1d4f8b06dc9b8f
+guid: 19116c55bdf6eea4daeb09d427da665b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -661205507936342083
-    second: bingsuMuzzle_0
+      213: -771497432911554635
+    second: bingsuMuzzle 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bingsuMuzzle_0
+      name: bingsuMuzzle 1_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 12
-        width: 7
-        height: 16
+        x: 0
+        y: 13
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dbf2ceff71de2d6f0800000000000000
-      internalID: -661205507936342083
+      spriteID: 5b75e2e1c271b45f0800000000000000
+      internalID: -771497432911554635
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bingsuMuzzle_0: -661205507936342083
+      bingsuMuzzle 1_0: -771497432911554635
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -33,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2497109238973001369}
   - {fileID: 6185236344140722660}
   - {fileID: 4800068413793405506}
   - {fileID: 333476870910146364}
@@ -53,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeRange: {x: 5.88, y: 0}
   attackRange: {x: 1.5, y: 0}
+  hitParticle: {fileID: 5363540364311237156}
   runTargets:
   - {fileID: 0}
   - {fileID: 0}
@@ -178,8 +180,7 @@ Transform:
   m_LocalPosition: {x: 0.59807587, y: -0.37895018, z: 0.003455632}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2497109238973001369}
+  m_Children: []
   m_Father: {fileID: 3611262413250093696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3741644935010643690
@@ -223,8 +224,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -912915521
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -5224445247510495138, guid: d889efe09bb5db541833cfbc304eb788, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -271,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d2aff08d9e3ce46ad51d30a4635970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticle: {fileID: 6970359995170351959}
 --- !u!1 &7517697709507148184
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,15 +311,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2427582154936781854}
+    m_TransformParent: {fileID: 5065707676273653239}
     m_Modifications:
+    - target: {fileID: 346997631569184163, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 346997631569184163, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -142198149
+      objectReference: {fileID: 0}
     - target: {fileID: 2738485593423197047, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0.030000031
       objectReference: {fileID: 0}
     - target: {fileID: 2738485593423197047, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.54
+      value: -0.5400001
       objectReference: {fileID: 0}
     - target: {fileID: 2738485593423197047, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
       propertyPath: m_LocalPosition.z
@@ -355,6 +365,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particle System
       objectReference: {fileID: 0}
+    - target: {fileID: 4193363631899854395, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193363631899854395, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -142198149
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -363,6 +381,11 @@ PrefabInstance:
 --- !u!4 &2497109238973001369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2738485593423197047, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
+  m_PrefabInstance: {fileID: 335111061832687086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6970359995170351959 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7213988973791655609, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
   m_PrefabInstance: {fileID: 335111061832687086}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2390856901673329167
@@ -439,6 +462,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDeadParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 1967874669447024382, guid: c52c628a0acfc624fb076002b9312698, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967874669447024382, guid: c52c628a0acfc624fb076002b9312698, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -142198149
+      objectReference: {fileID: 0}
     - target: {fileID: 5125919489444726959, guid: c52c628a0acfc624fb076002b9312698, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -502,6 +533,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5065707676273653239}
     m_Modifications:
+    - target: {fileID: 419613953588274365, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 419613953588274365, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -912915521
+      objectReference: {fileID: 0}
     - target: {fileID: 672918146519184575, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.015
@@ -542,9 +581,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2177299211626482702, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177299211626482702, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -912915521
+      objectReference: {fileID: 0}
     - target: {fileID: 5055019405660783837, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
       propertyPath: m_Name
       value: HealthBar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176517514848271416, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176517514848271416, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -912915521
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320156203660300158, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320156203660300158, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -912915521
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

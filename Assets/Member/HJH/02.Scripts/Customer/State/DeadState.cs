@@ -6,17 +6,21 @@ public class DeadState : IEnemyState
     private Rigidbody2D rb;
 
     private Animator animator;
+
+    private int deadMoney;
     public DeadState(Customer customer)
     {
         animator = customer._animator;
         this.customer = customer;
         rb = customer.GetComponent<Rigidbody2D>();
+        deadMoney = customer.customerType.money;
     }
     public void Enter()
     {
         animator.SetBool("isDead", true);
         customer.tag = "DeadCustomer";
         customer.gameObject.layer = LayerMask.NameToLayer("DeadCustomer");
+        MoneyManager.Instance.AddMoney(deadMoney);
     }
 
     public void Exit()
