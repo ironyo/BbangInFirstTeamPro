@@ -1,7 +1,7 @@
 using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 
-public class DoubleCurveShooter : TurretBase
+public class DoubleCurveTurret : TurretBase
 {
     [SerializeField] private GameObject ProjectilePrefab;
 
@@ -24,7 +24,7 @@ public class DoubleCurveShooter : TurretBase
         ProjectileCurve projectile2 = projectile2Recycle.GameObject.GetComponent<ProjectileCurve>();
         projectile2.Angle = -angel;
 
-        projectile1.SetUp(muzzle, Target);
-        projectile2.SetUp(muzzle,Target);
+        projectile1.SetUp(_muzzle, Target);
+        projectile2.SetUp(_muzzle,Target);
     }
 }

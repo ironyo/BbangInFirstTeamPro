@@ -9,7 +9,7 @@ public class TurretSO_TJ : ScriptableObject
     [Range(0f, 100f)]
     [field: SerializeField] public int TurretCost { get; private set; }
 
-    [field: SerializeField] public Turret Turret; // 실제 터렛 오브젝트 프리팹?
+    [field: SerializeField] public TurretBase Turret; // 실제 터렛 오브젝트 프리팹?
 
     //public Action<TurretSO_TJ> OnLabelClick;
 }

@@ -55,9 +55,4 @@ public class ToolTipManager : MonoSingleton<ToolTipManager>
         active.Remove(toolTipUI);
         ReMove();
     }
-
-    public void HideToolTip()
-    {
-        ShowToolTip("나는 멍청이입니다.");
-    }
 }

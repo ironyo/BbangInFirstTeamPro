@@ -8,8 +8,14 @@ public class StartScene_UI : MonoBehaviour
 {
     [SerializeField] private RectTransform canvas;
     [SerializeField] private List<RectTransform> hideUis = new List<RectTransform>();
+    [SerializeField] private EventChannelSO _onStartSceneReady;
 
-    private void Start()
+    private void OnEnable()
+    {
+        _onStartSceneReady.OnEventRaised += Starttt;
+    }
+
+    private void Starttt()
     {
         StartCoroutine(StartUI());
     }
