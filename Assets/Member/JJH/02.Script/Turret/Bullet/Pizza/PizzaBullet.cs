@@ -7,6 +7,7 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
 {
     [SerializeField] private GameObject childrenBullet;
     [SerializeField] private GameObject tomatoSauce;
+    [SerializeField] private GameObject pizzaBoomParticle;
     [SerializeField] private int damage = 3;
 
     Factory pizzaPieceFactory;
@@ -79,6 +80,8 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
                 IRecycleObject tomatoObj = tomatoSauceFactory.Get();
                 tomatoObj.GameObject.transform.position = transform.position;
                 tomatoObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i);
+
+                Instantiate(pizzaBoomParticle, transform.position, Quaternion.identity);
             }
             Destroyed?.Invoke(this);
         }
