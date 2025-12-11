@@ -17,19 +17,13 @@ namespace Assets.Member.CHG._02.Scripts
             {
                 obj = Instantiate(_turretSO.TurretPrefab, transform.position, Quaternion.identity);
                 TurretBase turret = obj.GetComponent<TurretBase>();
-                if (_affixSO != null)
-                    turret.Init(_turretSO, _affixSO);
-                else
-                    turret.Init(_turretSO);
+                turret.Init(_turretSO);
             }
             else if (_gunDataSO != null)
             {
                 obj = Instantiate(_gunDataSO.TurretPrefab, transform.position, Quaternion.identity);
                 TurretBase turret = obj.GetComponentInChildren<TurretBase>();
-                if (_affixSO != null)
-                    turret.Init(_gunDataSO, _affixSO);
-                else
-                    turret.Init(_gunDataSO);
+                turret.Init(_gunDataSO);
             }
         }
     }
