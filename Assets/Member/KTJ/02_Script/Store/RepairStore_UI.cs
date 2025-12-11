@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RepairStore_UI : Store_UI
 {
@@ -12,13 +13,13 @@ public class RepairStore_UI : Store_UI
     [Header("TruckSlotUI")]
     [SerializeField] private Transform _truckSlotSpawn;
     [SerializeField] private TruckSlot _truckSlotPref;
-    private List<TruckSlot> _truckSlots = new();
+    [SerializeField] private Button _truckAddBtn;
+    private List<GameObject> _truckSlots = new();
 
     [Header("Event")]
     [SerializeField] private EventChannelSO _onRepairStoreUIReady;
     [SerializeField] private EventChannelSO _onRepairStoreUIClose;
     [SerializeField] private EventChannel_TT<TurretSO_TJ, int> _setTurretOnTruck;
-
 
     private DG.Tweening.Sequence _seq;
     private bool _canClickPerson = false;
@@ -34,6 +35,7 @@ public class RepairStore_UI : Store_UI
             }
         }
     }
+
     public override void CloseUI()
     {
         UI.SetActive(false);
@@ -97,14 +99,28 @@ public class RepairStore_UI : Store_UI
 
         int _truckCount = TruckManager.Instance.CurTruckCount;
 
-        for (int i = 1; i <= _truckCount; i++)
+        for (int i = 1; i <= _truckCount + 1; i++)
         {
+            if (i == _truckCount + 1)
+            {
+                if (TruckManager.Instance.CheckIsTruckFull()) continue; // 이미 트럭개수가 최대라면 +버튼 생성안함
+
+                Button btn = Instantiate(_truckAddBtn.gameObject, _truckSlotSpawn).GetComponent<Button>();
+                _truckSlots.Add(btn.gameObject);
+                btn.onClick.AddListener(() =>
+                {
+                    TruckManager.Instance.AddTruck();
+                    SetTruckUI();
+                });
+                continue;
+            }
+
             int slotIndex = i; // 클로저 문제 해결하는 핵심
 
             TruckSlot slot = Instantiate(_truckSlotPref.gameObject, _truckSlotSpawn).GetComponent<TruckSlot>();
             slot.SetSlotNum(slotIndex);
 
-            _truckSlots.Add(slot);
+            _truckSlots.Add(slot.gameObject);
 
             slot.GetAddBtn().onClick.AddListener(() =>
             {

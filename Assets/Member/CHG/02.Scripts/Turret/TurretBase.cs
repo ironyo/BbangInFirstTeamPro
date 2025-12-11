@@ -1,5 +1,3 @@
-using System;
-using Assets.Member.CHG._02.Scripts.Pooling;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,9 +7,10 @@ public abstract class TurretBase : MonoBehaviour
     private bool _targetingClosed = true;
     private float _attackRange;
     private float _cooldownTime = 2f;
-  
+
     private float _t;
     protected Transform Target;
+    protected GunDataSO _gunData;
     public LayerMask CustomerLayer = 7;
     private bool IsSkillAcailable => (_t > _cooldownTime);
     [SerializeField] protected Transform muzzle;
@@ -28,6 +27,13 @@ public abstract class TurretBase : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.positionCount = 2;
         _lineRenderer.SetPosition(0, muzzle.position);
+    }
+
+    public void Init2(GunDataSO gunData)
+    {
+        _gunData = gunData;
+        _attackRange = gunData.AttackRange;
+        _cooldownTime = gunData.CoolDown;
     }
 
     protected void Update()

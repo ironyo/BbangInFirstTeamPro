@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BulletPrefab>k__BackingField: {fileID: 7223630651044081690, guid: a1d3cb4a86aedab4586de65e8a3b6c89, type: 3}
   <CollisionParticle>k__BackingField: {fileID: 584123716942813891, guid: 68d2eeb6522d15b49b47a493f7973dee, type: 3}
-  <Damage>k__BackingField: 3
+  <DisableParticle>k__BackingField: {fileID: 584123716942813891, guid: aa33382897d017147a17e197d5da8950, type: 3}
+  <Damage>k__BackingField: 1
   <LifeTime>k__BackingField: 0.8
   <Speed>k__BackingField: 10
   <CameraShakeForce>k__BackingField: 0.25
+  <ThroughShotData>k__BackingField:
+    <BulletData>k__BackingField: {fileID: 0}
+    <BulletCount>k__BackingField: 0
+    <SpreadAngle>k__BackingField: 0

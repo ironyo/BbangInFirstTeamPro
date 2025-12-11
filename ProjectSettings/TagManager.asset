@@ -8,6 +8,7 @@ TagManager:
   - DeadZone
   - RunTarget
   - CloseTarget
+  - 'DeadCustomer '
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - ClosePotision
   - 
   - 
-  - 
+  - DeadCustomer
   - 
   - 
   - 
@@ -44,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemy
+    uniqueID: 3382051775
     locked: 0
   - name: Particle
     uniqueID: 4152769147

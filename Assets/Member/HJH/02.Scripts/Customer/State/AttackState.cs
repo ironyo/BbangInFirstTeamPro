@@ -8,68 +8,114 @@ public class AttackState : IEnemyState
     private Rigidbody2D rb;
     private Animator animator;
 
+    private Transform avatar;
+
     private bool isAttacking = false;
 
     public AttackState(Customer customer)
     {
-        animator = customer._animator;
         this.customer = customer;
+        animator = customer._animator;
     }
 
     public void Enter()
     {
-        Debug.Log("Enemy에서 Attack");
+        avatar = customer.avatar.transform;
+
         rb = customer.GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
+
+        LookAtClosestTarget();
     }
 
-    public void Update() 
+    public void Update()
     {
-        if(customer.customerHP <= 0)
+        if (customer.customerHP <= 0)
         {
             customer.ChangeState(customer.ClearState);
+            return;
         }
 
-        if(customer.IsAttackTargetInRange() == false)
+        if (customer.IsAttackTargetInRange() == false)
         {
             customer.ChangeState(customer.CloseState);
+            return;
         }
-        else if(!isAttacking)
-        {
-            AttackDotween();
-        }
+
+        if (!isAttacking)
+            AttackTween();
     }
-    public void Exit() 
+
+    public void Exit()
     {
         animator.SetBool("isAttack", false);
     }
-
-    public void AttackDotween()
+    private void AttackTween()
     {
         if (isAttacking) return;
         isAttacking = true;
-        Sequence tween = DOTween.Sequence();
-        
-        tween.AppendCallback(()=>animator.SetBool("isAttack", true));
 
-        tween.AppendInterval(0.75f);
+        Sequence seq = DOTween.Sequence();
 
-        tween.AppendCallback(() =>
+        seq.AppendCallback(() => animator.SetBool("isAttack", true));
+        seq.AppendInterval(0.75f);
+
+        seq.AppendCallback(() =>
         {
             BackMotion();
         });
     }
 
+    private Transform GetClosestTarget()
+    {
+        Transform closest = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (var t in customer.runTargets)
+        {
+            float dist = Vector2.Distance(customer.transform.position, t.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = t;
+            }
+        }
+
+        return closest;
+    }
+
+    private void LookAtClosestTarget()
+    {
+        Transform target = GetClosestTarget();
+        if (target == null) return;
+
+        Transform pivot = avatar;
+
+        Vector2 dir = target.position - pivot.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        if (target.position.y < 0)
+        {
+            angle += 180;
+            Debug.Log("angle+:" + angle);
+        }
+        else
+        {
+            angle -= 180;
+            Debug.Log("angle-:" + angle);
+        }
+
+            Quaternion targetRot = Quaternion.Euler(0, 0, angle);
+
+        pivot.rotation = Quaternion.Slerp(pivot.rotation, targetRot, 0.3f);
+    }
+
     private void BackMotion()
     {
-        // 빠지는 애니메이션 넣기
-        float y = customer.transform.position.y;
-        Vector3 offset;
-
-        if (y < 0f)
-            offset = new Vector3(-10f, -3f, 0f);
-        else
-            offset = new Vector3(-10f, 3f, 0f);
+        float y = avatar.position.y;
+        Vector3 offset = (y < 0f)
+            ? new Vector3(-10f, -3f, 0f)
+            : new Vector3(-10f, 3f, 0f);
 
         customer.StartCoroutine(BackOffRoutine(offset, 0.5f));
     }
@@ -87,6 +133,11 @@ public class AttackState : IEnemyState
             customer.transform.position = Vector3.Lerp(start, end, t);
             yield return null;
         }
+
+        // 회전 초기화
+        avatar.rotation = Quaternion.identity;
+
         isAttacking = false;
     }
+
 }

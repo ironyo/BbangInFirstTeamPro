@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public interface IEnemyState
@@ -13,11 +14,14 @@ public interface IEnemyState
 }
 public class Customer : MonoBehaviour
 {
+    public event System.Action OnClearRequested;
+
     [Header("Gizmo Range")]
     [SerializeField] private Vector2 closeRange;
     [SerializeField] private Vector2 attackRange;
 
-    [Header("Run Targets")]
+    [SerializeField] private CustomerHitParticle hitParticle;
+    
     public Transform[] runTargets;
     public Transform[] hitTagets;
 
@@ -31,7 +35,7 @@ public class Customer : MonoBehaviour
     public ClearState ClearState{ get; set; } // 적의 포 만감을 다 채웠을 때, 자동으로 떠남
     public CloseState CloseState { get; set; } // 가까이 왔을 때, 트럭으로 이동
     public DeadState DeadState { get; set; } // 죽었을 때
-
+    
     [SerializeField] private TextMeshPro hpText;
     [SerializeField] private ParticleSystem deadMotion;
 
@@ -39,15 +43,18 @@ public class Customer : MonoBehaviour
 
     public Animator _animator;
 
-    [SerializeField]private CustomerType customerType;
+    public CustomerType customerType;
     public int customerHP { get; set; }
     private int maxHp => customerType.customerHP;
-
+    
     public float customerSpeed { get; set; }
 
     [SerializeField]private SpriteRenderer sr;
-    private Color originalColor; 
+    private Color originalColor;
 
+    public GameObject avatar;
+
+    private bool isCleared = false;
     private void Awake()
     {
         customerHP = customerType.customerHP;
@@ -61,13 +68,12 @@ public class Customer : MonoBehaviour
 
         originalColor = sr.color;
     }
-    private bool isCleared = false;
-
     private void OnEnable()
     {
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTagets = CustomerSpawner.Instance.heatTargets;
     }
+
     private void Start()
     {
         ChangeState(RunState);
@@ -163,5 +169,46 @@ public class Customer : MonoBehaviour
         }
 
         sr.color = originalColor;
+    }
+    public void RequestClear()
+    {
+        OnClearRequested?.Invoke();
+    }
+
+    public void HandleClearRequested()
+    {
+        ChangeState(ClearState);
+    }
+        
+    public void PlayHitParticle()
+    {
+        Transform closest = GetClosestTarget();
+        if (closest == null)
+        {
+            Debug.LogWarning("Closest target not found");
+            return;
+        }
+
+        Vector3 spawnPos = closest.parent.position;
+        hitParticle.PlayAt(spawnPos);
+    }
+
+    public Transform GetClosestTarget()
+    {
+        Transform closest = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (var t in runTargets)
+        {
+            float dist = Vector2.Distance(transform.position, t.position);
+
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = t;
+            }
+        }
+
+        return closest;
     }
 }

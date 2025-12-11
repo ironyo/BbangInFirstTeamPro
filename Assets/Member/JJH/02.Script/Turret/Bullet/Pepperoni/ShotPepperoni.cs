@@ -4,6 +4,7 @@ using UnityEngine;
 public class ShotPepperoni : TurretBase
 {
     [SerializeField] private GameObject pepperoni;
+    [SerializeField] private GameObject shotParticle;
     [SerializeField] private Transform firePos;
     Factory factory;
 
@@ -19,6 +20,8 @@ public class ShotPepperoni : TurretBase
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         CameraShake.Instance.ImpulseForce(0.5f);
+
+        Instantiate(shotParticle, firePos.position, Quaternion.identity);
 
         IRecycleObject obj = factory.Get();
         obj.GameObject.transform.position = firePos.position;

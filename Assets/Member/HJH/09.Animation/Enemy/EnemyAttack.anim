@@ -621,8 +621,8 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.51666665
-    functionName: HitParticle
+  - time: 0.31666666
+    functionName: OnAttackEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

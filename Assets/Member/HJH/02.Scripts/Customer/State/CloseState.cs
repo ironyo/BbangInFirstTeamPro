@@ -28,6 +28,7 @@ public class CloseState : IEnemyState
         animator.SetBool("OnWalk", true);
         Debug.Log("Customer CloseState Enter");
 
+
         moveSpeed = customer.customerSpeed - 2;
         maxSpeed = customer.customerSpeed * 0.4f;
 

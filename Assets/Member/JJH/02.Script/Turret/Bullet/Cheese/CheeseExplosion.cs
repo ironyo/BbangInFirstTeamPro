@@ -5,11 +5,13 @@ using UnityEngine;
 public class CheeseExplosion : MonoBehaviour, IRecycleObject
 {
     [SerializeField] private GameObject cheesePuddle;
+    [SerializeField] private GameObject cheeseExplosionParticle;
 
     Factory factory;
 
     private void Start()
     {
+        Instantiate(cheeseExplosionParticle, transform.position, Quaternion.identity);
         factory = new Factory(cheesePuddle, 1);
     }
 
