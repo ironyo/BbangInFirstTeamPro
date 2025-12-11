@@ -15,4 +15,4 @@ MonoBehaviour:
   <TurretName>k__BackingField: "\uC529\uC2A4\uD130\uB81B"
   <TurretImage>k__BackingField: {fileID: 21300000, guid: 10eb1addc7a21a640b68a61572e3708d, type: 3}
   <TurretCost>k__BackingField: 445
-  Turret: {fileID: 5577255346192286142, guid: a8363cdd1222b724fa57f8a36a5fa127, type: 3}
+  Turret: {fileID: 5677863479841806426, guid: 0341667ef5adafe4db5cacfdcf8588f6, type: 3}

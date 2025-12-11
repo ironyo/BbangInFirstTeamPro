@@ -220,3 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f258440a5e3f994c91594f8d94bba7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CustomerLayer:
+    serializedVersion: 2
+    m_Bits: 7
+  muzzle: {fileID: 3305034318433794650}
