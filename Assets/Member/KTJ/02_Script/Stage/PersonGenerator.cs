@@ -65,8 +65,6 @@ public class PersonGenerator : MonoBehaviour
             _spawnedPerson.ForEach((x) => x.Item1.MoveTo(_spawnPos.position, 7f));
             _spawnedPerson.ForEach((x) => x.Item2.UnClicked());
             _spawnedPerson.Clear();
-
-            
         }
     }
 }

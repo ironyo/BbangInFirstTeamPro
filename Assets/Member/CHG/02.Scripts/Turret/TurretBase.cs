@@ -35,21 +35,6 @@ public abstract class TurretBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Init(TurretSO turretData, AffixSO affixData)
-    {
-        _targetingClosed = turretData.TargetingClosedEnemy;
-        _attackRange = turretData.AttackRange;
-        _cooldownTime = turretData.AttackCoolTime;
-        _power = turretData.AttackPower;
-
-        AffixSet(affixData);
-
-        _lineRenderer = GetComponent<LineRenderer>();
-        _lineRenderer.positionCount = 2;
-        _lineRenderer.SetPosition(0, _firePos.position);
-
-        MakeAttackSpeedSlider();
-    }
     public void Init(TurretSO turretData)
     {
         _targetingClosed = turretData.TargetingClosedEnemy;
@@ -69,17 +54,9 @@ public abstract class TurretBase : MonoBehaviour
         _attackRange = gunData.AttackRange;
         _cooldownTime = gunData.CoolDown;
     }
-    public void Init(GunDataSO gunData, AffixSO affixData)
-    {
-        _gunData = gunData;
-        _attackRange = gunData.AttackRange;
-        _cooldownTime = gunData.CoolDown;
-
-        AffixSet(affixData);
-    }
 
 
-    private void AffixSet(AffixSO affixData)
+    public void AffixSet(AffixSO affixData)
     {
         _affixSpriteRen.sprite = affixData.AffixSprite;
 
@@ -213,9 +190,6 @@ public abstract class TurretBase : MonoBehaviour
         isCooltime = false;
         _attackSpeedSlider.UpdateSlider(1f);
     }
-
-
-
 
     protected void OnDrawGizmos()
     {
