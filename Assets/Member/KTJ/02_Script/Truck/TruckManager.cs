@@ -60,6 +60,8 @@ public class TruckManager : MonoSingleton<TruckManager>
         _truckBodyList.Add((_clonedBody.GetComponent<TurretSpawner>(), null));
 
         _clonedBody.transform.localPosition = new Vector3(((_truckBodyList.Count - 1) * -2.78f), 0, 0);
+
+        CustomerSpawner.Instance.AddTargets(_clonedBody);
     }
 
     public void SetTurret(int SpawnTruckIdx, TurretSO_TJ turSO)

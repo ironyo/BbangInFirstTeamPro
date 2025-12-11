@@ -44,6 +44,13 @@ public class PersonGenerator : MonoBehaviour
         {
             pers = per;
         }
+        if (per_1.TryGetComponent<Mechanic>(out Mechanic mec))
+        {
+            mec.GetReadyBtn().onClick.AddListener(() =>
+            {
+                StageManager.Instance.StartStage();
+            });
+        }
         _spawnedPerson.Add((am, pers));
 
         yield return new WaitForSeconds(2f);

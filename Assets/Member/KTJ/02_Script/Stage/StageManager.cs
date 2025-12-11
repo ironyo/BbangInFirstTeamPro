@@ -22,6 +22,7 @@ public class StageManager : MonoSingleton<StageManager>
     private void Start()
     {
         _onRoadFinished.OnEventRaised += EndStage;
+        StartStage();
     }
 
     public void StartStage()
