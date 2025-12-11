@@ -20,6 +20,7 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
         spawnNum = Random.Range(0, spawnPoints.Length);
         CustomerSpawn(spawnNum);
     }
+    
 
     public void AddTargets(GameObject parent)
     {
