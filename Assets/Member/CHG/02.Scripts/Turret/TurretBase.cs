@@ -16,6 +16,16 @@ public abstract class TurretBase : MonoBehaviour
     private Vector3 startPos;
 
     //protected Factory _projectileFactory;
+
+    public void SpawnTurret(Transform _spawnParent)
+    {
+    }
+
+    public void DeleteTurret()
+    {
+        Destroy(gameObject);
+    }
+
     public void Init(TurretSO turretData)
     {
         _targetingClosed = turretData.TargetingClosedEnemy;
