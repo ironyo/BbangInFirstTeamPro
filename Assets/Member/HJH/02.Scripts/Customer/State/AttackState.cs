@@ -66,7 +66,7 @@ public class AttackState : IEnemyState
 
         seq.AppendCallback(() =>
         {
-            isAttacking = false;
+            BackMotion();
         });
     }
 
@@ -140,7 +140,7 @@ public class AttackState : IEnemyState
 
         // 회전 초기화
         avatar.rotation = Quaternion.identity;
-
+        isAttacking = false;
     }
 
 }
