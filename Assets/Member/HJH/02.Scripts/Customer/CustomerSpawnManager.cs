@@ -12,7 +12,7 @@ public class CustomerSpawnManager : MonoBehaviour
     private bool isSpawning = false;
 
     public float spawnInterval { get; set; } = 1.0f;
-    private void Update()
+    private void Start()
     {
         _onStageRoadEnd.OnEventRaised += AllClearCustomer;
 
@@ -21,7 +21,7 @@ public class CustomerSpawnManager : MonoBehaviour
 
     public void AllClearCustomer()
     {
-        Customer[] customers = FindObjectsOfType<Customer>();
+        Customer[] customers = (Customer[])FindObjectsByType<Customer>(FindObjectsSortMode.None);
 
         foreach (var c in customers)
         {

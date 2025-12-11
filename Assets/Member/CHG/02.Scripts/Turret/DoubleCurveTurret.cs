@@ -1,7 +1,7 @@
 using Assets.Member.CHG._02.Scripts.Pooling;
 using UnityEngine;
 
-public class DoubleCurveShooter : TurretBase
+public class DoubleCurveTurret : TurretBase
 {
     [SerializeField] private GameObject ProjectilePrefab;
 
