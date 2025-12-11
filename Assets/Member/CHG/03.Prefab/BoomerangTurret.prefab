@@ -368,6 +368,7 @@ MonoBehaviour:
   _muzzle: {fileID: 4075488184621479968}
   _affixSpriteRen: {fileID: 6262584775550119228}
   _firePos: {fileID: 5745062634277520519}
+  _attackSpeedSliderPrefab: {fileID: 6560060808592047826, guid: c83974a16944f494897089526a539d1a, type: 3}
   ProjectilePrefab: {fileID: 6856611375793059518, guid: 1ec283260d22fd94c85e279d3241df4f, type: 3}
 --- !u!1 &4727621934417451052
 GameObject:
