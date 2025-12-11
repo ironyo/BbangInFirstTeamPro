@@ -60,7 +60,19 @@ public class Customer : MonoBehaviour
 
     private bool isCleared = false;
 
-    public bool isSlow;
+    public event System.Action<bool> OnSlowChanged;
+
+    private bool _isSlow;
+    public bool isSlow
+    {
+        get => _isSlow;
+        private set
+        {
+            if (_isSlow == value) return;
+            _isSlow = value;
+            OnSlowChanged?.Invoke(_isSlow);
+        }
+    }
 
     public int damage { get; set; }
 
@@ -165,6 +177,7 @@ public class Customer : MonoBehaviour
         {
             isSlow = false;
         }
+
         if (collision.gameObject.CompareTag("DeadZone"))
         {
             Destroy(gameObject);
