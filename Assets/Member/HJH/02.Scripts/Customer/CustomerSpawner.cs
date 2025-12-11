@@ -72,8 +72,7 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
 
     public void AllClearCustomer()
     {
-        Customer[] customers = FindObjectsOfType<Customer>();
-
+        Customer[] customers = (Customer[])FindObjectsByType<Customer>(FindObjectsSortMode.None);
         foreach (var c in customers)
         {
             c.RequestClear();

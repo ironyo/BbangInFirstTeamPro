@@ -42,7 +42,7 @@ public class Customer : MonoBehaviour
 
     public Animator _animator;
 
-    [SerializeField]private CustomerType customerType;
+    public CustomerType customerType;
     public int customerHP { get; set; }
     private int maxHp => customerType.customerHP;
     

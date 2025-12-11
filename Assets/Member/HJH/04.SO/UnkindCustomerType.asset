@@ -15,4 +15,4 @@ MonoBehaviour:
   customerCategory: 2
   customerHP: 3
   customerSpeed: 11
-  customerAttackSpeed: 20
+  money: 10
