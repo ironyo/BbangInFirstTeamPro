@@ -27343,9 +27343,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1034768879065776542, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_TagString
+      value: CloseTarget
+      objectReference: {fileID: 0}
     - target: {fileID: 2097320883900632217, guid: e1a611ec57822ba41b852199118c312b, type: 3}
       propertyPath: m_Name
       value: ClosePosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097320883900632217, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091417429096264924, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_TagString
+      value: CloseTarget
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27360,9 +27372,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1606342470}
     m_Modifications:
+    - target: {fileID: 2969405147234598629, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
+      propertyPath: m_TagString
+      value: RunTarget
+      objectReference: {fileID: 0}
     - target: {fileID: 5766392815993898104, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
       propertyPath: m_Name
       value: RunPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766392815993898104, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153940330253562927, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
+      propertyPath: m_TagString
+      value: RunTarget
       objectReference: {fileID: 0}
     - target: {fileID: 8462476471626905347, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
       propertyPath: m_LocalPosition.x

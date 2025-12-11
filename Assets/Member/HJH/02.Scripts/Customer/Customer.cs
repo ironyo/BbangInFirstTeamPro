@@ -60,7 +60,19 @@ public class Customer : MonoBehaviour
 
     private bool isCleared = false;
 
-    public bool isSlow;
+    public event System.Action<bool> OnSlowChanged;
+
+    private bool _isSlow;
+    public bool isSlow
+    {
+        get => _isSlow;
+        private set
+        {
+            if (_isSlow == value) return;
+            _isSlow = value;
+            OnSlowChanged?.Invoke(_isSlow);
+        }
+    }
 
     public int damage { get; set; }
 
@@ -80,6 +92,8 @@ public class Customer : MonoBehaviour
     }
     private void OnEnable()
     {
+        runTargets = CustomerSpawner.Instance.runTargets;
+        hitTagets = CustomerSpawner.Instance.heatTargets;
     }
 
     private void Start()
@@ -91,8 +105,6 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
-        runTargets = CustomerSpawner.Instance.runTargets;
-        hitTagets = CustomerSpawner.Instance.heatTargets;
 
         customerHP = Mathf.Clamp(customerHP, 0, maxHp);
         healthParent.transform.localScale = new Vector3(customerHP / maxHp, 1 , 1);
@@ -165,6 +177,7 @@ public class Customer : MonoBehaviour
         {
             isSlow = false;
         }
+
         if (collision.gameObject.CompareTag("DeadZone"))
         {
             Destroy(gameObject);
@@ -243,5 +256,16 @@ public class Customer : MonoBehaviour
     public void InflictDamage()
     {
         TruckHealthManager.Instance.TruckHit(damage);
+    }
+    private void HandleSlow(bool isSlow)
+    {
+        if (isSlow)
+        {
+            Debug.Log("느려짐");
+        }
+        else
+        {
+            Debug.Log("원래 속도로 돌아옴");
+        }
     }
 }
