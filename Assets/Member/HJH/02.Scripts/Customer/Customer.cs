@@ -257,4 +257,15 @@ public class Customer : MonoBehaviour
     {
         TruckHealthManager.Instance.TruckHit(damage);
     }
+    private void HandleSlow(bool isSlow)
+    {
+        if (isSlow)
+        {
+            Debug.Log("느려짐");
+        }
+        else
+        {
+            Debug.Log("원래 속도로 돌아옴");
+        }
+    }
 }
