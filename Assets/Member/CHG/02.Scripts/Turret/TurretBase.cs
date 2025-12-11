@@ -18,6 +18,8 @@ public abstract class TurretBase : MonoBehaviour
     [SerializeField] protected Transform _muzzle;
     [SerializeField] private SpriteRenderer _affixSpriteRen;
     [SerializeField] private Transform _firePos;
+    [SerializeField] private GameObject _attackSpeedSliderPrefab;
+    private AttackSpeedSlider _attackSpeedSlider;
     private Vector3 startPos;
 
     private LineRenderer _lineRenderer;
@@ -43,6 +45,8 @@ public abstract class TurretBase : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.positionCount = 2;
         _lineRenderer.SetPosition(0, _firePos.position);
+
+        MakeAttackSpeedSlider();
     }
     public void Init(TurretSO turretData)
     {
@@ -54,6 +58,8 @@ public abstract class TurretBase : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.positionCount = 2;
         _lineRenderer.SetPosition(0, _firePos.position);
+
+        MakeAttackSpeedSlider();
     }
     public void Init(GunDataSO gunData)
     {
@@ -91,6 +97,14 @@ public abstract class TurretBase : MonoBehaviour
             }
         }
     }
+
+    private void MakeAttackSpeedSlider()
+    {
+        GameObject prefab = Instantiate(_attackSpeedSliderPrefab);
+        _attackSpeedSlider = prefab.GetComponent<AttackSpeedSlider>();
+        _attackSpeedSlider.Init(transform);
+    }
+
     protected void Update()
     {
         if (_lineRenderer == null)
@@ -138,6 +152,7 @@ public abstract class TurretBase : MonoBehaviour
 
         Quaternion dir = transform.rotation;
         _lineRenderer.SetPosition(0, _firePos.position);
+        _attackSpeedSlider.UpdateSlider(_t / _cooldownTime);
         if (Target == null)
         {
         }
