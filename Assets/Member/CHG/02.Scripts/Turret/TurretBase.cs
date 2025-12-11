@@ -9,8 +9,8 @@ public abstract class TurretBase : MonoBehaviour
     private float _attackRange;
     private float _power;
     private float _cooldownTime = 2f;
-
     private float _t;
+
     protected Transform Target;
     protected GunDataSO _gunData;
     public LayerMask CustomerLayer = 7;
@@ -23,6 +23,8 @@ public abstract class TurretBase : MonoBehaviour
     private Vector3 startPos;
 
     private LineRenderer _lineRenderer;
+
+    private bool isCooltime;
 
     public void SpawnTurret(Transform _spawnParent)
     {
@@ -152,7 +154,6 @@ public abstract class TurretBase : MonoBehaviour
 
         Quaternion dir = transform.rotation;
         _lineRenderer.SetPosition(0, _firePos.position);
-        _attackSpeedSlider.UpdateSlider(_t / _cooldownTime);
         if (Target == null)
         {
         }
@@ -170,19 +171,33 @@ public abstract class TurretBase : MonoBehaviour
 
 
 
-        _t += Time.deltaTime;
-        if (IsSkillAcailable)
+        if (!isCooltime && _t >= _cooldownTime && Target != null)
         {
-            if (Target != null)
-            {
-                _muzzle.transform.DOLocalMove(startPos + new Vector3(0, -0.5f, 0), 0.05f)
+            _muzzle.transform.DOLocalMove(startPos + new Vector3(0, -0.5f, 0), 0.05f)
                 .OnComplete(() =>
                     _muzzle.transform.DOLocalMove(startPos, 0.1f)
                 );
-                Shoot();
 
+            Shoot();
+
+            _t = 0f;
+            isCooltime = true;
+            _attackSpeedSlider.UpdateSlider(0f);
+        }
+
+        if (isCooltime)
+        {
+            _t += Time.deltaTime;
+
+            float ratio = Mathf.Clamp01(_t / _cooldownTime);
+            _attackSpeedSlider.UpdateSlider(ratio);
+
+            if (_t >= _cooldownTime)
+            {
+                _t = _cooldownTime;
+                isCooltime = false;
+                _attackSpeedSlider.UpdateSlider(1f);
             }
-            _t = 0;
         }
 
 
@@ -193,6 +208,10 @@ public abstract class TurretBase : MonoBehaviour
     private void OnEnable()
     {
         startPos = _muzzle.transform.localPosition;
+
+        _t = _cooldownTime;
+        isCooltime = false;
+        _attackSpeedSlider.UpdateSlider(1f);
     }
 
 
