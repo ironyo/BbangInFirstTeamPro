@@ -5616,7 +5616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e2018b5c213a046aaa73398cde3964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turretSO: {fileID: 11400000, guid: 02e164c304bb4fe40b5ea7fa5e16c3e3, type: 2}
+  _turretSO: {fileID: 11400000, guid: 6e7915278fc8b4f4b8f08aa74a9b83df, type: 2}
   _gunDataSO: {fileID: 0}
 --- !u!4 &1606245306
 Transform:
