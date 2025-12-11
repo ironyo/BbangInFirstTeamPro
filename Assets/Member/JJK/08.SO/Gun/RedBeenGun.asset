@@ -18,7 +18,7 @@ MonoBehaviour:
   <CoolDown>k__BackingField: 2
   <AttackRange>k__BackingField: 10
   <CameraShakeForce>k__BackingField: 0.15
-  bulletCount: 8
-  <SpreadAngle>k__BackingField: 30
+  bulletCount: 6
+  <SpreadAngle>k__BackingField: 20
   <MultiFire>k__BackingField: 1
   <ThroughFire>k__BackingField: 0

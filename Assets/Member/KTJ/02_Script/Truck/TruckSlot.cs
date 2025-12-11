@@ -1,13 +1,17 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TruckSlot : MonoBehaviour
+public class TruckSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [Header("UI Setting")]
     [SerializeField] private TextMeshProUGUI _truckSlotNumTxt;
     [SerializeField] private Button _addBtn;
     [SerializeField] Image TurretImage;
+    [SerializeField] private GameObject _stripEffect;
 
+    [Header("Events")]
     [SerializeField] private EventChannel_TT<TurretSO_TJ, int> _onTryPurchase;
     [SerializeField] private EventChannel_TT<TurretSO_TJ, int> _setTurretOnTruck;
 
@@ -60,5 +64,15 @@ public class TruckSlot : MonoBehaviour
 
         // TryPurchase 이벤트를 전송함.
         _onTryPurchase.RaiseEvent(turSO, _slotNum);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _stripEffect.gameObject.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _stripEffect.gameObject.SetActive(false);
     }
 }

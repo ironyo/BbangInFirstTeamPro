@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class MoneyManager : MonoSingleton<MoneyManager>
 {
-
     [SerializeField] private int _money = 0;
+    
+    public Action<int, int> OnMoneyChanged;
 
     public int Money
     {
@@ -14,7 +16,7 @@ public class MoneyManager : MonoSingleton<MoneyManager>
         set
         {
             _money = value;
-            _money = Mathf.Clamp(_money, 0, 9999);
+            _money = Mathf.Clamp(_money, 0, 9999999);
         }
 
     }
@@ -24,16 +26,20 @@ public class MoneyManager : MonoSingleton<MoneyManager>
         base.Awake();
     }
 
-    public void AddMoney(int index)
+    public void AddMoney(int amount)
     {
-        _money += index;
+        int old = Money;
+        _money += amount;
+        OnMoneyChanged?.Invoke(old, _money);
     }
 
-    public bool SpendMoney(int index)
+    public bool SpendMoney(int amount)
     {
-        if (index <= 0 ||_money < index) return false;
+        if (amount <= 0 ||_money < amount) return false;
        
-        _money -= index;
+        int old = Money;
+        _money -= amount;
+        OnMoneyChanged?.Invoke(old, _money);
 
         return true;
     }

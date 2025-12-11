@@ -167,6 +167,8 @@ MonoBehaviour:
   _particlePoint: {fileID: 3514999934963520882}
   _isOnly: 1
   _katcupSprite: {fileID: 21300000, guid: 22947ed8523bd7445b30321f31e4ef4c, type: 3}
+  damage: 1
+  _trail: {fileID: 9211784409277109686}
 --- !u!70 &1012998431572445336
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

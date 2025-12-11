@@ -49,6 +49,7 @@ public class StageManager : MonoSingleton<StageManager>
         IsRunning = false;
         _clearStage++;
         CameraEffectManager.Instance.CameraZoom(5, 1f);
+        TruckHealthManager.Instance.TruckHeal();
     }
 
     public StageData GetCurrent() => _current;
