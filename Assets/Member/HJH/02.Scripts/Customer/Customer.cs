@@ -60,7 +60,19 @@ public class Customer : MonoBehaviour
 
     private bool isCleared = false;
 
-    public bool isSlow;
+    public event System.Action<bool> OnSlowChanged;
+
+    private bool _isSlow;
+    public bool isSlow
+    {
+        get => _isSlow;
+        private set
+        {
+            if (_isSlow == value) return;
+            _isSlow = value;
+            OnSlowChanged?.Invoke(_isSlow);
+        }
+    }
 
     public int damage { get; set; }
 
@@ -86,12 +98,14 @@ public class Customer : MonoBehaviour
 
     private void Start()
     {
+
         ChangeState(RunState);
         damageText.DOFade(0, 0);
     }
 
     private void Update()
     {
+
         customerHP = Mathf.Clamp(customerHP, 0, maxHp);
         healthParent.transform.localScale = new Vector3(customerHP / maxHp, 1 , 1);
         hpText.text = $"{customerHP.ToString()}/{maxHp}";
@@ -163,6 +177,7 @@ public class Customer : MonoBehaviour
         {
             isSlow = false;
         }
+
         if (collision.gameObject.CompareTag("DeadZone"))
         {
             Destroy(gameObject);
