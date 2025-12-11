@@ -8,11 +8,11 @@ public class AttackSpeedSlider : MonoBehaviour
 
     private void Awake()
     {
-        image = GetComponent<Image>();
+        image = GetComponentsInChildren<Image>()[1];
         rect = GetComponent<RectTransform>();
     }
 
-    public void Init(Transform turret, float attackSpeed)
+    public void Init(Transform turret)
     {
         Vector3 worldPos = turret.position + new Vector3(0, 3f, 0);
         Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
