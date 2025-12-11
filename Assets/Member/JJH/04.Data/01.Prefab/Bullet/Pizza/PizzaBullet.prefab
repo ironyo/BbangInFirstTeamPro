@@ -183,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childrenBullet: {fileID: 4929954181208091069, guid: d5ec889fd10c40c4aac672a865fc9053, type: 3}
   tomatoSauce: {fileID: 5572346658622393130, guid: 22653064bb3a7274d8f0ee2295de8d60, type: 3}
+  pizzaBoomParticle: {fileID: 4540621154380089914, guid: 9dfed7a4a67282748bc1f6b05e75494c, type: 3}
   damage: 3
 --- !u!114 &816011216870257099
 MonoBehaviour:

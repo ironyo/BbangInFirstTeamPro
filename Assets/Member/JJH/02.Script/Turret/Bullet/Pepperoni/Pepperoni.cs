@@ -18,10 +18,9 @@ public class Pepperoni : IncreaseSpeed, IRecycleObject
     {
         trail = GetComponent<TrailRenderer>();
         bulletMove = GetComponent<BulletMove>();
-        bulletSpeed = 0f;
+        bulletSpeed = 10f;
+        bulletMove.Speed = 10f;
         timer = 0f;
-
-        bulletMove.Speed = 0f;
 
         trail.Clear();
         trail.enabled = true;
