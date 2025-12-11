@@ -34,7 +34,7 @@ public abstract class Person : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public virtual void Clicked()
     {
         CameraEffectManager.Instance.CameraMoveTarget(gameObject);
-        CameraEffectManager.Instance.CameraZoom(2f, 0.1f);
+        CameraEffectManager.Instance.CameraZoom(2f, 1f);
         _clickedUI.SetActive(true);
 
         _isClicked = true;

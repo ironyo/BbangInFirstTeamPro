@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 364140797585015908}
   - component: {fileID: 7448695832299877396}
   m_Layer: 5
-  m_Name: Btn_2
+  m_Name: ReadyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,9 +423,9 @@ RectTransform:
   - {fileID: 4964450060794951900}
   m_Father: {fileID: 7882062597999222060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.94000006, y: -0.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.6, y: 0.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4864268889989719606
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7924528, g: 0.34140256, b: 0.34140256, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -509,19 +509,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7191274633149777002}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8728169557826102664}
-        m_TargetAssemblyTypeName: ChoiceBox, Assembly-CSharp
-        m_MethodName: SellModeClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &364140797585015908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,8 +524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: {fileID: 4634198452460418493}
   StretchRec: {fileID: 1517501619020429631}
-  OnMouseEnterTxt: "\uC7AC\uB8CC\uAD6C\uB9E4\uD560\uB798\uC694"
-  OnMouseLeaveTxt: "\uC7AC\uB8CC"
+  OnMouseEnterTxt: "\uCD9C\uBC1C\uD558\uC790"
+  OnMouseLeaveTxt: "\uCD9C\uBC1C"
 --- !u!114 &7448695832299877396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,7 +818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC7AC\uB8CC"
+  m_text: "\uCD9C\uBC1C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
   m_sharedMaterial: {fileID: 3193030865358514994, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
@@ -839,8 +827,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282335039
-  m_fontColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -958,7 +946,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1039,9 +1027,9 @@ RectTransform:
   - {fileID: 7654257416405186023}
   m_Father: {fileID: 7882062597999222060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.3, y: -0.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.6, y: 0.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8987028300427796898
@@ -1307,6 +1295,7 @@ MonoBehaviour:
   personName: "\uAE40\uC870\uC218"
   description: "\uB9CC\uB2A5 \uC870\uC218\uC785\uB2C8\uB2E4."
   _clickedUI: {fileID: 8669237373489719928}
+  _readyBtn: {fileID: 6441415816555184190}
 --- !u!1 &7602230060615315828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3744331019720350481
 RectTransform:
   m_ObjectHideFlags: 0
