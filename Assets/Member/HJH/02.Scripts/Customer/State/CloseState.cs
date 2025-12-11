@@ -49,6 +49,11 @@ public class CloseState : IEnemyState
             return;
         }
 
+        if (customer.isSlow)
+        {
+            moveSpeed -= 2;
+        }
+
         Vector2 targetDir =
             ((Vector2)target.position + new Vector2(random, 0f) -
              (Vector2)customer.transform.position).normalized;

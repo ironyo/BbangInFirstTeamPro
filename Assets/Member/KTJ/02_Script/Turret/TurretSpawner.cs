@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class TurretSpawner : MonoBehaviour
 {
-    public Turret _currentTurret { get; private set; }  = null;
-    public void SpawnTurret(Turret _turret)
+    public TurretBase _currentTurret { get; private set; }  = null;
+    public void SpawnTurret(TurretBase _turret)
     {
         if (_currentTurret != null)
         {
             _currentTurret.DeleteTurret();
         }
 
-        Turret _cloned = Instantiate(_turret.gameObject, gameObject.transform).GetComponent<Turret>();
+        TurretBase _cloned = Instantiate(_turret.gameObject, gameObject.transform).GetComponent<TurretBase>();
         _cloned.gameObject.transform.localPosition = Vector3.zero;
 
         _currentTurret = _cloned;

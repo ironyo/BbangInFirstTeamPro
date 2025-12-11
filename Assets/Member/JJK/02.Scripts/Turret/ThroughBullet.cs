@@ -8,6 +8,7 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
     private BulletMove _bulletMove;
     private float _lifeTime;
     private float _timer;
+    private bool _isAttack;
     
     private Collider2D _ignoreTarget;
     
@@ -62,10 +63,16 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
 
         if (collision.CompareTag("Enemy"))
         {
-            //collision.gameObject.GetComponent<Customer>().TakeDamage(_bulletData.Damage);
+            if (!_isAttack)
+            {
+                collision.gameObject.GetComponent<Customer>().TakeDamage(_bulletData.Damage);
+                CameraShake.Instance.ImpulseForce(_bulletData.CameraShakeForce);
 
-            if (_bulletData.CollisionParticle != null)
-                Instantiate(_bulletData.CollisionParticle, transform.position, Quaternion.identity);
+                if (_bulletData.CollisionParticle != null)
+                    Instantiate(_bulletData.CollisionParticle, transform.position, Quaternion.identity);
+
+                _isAttack = true;
+            }
 
             Destroyed?.Invoke(this);
         }

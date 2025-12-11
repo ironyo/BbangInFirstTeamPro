@@ -16,7 +16,7 @@ public class MoneyManager : MonoSingleton<MoneyManager>
         set
         {
             _money = value;
-            _money = Mathf.Clamp(_money, 0, 9999);
+            _money = Mathf.Clamp(_money, 0, 9999999);
         }
 
     }

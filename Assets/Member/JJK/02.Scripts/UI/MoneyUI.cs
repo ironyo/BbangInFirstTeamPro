@@ -18,6 +18,11 @@ public class MoneyUI : MonoBehaviour
         {
             MoneyManager.Instance.AddMoney(testMoney);
         }
+        
+        if (Keyboard.current.fKey.wasPressedThisFrame)
+        {
+            MoneyManager.Instance.SpendMoney(testMoney);
+        }
     }
 
     private void UpdateMoney(int oldMoney, int newMoney)
@@ -26,22 +31,30 @@ public class MoneyUI : MonoBehaviour
         string newStr = newMoney.ToString().PadLeft(slots.Length, '0');
         
         int oldLen = oldMoney.ToString().Length;
-
+        int newLen = newMoney.ToString().Length;
+    
         for (int i = 0; i < slots.Length ; i++)
         {
             int oldDigit = oldStr[i] - '0';
             int newDigit = newStr[i] - '0';
             
-            if (oldDigit != newDigit)
+            int oldIndex = slots.Length - oldLen - 1;
+            int newIndex = slots.Length - newLen - 1;
+            
+            if (i <= newIndex && newDigit == 0)
             {
-                if (i >= oldLen)
-                {
-                    // 그냥 자리 값만 세팅
-                    slots[i].SetInstant(newDigit);
-                    continue;
-                }
-                
-                slots[i].PlayChange(oldDigit, newDigit);
+                slots[i].SetEmpty();
+            }
+            else if (oldDigit != newDigit)
+            {
+                if (i <= oldIndex)
+                    slots[i].PlayChange(oldDigit, newDigit, false);
+                else
+                    slots[i].PlayChange(oldDigit, newDigit, true);
+            }
+            else if (i > newIndex && !slots[i].GetComponent<DigitSlot>().isDigit)
+            {
+                slots[i].PlayChange(oldDigit, newDigit, false);
             }
         }
     }

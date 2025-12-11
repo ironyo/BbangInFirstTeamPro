@@ -22,6 +22,7 @@ public class StageManager : MonoSingleton<StageManager>
     private void Start()
     {
         _onRoadFinished.OnEventRaised += EndStage;
+        StartStage();
     }
 
     public void StartStage()
@@ -49,6 +50,7 @@ public class StageManager : MonoSingleton<StageManager>
         IsRunning = false;
         _clearStage++;
         CameraEffectManager.Instance.CameraZoom(5, 1f);
+        TruckHealthManager.Instance.TruckHeal();
     }
 
     public StageData GetCurrent() => _current;

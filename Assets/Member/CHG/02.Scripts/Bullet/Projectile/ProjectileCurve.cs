@@ -20,7 +20,12 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
     [SerializeField] private float _returnPower = 1.3f;
     [SerializeField] private GameObject HitParticle;
     public Action<IRecycleObject> Destroyed { get; set; }
-    GameObject IRecycleObject.GameObject => base.gameObject;
+    public GameObject GameObject => gameObject;
+    private Factory _particlefaFactory;
+    private void Start()
+    {
+        _particlefaFactory = new Factory(HitParticle, 2);
+    }
 
     public override void SetUp(Transform shooter, Transform target)
     {
@@ -88,9 +93,8 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
     {
         if (collision.CompareTag("Enemy"))
         {
-            Vector3 particleDirection = collision.transform.position - transform.position;
-            float ParticleAngle = Mathf.Atan2(particleDirection.y, particleDirection.x) * Mathf.Rad2Deg;
-            Instantiate(HitParticle, collision.transform.position, Quaternion.Euler(0, 0, ParticleAngle));
+            IRecycleObject particle = _particlefaFactory.Get();
+            particle.GameObject.transform.position = collision.gameObject.transform.position;
 
             //데미지 적용
 

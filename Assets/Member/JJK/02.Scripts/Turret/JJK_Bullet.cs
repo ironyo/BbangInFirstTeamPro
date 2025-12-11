@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using Assets.Member.CHG._02.Scripts.Pooling;
@@ -14,6 +15,7 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
     private float _timer;
     private bool _throughFire;
     private float _offset = 0.5f;
+    private bool _isAttack = false;
 
     private void Awake()
     {
@@ -52,16 +54,21 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
     {
         if (collision.CompareTag("Enemy"))
         {
-            if (_bulletData.CollisionParticle != null)
-                Instantiate(_bulletData.CollisionParticle, transform.position, Quaternion.identity);
-            
-            //collision.gameObject.GetComponent<Customer>().TakeDamage(_bulletData.Damage);
-            CameraShake.Instance.ImpulseForce(_bulletData.CameraShakeForce);
-            
-            if (_throughFire)
+            if (!_isAttack)
             {
-                Collider2D enemyCol = collision;
-                ThroughShot(collision.transform.position + transform.up * _offset, enemyCol);
+                if (_bulletData.CollisionParticle != null)
+                    Instantiate(_bulletData.CollisionParticle, transform.position, Quaternion.identity);
+                
+                collision.gameObject.GetComponent<Customer>().TakeDamage(_bulletData.Damage);
+                CameraShake.Instance.ImpulseForce(_bulletData.CameraShakeForce);
+            
+                if (_throughFire)
+                {
+                    Collider2D enemyCol = collision;
+                    ThroughShot(collision.transform.position + transform.up * _offset, enemyCol);
+                }
+
+                _isAttack = true;
             }
             
             Destroyed?.Invoke(this);
@@ -98,5 +105,10 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
             spreadAngle = Mathf.Lerp(-spreadAngle, spreadAngle, num / (_bulletData.ThroughShotData.BulletCount - 1));
         
         return Quaternion.Euler(0, 0, spreadAngle);
+    }
+
+    private void OnDisable()
+    {
+        _isAttack = false;
     }
 }

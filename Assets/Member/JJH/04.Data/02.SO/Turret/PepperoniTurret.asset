@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
   m_Name: PepperoniTurret
   m_EditorClassIdentifier: 
+  <TurretName>k__BackingField: 
+  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretCost>k__BackingField: 0
+  Turret: {fileID: 222687924827019184, guid: 4769cc60ea7d9f243be6ed42e3e79a07, type: 3}
   TurretSprite: {fileID: 0}
   TurretPrice: 0
   TurretPrefab: {fileID: 4871472531971685378, guid: 4769cc60ea7d9f243be6ed42e3e79a07, type: 3}
   AttackCoolTime: 0.3
   AttackRange: 8
+  AttackPower: 0
   TargetingClosedEnemy: 1
