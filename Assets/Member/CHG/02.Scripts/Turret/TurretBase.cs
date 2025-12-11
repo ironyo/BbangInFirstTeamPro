@@ -191,9 +191,6 @@ public abstract class TurretBase : MonoBehaviour
         _attackSpeedSlider.UpdateSlider(1f);
     }
 
-
-
-
     protected void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -86,12 +86,14 @@ public class Customer : MonoBehaviour
 
     private void Start()
     {
+
         ChangeState(RunState);
         damageText.DOFade(0, 0);
     }
 
     private void Update()
     {
+
         customerHP = Mathf.Clamp(customerHP, 0, maxHp);
         healthParent.transform.localScale = new Vector3(customerHP / maxHp, 1 , 1);
         hpText.text = $"{customerHP.ToString()}/{maxHp}";
