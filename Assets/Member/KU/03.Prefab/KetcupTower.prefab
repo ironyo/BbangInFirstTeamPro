@@ -138,7 +138,7 @@ MonoBehaviour:
     m_Bits: 128
   muzzle: {fileID: 7781638370954585659}
   firePos: {fileID: 2216632356219467353}
-  bulletPref: {fileID: 6042220827783628818, guid: 5f47817b9a9cf0c4baab1b85d8fdfa92, type: 3}
+  bulletPref: {fileID: 6474800333962078892, guid: c84e85f6faa123948b4fd5f7cf097b99, type: 3}
   shootParticlePref: {fileID: 8658117661066133984, guid: 027dc98345b1b3a4a97ff474914a0971, type: 3}
 --- !u!1 &6498789594140233271
 GameObject:

@@ -3972,6 +3972,7 @@ MonoBehaviour:
   _repairMan: {fileID: 1327116210}
   _truckSlotSpawn: {fileID: 1582198053}
   _truckSlotPref: {fileID: 71264224490121634, guid: c5b535c8914f16c47add3d1828bb7af3, type: 3}
+  _truckAddBtn: {fileID: 2582077936248495298, guid: a61ec19cc7c9252458d0e519165dd1f9, type: 3}
   _onRepairStoreUIReady: {fileID: 11400000, guid: 0c95291488f74fb47be8dcf2a7d10cd1, type: 2}
   _onRepairStoreUIClose: {fileID: 11400000, guid: 518b8f866eac79d49be11e6b4d3bdfa9, type: 2}
   _setTurretOnTruck: {fileID: 11400000, guid: ae354f3e958f98346847fac90dc7ba86, type: 2}
@@ -4286,7 +4287,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ReverseArrangement: 1
 --- !u!1 &1589210536
 GameObject:
   m_ObjectHideFlags: 0
