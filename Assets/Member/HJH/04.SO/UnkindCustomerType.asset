@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: UnkindCustomerType
   m_EditorClassIdentifier: 
   customerCategory: 2
+  customerDamage: 15
   customerHP: 3
   customerSpeed: 11
   money: 10
