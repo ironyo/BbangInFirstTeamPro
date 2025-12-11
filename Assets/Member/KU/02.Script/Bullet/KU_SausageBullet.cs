@@ -21,7 +21,7 @@ public class KU_SausageBullet : KU_Bullet
         {
             if (collision.TryGetComponent<Customer>(out Customer enemy))
             {
-                if (enemy != targetEnemy && _startCount == _bounceCount) return;
+                if (enemy != targetEnemy && _startCount == _bounceCount && targetEnemy != null) return;
 
                 StartCoroutine(LifeTime());
                 enemy.TakeDamage(damage);

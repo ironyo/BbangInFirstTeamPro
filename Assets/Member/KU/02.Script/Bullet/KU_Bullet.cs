@@ -63,7 +63,6 @@ public abstract class KU_Bullet : MonoBehaviour
     public IEnumerator LifeTime()
     {
         _nowTargetSet = false;
-        StopAllCoroutines();
         yield return new WaitForSeconds(_lifeTime);
         Destroy(gameObject);
     }

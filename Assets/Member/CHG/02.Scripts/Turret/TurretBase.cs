@@ -100,9 +100,6 @@ public abstract class TurretBase : MonoBehaviour
         startPos = muzzle.transform.localPosition;
     }
 
-
-
-
     protected void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
