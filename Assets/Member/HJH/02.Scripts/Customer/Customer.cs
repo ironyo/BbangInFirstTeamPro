@@ -20,7 +20,8 @@ public class Customer : MonoBehaviour
     [SerializeField] private Vector2 closeRange;
     [SerializeField] private Vector2 attackRange;
 
-    [Header("Run Targets")]
+    [SerializeField] private CustomerHitParticle hitParticle;
+    
     public Transform[] runTargets;
     public Transform[] hitTagets;
 
@@ -177,5 +178,37 @@ public class Customer : MonoBehaviour
     public void HandleClearRequested()
     {
         ChangeState(ClearState);
+    }
+        
+    public void PlayHitParticle()
+    {
+        Transform closest = GetClosestTarget();
+        if (closest == null)
+        {
+            Debug.LogWarning("Closest target not found");
+            return;
+        }
+
+        Vector3 spawnPos = closest.parent.position;
+        hitParticle.PlayAt(spawnPos);
+    }
+
+    public Transform GetClosestTarget()
+    {
+        Transform closest = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (var t in runTargets)
+        {
+            float dist = Vector2.Distance(transform.position, t.position);
+
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = t;
+            }
+        }
+
+        return closest;
     }
 }

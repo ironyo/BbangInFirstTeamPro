@@ -33,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2497109238973001369}
   - {fileID: 6185236344140722660}
   - {fileID: 4800068413793405506}
   - {fileID: 333476870910146364}
@@ -53,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeRange: {x: 5.88, y: 0}
   attackRange: {x: 1.5, y: 0}
+  hitParticle: {fileID: 5363540364311237156}
   runTargets:
   - {fileID: 0}
   - {fileID: 0}
@@ -178,8 +180,7 @@ Transform:
   m_LocalPosition: {x: 0.59807587, y: -0.37895018, z: 0.003455632}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2497109238973001369}
+  m_Children: []
   m_Father: {fileID: 3611262413250093696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3741644935010643690
@@ -271,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d2aff08d9e3ce46ad51d30a4635970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticle: {fileID: 6970359995170351959}
 --- !u!1 &7517697709507148184
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +311,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2427582154936781854}
+    m_TransformParent: {fileID: 5065707676273653239}
     m_Modifications:
     - target: {fileID: 346997631569184163, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
       propertyPath: m_SortingLayer
@@ -321,11 +323,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2738485593423197047, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0.030000031
       objectReference: {fileID: 0}
     - target: {fileID: 2738485593423197047, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.54
+      value: -0.5400001
       objectReference: {fileID: 0}
     - target: {fileID: 2738485593423197047, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
       propertyPath: m_LocalPosition.z
@@ -379,6 +381,11 @@ PrefabInstance:
 --- !u!4 &2497109238973001369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2738485593423197047, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
+  m_PrefabInstance: {fileID: 335111061832687086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6970359995170351959 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7213988973791655609, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
   m_PrefabInstance: {fileID: 335111061832687086}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2390856901673329167

@@ -33,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1161319095765992815}
   - {fileID: 744746879230310990}
   - {fileID: 5444850356137537239}
   - {fileID: 174077704135732077}
@@ -54,6 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeRange: {x: 5.88, y: 0}
   attackRange: {x: 1.5, y: 0}
+  hitParticle: {fileID: 0}
   runTargets:
   - {fileID: 0}
   - {fileID: 0}
@@ -211,8 +213,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1161319095765992815}
+  m_Children: []
   m_Father: {fileID: 9059382685437275752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3741644935010643690
@@ -304,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d2aff08d9e3ce46ad51d30a4635970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticle: {fileID: 5909258670430912673}
 --- !u!1001 &2090761992217026801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -415,7 +417,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2427582154936781854}
+    m_TransformParent: {fileID: 5065707676273653239}
     m_Modifications:
     - target: {fileID: 346997631569184163, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
       propertyPath: m_SortingLayer
@@ -485,6 +487,11 @@ PrefabInstance:
 --- !u!4 &1161319095765992815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2738485593423197047, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
+  m_PrefabInstance: {fileID: 3899232942806873624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5909258670430912673 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7213988973791655609, guid: abdfcd548206c0d4cbcb5303bf05e724, type: 3}
   m_PrefabInstance: {fileID: 3899232942806873624}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4992414055500719042

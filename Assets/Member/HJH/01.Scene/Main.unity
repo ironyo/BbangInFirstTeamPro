@@ -2032,6 +2032,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &497267377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4781694807186075522, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+  m_PrefabInstance: {fileID: 1019201161}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d2aff08d9e3ce46ad51d30a4635970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &525029556
 GameObject:
   m_ObjectHideFlags: 0
@@ -3591,6 +3602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Customer
       objectReference: {fileID: 0}
+    - target: {fileID: 1478643758609469959, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3631,7 +3646,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8299176909449941412, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: hitParticle
+      value: 
+      objectReference: {fileID: 497267377}
+    m_RemovedComponents:
+    - {fileID: 8132095477529645903, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5717,6 +5737,7 @@ MonoBehaviour:
   _repairMan: {fileID: 2034312730}
   _truckSlotSpawn: {fileID: 2135832610}
   _truckSlotPref: {fileID: 71264224490121634, guid: c5b535c8914f16c47add3d1828bb7af3, type: 3}
+  _truckAddBtn: {fileID: 0}
   _onRepairStoreUIReady: {fileID: 11400000, guid: 0c95291488f74fb47be8dcf2a7d10cd1, type: 2}
   _onRepairStoreUIClose: {fileID: 11400000, guid: 518b8f866eac79d49be11e6b4d3bdfa9, type: 2}
   _setTurretOnTruck: {fileID: 11400000, guid: ae354f3e958f98346847fac90dc7ba86, type: 2}
