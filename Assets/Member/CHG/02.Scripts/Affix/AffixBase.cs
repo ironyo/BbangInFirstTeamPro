@@ -14,7 +14,5 @@ namespace Assets.Member.CHG._02.Scripts.Affix
             _affixType = affixData.AffixType;
             _value = affixData.Value;
         }
-
-
     }
 }

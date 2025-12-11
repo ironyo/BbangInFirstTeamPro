@@ -594,9 +594,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e2018b5c213a046aaa73398cde3964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turretSO: {fileID: 11400000, guid: 1780c37b5ab0f9f419207e5acd752123, type: 2}
+  _turretSO: {fileID: 11400000, guid: 3fae08d3888f54e429cd1844c4f728d3, type: 2}
   _gunDataSO: {fileID: 0}
-  _affixSO: {fileID: 0}
+  _affixSO: {fileID: 11400000, guid: 9db32e47218880b448265bda5a33ad2c, type: 2}
 --- !u!4 &842150864
 Transform:
   m_ObjectHideFlags: 0
@@ -750,6 +750,10 @@ PrefabInstance:
     - target: {fileID: 2472558378021686548, guid: 35720ee60c5b4e94586c919acc7c427e, type: 3}
       propertyPath: m_Name
       value: QuadraShooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2472558378021686548, guid: 35720ee60c5b4e94586c919acc7c427e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1109,7 +1113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &6480144796456221900
 SpriteRenderer:
   m_ObjectHideFlags: 0

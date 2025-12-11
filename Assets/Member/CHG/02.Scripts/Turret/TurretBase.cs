@@ -20,7 +20,16 @@ public abstract class TurretBase : MonoBehaviour
     [SerializeField] private Transform _firePos;
     private Vector3 startPos;
 
-    //private LineRenderer _lineRenderer;
+    private LineRenderer _lineRenderer;
+
+    public void SpawnTurret(Transform _spawnParent)
+    {
+    }
+
+    public void DeleteTurret()
+    {
+        Destroy(gameObject);
+    }
 
     public void Init(TurretSO turretData, AffixSO affixData)
     {
@@ -31,9 +40,9 @@ public abstract class TurretBase : MonoBehaviour
 
         AffixSet(affixData);
 
-        //_lineRenderer = GetComponent<LineRenderer>();
-        //_lineRenderer.positionCount = 2;
-        //_lineRenderer.SetPosition(0, _muzzle.position);
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, _firePos.position);
     }
     public void Init(TurretSO turretData)
     {
@@ -42,9 +51,9 @@ public abstract class TurretBase : MonoBehaviour
         _cooldownTime = turretData.AttackCoolTime;
         _power = turretData.AttackPower;
 
-        //_lineRenderer = GetComponent<LineRenderer>();
-        //_lineRenderer.positionCount = 2;
-        //_lineRenderer.SetPosition(0, _muzzle.position);
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, _firePos.position);
     }
     public void Init(GunDataSO gunData)
     {
@@ -64,7 +73,7 @@ public abstract class TurretBase : MonoBehaviour
 
     private void AffixSet(AffixSO affixData)
     {
-       _affixSpriteRen.sprite = affixData.AffixSprite;
+        _affixSpriteRen.sprite = affixData.AffixSprite;
 
         if (affixData != null)
         {
@@ -87,11 +96,12 @@ public abstract class TurretBase : MonoBehaviour
 
         Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, _attackRange, CustomerLayer);
 
-        //if (enemys.Length <= 0)
-        //{
-        //    _lineRenderer.SetPosition(1, _muzzle.position);
-        //    return;
-        //}
+        if (enemys.Length <= 0)
+        {
+            if (_lineRenderer == null)
+                return;
+            _lineRenderer.SetPosition(1, _firePos.position);
+        }
 
         if (_targetingClosed)
         {
@@ -132,7 +142,11 @@ public abstract class TurretBase : MonoBehaviour
         angle -= 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        //_lineRenderer.SetPosition(1, Target.position);
+        if (_lineRenderer != null)
+        {
+            _lineRenderer.SetPosition(0, _firePos.position);
+            _lineRenderer.SetPosition(1, Target.position);
+        }
 
 
         _t += Time.deltaTime;
