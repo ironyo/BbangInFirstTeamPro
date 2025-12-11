@@ -68,17 +68,15 @@ public class TruckManager : MonoSingleton<TruckManager>
     {
         var old = _truckBodyList[SpawnTruckIdx - 1];
 
-        // 1. 터렛 스폰
         old.Item1.SpawnTurret(turSO.Turret);
 
-        // 2. 터렛 SO 저장 ★★ 필수
         _truckBodyList[SpawnTruckIdx - 1] = (old.Item1, turSO);
     }
 
 
     public TurretSO_TJ CheckIdxTurret(int idx)
     {
-        return _truckBodyList[idx].Item2; // null이면 UI에서 무시됨
+        return _truckBodyList[idx].Item2;
     }
 
 }
