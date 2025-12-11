@@ -22,7 +22,6 @@ public class RunState : IEnemyState
     public void Enter()
     {
         animator.SetBool("OnWalk", true);
-        Debug.Log("Customer RunState Enter");
         target = GetClosestTarget();
 
         if (target != null)
@@ -39,6 +38,11 @@ public class RunState : IEnemyState
         {
             customer.ChangeState(customer.CloseState);
             return;
+        }
+
+        if (customer.isSlow)
+        {
+            moveSpeed -= 2;
         }
 
         Debug.Log("moveSpeedRun :" + moveSpeed);
