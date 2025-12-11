@@ -9,6 +9,7 @@ TagManager:
   - RunTarget
   - CloseTarget
   - 'DeadCustomer '
+  - CheesePuddle
   layers:
   - Default
   - TransparentFX

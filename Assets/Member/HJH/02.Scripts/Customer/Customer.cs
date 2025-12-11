@@ -140,6 +140,7 @@ public class Customer : MonoBehaviour
         seq.AppendCallback(()=>damageText.text = "-" + damage.ToString());
         seq.Append(damageText.DOFade(1, 0));
         seq.AppendInterval(0.75f);
+        //seq.JoinCallback(damageText.transform.DOMove());
         seq.Append(damageText.DOFade(0, 0.75f));
         customerHP -= damage;
 

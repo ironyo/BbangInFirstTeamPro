@@ -596,7 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turretSO: {fileID: 11400000, guid: 3fae08d3888f54e429cd1844c4f728d3, type: 2}
   _gunDataSO: {fileID: 0}
-  _affixSO: {fileID: 11400000, guid: 9db32e47218880b448265bda5a33ad2c, type: 2}
+  _affixSO: {fileID: 11400000, guid: ecfafa00a710e5048b8b2b0e5eac35e2, type: 2}
 --- !u!4 &842150864
 Transform:
   m_ObjectHideFlags: 0
