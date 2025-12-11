@@ -9,5 +9,6 @@ public class TurretSO : TurretSO_TJ
     public GameObject TurretPrefab;
     public float AttackCoolTime;
     public float AttackRange;
+    public float AttackPower;
     public bool TargetingClosedEnemy;
 }

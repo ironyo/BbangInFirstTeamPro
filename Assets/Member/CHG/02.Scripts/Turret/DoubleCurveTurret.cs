@@ -24,7 +24,7 @@ public class DoubleCurveTurret : TurretBase
         ProjectileCurve projectile2 = projectile2Recycle.GameObject.GetComponent<ProjectileCurve>();
         projectile2.Angle = -angel;
 
-        projectile1.SetUp(muzzle, Target);
-        projectile2.SetUp(muzzle,Target);
+        projectile1.SetUp(_muzzle, Target);
+        projectile2.SetUp(_muzzle,Target);
     }
 }

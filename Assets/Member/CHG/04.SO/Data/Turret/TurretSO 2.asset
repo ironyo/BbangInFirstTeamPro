@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
   m_Name: TurretSO 2
   m_EditorClassIdentifier: 
+  <TurretName>k__BackingField: AAA
+  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretCost>k__BackingField: 0
+  Turret: {fileID: 0}
   TurretSprite: {fileID: 21300000, guid: 32bf8b79f7cb52b4db6320bba6974a7c, type: 3}
   TurretPrice: 7
   TurretPrefab: {fileID: 6616531884546717916, guid: 8a59b5d4a5e21ad49ab14eabfa989327, type: 3}
   AttackCoolTime: 1
   AttackRange: 4
+  AttackPower: 0
   TargetingClosedEnemy: 0

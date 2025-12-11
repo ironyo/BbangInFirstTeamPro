@@ -14,7 +14,7 @@ public class BoomerangTurret : TurretBase
     public override void Shoot()
     {
         IRecycleObject obj = _projectileFactory.Get();
-        obj.GameObject.GetComponent<ProjectileBase>().SetUp(muzzle, Target);
+        obj.GameObject.GetComponent<ProjectileBase>().SetUp(_muzzle, Target);
         CameraShake.Instance.ImpulseForce(0.1f);
     }
 }
