@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: b747cd44a6f0eac43ba684a66c34e8b7, type: 2}
   <TurretPrefab>k__BackingField: {fileID: 8885798609124011066, guid: bb90da9e85b1db94283efa6ec77c0924, type: 3}
-  <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 54fc967c455dfdb4d97502f795633010, type: 3}
+  <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 1954a40c0b76e994a98092cb667ed0db, type: 3}
   <CoolDown>k__BackingField: 1.5
   <AttackRange>k__BackingField: 10
   <CameraShakeForce>k__BackingField: 0.15
