@@ -106,4 +106,9 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
         
         return Quaternion.Euler(0, 0, spreadAngle);
     }
+
+    private void OnDisable()
+    {
+        _isAttack = false;
+    }
 }
