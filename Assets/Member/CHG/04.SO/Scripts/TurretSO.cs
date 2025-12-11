@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TurretSO", menuName = "C_SO/TurretSO")]
-public class TurretSO : ScriptableObject
+public class TurretSO : TurretSO_TJ
 {
     public Sprite TurretSprite;
     public int TurretPrice;

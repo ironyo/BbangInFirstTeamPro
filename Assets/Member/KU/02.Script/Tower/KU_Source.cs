@@ -11,11 +11,18 @@ public class KU_Source : KU_Bullet
 {
     [SerializeField] private bool _isOnly;
     [SerializeField] private Sprite _katcupSprite;
+    [SerializeField] private int damage = 1;
+    [SerializeField] private GameObject _trail;
+
+    private bool isAttack = false;
+
 
     private SpriteRenderer _spriteRendererCompo;
 
-    private HashSet<KU_Enemy> insideEnemies = new HashSet<KU_Enemy>();
-    private Dictionary<KU_Enemy, CancellationTokenSource> enemyTokens = new Dictionary<KU_Enemy, CancellationTokenSource>();
+    private HashSet<Customer> insideEnemies = new HashSet<Customer>();
+    private Dictionary<Customer, CancellationTokenSource> enemyTokens = new Dictionary<Customer, CancellationTokenSource>();
+
+    private bool _isStop = false;
 
     protected override void Awake()
     {
@@ -37,6 +44,11 @@ public class KU_Source : KU_Bullet
 
         RotationStop();
     }
+    public override void Update()
+    {
+        if(_isStop)
+            _rigidbodyCompo.linearVelocity = new Vector2(-3.5f, 0);
+    }
 
     private IEnumerator DropSource()
     {
@@ -46,13 +58,13 @@ public class KU_Source : KU_Bullet
         Destroy(gameObject);
     }
 
-    private async UniTask StartAttackLoop(KU_Enemy enemy, CancellationToken token)
+    private async UniTask StartAttackLoop(Customer customer, CancellationToken token)
     {
         while (!token.IsCancellationRequested)
         {
             await UniTask.WaitForSeconds(1f, cancellationToken: token);
-            enemy.MinusHP(2);
-            Debug.Log($"Attack: {enemy.name}");
+            customer.TakeDamage(damage);
+            Debug.Log($"Attack: {customer.name}");
         }
     }
 
@@ -61,34 +73,45 @@ public class KU_Source : KU_Bullet
         _spriteRendererCompo.sprite = _katcupSprite;
         StopBullet();
         transform.DOScale(new Vector3(2, 2, 2), 1f);
+        _isStop = true;
+        Destroy(_trail);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
+        if (collision.CompareTag("Enemy"))
         {
-            if (insideEnemies.Add(enemy))
+            if (collision.gameObject.TryGetComponent<Customer>(out Customer customer))
             {
-                var cts = new CancellationTokenSource();
-                enemyTokens[enemy] = cts;
-                StartAttackLoop(enemy, cts.Token).Forget();
+                customer.TakeDamage(damage);
+                
+                if (!isAttack)
+                {
+                    if (insideEnemies.Add(customer))
+                    {
+                        var cts = new CancellationTokenSource();
+                        enemyTokens[customer] = cts;
+                        StartAttackLoop(customer, cts.Token).Forget();
+                    }
+
+                    if (customer != targetEnemy) return;
+
+                    StartCoroutine(DropSource());
+                    StopSource();
+                    isAttack = true;
+                }
             }
-
-            if (enemy != targetEnemy) return;
-
-            StartCoroutine(DropSource());
-            StopSource();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
+        if (collision.TryGetComponent<Customer>(out Customer customer))
         {
-            if (insideEnemies.Remove(enemy))
+            if (insideEnemies.Remove(customer))
             {
-                enemyTokens[enemy].Cancel();
-                enemyTokens.Remove(enemy);
+                enemyTokens[customer].Cancel();
+                enemyTokens.Remove(customer);
             }
         }
     }

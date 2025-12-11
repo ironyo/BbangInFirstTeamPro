@@ -62,7 +62,8 @@ public class KU_WeaponShooter : TurretBase
 
         KU_Bullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_Bullet>();
         Instantiate(shootParticlePref, firePos.position, Quaternion.identity);
-        if (Target.gameObject.TryGetComponent<KU_Enemy>(out KU_Enemy enemy))
+
+        if (Target.gameObject.TryGetComponent<Customer>(out Customer enemy))
         {
             bullet.GetTarget(enemy, angle);
         }
