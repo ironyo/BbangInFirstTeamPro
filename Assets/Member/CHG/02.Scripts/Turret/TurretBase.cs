@@ -93,13 +93,13 @@ public abstract class TurretBase : MonoBehaviour
     }
     protected void Update()
     {
+        if (_lineRenderer == null)
+            return;
 
         Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, _attackRange, CustomerLayer);
 
         if (enemys.Length <= 0)
         {
-            if (_lineRenderer == null)
-                return;
             _lineRenderer.SetPosition(1, _firePos.position);
         }
 
@@ -136,28 +136,37 @@ public abstract class TurretBase : MonoBehaviour
             Target = farTarget;
         }
 
-        Vector3 dir = Target.position - transform.position;
-
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        angle -= 90f;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-
-        if (_lineRenderer != null)
+        Quaternion dir = transform.rotation;
+        _lineRenderer.SetPosition(0, _firePos.position);
+        if (Target == null)
         {
-            _lineRenderer.SetPosition(0, _firePos.position);
-            _lineRenderer.SetPosition(1, Target.position);
         }
+        else
+        {
+            _lineRenderer.SetPosition(1, Target.position);
+            dir = Quaternion.Euler(Target.position - transform.position);
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            angle -= 90f;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
+
+
+
 
 
         _t += Time.deltaTime;
         if (IsSkillAcailable)
         {
-            _firePos.transform.DOLocalMove(startPos + new Vector3(0, -0.5f, 0), 0.05f)
-            .OnComplete(() =>
-                _firePos.transform.DOLocalMove(startPos, 0.1f)
-            );
+            if (Target != null)
+            {
+                _muzzle.transform.DOLocalMove(startPos + new Vector3(0, -0.5f, 0), 0.05f)
+                .OnComplete(() =>
+                    _muzzle.transform.DOLocalMove(startPos, 0.1f)
+                );
+                Shoot();
 
-            Shoot();
+            }
             _t = 0;
         }
 
