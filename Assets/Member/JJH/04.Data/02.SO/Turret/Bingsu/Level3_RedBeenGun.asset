@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uD325 \uD3EC\uD0D1"
   <TurretImage>k__BackingField: {fileID: 0}
-  <TurretCost>k__BackingField: 10
+  <TurretCost>k__BackingField: 15
   Turret: {fileID: 7793336519847305636, guid: ee7bd858049938d4a97345b847e0121c, type: 3}
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: 906decc5259d5df4e859bc33cb95193c, type: 2}
   <TurretPrefab>k__BackingField: {fileID: 8885798609124011066, guid: ee7bd858049938d4a97345b847e0121c, type: 3}
