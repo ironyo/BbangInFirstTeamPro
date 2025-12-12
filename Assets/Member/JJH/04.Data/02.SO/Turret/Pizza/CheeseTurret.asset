@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: CheeseTurret
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uCE58\uC988 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: 21300000, guid: 64c5a86c227f2fb46a05b09fabf9a150, type: 3}
   <TurretCost>k__BackingField: 5
   Turret: {fileID: 4222512854520115487, guid: 4ec1ca1635a63264b8846fe373e9425f, type: 3}
-  TurretPrefab: {fileID: 2450411391319919705, guid: 4ec1ca1635a63264b8846fe373e9425f, type: 3}
   AttackCoolTime: 0.4
   AttackRange: 9
   AttackPower: 2

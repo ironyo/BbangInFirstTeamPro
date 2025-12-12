@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: SprinkleTurretSO
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uC2A4\uD504\uB9C1\uD06C \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: 21300000, guid: 64c5a86c227f2fb46a05b09fabf9a150, type: 3}
   <TurretCost>k__BackingField: 5
   Turret: {fileID: 9025367132267428974, guid: 84bca298d9fa1894d838cf01df8fdb22, type: 3}
-  TurretPrefab: {fileID: 4560950151559165403, guid: 84bca298d9fa1894d838cf01df8fdb22, type: 3}
   AttackCoolTime: 1
   AttackRange: 4
   AttackPower: 0
