@@ -83,7 +83,8 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
             
             IRecycleObject particle = _particlefaFactory.Get();
             particle.GameObject.transform.position = collision.gameObject.transform.position;
-            //데미지 적용
+           
+            collision.gameObject.GetComponent<Customer>().TakeDamage(Damage);
 
             CameraShake.Instance.ImpulseForce(0.03f);
         }

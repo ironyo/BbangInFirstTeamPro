@@ -44,6 +44,12 @@ public class QuadraCurveTurret : TurretBase
         ProjectileCurve projectile4 = projectile4Recycle.GameObject.GetComponent<ProjectileCurve>();
         projectile4.Angle = 45f;
         projectile4.Angle = -angel + 30;
+
+        projectile1.Damage = _damage;
+        projectile2.Damage = _damage;
+        projectile3.Damage = _damage;
+        projectile4.Damage = _damage;
+
         projectile1.SetUp(transform, Target);
         projectile2.SetUp(transform, Target);
         projectile3.SetUp(transform, Target);

@@ -21,5 +21,5 @@ MonoBehaviour:
   TurretPrefab: {fileID: 3538944490583202499, guid: 0f0a501723b33cf4bb0a72e7f652ab9d, type: 3}
   AttackCoolTime: 3
   AttackRange: 7
-  AttackPower: 11
+  AttackPower: 2
   TargetingClosedEnemy: 1
