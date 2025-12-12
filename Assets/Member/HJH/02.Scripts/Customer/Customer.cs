@@ -1,7 +1,7 @@
+using DG.Tweening;
 using NUnit.Framework.Interfaces;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -20,7 +20,8 @@ public class Customer : MonoBehaviour
     [SerializeField] private Vector2 closeRange;
     [SerializeField] private Vector2 attackRange;
 
-    [Header("Run Targets")]
+    [SerializeField] private CustomerHitParticle hitParticle;
+    
     public Transform[] runTargets;
     public Transform[] hitTagets;
 
@@ -36,15 +37,17 @@ public class Customer : MonoBehaviour
     public DeadState DeadState { get; set; } // 죽었을 때
     
     [SerializeField] private TextMeshPro hpText;
+    [SerializeField] private TextMeshPro damageText;
     [SerializeField] private ParticleSystem deadMotion;
+    [SerializeField] private ParticleSystem eatMotion;
 
     [SerializeField] private CustomerTypeList customerTypeList;
 
     public Animator _animator;
 
-    [SerializeField]private CustomerType customerType;
-    public int customerHP { get; set; }
-    private int maxHp => customerType.customerHP;
+    public CustomerType customerType;
+    public float customerHP { get; set; }
+    private float maxHp => customerType.customerHP;
     
     public float customerSpeed { get; set; }
 
@@ -53,9 +56,29 @@ public class Customer : MonoBehaviour
 
     public GameObject avatar;
 
+    public GameObject healthParent;
+
     private bool isCleared = false;
+
+    public event System.Action<bool> OnSlowChanged;
+
+    private bool _isSlow;
+    public bool isSlow
+    {
+        get => _isSlow;
+        private set
+        {
+            if (_isSlow == value) return;
+            _isSlow = value;
+            OnSlowChanged?.Invoke(_isSlow);
+        }
+    }
+
+    public int damage { get; set; }
+
     private void Awake()
     {
+        damage = customerType.customerDamage;
         customerHP = customerType.customerHP;
         customerSpeed = customerType.customerSpeed;
 
@@ -75,13 +98,16 @@ public class Customer : MonoBehaviour
 
     private void Start()
     {
+
         ChangeState(RunState);
+        damageText.DOFade(0, 0);
     }
 
     private void Update()
     {
-        customerHP = Mathf.Clamp(customerHP, 0, maxHp);
 
+        customerHP = Mathf.Clamp(customerHP, 0, maxHp);
+        healthParent.transform.localScale = new Vector3(customerHP / maxHp, 1 , 1);
         hpText.text = $"{customerHP.ToString()}/{maxHp}";
         currentState?.Update();
         IsAttackTargetInRange();
@@ -124,6 +150,12 @@ public class Customer : MonoBehaviour
     // 총 맞으면 이거 사용해
     public void TakeDamage(int damage)
     {
+        Sequence seq = DOTween.Sequence();
+        seq.AppendCallback(()=>damageText.text = "-" + damage.ToString());
+        seq.Append(damageText.DOFade(1, 0));
+        seq.AppendInterval(0.75f);
+        //seq.JoinCallback(damageText.transform.DOMove());
+        seq.Append(damageText.DOFade(0, 0.75f));
         customerHP -= damage;
 
         StartCoroutine(HitColorEffect());
@@ -137,6 +169,15 @@ public class Customer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("CheesePuddle"))
+        {
+            isSlow = true;
+        }
+        else
+        {
+            isSlow = false;
+        }
+
         if (collision.gameObject.CompareTag("DeadZone"))
         {
             Destroy(gameObject);
@@ -154,6 +195,7 @@ public class Customer : MonoBehaviour
     private IEnumerator HitColorEffect()
     {
         sr.color = Color.red;
+        eatMotion.Play();
 
         yield return new WaitForSeconds(0.1f);
 
@@ -177,5 +219,53 @@ public class Customer : MonoBehaviour
     public void HandleClearRequested()
     {
         ChangeState(ClearState);
+    }
+        
+    public void PlayHitParticle()
+    {
+        Transform closest = GetClosestTarget();
+        if (closest == null)
+        {
+            Debug.LogWarning("Closest target not found");
+            return;
+        }
+
+        Vector3 spawnPos = closest.parent.position;
+        hitParticle.PlayAt(spawnPos);
+    }
+
+    public Transform GetClosestTarget()
+    {
+        Transform closest = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (var t in runTargets)
+        {
+            float dist = Vector2.Distance(transform.position, t.position);
+
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = t;
+            }
+        }
+
+        return closest;
+    }
+
+    public void InflictDamage()
+    {
+        TruckHealthManager.Instance.TruckHit(damage);
+    }
+    private void HandleSlow(bool isSlow)
+    {
+        if (isSlow)
+        {
+            Debug.Log("느려짐");
+        }
+        else
+        {
+            Debug.Log("원래 속도로 돌아옴");
+        }
     }
 }

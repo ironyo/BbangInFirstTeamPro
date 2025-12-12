@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class CustomerHitParticle : MonoBehaviour
 {
-    private ParticleSystem hitParticle;
-
-    private void OnEnable()
+    [SerializeField] private ParticleSystem hitParticle;
+    float randomP;
+    public void PlayAt(Vector3 position)
     {
-        hitParticle = GetComponentInChildren<ParticleSystem>();
-    }
-    public void HitParticle()
-    {
+        randomP = Random.Range(0f, 1.5f);
+        hitParticle.transform.position = new Vector2(position.x + randomP,position.y);
         hitParticle.Play();
+        Debug.Log(hitParticle);
     }
 }

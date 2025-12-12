@@ -44,6 +44,13 @@ public class PersonGenerator : MonoBehaviour
         {
             pers = per;
         }
+        if (per_1.TryGetComponent<Mechanic>(out Mechanic mec))
+        {
+            mec.GetReadyBtn().onClick.AddListener(() =>
+            {
+                StageManager.Instance.StartStage();
+            });
+        }
         _spawnedPerson.Add((am, pers));
 
         yield return new WaitForSeconds(2f);
@@ -58,8 +65,6 @@ public class PersonGenerator : MonoBehaviour
             _spawnedPerson.ForEach((x) => x.Item1.MoveTo(_spawnPos.position, 7f));
             _spawnedPerson.ForEach((x) => x.Item2.UnClicked());
             _spawnedPerson.Clear();
-
-            
         }
     }
 }

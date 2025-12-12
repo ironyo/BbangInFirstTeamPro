@@ -32,23 +32,27 @@ public class AttackState : IEnemyState
     {
         if (customer.customerHP <= 0)
         {
+            animator.SetBool("isAttack", false);
             customer.ChangeState(customer.ClearState);
             return;
         }
 
         if (customer.IsAttackTargetInRange() == false)
         {
+            animator.SetBool("isAttack", false);
             customer.ChangeState(customer.CloseState);
             return;
         }
 
-        if (!isAttacking)
+        if(customer.IsAttackTargetInRange() == true)
+        {
             AttackTween();
+        }
     }
 
     public void Exit()
     {
-        animator.SetBool("isAttack", false);
+
     }
     private void AttackTween()
     {
@@ -136,7 +140,6 @@ public class AttackState : IEnemyState
 
         // 회전 초기화
         avatar.rotation = Quaternion.identity;
-
         isAttacking = false;
     }
 

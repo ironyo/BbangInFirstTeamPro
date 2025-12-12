@@ -1,44 +1,128 @@
+using Assets.Member.CHG._04.SO.Scripts;
 using DG.Tweening;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public abstract class TurretBase : MonoBehaviour
 {
     private bool _targetingClosed = true;
     private float _attackRange;
+    private float _power;
     private float _cooldownTime = 2f;
-
     private float _t;
+
     protected Transform Target;
     protected GunDataSO _gunData;
     public LayerMask CustomerLayer = 7;
     private bool IsSkillAcailable => (_t > _cooldownTime);
-    [SerializeField] protected Transform muzzle;
+    [SerializeField] protected Transform _muzzle;
+    [SerializeField] private SpriteRenderer _affixSpriteRen;
+    [SerializeField] protected Transform _firePos;
+    [SerializeField] private GameObject _attackSpeedSliderPrefab;
+
+    [Header("Event")]
+    [SerializeField] private EventChannelSO_T<int> _onRaiseDamage;
+
+    private AttackSpeedSlider _attackSpeedSlider;
     private Vector3 startPos;
 
-    //protected Factory _projectileFactory;
+    private LineRenderer _lineRenderer;
+
+    private bool isCooltime = false;
+
+    private void Awake()
+    {
+        _onRaiseDamage.OnEventRaised += Damageup;
+    }
+
+    private void Damageup(int amount)
+    {
+
+    }
+
+    public void SpawnTurret(Transform _spawnParent)
+    {
+    }
+
+    public void DeleteTurret()
+    {
+        Destroy(gameObject);
+    }
+
     public void Init(TurretSO turretData)
     {
         _targetingClosed = turretData.TargetingClosedEnemy;
         _attackRange = turretData.AttackRange;
         _cooldownTime = turretData.AttackCoolTime;
+        _power = turretData.AttackPower;
 
-        //_projectileFactory = new Factory(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
-        //PoolManager.Instance.RegisterPool(_projectileSO.ProjectilePrefab, _projectileSO.PoolSize);
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, _firePos.position);
+
+        MakeAttackSpeedSlider();
+
+        _t = _cooldownTime;
+        isCooltime = false;
+        _attackSpeedSlider.UpdateSlider(1f);
     }
-
-    public void Init2(GunDataSO gunData)
+    public void Init(GunDataSO gunData)
     {
         _gunData = gunData;
         _attackRange = gunData.AttackRange;
         _cooldownTime = gunData.CoolDown;
+
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, _firePos.position);
+
+        MakeAttackSpeedSlider();
+
+        _t = _cooldownTime;
+        isCooltime = false;
+        _attackSpeedSlider.UpdateSlider(1f);
+    }
+
+
+    public void AffixSet(AffixSO affixData)
+    {
+        _affixSpriteRen.sprite = affixData.AffixSprite;
+
+        if (affixData != null)
+        {
+            switch (affixData.AffixType)
+            {
+                case AffixType.AddPower:
+                    _power += affixData.Value;
+                    break;
+                case AffixType.AddRange:
+                    _attackRange += affixData.Value;
+                    break;
+                case AffixType.LowCoolTime:
+                    _cooldownTime -= affixData.Value;
+                    break;
+            }
+        }
+    }
+
+    private void MakeAttackSpeedSlider()
+    {
+        GameObject prefab = Instantiate(_attackSpeedSliderPrefab);
+        _attackSpeedSlider = prefab.GetComponent<AttackSpeedSlider>();
+        _attackSpeedSlider.Init(transform);
     }
 
     protected void Update()
     {
+        if (_lineRenderer == null)
+            return;
 
         Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, _attackRange, CustomerLayer);
 
-        if (enemys.Length <= 0) return;
+        if (enemys.Length <= 0)
+        {
+            _lineRenderer.SetPosition(1, _firePos.position);
+        }
 
         if (_targetingClosed)
         {
@@ -73,21 +157,53 @@ public abstract class TurretBase : MonoBehaviour
             Target = farTarget;
         }
 
-        Vector3 dir = Target.position - transform.position;
-
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        angle -= 90f;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-        _t += Time.deltaTime;
-        if (IsSkillAcailable)
+        Quaternion dir = transform.rotation;
+        _lineRenderer.SetPosition(0, _firePos.position);
+        if (Target == null)
         {
-            muzzle.transform.DOLocalMove(startPos + new Vector3(0, -0.5f, 0), 0.05f)
-            .OnComplete(() =>
-                muzzle.transform.DOLocalMove(startPos, 0.1f)
-            );
+        }
+        else
+        {
+            Debug.Log("rotation");
+            _lineRenderer.SetPosition(1, Target.position);
+            dir = Quaternion.Euler(Target.position - transform.position);
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            angle -= 90f;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
 
+
+
+
+
+
+        if (!isCooltime && _t >= _cooldownTime && Target != null)
+        {
+            _muzzle.transform.DOLocalMove(startPos + new Vector3(0, -0.5f, 0), 0.05f)
+                .OnComplete(() =>
+                    _muzzle.transform.DOLocalMove(startPos, 0.1f)
+                );
+            Debug.Log(2);
             Shoot();
-            _t = 0;
+
+            _t = 0f;
+            isCooltime = true;
+            _attackSpeedSlider.UpdateSlider(0f);
+        }
+
+        if (isCooltime)
+        {
+            _t += Time.deltaTime;
+
+            float ratio = Mathf.Clamp01(_t / _cooldownTime);
+            _attackSpeedSlider.UpdateSlider(ratio);
+
+            if (_t >= _cooldownTime)
+            {
+                _t = _cooldownTime;
+                isCooltime = false;
+                _attackSpeedSlider.UpdateSlider(1f);
+            }
         }
 
 
@@ -95,13 +211,10 @@ public abstract class TurretBase : MonoBehaviour
 
     public abstract void Shoot();
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        startPos = muzzle.transform.localPosition;
+        startPos = _muzzle.transform.localPosition;
     }
-
-
-
 
     protected void OnDrawGizmos()
     {

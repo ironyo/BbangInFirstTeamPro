@@ -7,14 +7,15 @@ public class BoomerangTurret : TurretBase
     [SerializeField] private GameObject ProjectilePrefab;
     private Factory _projectileFactory;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         _projectileFactory = new Factory(ProjectilePrefab, 4);
     }
     public override void Shoot()
     {
         IRecycleObject obj = _projectileFactory.Get();
-        obj.GameObject.GetComponent<ProjectileBase>().SetUp(muzzle, Target);
+        obj.GameObject.GetComponent<ProjectileBase>().SetUp(_muzzle, Target);
         CameraShake.Instance.ImpulseForce(0.1f);
     }
 }

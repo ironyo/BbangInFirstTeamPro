@@ -1,14 +1,8 @@
 using UnityEngine;
 
-public class testT_2 : Turret
+public class testT_2 : TurretBase
 {
-    protected override void OnDelete()
+    public override void Shoot()
     {
-        Debug.Log("ÆÄ±«µÊ");
-    }
-
-    protected override void OnSpawn()
-    {
-        Debug.Log("»ý¼ºµÊ");
     }
 }

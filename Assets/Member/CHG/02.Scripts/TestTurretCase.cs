@@ -1,6 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Member.CHG._04.SO.Scripts;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Assets.Member.CHG._02.Scripts
 {
@@ -8,9 +7,9 @@ namespace Assets.Member.CHG._02.Scripts
     {
         [SerializeField] private TurretSO _turretSO;
         [SerializeField] private GunDataSO _gunDataSO;
-
+        [SerializeField] private AffixSO _affixSO;
         private GameObject obj;
-        
+
         [ContextMenu("Start")]
         public void TestStart()
         {
@@ -23,8 +22,8 @@ namespace Assets.Member.CHG._02.Scripts
             else if (_gunDataSO != null)
             {
                 obj = Instantiate(_gunDataSO.TurretPrefab, transform.position, Quaternion.identity);
-                TurretBase turret = obj.GetComponentInChildren<TurretBase>();
-                turret.Init2(_gunDataSO);
+                TurretBase turret = obj.GetComponent<TurretBase>();
+                turret.Init(_gunDataSO);
             }
         }
     }

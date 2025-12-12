@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FatCustomerType
   m_EditorClassIdentifier: 
   customerCategory: 1
+  customerDamage: 8
   customerHP: 50
   customerSpeed: 6
-  customerAttackSpeed: 5
+  money: 20
