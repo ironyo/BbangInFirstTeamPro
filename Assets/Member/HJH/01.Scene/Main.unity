@@ -1650,10 +1650,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _generator: {fileID: 855504487}
+  _maxStage: 0
   _onRoadFinished: {fileID: 11400000, guid: 8ce04edf61fcfec408fb7d70a726dd4d, type: 2}
   _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
   _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
   _setUIStage: {fileID: 11400000, guid: ebc70b53cacdf66468b3f27fe18145c1, type: 2}
+  _onArrivalStage: {fileID: 11400000, guid: 3d86a553bc9b0e64d87e0672ebd86248, type: 2}
+  _stageChannelInt: {fileID: 11400000, guid: d1346465ce0f3324499d677053c4a1d5, type: 2}
 --- !u!4 &669850603
 Transform:
   m_ObjectHideFlags: 0
@@ -7054,6 +7057,11 @@ MonoBehaviour:
   _previousStageTxt: {fileID: 928605959}
   _currentStageTxt: {fileID: 80803391}
   _setUIStage: {fileID: 11400000, guid: ebc70b53cacdf66468b3f27fe18145c1, type: 2}
+  _onArrivalStage: {fileID: 0}
+  _animator: {fileID: 0}
+  _stageTxt: {fileID: 0}
+  _randomTxt: {fileID: 0}
+  _cheerRandomWords: []
 --- !u!1 &792773915
 GameObject:
   m_ObjectHideFlags: 0
@@ -7516,6 +7524,8 @@ MonoBehaviour:
   _canvas: {fileID: 1011446622}
   _raycaster: {fileID: 1011446621}
   _onLabelClick: {fileID: 11400000, guid: 63c13f5cd43c7ae498569a83f820c03c, type: 2}
+  _turretDragStart: {fileID: 0}
+  _turretDragEnd: {fileID: 0}
 --- !u!1 &893126504
 GameObject:
   m_ObjectHideFlags: 0
@@ -21427,6 +21437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7af221acdaa9df4a83356cafb93aeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _difficultyMultiplier: 1
   customerPrefab:
   - {fileID: 1402475380841491785, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
   - {fileID: 1402475380841491785, guid: 876a915ab0e2287449338775e5de8cca, type: 3}
@@ -21435,6 +21446,7 @@ MonoBehaviour:
   - {fileID: 1628549958}
   - {fileID: 1443026219}
   typeList: {fileID: 11400000, guid: cd6d6a39a5c49e445b92903c34a76ff6, type: 2}
+  _stageChannelInt: {fileID: 11400000, guid: d1346465ce0f3324499d677053c4a1d5, type: 2}
   runTargets:
   - {fileID: 144934986}
   - {fileID: 1033735871}
