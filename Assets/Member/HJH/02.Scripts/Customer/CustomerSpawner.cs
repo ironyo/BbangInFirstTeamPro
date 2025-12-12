@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 
 public class CustomerSpawner : MonoSingleton<CustomerSpawner>
 {
+    [SerializeField] private EventChannelSO_T<int> _onStageDifficultyIncreased;
+
+    private float _difficultyMultiplier = 1f;
+
     [SerializeField] private GameObject[] customerPrefab;
     [SerializeField] private Transform[] spawnPoints;
 
@@ -14,7 +18,15 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
     public Transform[] heatTargets;
 
     private int spawnNum;
+    private void OnEnable()
+    {
+        _onStageDifficultyIncreased.OnEventRaised += HandleStageDifficulty;
+    }
 
+    private void OnDisable()
+    {
+        _onStageDifficultyIncreased.OnEventRaised -= HandleStageDifficulty;
+    }
     public void StartSpawn()
     {
         spawnNum = Random.Range(0, spawnPoints.Length);
@@ -85,5 +97,9 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
         typeList.customerTypes[0].weight = wA;
         typeList.customerTypes[1].weight = wB;
         typeList.customerTypes[2].weight = wC;
+    }
+    private void HandleStageDifficulty(int stageCount)
+    {
+        _difficultyMultiplier = 1f + stageCount * 0.15f;
     }
 }

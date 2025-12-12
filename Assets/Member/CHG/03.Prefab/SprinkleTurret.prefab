@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 5993366988994415702}
   - component: {fileID: 9025367132267428974}
   m_Layer: 0
-  m_Name: BoomerangTurret
+  m_Name: SprinkleTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,6 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b12e90f5affcf4da1f4a4d2a62d3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretData: {fileID: 11400000, guid: 1780c37b5ab0f9f419207e5acd752123, type: 2}
+  gunData: {fileID: 0}
   CustomerLayer:
     serializedVersion: 2
     m_Bits: 128
