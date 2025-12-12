@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a910570812af043a72883b187ed296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretData: {fileID: 0}
+  gunData: {fileID: 11400000, guid: 74d344426bc22ab44b0eba51aa65170e, type: 2}
   CustomerLayer:
     serializedVersion: 2
     m_Bits: 128
