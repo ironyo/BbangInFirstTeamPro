@@ -7,6 +7,7 @@ public class CustomerType : ScriptableObject
 {
     public CustomerCategory customerCategory;
     public int customerDamage;
+    public float attackInterval;
     public int customerHP;
     public float customerSpeed;
     public int money;

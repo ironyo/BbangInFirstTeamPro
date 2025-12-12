@@ -1,5 +1,8 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System;
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 public class AttackState : IEnemyState
@@ -10,12 +13,15 @@ public class AttackState : IEnemyState
 
     private Transform avatar;
 
-    private bool isAttacking = false;
+    private float attackInterval;
+
+    private CancellationTokenSource attackCTS;
 
     public AttackState(Customer customer)
     {
         this.customer = customer;
         animator = customer._animator;
+        attackInterval = customer.customerType.attackInterval;
     }
 
     public void Enter()
@@ -26,48 +32,66 @@ public class AttackState : IEnemyState
         rb.linearVelocity = Vector2.zero;
 
         LookAtClosestTarget();
+
+        attackCTS = new CancellationTokenSource();
+        AttackLoopAsync(attackCTS.Token).Forget();
     }
 
     public void Update()
     {
         if (customer.customerHP <= 0)
         {
-            animator.SetBool("isAttack", false);
             customer.ChangeState(customer.ClearState);
             return;
         }
 
-        if (customer.IsAttackTargetInRange() == false)
+        if (!customer.IsAttackTargetInRange())
         {
-            animator.SetBool("isAttack", false);
             customer.ChangeState(customer.CloseState);
             return;
-        }
-
-        if(customer.IsAttackTargetInRange() == true)
-        {
-            AttackTween();
         }
     }
 
     public void Exit()
     {
+        attackCTS?.Cancel();
+        attackCTS?.Dispose();
+        attackCTS = null;
 
+        animator.SetBool("isAttack", false);
     }
-    private void AttackTween()
+
+    private async UniTaskVoid AttackLoopAsync(CancellationToken token)
     {
-        if (isAttacking) return;
-        isAttacking = true;
-
-        Sequence seq = DOTween.Sequence();
-
-        seq.AppendCallback(() => animator.SetBool("isAttack", true));
-        seq.AppendInterval(0.75f);
-
-        seq.AppendCallback(() =>
+        try
         {
-            BackMotion();
-        });
+            while (!token.IsCancellationRequested)
+            {
+                if (!customer.IsAttackTargetInRange() || customer.customerHP <= 0)
+                {
+                    animator.SetBool("isAttack", false);
+                    return;
+                }
+
+                animator.SetBool("isAttack", true);
+
+                await UniTask.Delay(
+                    TimeSpan.FromSeconds(attackInterval),
+                    cancellationToken: token
+                );
+
+                animator.SetBool("isAttack", false);
+
+                await UniTask.Delay(
+                    TimeSpan.FromSeconds(attackInterval),
+                    cancellationToken: token
+                );
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            customer.ChangeState(customer.CloseState);
+        }
     }
 
     private Transform GetClosestTarget()
@@ -93,25 +117,16 @@ public class AttackState : IEnemyState
         Transform target = GetClosestTarget();
         if (target == null) return;
 
-        Transform pivot = avatar;
-
-        Vector2 dir = target.position - pivot.position;
+        Vector2 dir = target.position - avatar.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (target.position.y < 0)
-        {
-            angle += 180;
-            Debug.Log("angle+:" + angle);
-        }
+        if (dir.y < 0)
+            angle += 180f;
         else
-        {
-            angle -= 180;
-            Debug.Log("angle-:" + angle);
-        }
+            angle -= 180f;
 
-            Quaternion targetRot = Quaternion.Euler(0, 0, angle);
-
-        pivot.rotation = Quaternion.Slerp(pivot.rotation, targetRot, 0.3f);
+        Quaternion targetRot = Quaternion.Euler(0, 0, angle);
+        avatar.rotation = targetRot;
     }
 
     private void BackMotion()
@@ -138,9 +153,6 @@ public class AttackState : IEnemyState
             yield return null;
         }
 
-        // 회전 초기화
         avatar.rotation = Quaternion.identity;
-        isAttacking = false;
     }
-
 }
