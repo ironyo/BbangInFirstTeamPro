@@ -7,8 +7,9 @@ public class DoubleCurveTurret : TurretBase
 
     private Factory _projectileFactory;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         _projectileFactory = new Factory(ProjectilePrefab, 4);
     }
 
@@ -25,6 +26,6 @@ public class DoubleCurveTurret : TurretBase
         projectile2.Angle = -angel;
 
         projectile1.SetUp(_muzzle, Target);
-        projectile2.SetUp(_muzzle,Target);
+        projectile2.SetUp(_muzzle, Target);
     }
 }

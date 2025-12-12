@@ -19,12 +19,26 @@ public abstract class TurretBase : MonoBehaviour
     [SerializeField] private SpriteRenderer _affixSpriteRen;
     [SerializeField] private Transform _firePos;
     [SerializeField] private GameObject _attackSpeedSliderPrefab;
+
+    [Header("Event")]
+    [SerializeField] private EventChannelSO_T<int> _onRaiseDamage;
+
     private AttackSpeedSlider _attackSpeedSlider;
     private Vector3 startPos;
 
     private LineRenderer _lineRenderer;
 
-    private bool isCooltime;
+    private bool isCooltime = false;
+
+    private void Awake()
+    {
+        _onRaiseDamage.OnEventRaised += Damageup;
+    }
+
+    private void Damageup(int amount)
+    {
+
+    }
 
     public void SpawnTurret(Transform _spawnParent)
     {
@@ -47,6 +61,10 @@ public abstract class TurretBase : MonoBehaviour
         _lineRenderer.SetPosition(0, _firePos.position);
 
         MakeAttackSpeedSlider();
+
+        _t = _cooldownTime;
+        isCooltime = false;
+        _attackSpeedSlider.UpdateSlider(1f);
     }
     public void Init(GunDataSO gunData)
     {
@@ -88,6 +106,7 @@ public abstract class TurretBase : MonoBehaviour
     {
         if (_lineRenderer == null)
             return;
+
 
         Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, _attackRange, CustomerLayer);
 
@@ -154,7 +173,7 @@ public abstract class TurretBase : MonoBehaviour
                 .OnComplete(() =>
                     _muzzle.transform.DOLocalMove(startPos, 0.1f)
                 );
-
+            Debug.Log(2);
             Shoot();
 
             _t = 0f;
@@ -182,13 +201,9 @@ public abstract class TurretBase : MonoBehaviour
 
     public abstract void Shoot();
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         startPos = _muzzle.transform.localPosition;
-
-        _t = _cooldownTime;
-        isCooltime = false;
-        _attackSpeedSlider.UpdateSlider(1f);
     }
 
     protected void OnDrawGizmos()

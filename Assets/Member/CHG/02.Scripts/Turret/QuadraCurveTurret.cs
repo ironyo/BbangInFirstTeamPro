@@ -1,6 +1,5 @@
-using UnityEngine;
 using Assets.Member.CHG._02.Scripts.Pooling;
-using DG.Tweening;
+using UnityEngine;
 
 public enum TestProjectileType
 {
@@ -17,8 +16,9 @@ public class QuadraCurveTurret : TurretBase
     [SerializeField] private GameObject ProjectilePrefab;
 
     private Factory _projectileFactory;
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         _projectileFactory = new Factory(ProjectilePrefab, 4);
     }
 
