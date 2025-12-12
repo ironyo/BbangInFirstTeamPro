@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a910570812af043a72883b187ed296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretData: {fileID: 0}
+  gunData: {fileID: 11400000, guid: 78309a5142beb214ead0c703bc009d30, type: 2}
   CustomerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -174,7 +176,6 @@ MonoBehaviour:
   _firePos: {fileID: 1138001753404401334}
   _attackSpeedSliderPrefab: {fileID: 6560060808592047826, guid: c83974a16944f494897089526a539d1a, type: 3}
   _onRaiseDamage: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
-  firePos: {fileID: 1138001753404401334}
   rotationSpeed: 20
   shootDelay: 0.1
   recoilBackAmount: 0.1
