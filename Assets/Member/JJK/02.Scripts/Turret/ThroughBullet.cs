@@ -77,4 +77,9 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
             Destroyed?.Invoke(this);
         }
     }
+    
+    private void OnDisable()
+    {
+        _isAttack = false;
+    }
 }

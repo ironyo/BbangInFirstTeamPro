@@ -17,14 +17,28 @@ public abstract class TurretBase : MonoBehaviour
     private bool IsSkillAcailable => (_t > _cooldownTime);
     [SerializeField] protected Transform _muzzle;
     [SerializeField] private SpriteRenderer _affixSpriteRen;
-    [SerializeField] private Transform _firePos;
+    [SerializeField] protected Transform _firePos;
     [SerializeField] private GameObject _attackSpeedSliderPrefab;
+
+    [Header("Event")]
+    [SerializeField] private EventChannelSO_T<int> _onRaiseDamage;
+
     private AttackSpeedSlider _attackSpeedSlider;
     private Vector3 startPos;
 
     private LineRenderer _lineRenderer;
 
-    private bool isCooltime;
+    private bool isCooltime = false;
+
+    private void Awake()
+    {
+        _onRaiseDamage.OnEventRaised += Damageup;
+    }
+
+    private void Damageup(int amount)
+    {
+
+    }
 
     public void SpawnTurret(Transform _spawnParent)
     {
@@ -47,12 +61,26 @@ public abstract class TurretBase : MonoBehaviour
         _lineRenderer.SetPosition(0, _firePos.position);
 
         MakeAttackSpeedSlider();
+
+        _t = _cooldownTime;
+        isCooltime = false;
+        _attackSpeedSlider.UpdateSlider(1f);
     }
     public void Init(GunDataSO gunData)
     {
         _gunData = gunData;
         _attackRange = gunData.AttackRange;
         _cooldownTime = gunData.CoolDown;
+
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, _firePos.position);
+
+        MakeAttackSpeedSlider();
+
+        _t = _cooldownTime;
+        isCooltime = false;
+        _attackSpeedSlider.UpdateSlider(1f);
     }
 
 
@@ -136,6 +164,7 @@ public abstract class TurretBase : MonoBehaviour
         }
         else
         {
+            Debug.Log("rotation");
             _lineRenderer.SetPosition(1, Target.position);
             dir = Quaternion.Euler(Target.position - transform.position);
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
@@ -154,7 +183,7 @@ public abstract class TurretBase : MonoBehaviour
                 .OnComplete(() =>
                     _muzzle.transform.DOLocalMove(startPos, 0.1f)
                 );
-
+            Debug.Log(2);
             Shoot();
 
             _t = 0f;
@@ -182,13 +211,9 @@ public abstract class TurretBase : MonoBehaviour
 
     public abstract void Shoot();
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         startPos = _muzzle.transform.localPosition;
-
-        _t = _cooldownTime;
-        isCooltime = false;
-        _attackSpeedSlider.UpdateSlider(1f);
     }
 
     protected void OnDrawGizmos()

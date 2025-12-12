@@ -7,8 +7,9 @@ public class BoomerangTurret : TurretBase
     [SerializeField] private GameObject ProjectilePrefab;
     private Factory _projectileFactory;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         _projectileFactory = new Factory(ProjectilePrefab, 4);
     }
     public override void Shoot()

@@ -9977,7 +9977,7 @@ GameObject:
   - component: {fileID: 3573843201488705132}
   - component: {fileID: 8974389255008867437}
   - component: {fileID: 8803302836792248503}
-  - component: {fileID: 3365231817209417289}
+  - component: {fileID: 7833853756724217304}
   m_Layer: 0
   m_Name: TruckBody
   m_TagString: Untagged
@@ -10074,8 +10074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5720f72d10ece0249bbd2953d6571d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &3365231817209417289
-CapsuleCollider2D:
+--- !u!58 &7833853756724217304
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -10108,9 +10108,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0013754372, y: -0.0027518277}
-  m_Size: {x: 1.7110461, y: 0.8018682}
-  m_Direction: 1
+  m_Offset: {x: 0.03954514, y: 0}
+  m_Radius: 0.73567176
 --- !u!1 &7843911489766039646
 GameObject:
   m_ObjectHideFlags: 0
@@ -19912,9 +19911,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1034768879065776542, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_TagString
+      value: CloseTarget
+      objectReference: {fileID: 0}
     - target: {fileID: 2097320883900632217, guid: e1a611ec57822ba41b852199118c312b, type: 3}
       propertyPath: m_Name
       value: ClosePosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097320883900632217, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525885516391176935, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0191
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525885516391176935, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.383
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091417429096264924, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_TagString
+      value: CloseTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015374806305105691, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0555
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015374806305105691, guid: e1a611ec57822ba41b852199118c312b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.355
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19934,9 +19961,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3573843201488705132}
     m_Modifications:
+    - target: {fileID: 2969405147234598629, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
+      propertyPath: m_TagString
+      value: RunTarget
+      objectReference: {fileID: 0}
     - target: {fileID: 5766392815993898104, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
       propertyPath: m_Name
       value: RunPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766392815993898104, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153940330253562927, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
+      propertyPath: m_TagString
+      value: RunTarget
       objectReference: {fileID: 0}
     - target: {fileID: 8462476471626905347, guid: 07686f06a21d6c54f80cbf073f0c0929, type: 3}
       propertyPath: m_LocalPosition.x

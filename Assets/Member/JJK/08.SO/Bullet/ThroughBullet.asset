@@ -16,7 +16,7 @@ MonoBehaviour:
   <CollisionParticle>k__BackingField: {fileID: 584123716942813891, guid: cf961b618efa20f4199eabb38db8a89d, type: 3}
   <DisableParticle>k__BackingField: {fileID: 584123716942813891, guid: 4092f5081b597c140a16bfb1fffa4aa0, type: 3}
   <Damage>k__BackingField: 1
-  <LifeTime>k__BackingField: 0.6
+  <LifeTime>k__BackingField: 0.4
   <Speed>k__BackingField: 12
   <CameraShakeForce>k__BackingField: 0.1
   <ThroughShotData>k__BackingField:
