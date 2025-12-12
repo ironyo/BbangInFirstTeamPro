@@ -18,7 +18,7 @@ MonoBehaviour:
   <Damage>k__BackingField: 1
   <LifeTime>k__BackingField: 0.8
   <Speed>k__BackingField: 10
-  <CameraShakeForce>k__BackingField: 0.25
+  <CameraShakeForce>k__BackingField: 0.1
   <ThroughShotData>k__BackingField:
     <BulletData>k__BackingField: {fileID: 0}
     <BulletCount>k__BackingField: 0

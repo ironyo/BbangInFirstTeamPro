@@ -18,8 +18,8 @@ MonoBehaviour:
   <Damage>k__BackingField: 3
   <LifeTime>k__BackingField: 2
   <Speed>k__BackingField: 8
-  <CameraShakeForce>k__BackingField: 0.15
+  <CameraShakeForce>k__BackingField: 0.2
   <ThroughShotData>k__BackingField:
     <BulletData>k__BackingField: {fileID: 11400000, guid: 58f5cc253a5cb1b40a722aa4877374a6, type: 2}
     <BulletCount>k__BackingField: 5
-    <SpreadAngle>k__BackingField: 15
+    <SpreadAngle>k__BackingField: 20
