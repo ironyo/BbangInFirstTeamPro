@@ -13,6 +13,8 @@ public class TurretDrag : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private EventChannelSO_T<TurretSO_TJ> _onLabelClick;
+    [SerializeField] private EventChannelSO _turretDragStart;
+    [SerializeField] private EventChannelSO _turretDragEnd;
 
     private RectTransform _currentDragTur = null;
     private TurretSO_TJ _currentSelectTur = null;
@@ -24,6 +26,7 @@ public class TurretDrag : MonoBehaviour
 
     private void StartDrag(TurretSO_TJ data)
     {
+
         Debug.Log("제발 여기까지만 제발제발");
         GameObject spawned = Instantiate(_dragPref, _canvas.transform);
 
@@ -32,7 +35,18 @@ public class TurretDrag : MonoBehaviour
         _currentSelectTur = data;
 
         img.sprite = data.TurretImage;
+        _turretDragStart.RaiseEvent();
+
         Debug.Log("aaaaaaa");
+    }
+
+    private void StopDrag()
+    {
+        CheckDrop();
+        Destroy(_currentDragTur.gameObject);
+        _currentDragTur = null;
+        _currentSelectTur = null;
+        _turretDragEnd.RaiseEvent();
     }
 
     private void Update()
@@ -45,10 +59,7 @@ public class TurretDrag : MonoBehaviour
         }
         else if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            CheckDrop();
-            Destroy(_currentDragTur.gameObject);
-            _currentDragTur = null;
-            _currentSelectTur = null;
+            StopDrag();
         }
     }
 

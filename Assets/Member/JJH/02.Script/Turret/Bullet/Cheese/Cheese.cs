@@ -6,7 +6,8 @@ using UnityEngine;
 public class Cheese : MonoBehaviour, IRecycleObject
 {
     [SerializeField] private GameObject cheeseExplosion;
-    [SerializeField] private int damage = 1;
+    public int damage { get; set; }
+
 
     Factory factory;
     private TrailRenderer trail;
