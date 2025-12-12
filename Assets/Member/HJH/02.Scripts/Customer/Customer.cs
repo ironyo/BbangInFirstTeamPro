@@ -49,7 +49,7 @@ public class Customer : MonoBehaviour
 
     public float customerHP;// { get; set; }    
     private float maxHp;
-    public int damage { get; set; }
+    public int damage ;//{ get; set; }
     public float customerSpeed { get; set; }
 
     [SerializeField]private SpriteRenderer sr;
