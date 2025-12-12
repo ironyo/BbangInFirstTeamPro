@@ -12,7 +12,8 @@ public class PizzaPieceBullet : MonoBehaviour, IRecycleObject
     public Action<IRecycleObject> Destroyed { get; set; }
     public GameObject GameObject => gameObject;
 
-    [SerializeField] private int damage = 1;
+    public int damage { get; set; }
+
 
     private bool isAttack = false;
 

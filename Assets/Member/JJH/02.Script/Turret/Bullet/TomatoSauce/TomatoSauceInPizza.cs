@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class TomatoSauceInPizza : MonoBehaviour
 {
+    public int damage { get; set; }
+
+
     private void OnEnable()
     {
         ShotTomatoSauce();
@@ -9,6 +12,8 @@ public class TomatoSauceInPizza : MonoBehaviour
 
     private void ShotTomatoSauce()
     {
-        GetComponent<LaserFade>().enabled = true;
+        LaserFade laserFade = GetComponent<LaserFade>();
+        laserFade.enabled = true;
+        laserFade.damage = damage;
     }
 }

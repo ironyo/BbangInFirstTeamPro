@@ -7,14 +7,13 @@ public abstract class TurretBase : MonoBehaviour
 {
     private bool _targetingClosed = true;
     private float _attackRange;
-    private float _power;
+    protected int _damage;
     private float _cooldownTime = 2f;
     private float _t;
 
     protected Transform Target;
     protected GunDataSO _gunData;
     public LayerMask CustomerLayer = 7;
-    private bool IsSkillAcailable => (_t > _cooldownTime);
     [SerializeField] protected Transform _muzzle;
     [SerializeField] private SpriteRenderer _affixSpriteRen;
     [SerializeField] protected Transform _firePos;
@@ -54,7 +53,7 @@ public abstract class TurretBase : MonoBehaviour
         _targetingClosed = turretData.TargetingClosedEnemy;
         _attackRange = turretData.AttackRange;
         _cooldownTime = turretData.AttackCoolTime;
-        _power = turretData.AttackPower;
+        _damage = turretData.AttackPower;
 
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.positionCount = 2;
@@ -93,7 +92,7 @@ public abstract class TurretBase : MonoBehaviour
             switch (affixData.AffixType)
             {
                 case AffixType.AddPower:
-                    _power += affixData.Value;
+                    _damage += affixData.Value;
                     break;
                 case AffixType.AddRange:
                     _attackRange += affixData.Value;

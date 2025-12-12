@@ -16,7 +16,7 @@ namespace Assets.Member.CHG._04.SO.Scripts
         public int AffixPrice;
 
         public AffixType AffixType;
-        public float Value;
+        public int Value;
 
     }
 }

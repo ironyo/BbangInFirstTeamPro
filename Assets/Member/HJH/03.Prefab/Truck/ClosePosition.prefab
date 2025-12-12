@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3286948100569702743}
   m_Layer: 6
   m_Name: closePosition2
-  m_TagString: Untagged
+  m_TagString: CloseTarget
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 1025902295153702681}
   m_Layer: 0
   m_Name: ClosePosition
-  m_TagString: CloseTarget
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 3595364768836361901}
   m_Layer: 6
   m_Name: closePosition1
-  m_TagString: Untagged
+  m_TagString: CloseTarget
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
