@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
-  m_Name: PizzaTurret
+  m_Name: TomatoSauceTurret
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: 
   <TurretImage>k__BackingField: {fileID: 0}
   <TurretCost>k__BackingField: 0
-  Turret: {fileID: 5400638826231016959, guid: 37fc05cf609afb54b9a83513b14d4608, type: 3}
+  Turret: {fileID: 8863896744074977298, guid: 312470ebb3f40dd478cb72ceb9beca18, type: 3}
   TurretSprite: {fileID: 0}
   TurretPrice: 0
-  TurretPrefab: {fileID: 6630070434975179524, guid: 37fc05cf609afb54b9a83513b14d4608, type: 3}
+  TurretPrefab: {fileID: 7417424872077047290, guid: 312470ebb3f40dd478cb72ceb9beca18, type: 3}
   AttackCoolTime: 0.7
-  AttackRange: 9
-  AttackPower: 0
-  TargetingClosedEnemy: 1
+  AttackRange: 10
+  AttackPower: 2
+  TargetingClosedEnemy: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
-  m_Name: TurretSO 1
+  m_Name: BagleTurretSO
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: 
   <TurretImage>k__BackingField: {fileID: 0}
