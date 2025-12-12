@@ -98,6 +98,10 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
             IRecycleObject particle = _particlefaFactory.Get();
             particle.GameObject.transform.position = collision.gameObject.transform.position;
 
+<<<<<<< Updated upstream
+=======
+            //데미지 적용
+>>>>>>> Stashed changes
             collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
             CameraShake.Instance.ImpulseForce(0.03f);
 
