@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TruckSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TruckSlot : MonoBehaviour
 {
     [Header("UI Setting")]
     [SerializeField] private TextMeshProUGUI _truckSlotNumTxt;
@@ -14,21 +14,36 @@ public class TruckSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [Header("Events")]
     [SerializeField] private EventChannel_TT<TurretSO_TJ, int> _onTryPurchase;
     [SerializeField] private EventChannel_TT<TurretSO_TJ, int> _setTurretOnTruck;
+    [SerializeField] private EventChannelSO _turretDragStart;
+    [SerializeField] private EventChannelSO _turretDragEnd;
 
     private int _slotNum;
 
     private void OnEnable()
     {
         _setTurretOnTruck.OnEventRaised += TruckUISet;
+        _turretDragStart.OnEventRaised += OnDragStart;
+        _turretDragEnd.OnEventRaised += OnDragEnd;
     }
     private void OnDisable()
     {
         _setTurretOnTruck.OnEventRaised -= TruckUISet;
+        _turretDragStart.OnEventRaised -= OnDragStart;
+        _turretDragEnd.OnEventRaised -= OnDragEnd;
     }
 
     private void OnDestroy()
     {
         _setTurretOnTruck.OnEventRaised -= TruckUISet;
+    }
+    private void OnDragStart()
+    {
+        _stripEffect.SetActive(true);
+    }
+
+    private void OnDragEnd()
+    {
+        _stripEffect.SetActive(false);
     }
 
 
@@ -64,15 +79,5 @@ public class TruckSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         // TryPurchase 이벤트를 전송함.
         _onTryPurchase.RaiseEvent(turSO, _slotNum);
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        _stripEffect.gameObject.SetActive(true);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        _stripEffect.gameObject.SetActive(false);
     }
 }

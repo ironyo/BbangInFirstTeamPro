@@ -227,6 +227,7 @@ MonoBehaviour:
   _muzzle: {fileID: 3305034318433794650}
   _affixSpriteRen: {fileID: 7294969750116845477}
   _firePos: {fileID: 3305034318433794650}
+  _attackSpeedSliderPrefab: {fileID: 2467408053445615507}
 --- !u!120 &8970937249978250661
 LineRenderer:
   serializedVersion: 2
