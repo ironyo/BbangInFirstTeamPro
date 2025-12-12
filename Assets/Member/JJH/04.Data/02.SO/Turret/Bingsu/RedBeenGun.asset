@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04537ae5fa12464780b3f641b9c8268, type: 3}
   m_Name: RedBeenGun
   m_EditorClassIdentifier: 
+  <TurretName>k__BackingField: "\uD325 \uD3EC\uD0D1"
+  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretCost>k__BackingField: 5
+  Turret: {fileID: 7793336519847305636, guid: ee7bd858049938d4a97345b847e0121c, type: 3}
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: 906decc5259d5df4e859bc33cb95193c, type: 2}
   <TurretPrefab>k__BackingField: {fileID: 8885798609124011066, guid: ee7bd858049938d4a97345b847e0121c, type: 3}
   <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 56eef0cb30dd8c745b4199b65dd9f12a, type: 3}
