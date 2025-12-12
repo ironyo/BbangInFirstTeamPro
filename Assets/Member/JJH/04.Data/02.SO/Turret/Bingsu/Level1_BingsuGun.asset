@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b04537ae5fa12464780b3f641b9c8268, type: 3}
-  m_Name: BingsuGun
+  m_Name: Level1_BingsuGun
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uBE59\uC218 \uD3EC\uD0D1"
   <TurretImage>k__BackingField: {fileID: 0}

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
-  m_Name: KU_HotDog_TurretSO
+  m_Name: Level1_DonutTurretSO
   m_EditorClassIdentifier: 
-  <TurretName>k__BackingField: "\uD56B\uB3C4\uADF8 \uD3EC\uD0D1"
+  <TurretName>k__BackingField: "\uB3C4\uB11B \uD3EC\uD0D1"
   <TurretImage>k__BackingField: {fileID: 0}
   <TurretCost>k__BackingField: 10
-  Turret: {fileID: 378329891138309096, guid: b38f41049c8a51a44b253bbe0861ab40, type: 3}
-  TurretPrefab: {fileID: 5905195679837564984, guid: b38f41049c8a51a44b253bbe0861ab40, type: 3}
-  AttackCoolTime: 2
-  AttackRange: 10
-  AttackPower: 1
-  TargetingClosedEnemy: 0
+  Turret: {fileID: 2084791366900977152, guid: 0f0a501723b33cf4bb0a72e7f652ab9d, type: 3}
+  TurretPrefab: {fileID: 3538944490583202499, guid: 0f0a501723b33cf4bb0a72e7f652ab9d, type: 3}
+  AttackCoolTime: 3
+  AttackRange: 7
+  AttackPower: 11
+  TargetingClosedEnemy: 1
