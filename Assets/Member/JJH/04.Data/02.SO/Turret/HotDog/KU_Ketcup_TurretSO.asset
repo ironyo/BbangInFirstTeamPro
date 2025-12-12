@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
   m_Name: KU_Ketcup_TurretSO
   m_EditorClassIdentifier: 
-  <TurretName>k__BackingField: 
+  <TurretName>k__BackingField: "\uCF00\uCC39 \uD3EC\uD0D1"
   <TurretImage>k__BackingField: {fileID: 0}
-  <TurretCost>k__BackingField: 0
+  <TurretCost>k__BackingField: 5
   Turret: {fileID: 378329891138309096, guid: dfd50b11972a416419bd15748b57e79d, type: 3}
-  TurretSprite: {fileID: -41970534257140035, guid: 71b17cfb51697a148b8a86e91c6feab2, type: 3}
-  TurretPrice: 0
   TurretPrefab: {fileID: 5905195679837564984, guid: dfd50b11972a416419bd15748b57e79d, type: 3}
   AttackCoolTime: 2
   AttackRange: 10
