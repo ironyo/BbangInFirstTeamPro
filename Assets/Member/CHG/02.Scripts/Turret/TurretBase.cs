@@ -17,7 +17,7 @@ public abstract class TurretBase : MonoBehaviour
     private bool IsSkillAcailable => (_t > _cooldownTime);
     [SerializeField] protected Transform _muzzle;
     [SerializeField] private SpriteRenderer _affixSpriteRen;
-    [SerializeField] private Transform _firePos;
+    [SerializeField] protected Transform _firePos;
     [SerializeField] private GameObject _attackSpeedSliderPrefab;
 
     [Header("Event")]
@@ -71,6 +71,16 @@ public abstract class TurretBase : MonoBehaviour
         _gunData = gunData;
         _attackRange = gunData.AttackRange;
         _cooldownTime = gunData.CoolDown;
+
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, _firePos.position);
+
+        MakeAttackSpeedSlider();
+
+        _t = _cooldownTime;
+        isCooltime = false;
+        _attackSpeedSlider.UpdateSlider(1f);
     }
 
 
@@ -106,7 +116,6 @@ public abstract class TurretBase : MonoBehaviour
     {
         if (_lineRenderer == null)
             return;
-
 
         Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, _attackRange, CustomerLayer);
 
@@ -155,6 +164,7 @@ public abstract class TurretBase : MonoBehaviour
         }
         else
         {
+            Debug.Log("rotation");
             _lineRenderer.SetPosition(1, Target.position);
             dir = Quaternion.Euler(Target.position - transform.position);
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

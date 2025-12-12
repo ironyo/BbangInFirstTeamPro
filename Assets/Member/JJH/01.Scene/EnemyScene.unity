@@ -5316,8 +5316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e2018b5c213a046aaa73398cde3964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turretSO: {fileID: 11400000, guid: 02e164c304bb4fe40b5ea7fa5e16c3e3, type: 2}
-  _gunDataSO: {fileID: 0}
+  _turretSO: {fileID: 0}
+  _gunDataSO: {fileID: 11400000, guid: 74d344426bc22ab44b0eba51aa65170e, type: 2}
   _affixSO: {fileID: 0}
 --- !u!4 &1606245306
 Transform:

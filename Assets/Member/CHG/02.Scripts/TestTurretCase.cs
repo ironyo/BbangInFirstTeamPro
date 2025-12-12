@@ -22,7 +22,7 @@ namespace Assets.Member.CHG._02.Scripts
             else if (_gunDataSO != null)
             {
                 obj = Instantiate(_gunDataSO.TurretPrefab, transform.position, Quaternion.identity);
-                TurretBase turret = obj.GetComponentInChildren<TurretBase>();
+                TurretBase turret = obj.GetComponent<TurretBase>();
                 turret.Init(_gunDataSO);
             }
         }
