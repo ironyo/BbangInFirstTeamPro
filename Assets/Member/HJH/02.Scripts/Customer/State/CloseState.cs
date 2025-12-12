@@ -51,12 +51,14 @@ public class CloseState : IEnemyState
 
         if (customer.isSlow)
         {
+            moveSpeed = Mathf.Clamp(moveSpeed, customer.customerSpeed - 4, customer.customerSpeed);
             moveSpeed -= 2;
+            Debug.Log("moveSpeed" + moveSpeed);
         }
 
-        Vector2 targetDir =
-            ((Vector2)target.position + new Vector2(random, 0f) -
-             (Vector2)customer.transform.position).normalized;
+            Vector2 targetDir =
+                ((Vector2)target.position + new Vector2(random, 0f) -
+                 (Vector2)customer.transform.position).normalized;
 
         currentDir = Vector2.Lerp(currentDir, targetDir, Time.deltaTime * moveSpeed);
 
