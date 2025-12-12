@@ -11,6 +11,10 @@ public class TurretSpawner : MonoBehaviour
         }
 
         TurretBase _cloned = Instantiate(_turret.gameObject, gameObject.transform).GetComponent<TurretBase>();
+        if (_cloned == null)
+        {
+            Debug.LogError("_cloned가 널입니다");
+        }
         _cloned.gameObject.transform.localPosition = Vector3.zero;
 
         _currentTurret = _cloned;

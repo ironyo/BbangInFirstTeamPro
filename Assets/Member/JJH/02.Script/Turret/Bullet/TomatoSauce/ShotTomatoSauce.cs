@@ -20,10 +20,9 @@ public class ShotTomatoSauce : TurretBase
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         CameraShake.Instance.ImpulseForce(0.5f);
-
         IRecycleObject obj = factory.Get();
         obj.GameObject.transform.position = firePos.position;
         obj.GameObject.transform.rotation = rotation;
-        obj.GameObject.GetComponent<TomatoSauce>().ShotTomatoSauce(Target, firePos);
+        obj.GameObject.GetComponent<TomatoSauce>().ShotTomatoSauce(Target, firePos, _damage);
     }
 }
