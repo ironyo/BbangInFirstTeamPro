@@ -20,7 +20,7 @@ public class TomatoSauce : MonoBehaviour
         transform.localScale = originalScale;
     }
 
-    public void ShotTomatoSauce(Transform target, Transform origin)
+    public void ShotTomatoSauce(Transform target, Transform origin, int damage)
     {
         Vector3 dir = (target.position - origin.position).normalized;
 
@@ -34,6 +34,9 @@ public class TomatoSauce : MonoBehaviour
         transform.position = origin.position - transform.right * 0.85f;
 
         if (TryGetComponent<LaserFade>(out var laser))
+        {
             laser.enabled = true;
+            laser.damage = damage;
+        }
     }
 }

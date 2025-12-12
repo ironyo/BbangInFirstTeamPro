@@ -7,7 +7,7 @@ public abstract class TurretBase : MonoBehaviour
 {
     private bool _targetingClosed = true;
     private float _attackRange;
-    private float _power;
+    protected int _damage;
     private float _cooldownTime = 2f;
     private float _t;
 
@@ -54,7 +54,7 @@ public abstract class TurretBase : MonoBehaviour
         _targetingClosed = turretData.TargetingClosedEnemy;
         _attackRange = turretData.AttackRange;
         _cooldownTime = turretData.AttackCoolTime;
-        _power = turretData.AttackPower;
+        _damage = turretData.AttackPower;
 
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.positionCount = 2;
@@ -93,7 +93,7 @@ public abstract class TurretBase : MonoBehaviour
             switch (affixData.AffixType)
             {
                 case AffixType.AddPower:
-                    _power += affixData.Value;
+                    _damage += affixData.Value;
                     break;
                 case AffixType.AddRange:
                     _attackRange += affixData.Value;

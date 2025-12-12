@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Pepperoni : IncreaseSpeed, IRecycleObject
 {
-    [SerializeField] private int damage = 1;
+    public int damage { get; set; }
     private BulletMove bulletMove;
     private TrailRenderer trail;
 

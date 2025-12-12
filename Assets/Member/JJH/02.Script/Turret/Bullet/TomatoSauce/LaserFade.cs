@@ -11,7 +11,7 @@ public class LaserFade : MonoBehaviour, IRecycleObject
     [SerializeField] private float startDelay = 0.2f;
     [SerializeField] private float expandTime = 0.3f;
     [SerializeField] private float fadeTime = 1.5f;
-    [SerializeField] private int damage = 2;
+    public int damage { get; set; }
 
     private bool isAttack = false;
 
