@@ -14,7 +14,6 @@ public abstract class TurretBase : MonoBehaviour
     protected Transform Target;
     protected GunDataSO _gunData;
     public LayerMask CustomerLayer = 7;
-    private bool IsSkillAcailable => (_t > _cooldownTime);
     [SerializeField] protected Transform _muzzle;
     [SerializeField] private SpriteRenderer _affixSpriteRen;
     [SerializeField] protected Transform _firePos;
