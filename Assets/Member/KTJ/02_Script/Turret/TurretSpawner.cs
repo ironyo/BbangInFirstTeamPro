@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TurretSpawner : MonoBehaviour
 {
+    [SerializeField] private Transform _spawnPos;
     public TurretBase _currentTurret { get; private set; }  = null;
     public void SpawnTurret(TurretBase _turret)
     {
@@ -10,11 +11,7 @@ public class TurretSpawner : MonoBehaviour
             _currentTurret.DeleteTurret();
         }
 
-        TurretBase _cloned = Instantiate(_turret.gameObject, gameObject.transform).GetComponent<TurretBase>();
-        if (_cloned == null)
-        {
-            Debug.LogError("_cloned가 널입니다");
-        }
+        TurretBase _cloned = Instantiate(_turret.gameObject, _spawnPos).GetComponent<TurretBase>();
         _cloned.gameObject.transform.localPosition = Vector3.zero;
 
         _currentTurret = _cloned;
