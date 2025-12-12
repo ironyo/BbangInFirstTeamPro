@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 04c624c2a1c8a4d4081105a98e4bea3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf7349126e102794b8019d7e7c2aecfe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.6785714, y: 1}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 378329891138309096}
   - component: {fileID: 3557069002873533195}
   m_Layer: 0
-  m_Name: HotDogTower
+  m_Name: Level1_SasuageTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251c0b51156ac304f8a4a9ee32e60a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretData: {fileID: 11400000, guid: 9edd4e5fd8ba6a84cb0c857534ab4f15, type: 2}
+  turretData: {fileID: 11400000, guid: ef192691b72b9974db0f49dd9c89a0d6, type: 2}
   gunData: {fileID: 0}
   CustomerLayer:
     serializedVersion: 2
@@ -145,7 +145,7 @@ MonoBehaviour:
   _attackSpeedSliderPrefab: {fileID: 6560060808592047826, guid: c83974a16944f494897089526a539d1a, type: 3}
   _onRaiseDamage: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
   firePos: {fileID: 2216632356219467353}
-  bulletPref: {fileID: 8138199493044080686, guid: 598ca4af660e1484084c16ec12f16abb, type: 3}
+  bulletPref: {fileID: 3378955271969414473, guid: 4124f96bc01b8454eb61ab3a533c57db, type: 3}
   shootParticlePref: {fileID: 5317297048274311949, guid: b360cac2defdef7479e43693aae7603f, type: 3}
 --- !u!120 &3557069002873533195
 LineRenderer:
@@ -279,7 +279,7 @@ Transform:
   m_GameObject: {fileID: 6498789594140233271}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.258, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -362,12 +362,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 76600251a95a7de45986f2f10abd490d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d9ef4f79e22a414bb85cbbeaddd0e36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.6785714, y: 1}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
