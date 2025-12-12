@@ -27533,16 +27533,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turrets:
-  - TurretGroupName: "\uD14C\uC2A4\uD305_1"
+  - TurretGroupName: "\uBE59\uC218"
     Turrets:
-    - {fileID: 11400000, guid: faf8822a5f38ac740a5f330ed4c76ead, type: 2}
-    - {fileID: 11400000, guid: 6e52a161eae247843822c92642b4d8c6, type: 2}
-    - {fileID: 11400000, guid: 734873c0218ec374fbb4520052f247bd, type: 2}
-  - TurretGroupName: "\uD14C\uC2A4\uD305_2"
-    Turrets:
-    - {fileID: 11400000, guid: 94545d6da4ff61a4f83e948522531701, type: 2}
-    - {fileID: 11400000, guid: 212017e096ae2964793d4a03b3fd1eac, type: 2}
-    - {fileID: 11400000, guid: 1d9056315b1d376468f17026983e7739, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   _onRepairStoreUIReady: {fileID: 11400000, guid: 0c95291488f74fb47be8dcf2a7d10cd1, type: 2}
   _setTruckLabel: {fileID: 11400000, guid: 88b39b812829ce345a83de2728bc0129, type: 2}
   _onLabelClick: {fileID: 11400000, guid: 63c13f5cd43c7ae498569a83f820c03c, type: 2}
