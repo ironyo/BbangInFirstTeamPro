@@ -8,6 +8,8 @@ public class StageManager : MonoSingleton<StageManager>
     public bool IsRunning { get; private set; } = false;
     private int _clearStage = 0;
 
+    [SerializeField] private EventChannelSO_T<int> _onStageDifficultyIncreased;
+
     [SerializeField] private StageGenerator _generator;
     [SerializeField] private EventChannelSO _onRoadFinished;
     [SerializeField] private EventChannelSO _onStageRoadEnd;
@@ -49,9 +51,13 @@ public class StageManager : MonoSingleton<StageManager>
 
         IsRunning = false;
         _clearStage++;
+
+        _onStageDifficultyIncreased.RaiseEvent(_clearStage);
+
         CameraEffectManager.Instance.CameraZoom(5, 1f);
         TruckHealthManager.Instance.TruckHeal();
     }
+
 
     public StageData GetCurrent() => _current;
     public StageData GetPrevious() => _previous;
