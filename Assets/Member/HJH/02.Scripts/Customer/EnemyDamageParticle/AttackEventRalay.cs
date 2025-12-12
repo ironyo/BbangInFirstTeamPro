@@ -14,4 +14,11 @@ public class AttackEventRalay : MonoBehaviour
         customer?.PlayHitParticle();
         customer.InflictDamage();
     }
+
+    public void OnUnkindAttackEvent()
+    {
+        customer?.PlayHitParticle();
+        customer.InflictDamage();
+        Destroy(customer.gameObject);
+    }
 }
