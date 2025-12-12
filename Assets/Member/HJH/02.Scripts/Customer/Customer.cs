@@ -257,7 +257,7 @@ public class Customer : MonoBehaviour
     {
         TruckHealthManager.Instance.TruckHit(damage);
     }
-    private void HandleSlow(bool isSlow)
+    public void HandleSlow(bool isSlow)
     {
         if (isSlow)
         {

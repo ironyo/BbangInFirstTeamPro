@@ -203,3 +203,4 @@ MonoBehaviour:
   _particlePoint: {fileID: 7548753495308494405}
   _explosionPref: {fileID: 6349553283840770036, guid: e5dbae5091afb734c8802efb8f8356c5, type: 3}
   _explosionSize: {x: 3, y: 3, z: 3}
+  damage: 0
