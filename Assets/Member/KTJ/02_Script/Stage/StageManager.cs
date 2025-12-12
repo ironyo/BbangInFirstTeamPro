@@ -18,6 +18,7 @@ public class StageManager : MonoSingleton<StageManager>
     [SerializeField] private EventChannelSO_T<int> _onStageRoadStart;
     [SerializeField] private EventChannel_TT<string, string> _setUIStage;
     [SerializeField] private EventChannelSO_T<int> _onArrivalStage;
+    [SerializeField] private StageChannelInt _stageChannelInt;
 
     protected override void Awake()
     {
@@ -63,6 +64,7 @@ public class StageManager : MonoSingleton<StageManager>
         CameraEffectManager.Instance.CameraZoom(5, 1f);
         TruckHealthManager.Instance.TruckHeal();
         _onArrivalStage.RaiseEvent(_clearStage);
+        _stageChannelInt.RaiseEvent();
     }
 
     public StageData GetCurrent() => _current;
