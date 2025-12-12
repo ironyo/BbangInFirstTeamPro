@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8555833752712265441}
   - component: {fileID: 2084791366900977152}
   m_Layer: 0
-  m_Name: DounutTurret
+  m_Name: Level1_DounutTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,7 +409,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: afe6a2e57e19e4344a95ce66ae1b00e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d9dfb19f8c42b7b41aebf9239fa8afd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -496,7 +496,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 836dc6d477476c74788697b18dab32f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c198cd8133a59044b281d6f25fc6b45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

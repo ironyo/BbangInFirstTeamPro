@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 6889114597134930283}
   - component: {fileID: 2814558073598717087}
   m_Layer: 0
-  m_Name: BagleTurret
+  m_Name: Level1_BagleTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

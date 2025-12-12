@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 64c5a86c227f2fb46a05b09fabf9a150
+guid: 735399b03a323134399c6a1232dfcaa7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3582108133008932950
-    second: 1lvCHocotaleleeFireBody_0
+      213: -1913570493271908872
+    second: 3lvCHocotaleleeFirePoss_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,8 +49,8 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.25}
   spritePixelsToUnits: 19
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1lvCHocotaleleeFireBody_0
+      name: 3lvCHocotaleleeFirePoss_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 15
-        height: 18
+        x: 0
+        y: 11
+        width: 19
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 650090f3e5436b130800000000000000
-      internalID: 3582108133008932950
+      spriteID: 8fddbdf56c1a175e0800000000000000
+      internalID: -1913570493271908872
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1lvCHocotaleleeFireBody_0: 3582108133008932950
+      3lvCHocotaleleeFirePoss_0: -1913570493271908872
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

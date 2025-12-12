@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
-  m_Name: Level2_PizzaTurret
+  m_Name: Level2_SprinkleTurretSO
   m_EditorClassIdentifier: 
-  <TurretName>k__BackingField: "\uD53C\uC790 \uD3EC\uD0D1"
+  <TurretName>k__BackingField: "\uC2A4\uD504\uB9C1\uD074 \uD3EC\uD0D1"
   <TurretImage>k__BackingField: {fileID: 0}
-  <TurretCost>k__BackingField: 15
-  Turret: {fileID: 5400638826231016959, guid: f38d129b9177f3f488ff2134a7b0bcd5, type: 3}
-  AttackCoolTime: 0.7
-  AttackRange: 9
-  AttackPower: 3
-  TargetingClosedEnemy: 1
+  <TurretCost>k__BackingField: 10
+  Turret: {fileID: 9025367132267428974, guid: 84bca298d9fa1894d838cf01df8fdb22, type: 3}
+  AttackCoolTime: 1
+  AttackRange: 4
+  AttackPower: 0
+  TargetingClosedEnemy: 0
