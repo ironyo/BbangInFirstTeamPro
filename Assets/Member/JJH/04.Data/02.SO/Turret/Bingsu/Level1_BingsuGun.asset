@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level1_BingsuGun
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uBE59\uC218 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: 21300000, guid: 64c5a86c227f2fb46a05b09fabf9a150, type: 3}
   <TurretCost>k__BackingField: 10
   Turret: {fileID: 7793336519847305636, guid: bb90da9e85b1db94283efa6ec77c0924, type: 3}
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: b747cd44a6f0eac43ba684a66c34e8b7, type: 2}

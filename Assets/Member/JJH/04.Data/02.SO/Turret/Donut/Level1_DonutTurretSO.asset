@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Level1_DonutTurretSO
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uB3C4\uB11B \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: 21300000, guid: 64c5a86c227f2fb46a05b09fabf9a150, type: 3}
   <TurretCost>k__BackingField: 10
   Turret: {fileID: 2084791366900977152, guid: 0f0a501723b33cf4bb0a72e7f652ab9d, type: 3}
-  TurretPrefab: {fileID: 3538944490583202499, guid: 0f0a501723b33cf4bb0a72e7f652ab9d, type: 3}
   AttackCoolTime: 3
   AttackRange: 7
   AttackPower: 11

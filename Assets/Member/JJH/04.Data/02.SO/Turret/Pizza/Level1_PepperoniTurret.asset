@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Level1_PepperoniTurret
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uD398\uD37C\uB85C\uB2C8 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: 21300000, guid: 64c5a86c227f2fb46a05b09fabf9a150, type: 3}
   <TurretCost>k__BackingField: 5
   Turret: {fileID: 222687924827019184, guid: 4769cc60ea7d9f243be6ed42e3e79a07, type: 3}
-  TurretPrefab: {fileID: 4871472531971685378, guid: 4769cc60ea7d9f243be6ed42e3e79a07, type: 3}
   AttackCoolTime: 0.3
   AttackRange: 8
   AttackPower: 1
