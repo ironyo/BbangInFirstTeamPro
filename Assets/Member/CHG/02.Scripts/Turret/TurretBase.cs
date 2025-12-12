@@ -19,12 +19,26 @@ public abstract class TurretBase : MonoBehaviour
     [SerializeField] private SpriteRenderer _affixSpriteRen;
     [SerializeField] private Transform _firePos;
     [SerializeField] private GameObject _attackSpeedSliderPrefab;
+
+    [Header("Event")]
+    [SerializeField] private EventChannelSO_T<int> _onRaiseDamage;
+
     private AttackSpeedSlider _attackSpeedSlider;
     private Vector3 startPos;
 
     private LineRenderer _lineRenderer;
 
     private bool isCooltime = false;
+
+    private void Awake()
+    {
+        _onRaiseDamage.OnEventRaised += Damageup;
+    }
+
+    private void Damageup(int amount)
+    {
+
+    }
 
     public void SpawnTurret(Transform _spawnParent)
     {
