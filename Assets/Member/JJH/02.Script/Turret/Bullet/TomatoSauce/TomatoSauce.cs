@@ -20,23 +20,23 @@ public class TomatoSauce : MonoBehaviour
         transform.localScale = originalScale;
     }
 
-    public void ShotTomatoSauce(Transform target, Transform origin)
+    public void ShotTomatoSauce(Transform target, Transform origin, int damage)
     {
-        Vector3 dir = target.position - origin.position;
-        float dist = dir.magnitude; //벡터 크기 구하기
+        Vector3 dir = (target.position - origin.position).normalized;
 
-        transform.position = origin.position - transform.up * 0.85f;
-
-        //적쪽으로 회전
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        //스케일 거리만큼 늘리기
-        Vector3 scale = transform.localScale;
-        scale.x = dist / baseLength;
+        Vector3 scale = originalScale;
+        scale.x = 20f / baseLength;
         transform.localScale = scale;
 
-        if (gameObject.TryGetComponent<LaserFade>(out LaserFade laser))
+        transform.position = origin.position - transform.right * 0.85f;
+
+        if (TryGetComponent<LaserFade>(out var laser))
+        {
             laser.enabled = true;
+            laser.damage = damage;
+        }
     }
 }

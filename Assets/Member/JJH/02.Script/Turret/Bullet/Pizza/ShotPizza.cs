@@ -23,5 +23,7 @@ public class ShotPizza : TurretBase
         IRecycleObject obj = factory.Get();
         obj.GameObject.transform.position = firePos.position;
         obj.GameObject.transform.rotation = rotation;
+        PizzaBullet pizzaBullet = obj.GameObject.GetComponent<PizzaBullet>();
+        pizzaBullet.damage = _damage;
     }
 }

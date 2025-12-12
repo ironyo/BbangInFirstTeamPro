@@ -26,5 +26,7 @@ public class ShotPepperoni : TurretBase
         IRecycleObject obj = factory.Get();
         obj.GameObject.transform.position = firePos.position;
         obj.GameObject.transform.rotation = rotation;
+        Pepperoni pepperoni = obj.GameObject.GetComponent<Pepperoni>();
+        pepperoni.damage = _damage;
     }
 }

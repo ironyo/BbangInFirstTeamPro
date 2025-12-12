@@ -205,5 +205,5 @@ MonoBehaviour:
   _explosionPref: {fileID: 6349553283840770036, guid: e5dbae5091afb734c8802efb8f8356c5, type: 3}
   _sasuagePref: {fileID: 3378955271969414473, guid: 4124f96bc01b8454eb61ab3a533c57db, type: 3}
   _sourceCount: 3
-  damage: 1
+  damage: 0
   _explosionSize: {x: 3, y: 3, z: 3}

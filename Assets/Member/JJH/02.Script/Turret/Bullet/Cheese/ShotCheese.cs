@@ -31,5 +31,7 @@ public class ShotCheese : TurretBase
         IRecycleObject obj = factory.Get();
         obj.GameObject.transform.position = firePos.position;
         obj.GameObject.transform.rotation = rotation;
+        Cheese cheese = obj.GameObject.GetComponent<Cheese>();
+        cheese.damage = _damage;
     }
 }
