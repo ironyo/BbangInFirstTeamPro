@@ -11,6 +11,7 @@ public class AttackEventRalay : MonoBehaviour
 
     public void OnAttackEvent()
     {
+        Debug.Log("Attack Event Relay OnAttackEvent");
         customer?.PlayHitParticle();
         customer.InflictDamage();
     }

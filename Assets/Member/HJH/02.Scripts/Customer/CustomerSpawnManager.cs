@@ -11,7 +11,7 @@ public class CustomerSpawnManager : MonoBehaviour
 
     private bool isSpawning = false;
 
-    public float spawnInterval { get; set; } = 1.0f;
+    public float spawnInterval = 5.0f; //{ get; set; } = 5.0f;
     private void Start()
     {
         _onStageRoadEnd.OnEventRaised += AllClearCustomer;
