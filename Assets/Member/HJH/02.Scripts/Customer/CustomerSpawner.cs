@@ -63,10 +63,12 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
         float wA = typeList.customerTypes[0].weight;
         float wB = typeList.customerTypes[1].weight;
         float wC = typeList.customerTypes[2].weight;
+        float wD = typeList.customerTypes[3].weight;
 
         float sumCustomer = wA;
         float sumFat = wA + wB;
         float sumUnkind = wA + wB + wC;
+        float sumTrash = wA + wB + wC + wD;
 
         int customerSpawnNum = 0;
 
@@ -76,6 +78,8 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
             customerSpawnNum = 1;
         else if (rnd <= sumUnkind)
             customerSpawnNum = 2;
+        else if (rnd <= sumTrash)
+            customerSpawnNum = 3;
 
         GameObject obj = Instantiate(customerPrefab[customerSpawnNum], spawnPoints[num].position, Quaternion.identity);
 
@@ -95,11 +99,12 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
         }
     }
 
-    public void SetWeights(float wA, float wB, float wC)
+    public void SetWeights(float wA, float wB, float wC, float wD)
     {
         typeList.customerTypes[0].weight = wA;
         typeList.customerTypes[1].weight = wB;
         typeList.customerTypes[2].weight = wC;
+        typeList.customerTypes[3].weight = wD;
     }
     private void HandleStageDifficulty(int stageCount)
     {

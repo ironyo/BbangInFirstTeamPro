@@ -31,9 +31,9 @@ public class CustomerSpawnManager : MonoBehaviour
         isSpawning = false;
     }
 
-    public void CustomerSpawner(float fixA, float fixB, float fixC, float fixIntervel)
+    public void CustomerSpawner(float fixA, float fixB, float fixC,float fixD, float fixIntervel)
     {
-        customerSpawner.SetWeights(fixA,fixB,fixC);
+        customerSpawner.SetWeights(fixA,fixB,fixC,fixD);
         spawnInterval = fixIntervel;
     }
 
