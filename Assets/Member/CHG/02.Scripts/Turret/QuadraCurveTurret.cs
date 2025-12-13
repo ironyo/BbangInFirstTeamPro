@@ -14,6 +14,7 @@ public enum TestProjectileType
 public class QuadraCurveTurret : TurretBase
 {
     [SerializeField] private GameObject ProjectilePrefab;
+    [SerializeField] private SoundDataSO shotSoundData;
 
     private Factory _projectileFactory;
     protected override void OnEnable()
@@ -24,6 +25,7 @@ public class QuadraCurveTurret : TurretBase
 
     private void QuadraCurveShoot()
     {
+        SoundManager.Instance.PlaySound(shotSoundData);
         IRecycleObject projectile1Recycle = _projectileFactory.Get();
         ProjectileCurve projectile1 = projectile1Recycle.GameObject.GetComponent<ProjectileCurve>();
         projectile1.Angle = 45f;

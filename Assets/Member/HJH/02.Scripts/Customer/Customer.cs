@@ -1,5 +1,7 @@
 using DG.Tweening;
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using System.Collections.Generic;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -14,6 +16,8 @@ public interface IEnemyState
 }
 public class Customer : MonoBehaviour
 {
+    public static List<Customer> All = new List<Customer>();
+
     public event System.Action OnClearRequested;
 
     [Header("Gizmo Range")]
@@ -98,6 +102,7 @@ public class Customer : MonoBehaviour
     {
         InitializeStats();
 
+        All.Add(this);
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTagets = CustomerSpawner.Instance.heatTargets;
     }
@@ -282,5 +287,13 @@ public class Customer : MonoBehaviour
         {
             Debug.Log("원래 속도로 돌아옴");
         }
+    }
+    private void OnDisable()
+    {
+        All.Remove(this);
+    }
+    public void SetSlow()
+    {
+        OnSlowChanged?.Invoke(true);
     }
 }

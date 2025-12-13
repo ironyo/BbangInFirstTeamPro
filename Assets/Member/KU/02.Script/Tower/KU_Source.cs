@@ -80,6 +80,7 @@ public class KU_Source : KU_Bullet
         {
             if (collision.gameObject.TryGetComponent<Customer>(out Customer customer))
             {
+                SoundManager.Instance.PlaySound(soundData);
                 customer.TakeDamage(damage);
 
                 if (!isAttack)

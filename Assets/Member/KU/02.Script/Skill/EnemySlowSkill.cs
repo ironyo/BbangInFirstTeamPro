@@ -4,19 +4,36 @@ using UnityEngine;
 public class EnemySlowSkill : MonoBehaviour
 {
     private Customer customer;
+    private float _currentTime;
 
-    private void Awake()
-    {
-        customer = GetComponent<Customer>();
-    }
+    [SerializeField] ItemDataSO _data;
 
     private void OnEnable()
     {
         customer.OnSlowChanged += customer.HandleSlow;
     }
+
     private void Start()
     {
-        //customer.OnSlowChanged.Invoke(true);
+        foreach (var item in Customer.All)
+        {
+            item.SetSlow();
+        }
+    }
+
+
+
+    private void Update()
+    {
+        _currentTime += Time.deltaTime;
+        if (_currentTime >= _data.Duration)
+        {
+            TimeEnd();
+        }
+    }
+    private void TimeEnd()
+    {
+        Destroy(gameObject);
     }
 
     private void OnDisable()

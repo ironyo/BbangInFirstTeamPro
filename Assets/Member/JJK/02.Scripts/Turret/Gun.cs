@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gun : TurretBase
 {
-
+    [SerializeField] private SoundDataSO shotSoundData;
     [SerializeField] private float rotationSpeed = 20f;
     [SerializeField] private float shootDelay = 0.1f;
 
@@ -23,6 +23,7 @@ public class Gun : TurretBase
 
     public override void Shoot()
     {
+        SoundManager.Instance.PlaySound(shotSoundData);
         SpawnMuzzleParticle();
         CameraShake.Instance.ImpulseForce(_gunData.CameraShakeForce);
         StartCoroutine(ShootCoroutine());

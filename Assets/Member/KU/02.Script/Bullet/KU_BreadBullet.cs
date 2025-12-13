@@ -5,7 +5,6 @@ public class KU_BreadBullet : KU_Bullet
 {
     [SerializeField] private GameObject _explosionPref;
     [SerializeField] private Vector3 _explosionSize = new Vector3(3, 3, 3);
-
     private bool isAttack = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,7 +16,7 @@ public class KU_BreadBullet : KU_Bullet
                 if (!isAttack)
                 {
                     if (customer != targetEnemy) return;
-
+                    SoundManager.Instance.PlaySound(soundData);
                     customer.TakeDamage(damage);
                     GameObject obj = Instantiate(_explosionPref, transform.position, Quaternion.identity);
                     obj.transform.localScale = _explosionSize;
