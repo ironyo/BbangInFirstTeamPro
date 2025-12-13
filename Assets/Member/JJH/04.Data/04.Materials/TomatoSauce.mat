@@ -82,7 +82,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _HalfHeight: 0.5
     - _Intencity: 5
-    - _Intensity: 1.65
+    - _Intensity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -95,7 +95,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _HDR: {r: 1.4980392, g: 0, b: 0, a: 1}
+    - _HDR: {r: 1.4188681, g: 0, b: 0, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

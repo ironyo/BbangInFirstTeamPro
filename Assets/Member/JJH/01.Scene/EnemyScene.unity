@@ -2099,6 +2099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 968042074}
+  _onGameOver: {fileID: 0}
   CameraTarget: {fileID: 1564029706}
 --- !u!1 &716728084
 GameObject:
@@ -5320,7 +5321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e2018b5c213a046aaa73398cde3964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 3538944490583202499, guid: 0f0a501723b33cf4bb0a72e7f652ab9d, type: 3}
+  turret: {fileID: 7417424872077047290, guid: 3ab9b2ebd4312ee4b842fb719c1c908b, type: 3}
   _affixSO: {fileID: 0}
 --- !u!4 &1606245306
 Transform:
