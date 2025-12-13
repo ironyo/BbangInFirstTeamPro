@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2_PepperoniTurret
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uD398\uD37C\uB85C\uB2C8 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: -6970037316273430990, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 10
   Turret: {fileID: 222687924827019184, guid: 57e787d8ed3eed54585b70513f860f15, type: 3}
   AttackCoolTime: 0.3

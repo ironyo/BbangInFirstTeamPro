@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2_IceGun
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uC5BC\uC74C \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: -2700574828929315243, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 10
   Turret: {fileID: 7793336519847305636, guid: 8cf55c83083f2a644b971b84211253c9, type: 3}
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: 20d8dde52fe5a4b42b7b1d8a0481f9f5, type: 2}

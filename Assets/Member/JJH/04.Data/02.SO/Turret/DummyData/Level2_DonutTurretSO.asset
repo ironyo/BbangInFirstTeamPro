@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2_DonutTurretSO
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uB3C4\uB11B \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: 6781537527837944108, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 15
   Turret: {fileID: 2084791366900977152, guid: df003dc916629f8429d8694028afc2f5, type: 3}
   AttackCoolTime: 3

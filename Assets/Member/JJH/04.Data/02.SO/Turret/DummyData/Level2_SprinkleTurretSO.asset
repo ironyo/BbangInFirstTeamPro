@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2_SprinkleTurretSO
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uC2A4\uD504\uB9C1\uD074 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: 4627122113975909374, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 10
   Turret: {fileID: 9025367132267428974, guid: 9a421e21955321549b75ba717c1cc536, type: 3}
   AttackCoolTime: 1

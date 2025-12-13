@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2_CheeseTurret
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uCE58\uC988 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: -5640835974177437461, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 10
   Turret: {fileID: 4222512854520115487, guid: 40c2b348d185ad849840dc78ada1830a, type: 3}
   AttackCoolTime: 0.4
