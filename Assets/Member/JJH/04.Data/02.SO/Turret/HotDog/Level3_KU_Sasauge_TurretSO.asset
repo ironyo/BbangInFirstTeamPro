@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Level3_KU_Sasauge_TurretSO
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uC18C\uC138\uC9C0 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: -8388625094868267203, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 15
-  Turret: {fileID: 378329891138309096, guid: 592b3a64ebfdd63489a1be8eae279edd, type: 3}
+  Turret: {fileID: 378329891138309096, guid: 715c7a5c00e254f4c878014f3d9311e0, type: 3}
   AttackCoolTime: 2
   AttackRange: 10
   AttackPower: 1
