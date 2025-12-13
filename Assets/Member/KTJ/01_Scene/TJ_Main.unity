@@ -13455,7 +13455,7 @@ MonoBehaviour:
   _mechanic: {fileID: 6523386967505903744, guid: 8f15841569cc800458064fbde8ed8450, type: 3}
   _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
   _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
-  _onGameOver: {fileID: 0}
+  _onGameOver: {fileID: 11400000, guid: 36a10d9aadc5a334093b5a426efedd6a, type: 2}
 --- !u!1 &788734199
 GameObject:
   m_ObjectHideFlags: 0
@@ -29699,8 +29699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1cce0e5df37bf4481e30a3d6819ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _labelSpawnPos: {fileID: 0}
-  _unlockPref: {fileID: 0}
+  _labelSpawnPos: {fileID: 401701812}
+  _unlockPref: {fileID: 3365597665506616726, guid: aa3d7976c391a5642a7691f80668c18e, type: 3}
   _turrets:
   - TurretGroupName: "\uBE59\uC218"
     Turrets:
