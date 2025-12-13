@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2084791366900977152}
   m_Layer: 0
   m_Name: Level3_DounutTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,6 +253,7 @@ MonoBehaviour:
   _firePos: {fileID: 2744908756889439724}
   _attackSpeedSliderPrefab: {fileID: 6560060808592047826, guid: c83974a16944f494897089526a539d1a, type: 3}
   _onRaiseDamage: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
+  _onRaiseDamageTime: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
   ProjectilePrefab: {fileID: 6856611375793059518, guid: 89a1b87c71856a740b7377c84a68caf1, type: 3}
 --- !u!1 &3819242406473346497
 GameObject:
