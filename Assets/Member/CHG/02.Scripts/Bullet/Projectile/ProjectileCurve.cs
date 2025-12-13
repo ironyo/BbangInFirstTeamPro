@@ -1,6 +1,6 @@
-using System;
 using Assets.Member.CHG._02.Scripts.Bullet;
 using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
 using UnityEngine;
 
 public class ProjectileCurve : ProjectileBase, IRecycleObject
@@ -98,11 +98,10 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
             IRecycleObject particle = _particlefaFactory.Get();
             particle.GameObject.transform.position = collision.gameObject.transform.position;
 
-            collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
             CameraShake.Instance.ImpulseForce(0.03f);
 
             if (_isHit) return;
-                ProjectileReturn();
+            ProjectileReturn();
         }
         else if (collision.CompareTag("Player"))
         {

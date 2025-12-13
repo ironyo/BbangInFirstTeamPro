@@ -1,17 +1,19 @@
 using Assets.Member.CHG._04.SO.Scripts;
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
 public abstract class TurretBase : MonoBehaviour
 {
-    [SerializeField] private TurretSO turretData;
+    [SerializeField] protected TurretSO turretData;
     [SerializeField] private GunDataSO gunData;
     protected bool _targetingClosed = true;
     protected float _attackRange;
     protected int _damage;
     protected float _cooldownTime = 2f;
     protected float _t;
+    protected float time;
 
     protected Transform Target;
     protected GunDataSO _gunData;
@@ -23,6 +25,7 @@ public abstract class TurretBase : MonoBehaviour
 
     [Header("Event")]
     [SerializeField] private EventChannelSO_T<int> _onRaiseDamage;
+    [SerializeField] private EventChannelSO_T<float> _onRaiseDamageTime;
 
     private AttackSpeedSlider _attackSpeedSlider;
     private Vector3 startPos;
@@ -34,9 +37,12 @@ public abstract class TurretBase : MonoBehaviour
     private void Awake()
     {
         _onRaiseDamage.OnEventRaised += Damageup;
+        _onRaiseDamageTime.OnEventRaised += x => time = x;
 
         if (turretData != null)
         {
+            Debug.Log("터렛 베이스 데이터 들어옴");
+
             _targetingClosed = turretData.TargetingClosedEnemy;
             _attackRange = turretData.AttackRange;
             _cooldownTime = turretData.AttackCoolTime;
@@ -54,9 +60,12 @@ public abstract class TurretBase : MonoBehaviour
         }
         else
         {
+            Debug.Log("터렛 베이스 데이터 들어옴");
+
             _gunData = gunData;
             _attackRange = gunData.AttackRange;
             _cooldownTime = gunData.CoolDown;
+            _damage = gunData.damage;
 
             _lineRenderer = GetComponent<LineRenderer>();
             _lineRenderer.positionCount = 2;
@@ -72,7 +81,14 @@ public abstract class TurretBase : MonoBehaviour
 
     private void Damageup(int amount)
     {
+        _damage += amount;
+        StartCoroutine(DiasbleDamageUpCoroutine(amount));
+    }
 
+    private IEnumerator DiasbleDamageUpCoroutine(int amount)
+    {
+        yield return new WaitForSeconds(time);
+        _damage -= amount;
     }
 
     public void SpawnTurret(Transform _spawnParent)
@@ -183,7 +199,6 @@ public abstract class TurretBase : MonoBehaviour
                 .OnComplete(() =>
                     _muzzle.transform.DOLocalMove(startPos, 0.1f)
                 );
-            Debug.Log(2);
             Shoot();
 
             _t = 0f;

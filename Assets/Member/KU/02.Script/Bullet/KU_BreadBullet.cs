@@ -1,13 +1,10 @@
-using Cysharp.Threading.Tasks;
 using System.Collections;
-using System.Threading;
 using UnityEngine;
 
 public class KU_BreadBullet : KU_Bullet
 {
     [SerializeField] private GameObject _explosionPref;
     [SerializeField] private Vector3 _explosionSize = new Vector3(3, 3, 3);
-    [SerializeField] private int damage = 1;
 
     private bool isAttack = false;
 
@@ -33,7 +30,7 @@ public class KU_BreadBullet : KU_Bullet
             }
         }
     }
-    
+
     private IEnumerator DestroyObj(GameObject obj)
     {
         yield return new WaitForSeconds(1);

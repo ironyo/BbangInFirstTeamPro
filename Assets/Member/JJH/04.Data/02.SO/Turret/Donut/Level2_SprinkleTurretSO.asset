@@ -17,6 +17,6 @@ MonoBehaviour:
   <TurretCost>k__BackingField: 10
   Turret: {fileID: 9025367132267428974, guid: 9a421e21955321549b75ba717c1cc536, type: 3}
   AttackCoolTime: 1
-  AttackRange: 4
-  AttackPower: 0
+  AttackRange: 7
+  AttackPower: 2
   TargetingClosedEnemy: 0

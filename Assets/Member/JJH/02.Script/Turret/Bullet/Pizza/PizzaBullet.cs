@@ -62,7 +62,7 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
                 isAttack = true;
             }
 
-            CameraShake.Instance.ImpulseForce(3f);
+            CameraShake.Instance.ImpulseForce(0.5f);
 
             float offset = 1.5f;
             for (int i = 0; i <= 360; i += 45)
