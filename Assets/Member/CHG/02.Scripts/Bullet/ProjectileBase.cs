@@ -8,6 +8,7 @@ namespace Assets.Member.CHG._02.Scripts.Bullet
         public int Damage;
 
 
+        [SerializeField] private SoundDataSO soundData;
         [SerializeField] private float hitCooldown = 0.2f;
         private float lastHitTime = -999f;
 
@@ -30,10 +31,10 @@ namespace Assets.Member.CHG._02.Scripts.Bullet
                     return;
 
                 lastHitTime = Time.time;
-
+                SoundManager.Instance.PlaySound(soundData);
                 collision.gameObject.GetComponent<Customer>().TakeDamage(Damage);
             }
-                OnHit(collision);
+            OnHit(collision);
         }
         protected abstract void OnHit(Collider2D collision);
     }

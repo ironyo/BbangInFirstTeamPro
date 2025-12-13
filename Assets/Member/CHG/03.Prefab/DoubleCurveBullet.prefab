@@ -5018,12 +5018,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cfacd1293f11e40915b6f73f263628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
+  soundData: {fileID: 11400000, guid: 337b2dff4bfe10a43824c3dcdf191cc0, type: 2}
+  hitCooldown: 0.2
   Angle: 35
   RotateSpeed: 1175.8
   _startHigh: 0.43
   _backHigh: 0.63
   _returnPower: 2.46
   HitParticle: {fileID: 676734728730603934, guid: 607d3eada1c7f224387720d3f4256d95, type: 3}
+  damage: 1
 --- !u!120 &8375593054320026089
 LineRenderer:
   serializedVersion: 2

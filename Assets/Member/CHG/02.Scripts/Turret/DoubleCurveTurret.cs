@@ -4,7 +4,7 @@ using UnityEngine;
 public class DoubleCurveTurret : TurretBase
 {
     [SerializeField] private GameObject ProjectilePrefab;
-
+    [SerializeField] private SoundDataSO shotSoundData;
     private Factory _projectileFactory;
 
     protected override void OnEnable()
@@ -15,6 +15,7 @@ public class DoubleCurveTurret : TurretBase
 
     public override void Shoot()
     {
+        SoundManager.Instance.PlaySound(shotSoundData);
         IRecycleObject projectile1Recycle = _projectileFactory.Get();
         ProjectileCurve projectile1 = projectile1Recycle.GameObject.GetComponent<ProjectileCurve>();
         projectile1.Angle = 45f;
