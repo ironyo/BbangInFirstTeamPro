@@ -13,6 +13,8 @@ public class GunDataSO : TurretSO_TJ
     [field: SerializeField] public bool MultiFire { get; set; }
     [field: SerializeField] public bool ThroughFire { get; set; }
 
+    [SerializeField] public int damage;
+
     public int GetBullet()
     {
         if (MultiFire)

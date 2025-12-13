@@ -65,6 +65,7 @@ public abstract class TurretBase : MonoBehaviour
             _gunData = gunData;
             _attackRange = gunData.AttackRange;
             _cooldownTime = gunData.CoolDown;
+            _damage = gunData.damage;
 
             _lineRenderer = GetComponent<LineRenderer>();
             _lineRenderer.positionCount = 2;
