@@ -22,7 +22,6 @@ namespace Assets.Member.CHG._02.Scripts.Bullet
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            OnHit(collision);
 
             //적 체력 감소
             if (collision.CompareTag("Enemy"))
@@ -33,6 +32,7 @@ namespace Assets.Member.CHG._02.Scripts.Bullet
                 lastHitTime = Time.time;
 
                 collision.gameObject.GetComponent<Customer>().TakeDamage(Damage);
+                OnHit(collision);
             }
         }
         protected abstract void OnHit(Collider2D collision);

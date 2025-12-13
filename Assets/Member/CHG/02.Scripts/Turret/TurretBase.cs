@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public abstract class TurretBase : MonoBehaviour
 {
-    [SerializeField] private TurretSO turretData;
+    [SerializeField] protected TurretSO turretData;
     [SerializeField] private GunDataSO gunData;
     protected bool _targetingClosed = true;
     protected float _attackRange;

@@ -11,6 +11,7 @@ public abstract class KU_Bullet : MonoBehaviour
     private Vector3 rotationSpeed = new Vector3(0, 0, 5);
 
     private float _lifeTime = 3;
+    public int damage { get; set; }
 
     public Customer targetEnemy { get; private set; }
     private bool _nowTargetSet = false;
@@ -31,7 +32,7 @@ public abstract class KU_Bullet : MonoBehaviour
     public virtual void Update()
     {
         transform.rotation *= Quaternion.Euler(rotationSpeed);
-        if(targetEnemy != null && _nowTargetSet)
+        if (targetEnemy != null && _nowTargetSet)
         {
             StartCoroutine(LifeTime());
         }
