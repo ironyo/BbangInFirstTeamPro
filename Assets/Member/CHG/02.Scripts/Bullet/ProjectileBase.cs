@@ -5,7 +5,7 @@ namespace Assets.Member.CHG._02.Scripts.Bullet
     public abstract class ProjectileBase : MonoBehaviour
     {
         protected MovementRigidbody2D _movementRigidBody;
-
+        public int Damage;
         public virtual void SetUp(Transform shooter,Transform target)
         {
             _movementRigidBody = GetComponent<MovementRigidbody2D>();

@@ -22,6 +22,8 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
     public Action<IRecycleObject> Destroyed { get; set; }
     public GameObject GameObject => gameObject;
     private Factory _particlefaFactory;
+
+    [SerializeField] private int damage = 1;
     private void Start()
     {
         _particlefaFactory = new Factory(HitParticle, 2);
@@ -96,12 +98,11 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
             IRecycleObject particle = _particlefaFactory.Get();
             particle.GameObject.transform.position = collision.gameObject.transform.position;
 
-            //데미지 적용
-
+            collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
             CameraShake.Instance.ImpulseForce(0.03f);
 
             if (_isHit) return;
-            ProjectileReturn();
+                ProjectileReturn();
         }
         else if (collision.CompareTag("Player"))
         {
