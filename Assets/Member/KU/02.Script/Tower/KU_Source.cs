@@ -3,15 +3,12 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class KU_Source : KU_Bullet
 {
     [SerializeField] private bool _isOnly;
     [SerializeField] private Sprite _katcupSprite;
-    [SerializeField] private int damage = 1;
     [SerializeField] private GameObject _trail;
 
     private bool isAttack = false;
@@ -46,7 +43,7 @@ public class KU_Source : KU_Bullet
     }
     public override void Update()
     {
-        if(_isStop)
+        if (_isStop)
             _rigidbodyCompo.linearVelocity = new Vector2(-3.5f, 0);
     }
 
@@ -84,7 +81,7 @@ public class KU_Source : KU_Bullet
             if (collision.gameObject.TryGetComponent<Customer>(out Customer customer))
             {
                 customer.TakeDamage(damage);
-                
+
                 if (!isAttack)
                 {
                     if (insideEnemies.Add(customer))

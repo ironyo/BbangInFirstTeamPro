@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class KU_WeaponShooter : TurretBase
 {
@@ -61,6 +57,7 @@ public class KU_WeaponShooter : TurretBase
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         KU_Bullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_Bullet>();
+        bullet.damage = turretData.AttackPower;
         Instantiate(shootParticlePref, firePos.position, Quaternion.identity);
 
         if (Target.gameObject.TryGetComponent<Customer>(out Customer enemy))
