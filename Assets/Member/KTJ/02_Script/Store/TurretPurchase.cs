@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,6 +30,10 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
         }
     }
 
+    [Header("UI")]
+    [SerializeField] private RectTransform _labelSpawnPos;
+    [SerializeField] private GameObject _unlockPref;
+
     [Header("TurretSO")]
     [SerializeField] private List<TurretGroup> _turrets = new();
 
@@ -46,6 +51,8 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
 
     private int _currentPage = 0;
     private int _maxPage;
+
+    private GameObject _unlockPrefClone;
 
     private void Awake()
     {
@@ -65,19 +72,20 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
         _onTryPurchase.OnEventRaised += TryPurchaseTur;
     }
 
-    private TurretGroup FindTurretGroup(TurretSO_TJ _turSO)
+    private (TurretGroup, int) FindTurretGroup(TurretSO_TJ _turSO)
     {
         for (int  i = 0; i < _turrets.Count; i++)
         {
             TurretGroup tg = _turrets[i];
             if (tg.Turrets.Contains(_turSO))
             {
-                return tg;
+                int IdxNum = tg.Turrets.IndexOf(_turSO);
+                return (tg, IdxNum);
             }
         }
 
         Debug.LogError("Group에서 SO를 찾지 못했어요! 잘가시고 ㅋ");
-        return null;
+        return (null, -1);
     }
 
     private void TryPurchaseTur(TurretSO_TJ turSO, int truckNum)
@@ -87,8 +95,11 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
 
         Debug.Log(turSO.TurretCost + "를 지불하고 " + turSO.TurretName + "을 구매함.");
 
-        TurretGroup tg = FindTurretGroup(turSO);
-        tg.LevelUp();
+        (TurretGroup, int) tg = FindTurretGroup(turSO);
+        if (tg.Item2 == tg.Item1.GetCurrrentLevel())
+        {
+            tg.Item1.LevelUp();
+        }
 
         _setTurretOnTruck.RaiseEvent(turSO, truckNum);
         TruckManager.Instance.SetTurret(truckNum, turSO);
@@ -98,29 +109,33 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
         SetTruckLabelUI();
     }
 
-    private void SetTruckLabelUI() // 정비소 UI 준비될떄마다 호출
+    private void SetTruckLabelUI()
     {
-        _removeLabels.RaiseEvent(); // 생성 전 라벨 삭제
+        _removeLabels.RaiseEvent();
 
-        TurretGroup _currentPageG = _turrets[_currentPage];
-        _turretName.text = _currentPageG.TurretGroupName;
-        for (int i = 0; i < _currentPageG.Turrets.Count; i++)
+        TurretGroup group = _turrets[_currentPage];
+        _turretName.text = group.TurretGroupName;
+
+        int curLevel = group.GetCurrrentLevel();
+        if (_unlockPrefClone != null) Destroy(_unlockPrefClone);
+
+        for (int i = 0; i < group.Turrets.Count; i++)
         {
-            TurretSO_TJ _tso = _currentPageG.Turrets[i];
-            bool _isLocked = false; // 현재 잠겨있는 터렛인가
-            Action _onLabelDrag = () =>
+            // 현재 레벨과 다음 레벨 사이에 unlock 프리팹 삽입
+            if (i - 1 == curLevel && curLevel < group.Turrets.Count)
             {
-                LabelDrag(_tso);
-            };
-
-            if (_currentPageG.GetCurrrentLevel() < i)
-            {
-                _isLocked = true;
+                if (_unlockPrefClone != null) Destroy(_unlockPrefClone);
+                _unlockPrefClone = Instantiate(_unlockPref, _labelSpawnPos);
             }
 
-            _setTruckLabel.RaiseEvent(_tso, _onLabelDrag, _isLocked);
+            TurretSO_TJ tso = group.Turrets[i];
+            bool isLocked = i > curLevel;
+
+            Action onDrag = () => LabelDrag(tso);
+            _setTruckLabel.RaiseEvent(tso, onDrag, isLocked);
         }
     }
+
 
     private void PageDown()
     {
