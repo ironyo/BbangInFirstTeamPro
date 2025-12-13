@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: afbe0568f8de8524ca4b2e56b99a8e06
+guid: 10e143fa261dc7346951ee667e5afff0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7083477676693129931
-    second: Person-export_0
+      213: -9167990771190353655
+    second: Costomor (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Person-export_0
+      name: Costomor (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 16
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bca04b5ca619d4260800000000000000
-      internalID: 7083477676693129931
+      spriteID: 901b32bb7f0c4c080800000000000000
+      internalID: -9167990771190353655
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Person-export_0: 7083477676693129931
+      Costomor (1)_0: -9167990771190353655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

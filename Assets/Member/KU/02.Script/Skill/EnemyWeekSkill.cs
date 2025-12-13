@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyWeekSkill : MonoBehaviour
 {
+    [SerializeField] ItemDataSO _data;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

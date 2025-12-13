@@ -22,30 +22,29 @@ public class ItemDrop : MonoBehaviour
                 MoveToInventorySlot();
             });
     }
-
+    
     private void MoveToInventorySlot()
     {
         int emptySlot = InventoryManager.Instance.GetFirstEmptySlot();
-
+    
         if (emptySlot < 0)
         {
-            // 인벤토리 꽉 참
             Destroy(gameObject);
             return;
         }
-
+    
         RectTransform slotRect = InventoryUI.Instance.GetSlotRect(emptySlot);
         
-        Vector3 slotScreenPos = slotRect.position;
-        Vector3 slotWorldPos = Camera.main.ScreenToWorldPoint(slotScreenPos);
-        slotWorldPos.z = 0f;
-
-        transform.DOMove(slotWorldPos, 0.4f)
+        Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(null, slotRect.position);
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+        worldPos.z = 0f;
+    
+        transform.DOMove(worldPos, 0.35f)
             .SetEase(Ease.InQuad)
             .OnComplete(() =>
             {
                 InventoryManager.Instance.AddItemToSlot(_data, emptySlot);
-                Destroy(gameObject);
+                //Destroy(gameObject);
             });
     }
 }

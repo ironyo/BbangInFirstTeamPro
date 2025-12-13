@@ -16,5 +16,6 @@ public enum CustomerCategory
 {
     person,
     fatPerson,
-    unkindPerson
+    unkindPerson,
+    trashPerson
 }
