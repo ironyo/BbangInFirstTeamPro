@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a88fe55026d56c408d0db4830073fcb, type: 3}
-  m_Name: ItemSO
+  m_Script: {fileID: 11500000, guid: dd802a8ccc2a0864cb51b855f8d0b5eb, type: 3}
+  m_Name: OnGameOver
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Item
-  <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: e2bf2f275e75be64f86cf813cce3c348, type: 3}
-  <Value>k__BackingField: 0
-  <Duration>k__BackingField: 0
