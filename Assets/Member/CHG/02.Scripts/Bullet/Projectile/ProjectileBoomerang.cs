@@ -1,7 +1,6 @@
-using System;
 using Assets.Member.CHG._02.Scripts.Bullet;
 using Assets.Member.CHG._02.Scripts.Pooling;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 public class ProjectileBoomerang : ProjectileBase, IRecycleObject
@@ -24,10 +23,10 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
     {
         _particlefaFactory = new Factory(HitParticle, 2);
     }
-    public override void SetUp(Transform shooter ,Transform target)
+    public override void SetUp(Transform shooter, Transform target)
     {
         ResetState(shooter);
-        
+
         base.SetUp(shooter, target);
 
         _start = transform.position;
@@ -42,7 +41,7 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
     private void ResetState(Transform shooter)
     {
         transform.position = shooter.position;
-        
+
         _isLaunched = false;
         _isHit = false;
         _t = 0;
@@ -80,10 +79,9 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
     {
         if (collision.CompareTag("Enemy"))
         {
-            
+
             IRecycleObject particle = _particlefaFactory.Get();
             particle.GameObject.transform.position = collision.gameObject.transform.position;
-            //데미지 적용
 
             CameraShake.Instance.ImpulseForce(0.03f);
         }

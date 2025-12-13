@@ -46,9 +46,10 @@ public class Customer : MonoBehaviour
     public Animator _animator;
 
     public CustomerType customerType;
-    public float customerHP { get; set; }
-    private float maxHp => customerType.customerHP;
-    
+
+    public float customerHP;// { get; set; }    
+    private float maxHp;
+    public int damage ;//{ get; set; }
     public float customerSpeed { get; set; }
 
     [SerializeField]private SpriteRenderer sr;
@@ -74,12 +75,15 @@ public class Customer : MonoBehaviour
         }
     }
 
-    public int damage { get; set; }
+
+    public float cm_value;
+
+    private float difficultyMultiplier;
 
     private void Awake()
     {
-        damage = customerType.customerDamage;
-        customerHP = customerType.customerHP;
+        difficultyMultiplier = CustomerSpawner.Instance._difficultyMultiplier;
+
         customerSpeed = customerType.customerSpeed;
 
         RunState = new RunState(this);
@@ -92,23 +96,21 @@ public class Customer : MonoBehaviour
     }
     private void OnEnable()
     {
+        InitializeStats();
+
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTagets = CustomerSpawner.Instance.heatTargets;
     }
 
     private void Start()
     {
-
         ChangeState(RunState);
         damageText.DOFade(0, 0);
     }
 
     private void Update()
     {
-
-        customerHP = Mathf.Clamp(customerHP, 0, maxHp);
-        healthParent.transform.localScale = new Vector3(customerHP / maxHp, 1 , 1);
-        hpText.text = $"{customerHP.ToString()}/{maxHp}";
+        UpdateHPUI();
         currentState?.Update();
         IsAttackTargetInRange();
         IsCloseTargetInRange();
@@ -123,7 +125,19 @@ public class Customer : MonoBehaviour
             ChangeState(ClearState);
         }*/
     }
+    private void InitializeStats()
+    {
+        maxHp = Mathf.RoundToInt(customerType.customerHP * difficultyMultiplier);
+        customerHP = maxHp;
 
+        damage = Mathf.RoundToInt(customerType.customerDamage * difficultyMultiplier);
+    }
+    private void UpdateHPUI()
+    {
+        float ratio = (float)customerHP / maxHp;
+        healthParent.transform.localScale = new Vector3(ratio, 1f, 1f);
+        hpText.text = $"{customerHP}/{maxHp}";
+    }
     public void ChangeState(IEnemyState newState)
     {
         if (isCleared) return;
@@ -150,13 +164,14 @@ public class Customer : MonoBehaviour
     // 총 맞으면 이거 사용해
     public void TakeDamage(int damage)
     {
+
         Sequence seq = DOTween.Sequence();
         seq.AppendCallback(()=>damageText.text = "-" + damage.ToString());
         seq.Append(damageText.DOFade(1, 0));
         seq.AppendInterval(0.75f);
         //seq.JoinCallback(damageText.transform.DOMove());
         seq.Append(damageText.DOFade(0, 0.75f));
-        customerHP -= damage;
+        customerHP = Mathf.Max(customerHP - damage, 0);
 
         StartCoroutine(HitColorEffect());
 

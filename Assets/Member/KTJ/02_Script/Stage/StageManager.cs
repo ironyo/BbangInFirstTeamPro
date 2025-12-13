@@ -8,11 +8,17 @@ public class StageManager : MonoSingleton<StageManager>
     public bool IsRunning { get; private set; } = false;
     private int _clearStage = 0;
 
+    [Header("Setting")]
     [SerializeField] private StageGenerator _generator;
+    [SerializeField] private int _maxStage;
+
+    [Header("Event")]
     [SerializeField] private EventChannelSO _onRoadFinished;
     [SerializeField] private EventChannelSO _onStageRoadEnd;
     [SerializeField] private EventChannelSO_T<int> _onStageRoadStart;
     [SerializeField] private EventChannel_TT<string, string> _setUIStage;
+    [SerializeField] private EventChannelSO_T<int> _onArrivalStage;
+    [SerializeField] private StageChannelInt _stageChannelInt;
 
     protected override void Awake()
     {
@@ -49,8 +55,16 @@ public class StageManager : MonoSingleton<StageManager>
 
         IsRunning = false;
         _clearStage++;
+
+        if (_clearStage == _maxStage)
+        {
+            Debug.Log("스테이지 클리어");
+        }
+
         CameraEffectManager.Instance.CameraZoom(5, 1f);
         TruckHealthManager.Instance.TruckHeal();
+        _onArrivalStage.RaiseEvent(_clearStage);
+        _stageChannelInt.RaiseEvent();
     }
 
     public StageData GetCurrent() => _current;

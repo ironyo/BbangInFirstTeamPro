@@ -1,20 +1,23 @@
 using Assets.Member.CHG._04.SO.Scripts;
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
 public abstract class TurretBase : MonoBehaviour
 {
-    private bool _targetingClosed = true;
-    private float _attackRange;
+    [SerializeField] protected TurretSO turretData;
+    [SerializeField] private GunDataSO gunData;
+    protected bool _targetingClosed = true;
+    protected float _attackRange;
     protected int _damage;
-    private float _cooldownTime = 2f;
-    private float _t;
+    protected float _cooldownTime = 2f;
+    protected float _t;
+    protected float time;
 
     protected Transform Target;
     protected GunDataSO _gunData;
     public LayerMask CustomerLayer = 7;
-    private bool IsSkillAcailable => (_t > _cooldownTime);
     [SerializeField] protected Transform _muzzle;
     [SerializeField] private SpriteRenderer _affixSpriteRen;
     [SerializeField] protected Transform _firePos;
@@ -22,22 +25,70 @@ public abstract class TurretBase : MonoBehaviour
 
     [Header("Event")]
     [SerializeField] private EventChannelSO_T<int> _onRaiseDamage;
+    [SerializeField] private EventChannelSO_T<float> _onRaiseDamageTime;
 
     private AttackSpeedSlider _attackSpeedSlider;
     private Vector3 startPos;
 
-    private LineRenderer _lineRenderer;
+    protected LineRenderer _lineRenderer;
 
     private bool isCooltime = false;
 
     private void Awake()
     {
         _onRaiseDamage.OnEventRaised += Damageup;
+        _onRaiseDamageTime.OnEventRaised += x => time = x;
+
+        if (turretData != null)
+        {
+            Debug.Log("터렛 베이스 데이터 들어옴");
+
+            _targetingClosed = turretData.TargetingClosedEnemy;
+            _attackRange = turretData.AttackRange;
+            _cooldownTime = turretData.AttackCoolTime;
+            _damage = turretData.AttackPower;
+
+            _lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer.positionCount = 2;
+            _lineRenderer.SetPosition(0, _firePos.position);
+
+            MakeAttackSpeedSlider();
+
+            _t = _cooldownTime;
+            isCooltime = false;
+            _attackSpeedSlider.UpdateSlider(1f);
+        }
+        else
+        {
+            Debug.Log("터렛 베이스 데이터 들어옴");
+
+            _gunData = gunData;
+            _attackRange = gunData.AttackRange;
+            _cooldownTime = gunData.CoolDown;
+            _damage = gunData.damage;
+
+            _lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer.positionCount = 2;
+            _lineRenderer.SetPosition(0, _firePos.position);
+
+            MakeAttackSpeedSlider();
+
+            _t = _cooldownTime;
+            isCooltime = false;
+            _attackSpeedSlider.UpdateSlider(1f);
+        }
     }
 
     private void Damageup(int amount)
     {
+        _damage += amount;
+        StartCoroutine(DiasbleDamageUpCoroutine(amount));
+    }
 
+    private IEnumerator DiasbleDamageUpCoroutine(int amount)
+    {
+        yield return new WaitForSeconds(time);
+        _damage -= amount;
     }
 
     public void SpawnTurret(Transform _spawnParent)
@@ -48,41 +99,6 @@ public abstract class TurretBase : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    public void Init(TurretSO turretData)
-    {
-        _targetingClosed = turretData.TargetingClosedEnemy;
-        _attackRange = turretData.AttackRange;
-        _cooldownTime = turretData.AttackCoolTime;
-        _damage = turretData.AttackPower;
-
-        _lineRenderer = GetComponent<LineRenderer>();
-        _lineRenderer.positionCount = 2;
-        _lineRenderer.SetPosition(0, _firePos.position);
-
-        MakeAttackSpeedSlider();
-
-        _t = _cooldownTime;
-        isCooltime = false;
-        _attackSpeedSlider.UpdateSlider(1f);
-    }
-    public void Init(GunDataSO gunData)
-    {
-        _gunData = gunData;
-        _attackRange = gunData.AttackRange;
-        _cooldownTime = gunData.CoolDown;
-
-        _lineRenderer = GetComponent<LineRenderer>();
-        _lineRenderer.positionCount = 2;
-        _lineRenderer.SetPosition(0, _firePos.position);
-
-        MakeAttackSpeedSlider();
-
-        _t = _cooldownTime;
-        isCooltime = false;
-        _attackSpeedSlider.UpdateSlider(1f);
-    }
-
 
     public void AffixSet(AffixSO affixData)
     {
@@ -105,7 +121,7 @@ public abstract class TurretBase : MonoBehaviour
         }
     }
 
-    private void MakeAttackSpeedSlider()
+    protected void MakeAttackSpeedSlider()
     {
         GameObject prefab = Instantiate(_attackSpeedSliderPrefab);
         _attackSpeedSlider = prefab.GetComponent<AttackSpeedSlider>();
@@ -183,7 +199,6 @@ public abstract class TurretBase : MonoBehaviour
                 .OnComplete(() =>
                     _muzzle.transform.DOLocalMove(startPos, 0.1f)
                 );
-            Debug.Log(2);
             Shoot();
 
             _t = 0f;

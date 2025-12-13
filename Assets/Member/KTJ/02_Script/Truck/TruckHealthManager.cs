@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class TruckHealthManager : MonoSingleton<TruckHealthManager>
 {
+    [Header("Event")]
+    [SerializeField] private EventChannelSO _onGameOver;
     [SerializeField] private EventChannelSO_T<int> _onHealthChange;
 
     private int _currentHealth = 100;
@@ -24,7 +26,7 @@ public class TruckHealthManager : MonoSingleton<TruckHealthManager>
 
         if (CurrentHealth == 0)
         {
-            Debug.Log("게임오버");
+            _onGameOver.RaiseEvent();
             // 게임오버 UI 연출
         }
     }

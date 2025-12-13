@@ -1,9 +1,7 @@
 
-using System;
-using System.Collections;
 using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class JJK_Bullet : MonoBehaviour, IRecycleObject
 {
@@ -11,12 +9,13 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
     private BulletDataSO _bulletData;
     private BulletMove _bulletMove;
 
-    private int _damage;
     private float _lifeTime = 3f;
     private float _timer;
     private bool _throughFire;
     private float _offset = 0.5f;
     private bool _isAttack = false;
+
+    private int damage;
 
     private void Awake()
     {
@@ -35,7 +34,7 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
     private void Update()
     {
         _timer += Time.deltaTime;
-        
+
         if (_timer > _lifeTime)
         {
             Destroyed?.Invoke(this);
@@ -43,13 +42,13 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
         }
     }
 
-    public void SetData(BulletDataSO bulletData, int damage, bool throughFire)
+    public void SetData(BulletDataSO bulletData, bool throughFire, int damage)
     {
         _bulletData = bulletData;
         _throughFire = throughFire;
         _lifeTime = bulletData.LifeTime;
         _bulletMove.Speed = bulletData.Speed;
-        _damage = damage;
+        this.damage = damage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,10 +59,10 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
             {
                 if (_bulletData.CollisionParticle != null)
                     Instantiate(_bulletData.CollisionParticle, transform.position, Quaternion.identity);
-                
-                collision.gameObject.GetComponent<Customer>().TakeDamage(_damage);
+
+                collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
                 CameraShake.Instance.ImpulseForce(_bulletData.CameraShakeForce);
-            
+
                 if (_throughFire)
                 {
                     Collider2D enemyCol = collision;
@@ -72,7 +71,7 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
 
                 _isAttack = true;
             }
-            
+
             Destroyed?.Invoke(this);
         }
     }
@@ -80,12 +79,12 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
     private void ThroughShot(Vector2 shotPos, Collider2D firstEnemy)
     {
         var throughData = _bulletData.ThroughShotData;
-        
+
         for (int i = 0; i < throughData.BulletCount; i++)
         {
             var bulletPrefab = _bulletData.ThroughShotData.BulletData.BulletPrefab;
             var bullet = BulletPoolManager.Instance.Get(bulletPrefab).GameObject;
-                
+
             bullet.transform.position = shotPos;
             bullet.transform.rotation = transform.rotation * CalculateAngle(i);
 
@@ -95,18 +94,18 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
                 firstEnemy,
                 throughData.BulletData.Speed,
                 throughData.BulletData.LifeTime,
-                _damage / 2
+                damage
             );
         }
     }
-    
+
     private Quaternion CalculateAngle(float num)
     {
         float spreadAngle = _bulletData.ThroughShotData.SpreadAngle;
 
         if (_throughFire)
             spreadAngle = Mathf.Lerp(-spreadAngle, spreadAngle, num / (_bulletData.ThroughShotData.BulletCount - 1));
-        
+
         return Quaternion.Euler(0, 0, spreadAngle);
     }
 

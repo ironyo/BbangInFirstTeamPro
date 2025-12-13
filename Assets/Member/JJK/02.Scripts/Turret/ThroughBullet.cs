@@ -1,18 +1,18 @@
-using System;
 using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
 using UnityEngine;
 
 public class ThroughBullet : MonoBehaviour, IRecycleObject
 {
     private BulletDataSO _bulletData;
     private BulletMove _bulletMove;
-    private int _damage;
     private float _lifeTime;
     private float _timer;
+    private int damage;
     private bool _isAttack;
-    
+
     private Collider2D _ignoreTarget;
-    
+
     public Action<IRecycleObject> Destroyed { get; set; }
     public GameObject GameObject => gameObject;
 
@@ -31,11 +31,11 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
     {
         _bulletData = data;
         _lifeTime = lifeTime;
-
+        this.damage = damage;
         _bulletMove.Speed = speed;
 
         _ignoreTarget = firstEnemy;
-        
+
         if (_ignoreTarget != null)
         {
             Physics2D.IgnoreCollision(
@@ -45,7 +45,7 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
             );
         }
     }
-    
+
     private void Update()
     {
         _timer += Time.deltaTime;
@@ -56,7 +56,7 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
             Instantiate(_bulletData.DisableParticle, transform.position, Quaternion.identity);
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_ignoreTarget != null && collision == _ignoreTarget)
@@ -66,7 +66,7 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
         {
             if (!_isAttack)
             {
-                collision.gameObject.GetComponent<Customer>().TakeDamage(_damage);
+                collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
                 CameraShake.Instance.ImpulseForce(_bulletData.CameraShakeForce);
 
                 if (_bulletData.CollisionParticle != null)
@@ -78,7 +78,7 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
             Destroyed?.Invoke(this);
         }
     }
-    
+
     private void OnDisable()
     {
         _isAttack = false;

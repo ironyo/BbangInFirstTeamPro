@@ -62,7 +62,7 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
                 isAttack = true;
             }
 
-            CameraShake.Instance.ImpulseForce(3f);
+            CameraShake.Instance.ImpulseForce(0.5f);
 
             float offset = 1.5f;
             for (int i = 0; i <= 360; i += 45)
@@ -78,13 +78,13 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
                 pizzaObj.GameObject.transform.position = spawnPos;
                 pizzaObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i - 90);
                 PizzaPieceBullet pizzaPieceBullet = pizzaObj.GameObject.GetComponent<PizzaPieceBullet>();
-                pizzaPieceBullet.damage = damage;
+                pizzaPieceBullet.damage = damage % 3;
 
                 IRecycleObject tomatoObj = tomatoSauceFactory.Get();
                 tomatoObj.GameObject.transform.position = transform.position;
                 tomatoObj.GameObject.transform.rotation = Quaternion.Euler(0, 0, i);
                 TomatoSauceInPizza tomatoSauce = tomatoObj.GameObject.GetComponent<TomatoSauceInPizza>();
-                tomatoSauce.damage = damage;
+                tomatoSauce.damage = damage % 2;
 
                 Instantiate(pizzaBoomParticle, transform.position, Quaternion.identity);
             }
