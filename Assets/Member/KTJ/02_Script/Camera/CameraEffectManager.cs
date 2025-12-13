@@ -9,16 +9,30 @@ using UnityEngine;
 public class CameraEffectManager : MonoSingleton<CameraEffectManager>
 {
     [SerializeField] private CinemachineCamera _camera;
+    [SerializeField] private EventChannelSO _onGameOver;
     public Transform CameraTarget;
     private CancellationTokenSource _zoomCoroutine;
 
+    private bool _onDisable = false;
+
+    private void OnEnable()
+    {
+        _onGameOver.OnEventRaised += () => _onDisable = true;
+    }
+    private void OnDisable()
+    {
+        _onGameOver.OnEventRaised -= () => _onDisable = true;
+    }
     /// <summary>
     /// 카메라 줌인을 자연스럽게 이어준다.
     /// </summary>
     /// <param name="Amount"> 현재 카메라의 Size에 Amount만큼 줌인이 된다. </param>
     /// <param name="Time"> 줌인 시간. </param>
+    /// 
     public void CameraZoom(float amount, float duration)
     {
+        if (_onDisable) return;
+
         _zoomCoroutine?.Cancel();
         _zoomCoroutine?.Dispose();
         _zoomCoroutine = new CancellationTokenSource();
@@ -34,6 +48,7 @@ public class CameraEffectManager : MonoSingleton<CameraEffectManager>
     /// <param name="Target"> 타겟 오브젝트를 설정한다. </param>
     public void CameraMoveTarget(GameObject Target)
     {
+        if (_onDisable) return;
         _camera.Target.TrackingTarget = Target.transform;
     }
 

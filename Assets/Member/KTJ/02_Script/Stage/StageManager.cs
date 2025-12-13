@@ -6,7 +6,7 @@ public class StageManager : MonoSingleton<StageManager>
     private StageData _current;
     private StageData _previous;
     public bool IsRunning { get; private set; } = false;
-    private int _clearStage = 0;
+    public int ClearStage { get; private set; } = 0;
 
     [Header("Setting")]
     [SerializeField] private StageGenerator _generator;
@@ -37,7 +37,7 @@ public class StageManager : MonoSingleton<StageManager>
 
         IsRunning = true;
 
-        _previous = _clearStage == 0
+        _previous = ClearStage == 0
             ? StageData.Create("출발지점", 0)
             : _current;
 
@@ -54,16 +54,16 @@ public class StageManager : MonoSingleton<StageManager>
         if (!IsRunning) return;
 
         IsRunning = false;
-        _clearStage++;
+        ClearStage++;
 
-        if (_clearStage == _maxStage)
+        if (ClearStage == _maxStage)
         {
             Debug.Log("스테이지 클리어");
         }
 
         CameraEffectManager.Instance.CameraZoom(5, 1f);
-        TruckHealthManager.Instance.TruckHeal();
-        _onArrivalStage.RaiseEvent(_clearStage);
+        TruckHealthManager.Instance.TruckHealAll();
+        _onArrivalStage.RaiseEvent(ClearStage);
         _stageChannelInt.RaiseEvent();
     }
 
