@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: cc7ea61747ed18b4791b0f1b5d76eca6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   _attackSpeedSliderPrefab: {fileID: 6560060808592047826, guid: c83974a16944f494897089526a539d1a, type: 3}
   _onRaiseDamage: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
   _onRaiseDamageTime: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
+  shotSoundData: {fileID: 11400000, guid: 79e3ecad34f64154da920569200a79a5, type: 2}
   rotationSpeed: 20
   shootDelay: 0.1
   recoilBackAmount: 0.1

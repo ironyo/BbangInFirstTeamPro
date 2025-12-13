@@ -150,7 +150,7 @@ MonoBehaviour:
   startDelay: 0.1
   expandTime: 0.3
   fadeTime: 0.5
-  damage: 1
+  soundData: {fileID: 11400000, guid: 93321fd778b5c2a469fff0a0547e6689, type: 2}
 --- !u!114 &8044472645943801171
 MonoBehaviour:
   m_ObjectHideFlags: 0

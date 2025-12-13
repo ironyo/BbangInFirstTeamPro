@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ThroughBullet : MonoBehaviour, IRecycleObject
 {
+    [SerializeField] private SoundDataSO soundData;
     private BulletDataSO _bulletData;
     private BulletMove _bulletMove;
     private float _lifeTime;
@@ -66,6 +67,7 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
         {
             if (!_isAttack)
             {
+                SoundManager.Instance.PlaySound(soundData);
                 collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
                 CameraShake.Instance.ImpulseForce(_bulletData.CameraShakeForce);
 

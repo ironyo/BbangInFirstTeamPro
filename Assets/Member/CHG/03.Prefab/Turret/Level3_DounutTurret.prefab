@@ -255,6 +255,7 @@ MonoBehaviour:
   _onRaiseDamage: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
   _onRaiseDamageTime: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
   ProjectilePrefab: {fileID: 6856611375793059518, guid: 89a1b87c71856a740b7377c84a68caf1, type: 3}
+  shotSoundData: {fileID: 11400000, guid: c7c57b6cc6753fa4085912285ec7e47d, type: 2}
 --- !u!1 &3819242406473346497
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +410,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4b657a7750401bd479eaf48d35255695, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

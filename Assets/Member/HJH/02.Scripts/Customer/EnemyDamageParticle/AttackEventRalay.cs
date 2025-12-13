@@ -18,8 +18,8 @@ public class AttackEventRalay : MonoBehaviour
 
     public void OnUnkindAttackEvent()
     {
-        customer?.PlayHitParticle();
+        customer.PlayHitParticle();
         customer.InflictDamage();
-        Destroy(customer.gameObject);
+        Destroy(customer.gameObject, 0.3f);
     }
 }

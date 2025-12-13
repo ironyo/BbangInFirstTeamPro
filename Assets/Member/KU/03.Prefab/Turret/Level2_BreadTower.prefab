@@ -148,6 +148,7 @@ MonoBehaviour:
   firePos: {fileID: 2216632356219467353}
   bulletPref: {fileID: 6137180421633351466, guid: 03dd30236b5c41047af4ceea0ab4d110, type: 3}
   shootParticlePref: {fileID: 5317297048274311949, guid: b360cac2defdef7479e43693aae7603f, type: 3}
+  shotSoundData: {fileID: 11400000, guid: 5de63b956fadba94e96979d67a62cbfb, type: 2}
 --- !u!120 &3557069002873533195
 LineRenderer:
   serializedVersion: 2
@@ -280,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 6498789594140233271}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.007, y: 0.446, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -362,7 +363,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: ddf0f3dd148ad4e4b86840a0ce7c0cc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

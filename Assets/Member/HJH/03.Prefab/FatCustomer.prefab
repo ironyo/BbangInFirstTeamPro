@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1161319095765992815}
@@ -74,10 +74,12 @@ MonoBehaviour:
   customerTypeList: {fileID: 11400000, guid: cd6d6a39a5c49e445b92903c34a76ff6, type: 2}
   _animator: {fileID: 3454013481859027561}
   customerType: {fileID: 11400000, guid: 326340cfd55b5674bb5eac32b2a5ca4b, type: 2}
+  customerHP: 0
+  damage: 0
   sr: {fileID: 3741644935010643690}
   avatar: {fileID: 2427726779591851826}
   healthParent: {fileID: 4981462867666250137}
-  isSlow: 0
+  cm_value: 0
 --- !u!114 &4750885722810583720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +374,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1317526190714317568, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8219143982439835981, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
+    - target: {fileID: 4339219160385005555, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8219143982439835981, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
     - target: {fileID: 5055019405660783837, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
       propertyPath: m_Name
       value: HealthBar (2)

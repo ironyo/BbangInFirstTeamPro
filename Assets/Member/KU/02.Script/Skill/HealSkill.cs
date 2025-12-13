@@ -1,16 +1,31 @@
+using System.Collections;
 using UnityEngine;
 
 public class HealSkill : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private int _count = 5;
+    private int _currentCount = 0;
+    [SerializeField] ItemDataSO _data;
+
+    private void Start()
     {
-        
+        StartCoroutine(HealCount());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator HealCount()
     {
-        
+        yield return new WaitForSeconds(1);
+        Debug.Log("회복메서드");
+        _currentCount++;
+        if (_currentCount < _count)
+            StartCoroutine(HealCount());
+        else
+            TimeEnd();
+
+    }
+
+    private void TimeEnd()
+    {
+        Destroy(gameObject);
     }
 }

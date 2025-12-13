@@ -1,5 +1,7 @@
 using DG.Tweening;
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using System.Collections.Generic;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -14,13 +16,15 @@ public interface IEnemyState
 }
 public class Customer : MonoBehaviour
 {
+    public static List<Customer> All = new List<Customer>();
+
     public event System.Action OnClearRequested;
 
     [Header("Gizmo Range")]
     [SerializeField] private Vector2 closeRange;
     [SerializeField] private Vector2 attackRange;
 
-    [SerializeField] private CustomerHitParticle hitParticle;
+    [SerializeField]private CustomerHitParticle hitParticle;
     
     public Transform[] runTargets;
     public Transform[] hitTagets;
@@ -98,6 +102,7 @@ public class Customer : MonoBehaviour
     {
         InitializeStats();
 
+        All.Add(this);
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTagets = CustomerSpawner.Instance.heatTargets;
     }
@@ -178,7 +183,6 @@ public class Customer : MonoBehaviour
         if (customerHP <= 0)
         {
             ChangeState(DeadState);
-            deadMotion.Play();
         }
     }
 
@@ -246,6 +250,7 @@ public class Customer : MonoBehaviour
         }
 
         Vector3 spawnPos = closest.parent.position;
+
         hitParticle.PlayAt(spawnPos);
     }
 
@@ -282,5 +287,13 @@ public class Customer : MonoBehaviour
         {
             Debug.Log("원래 속도로 돌아옴");
         }
+    }
+    private void OnDisable()
+    {
+        All.Remove(this);
+    }
+    public void SetSlow()
+    {
+        OnSlowChanged?.Invoke(true);
     }
 }

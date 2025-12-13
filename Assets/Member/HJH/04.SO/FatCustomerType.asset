@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FatCustomerType
   m_EditorClassIdentifier: 
   customerCategory: 1
-  customerDamage: 8
-  attackInterval: 1.5
+  customerDamage: 2
+  attackInterval: 0.6
   customerHP: 50
   customerSpeed: 6
   money: 20

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a88fe55026d56c408d0db4830073fcb, type: 3}
-  m_Name: Slow
+  m_Name: EnemySlow
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\uC801 \uC18D\uB3C4 \uAC10\uC18C"
-  <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: e2bf2f275e75be64f86cf813cce3c348, type: 3}
+  <Name>k__BackingField: EnemySlow
+  <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: ca23b7dd10a99fb4f800962fe87c286e, type: 3}
   <Icon>k__BackingField: {fileID: -2413806693520163455, guid: 3bea975d9d6f37f45813c7d941e2dbc6, type: 3}
   <Description>k__BackingField: "\uBAA8\uB4E0 \uC801\uC758 \uC774\uB3D9 \uC18D\uB3C4\uAC00
     \uAC10\uC18C\uD569\uB2C8\uB2E4/"

@@ -5,6 +5,7 @@ public class AttackSpeedSlider : MonoBehaviour
 {
     private RectTransform rect;
     private Image image;
+    private Transform target;
 
     private void Awake()
     {
@@ -14,11 +15,19 @@ public class AttackSpeedSlider : MonoBehaviour
 
     public void Init(Transform turret)
     {
-        Vector3 worldPos = turret.position + new Vector3(0, 3f, 0);
+        target = turret;
+
+        transform.SetParent(GameObject.Find("TurretAttackSpeedSliderCanvas").transform, false);
+    }
+
+    private void LateUpdate()
+    {
+        if (target == null)
+            Destroy(gameObject);
+
+        Vector3 worldPos = target.position + Vector3.up * 1f;
         Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
         rect.position = screenPos;
-
-        transform.parent = GameObject.Find("TurretAttackSpeedSliderCanvas").transform;
     }
 
     public void UpdateSlider(float attackTime)

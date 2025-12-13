@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoomerangTurret : TurretBase
 {
     [SerializeField] private GameObject ProjectilePrefab;
+    [SerializeField] private SoundDataSO shotSoundData;
     private Factory _projectileFactory;
 
     protected override void OnEnable()
@@ -14,6 +15,7 @@ public class BoomerangTurret : TurretBase
     }
     public override void Shoot()
     {
+        SoundManager.Instance.PlaySound(shotSoundData);
         IRecycleObject obj = _projectileFactory.Get();
         ProjectileBase proj = obj.GameObject.GetComponent<ProjectileBase>();
         proj.Damage = _damage;

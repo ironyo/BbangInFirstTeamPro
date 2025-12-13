@@ -194,7 +194,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 55316fb1509c830489e350b414078a64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -267,6 +267,7 @@ MonoBehaviour:
   _onRaiseDamageTime: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
   pizza: {fileID: 116081282322743765, guid: ebb06785b0e44fa44bbc15836ca61012, type: 3}
   firePos: {fileID: 2676531483549074659}
+  soundData: {fileID: 11400000, guid: 5de63b956fadba94e96979d67a62cbfb, type: 2}
 --- !u!120 &5789038417461130834
 LineRenderer:
   serializedVersion: 2

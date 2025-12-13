@@ -41,7 +41,7 @@ public class AttackState : IEnemyState
     {
         if (customer.customerHP <= 0)
         {
-            customer.ChangeState(customer.ClearState);
+            customer.ChangeState(customer.DeadState);
             return;
         }
 
@@ -74,9 +74,8 @@ public class AttackState : IEnemyState
                 }
 
                 animator.SetBool("isAttack", true);
-
                 await UniTask.Delay(
-                    TimeSpan.FromSeconds(attackInterval/2),
+                    TimeSpan.FromSeconds(attackInterval),
                     cancellationToken: token
                 );
 
@@ -84,7 +83,7 @@ public class AttackState : IEnemyState
                 animator.SetBool("isAttack", false);
 
                 await UniTask.Delay(
-                    TimeSpan.FromSeconds(attackInterval),
+                    TimeSpan.FromSeconds(attackInterval * 3),
                     cancellationToken: token
                 );
             }
@@ -121,7 +120,7 @@ public class AttackState : IEnemyState
         Vector2 dir = target.position - avatar.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (dir.y < 0)
+        if (dir.y <= 0)
             angle += 180f;
         else
             angle -= 180f;
