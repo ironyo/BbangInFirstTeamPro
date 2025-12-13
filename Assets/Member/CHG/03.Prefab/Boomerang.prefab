@@ -14916,6 +14916,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575a0129acb3a8d4fb2fca43317f870b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
+  soundData: {fileID: 11400000, guid: a426a8c355e025244b2a085881c64eff, type: 2}
+  hitCooldown: 0.2
   ReturnTime: 1
   RotateSpeed: 720
   MoveSpeed: 6

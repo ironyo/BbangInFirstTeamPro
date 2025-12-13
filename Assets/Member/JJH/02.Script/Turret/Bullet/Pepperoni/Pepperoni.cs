@@ -8,6 +8,7 @@ public class Pepperoni : IncreaseSpeed, IRecycleObject
     public int damage { get; set; }
     private BulletMove bulletMove;
     private TrailRenderer trail;
+    [SerializeField] private SoundDataSO soundData;
 
     public Action<IRecycleObject> Destroyed { get; set; }
     public GameObject GameObject => gameObject;
@@ -50,6 +51,7 @@ public class Pepperoni : IncreaseSpeed, IRecycleObject
             if (!isAttack)
             {
                 collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
+                SoundManager.Instance.PlaySound(soundData);
                 isAttack = true;
             }
 

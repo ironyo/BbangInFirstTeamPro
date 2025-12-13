@@ -11,6 +11,9 @@ public class LaserFade : MonoBehaviour, IRecycleObject
     [SerializeField] private float startDelay = 0.2f;
     [SerializeField] private float expandTime = 0.3f;
     [SerializeField] private float fadeTime = 1.5f;
+    [SerializeField] private SoundDataSO soundData;
+
+
     public int damage { get; set; }
 
     private bool isAttack = false;
@@ -45,6 +48,7 @@ public class LaserFade : MonoBehaviour, IRecycleObject
 
         timer = 0f;
         state = FadeState.Expand;
+        SoundManager.Instance.PlaySound(soundData);
 
         StartCoroutine(DeadCoroutine());
     }

@@ -5,6 +5,7 @@ public class KU_WeaponShooter : TurretBase
     [SerializeField] private Transform firePos;
     [SerializeField] private GameObject bulletPref;
     [SerializeField] private GameObject shootParticlePref;
+    [SerializeField] private SoundDataSO shotSoundData;
 
     //protected override void Update()
     //{
@@ -52,6 +53,7 @@ public class KU_WeaponShooter : TurretBase
     {
         if (Target == null) return;
 
+        SoundManager.Instance.PlaySound(shotSoundData);
         Vector2 dir = Target.position - firePos.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);

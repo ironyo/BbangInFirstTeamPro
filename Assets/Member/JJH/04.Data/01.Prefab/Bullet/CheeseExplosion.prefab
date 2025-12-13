@@ -125,3 +125,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cheesePuddle: {fileID: 589126907974027349, guid: efea4d28bfeffba449aa1bedc6d93d59, type: 3}
   cheeseExplosionParticle: {fileID: 4540621154380089914, guid: af72d895aedf0bf498d05dfffb1ed12c, type: 3}
+  soundData: {fileID: 11400000, guid: af43f33773acc60489792d57e131e9ca, type: 2}
