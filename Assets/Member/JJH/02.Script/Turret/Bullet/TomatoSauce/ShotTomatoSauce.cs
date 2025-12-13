@@ -19,7 +19,8 @@ public class ShotTomatoSauce : TurretBase
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        CameraShake.Instance.ImpulseForce(0.5f);
+        CameraShake.Instance.ImpulseForce(0.2f);
+
         IRecycleObject obj = factory.Get();
         obj.GameObject.transform.position = firePos.position;
         obj.GameObject.transform.rotation = rotation;
