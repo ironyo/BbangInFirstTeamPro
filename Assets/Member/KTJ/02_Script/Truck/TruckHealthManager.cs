@@ -12,11 +12,6 @@ public class TruckHealthManager : MonoSingleton<TruckHealthManager>
         get { return _currentHealth; }
         set { _currentHealth = Mathf.Clamp(value, 0, 100); }
     }
-
-    private void Start()
-    {
-        TruckHit(50);
-    }
     public void TruckHit(int Amount)
     {
         CurrentHealth -= Amount;
