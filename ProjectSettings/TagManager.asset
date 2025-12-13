@@ -10,6 +10,7 @@ TagManager:
   - CloseTarget
   - 'DeadCustomer '
   - CheesePuddle
+  - Turret
   layers:
   - Default
   - TransparentFX

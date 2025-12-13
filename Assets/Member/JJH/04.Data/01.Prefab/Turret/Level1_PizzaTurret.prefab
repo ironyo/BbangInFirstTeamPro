@@ -264,6 +264,7 @@ MonoBehaviour:
   _firePos: {fileID: 2676531483549074659}
   _attackSpeedSliderPrefab: {fileID: 6560060808592047826, guid: c83974a16944f494897089526a539d1a, type: 3}
   _onRaiseDamage: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
+  _onRaiseDamageTime: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
   pizza: {fileID: 116081282322743765, guid: ebb06785b0e44fa44bbc15836ca61012, type: 3}
   firePos: {fileID: 2676531483549074659}
 --- !u!120 &5789038417461130834
