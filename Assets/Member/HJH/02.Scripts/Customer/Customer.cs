@@ -24,7 +24,7 @@ public class Customer : MonoBehaviour
     [SerializeField] private Vector2 closeRange;
     [SerializeField] private Vector2 attackRange;
 
-    [SerializeField] private CustomerHitParticle hitParticle;
+    [SerializeField]private CustomerHitParticle hitParticle;
     
     public Transform[] runTargets;
     public Transform[] hitTagets;
@@ -183,7 +183,6 @@ public class Customer : MonoBehaviour
         if (customerHP <= 0)
         {
             ChangeState(DeadState);
-            deadMotion.Play();
         }
     }
 
@@ -251,6 +250,7 @@ public class Customer : MonoBehaviour
         }
 
         Vector3 spawnPos = closest.parent.position;
+
         hitParticle.PlayAt(spawnPos);
     }
 

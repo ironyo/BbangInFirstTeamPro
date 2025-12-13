@@ -26,6 +26,11 @@ public class MoneyManager : MonoSingleton<MoneyManager>
         base.Awake();
     }
 
+    private void Start()
+    {
+        AddMoney(1000);
+    }
+
     public void AddMoney(int amount)
     {
         int old = Money;
