@@ -13,6 +13,7 @@ public class TurretLabel : MonoBehaviour
     [field: SerializeField] public DragButton PurchaseBtn;
     [SerializeField] private GameObject _lockGameobject;
 
+
     public void SetLabel(string _name, int _cost, Sprite _image, bool _isLock)
     {
         TurretNameTxt.text = _name;
