@@ -19,6 +19,7 @@ public abstract class KU_Bullet : MonoBehaviour
     [SerializeField] private GameObject _moveParticlePref;
     [SerializeField] private GameObject _boomParticlePref;
     [SerializeField] private Transform _particlePoint;
+    [SerializeField] protected SoundDataSO soundData;
 
 
     protected virtual void Awake()

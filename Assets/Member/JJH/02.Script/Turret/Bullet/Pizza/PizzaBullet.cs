@@ -8,6 +8,8 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
     [SerializeField] private GameObject childrenBullet;
     [SerializeField] private GameObject tomatoSauce;
     [SerializeField] private GameObject pizzaBoomParticle;
+    [SerializeField] private SoundDataSO soundData;
+
     public int damage { get; set; }
 
 
@@ -59,6 +61,8 @@ public class PizzaBullet : IncreaseSpeed, IRecycleObject
             if (!isAttack)
             {
                 collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
+                SoundManager.Instance.PlaySound(soundData);
+
                 isAttack = true;
             }
 

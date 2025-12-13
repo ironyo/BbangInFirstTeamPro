@@ -6,6 +6,7 @@ public class ShotPepperoni : TurretBase
     [SerializeField] private GameObject pepperoni;
     [SerializeField] private GameObject shotParticle;
     [SerializeField] private Transform firePos;
+    [SerializeField] private SoundDataSO soundData;
     Factory factory;
 
     private void Start()
@@ -22,6 +23,7 @@ public class ShotPepperoni : TurretBase
         CameraShake.Instance.ImpulseForce(0.2f);
 
         Instantiate(shotParticle, firePos.position, Quaternion.identity);
+        SoundManager.Instance.PlaySound(soundData);
 
         IRecycleObject obj = factory.Get();
         obj.GameObject.transform.position = firePos.position;

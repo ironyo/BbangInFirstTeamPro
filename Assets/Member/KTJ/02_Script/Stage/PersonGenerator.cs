@@ -29,6 +29,11 @@ public class PersonGenerator : MonoBehaviour
         _onGameOver.OnEventRaised += () => DeletePersonAll();
     }
 
+    private void OnDisable()
+    {
+        _onGameOver.OnEventRaised -= () => DeletePersonAll();
+    }
+
     private void OnStageEnd()
     {
         if (GameOverUI.Instance.IsGameOver) return;
@@ -36,8 +41,11 @@ public class PersonGenerator : MonoBehaviour
     }
     private void DeletePersonAll()
     {
-        _spawnedPerson.ForEach((x) => Destroy(x.Item1.gameObject));
-        _spawnedPerson.Clear();
+        if (_spawnedPerson.Count > 0)
+        {
+            _spawnedPerson.ForEach((x) => Destroy(x.Item1.gameObject));
+            _spawnedPerson.Clear();
+        }
     }
     IEnumerator OnStageEndIEnum()
     {

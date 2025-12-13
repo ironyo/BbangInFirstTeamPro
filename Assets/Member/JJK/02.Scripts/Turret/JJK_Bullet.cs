@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class JJK_Bullet : MonoBehaviour, IRecycleObject
 {
+    [SerializeField] private SoundDataSO soundData;
     private Rigidbody2D _rb;
     private BulletDataSO _bulletData;
     private BulletMove _bulletMove;
@@ -60,6 +61,7 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
                 if (_bulletData.CollisionParticle != null)
                     Instantiate(_bulletData.CollisionParticle, transform.position, Quaternion.identity);
 
+                SoundManager.Instance.PlaySound(soundData);
                 collision.gameObject.GetComponent<Customer>().TakeDamage(damage);
                 CameraShake.Instance.ImpulseForce(_bulletData.CameraShakeForce);
 

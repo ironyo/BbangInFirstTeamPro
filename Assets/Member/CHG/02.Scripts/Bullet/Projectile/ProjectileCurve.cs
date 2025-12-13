@@ -1,6 +1,6 @@
-using System;
 using Assets.Member.CHG._02.Scripts.Bullet;
 using Assets.Member.CHG._02.Scripts.Pooling;
+using System;
 using UnityEngine;
 
 public class ProjectileCurve : ProjectileBase, IRecycleObject

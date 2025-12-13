@@ -61,6 +61,7 @@ MonoBehaviour:
   _onRaiseDamageTime: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
   cheese: {fileID: 3874708064934454426, guid: 7701cb9ffe9c5b144add834501fa16da, type: 3}
   firePos: {fileID: 4188671268208569196}
+  soundData: {fileID: 11400000, guid: 5de63b956fadba94e96979d67a62cbfb, type: 2}
 --- !u!120 &7440635479610259617
 LineRenderer:
   serializedVersion: 2
