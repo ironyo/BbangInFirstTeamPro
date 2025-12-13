@@ -29,6 +29,12 @@ public class PersonGenerator : MonoBehaviour
     }
     IEnumerator OnStageEndIEnum()
     {
+        if (_spawnedPerson.Count != 0)
+        {
+            _spawnedPerson.ForEach((x) => Destroy(x.Item1.gameObject));
+            _spawnedPerson.Clear();
+        }
+
         GameObject per_1 = Instantiate(_mechanic, _spawnPos);
         per_1.transform.position = _spawnPos.transform.position;
 
@@ -64,7 +70,6 @@ public class PersonGenerator : MonoBehaviour
         {
             _spawnedPerson.ForEach((x) => x.Item1.MoveTo(_spawnPos.position, 7f));
             _spawnedPerson.ForEach((x) => x.Item2.UnClicked());
-            _spawnedPerson.Clear();
         }
     }
 }

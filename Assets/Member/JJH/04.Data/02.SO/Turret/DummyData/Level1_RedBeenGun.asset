@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b04537ae5fa12464780b3f641b9c8268, type: 3}
+  m_Name: Level1_RedBeenGun
+  m_EditorClassIdentifier: 
+  <TurretName>k__BackingField: "\uD325 \uD3EC\uD0D1"
+  <TurretImage>k__BackingField: {fileID: -8395786699229033419, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
+  <TurretCost>k__BackingField: 5
+  Turret: {fileID: 7793336519847305636, guid: ee7bd858049938d4a97345b847e0121c, type: 3}
+  <DefaultBullet>k__BackingField: {fileID: 11400000, guid: 906decc5259d5df4e859bc33cb95193c, type: 2}
+  <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 56eef0cb30dd8c745b4199b65dd9f12a, type: 3}
+  <CoolDown>k__BackingField: 2
+  <AttackRange>k__BackingField: 10
+  <CameraShakeForce>k__BackingField: 0.2
+  bulletCount: 6
+  <SpreadAngle>k__BackingField: 20
+  <MultiFire>k__BackingField: 1
+  <ThroughFire>k__BackingField: 0
+  damage: 1

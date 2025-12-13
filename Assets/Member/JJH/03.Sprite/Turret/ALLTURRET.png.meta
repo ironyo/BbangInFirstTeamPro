@@ -1,0 +1,1209 @@
+fileFormatVersion: 2
+guid: c96b9463635a36c42bc50e8c68f676e3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7960835599286627114
+    second: ALLTURRET_0
+  - first:
+      213: 4627122113975909374
+    second: ALLTURRET_1
+  - first:
+      213: 3242374346778776157
+    second: ALLTURRET_2
+  - first:
+      213: 1287118085595594176
+    second: ALLTURRET_3
+  - first:
+      213: 8811660738832690630
+    second: ALLTURRET_4
+  - first:
+      213: 8887688867331128032
+    second: ALLTURRET_5
+  - first:
+      213: -8395786699229033419
+    second: ALLTURRET_6
+  - first:
+      213: -3449064550799518653
+    second: ALLTURRET_7
+  - first:
+      213: 8679967300685498094
+    second: ALLTURRET_8
+  - first:
+      213: -7271665410235173491
+    second: ALLTURRET_9
+  - first:
+      213: -7666103965377555822
+    second: ALLTURRET_10
+  - first:
+      213: 5759924451597843190
+    second: ALLTURRET_11
+  - first:
+      213: 1409706522398490395
+    second: ALLTURRET_12
+  - first:
+      213: 7954960103636708726
+    second: ALLTURRET_13
+  - first:
+      213: -4798758766390909186
+    second: ALLTURRET_14
+  - first:
+      213: 2055322602493298393
+    second: ALLTURRET_15
+  - first:
+      213: -5640835974177437461
+    second: ALLTURRET_16
+  - first:
+      213: -8133468976925156363
+    second: ALLTURRET_17
+  - first:
+      213: -1277519059853208310
+    second: ALLTURRET_18
+  - first:
+      213: -6970037316273430990
+    second: ALLTURRET_19
+  - first:
+      213: 5622507089983137499
+    second: ALLTURRET_20
+  - first:
+      213: -2314032267143378320
+    second: ALLTURRET_21
+  - first:
+      213: -7660939124935409222
+    second: ALLTURRET_22
+  - first:
+      213: -4259581854397910161
+    second: ALLTURRET_23
+  - first:
+      213: -5615907321519316635
+    second: ALLTURRET_24
+  - first:
+      213: 3888946735210694228
+    second: ALLTURRET_25
+  - first:
+      213: -4506207289435751826
+    second: ALLTURRET_26
+  - first:
+      213: 3328003110372449646
+    second: ALLTURRET_27
+  - first:
+      213: 6781537527837944108
+    second: ALLTURRET_28
+  - first:
+      213: -7773638495038794063
+    second: ALLTURRET_29
+  - first:
+      213: 984167142447975255
+    second: ALLTURRET_30
+  - first:
+      213: -4700774968643072574
+    second: ALLTURRET_31
+  - first:
+      213: -132678633006404530
+    second: ALLTURRET_32
+  - first:
+      213: 6852877830564638730
+    second: ALLTURRET_33
+  - first:
+      213: 2812343037197603102
+    second: ALLTURRET_34
+  - first:
+      213: -8388625094868267203
+    second: ALLTURRET_35
+  - first:
+      213: 3646421557974906070
+    second: ALLTURRET_36
+  - first:
+      213: 5879196993675506827
+    second: ALLTURRET_37
+  - first:
+      213: 6618817742626562027
+    second: ALLTURRET_38
+  - first:
+      213: -5778668990302783830
+    second: ALLTURRET_39
+  - first:
+      213: -2700574828929315243
+    second: ALLTURRET_40
+  - first:
+      213: 286724309962994993
+    second: ALLTURRET_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ALLTURRET_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 68
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2b63ca9cc19a7e60800000000000000
+      internalID: 7960835599286627114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_1
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 68
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efb73ef0c07d63040800000000000000
+      internalID: 4627122113975909374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 68
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5296902a4a3ffc20800000000000000
+      internalID: 3242374346778776157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 67
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cdf7e35413ccd110800000000000000
+      internalID: 1287118085595594176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_4
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 67
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cde06b71ce494a70800000000000000
+      internalID: 8811660738832690630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_5
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 67
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea37739fe9675b70800000000000000
+      internalID: 8887688867331128032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_6
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 67
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53c0186da7c2c7b80800000000000000
+      internalID: -8395786699229033419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_7
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 67
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 344d332a0167220d0800000000000000
+      internalID: -3449064550799518653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_8
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 67
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee68d538540757870800000000000000
+      internalID: 8679967300685498094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_9
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 67
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d85ff6916dad51b90800000000000000
+      internalID: -7271665410235173491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_10
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 67
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 292157c6f078c9590800000000000000
+      internalID: -7666103965377555822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_11
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 67
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa739675cc5fef40800000000000000
+      internalID: 5759924451597843190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_12
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 67
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1ffc19fc98409310800000000000000
+      internalID: 1409706522398490395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_13
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 67
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67dabab2112b56e60800000000000000
+      internalID: 7954960103636708726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_14
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 67
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef66a7ea352676db0800000000000000
+      internalID: -4798758766390909186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_15
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 39
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d6c1747409f58c10800000000000000
+      internalID: 2055322602493298393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_16
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 39
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be8c8e26199b7b1b0800000000000000
+      internalID: -5640835974177437461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_17
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 39
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fb57b6fe0d102f80800000000000000
+      internalID: -8133468976925156363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_18
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 39
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0598a30f27554ee0800000000000000
+      internalID: -1277519059853208310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_19
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 39
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e1e4c5df3754f90800000000000000
+      internalID: -6970037316273430990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_20
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 39
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd66f85b868270e40800000000000000
+      internalID: 5622507089983137499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_21
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 38
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07a802ec9e7e2efd0800000000000000
+      internalID: -2314032267143378320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_22
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 38
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab1455c8470eea590800000000000000
+      internalID: -7660939124935409222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_23
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 38
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f63b9e42fdce2e4c0800000000000000
+      internalID: -4259581854397910161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_24
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 38
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5616351ab0a4012b0800000000000000
+      internalID: -5615907321519316635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_25
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 38
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45606ae737058f530800000000000000
+      internalID: 3888946735210694228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_26
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 38
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6af7ec585cb671c0800000000000000
+      internalID: -4506207289435751826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_27
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 38
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6d152542317f2e20800000000000000
+      internalID: 3328003110372449646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_28
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 38
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c29e2c1937cdc1e50800000000000000
+      internalID: 6781537527837944108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_29
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 38
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b619eaa9fc7e1490800000000000000
+      internalID: -7773638495038794063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_30
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 6
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75b093d3dc678ad00800000000000000
+      internalID: 984167142447975255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_31
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 6
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cd4bf0621e73ceb0800000000000000
+      internalID: -4700774968643072574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_32
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 6
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4c6e5a7c71a82ef0800000000000000
+      internalID: -132678633006404530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_33
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 6
+        width: 15
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0074fb24105a1f50800000000000000
+      internalID: 6852877830564638730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_34
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 6
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e11d4b68713770720800000000000000
+      internalID: 2812343037197603102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_35
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 6
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3f037acbed959b80800000000000000
+      internalID: -8388625094868267203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_36
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 6
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d4bb606611ba9230800000000000000
+      internalID: 3646421557974906070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_37
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 6
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b84b294348a179150800000000000000
+      internalID: 5879196993675506827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_38
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 6
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bef1f4e3ba3cadb50800000000000000
+      internalID: 6618817742626562027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_39
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 6
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa6ff668b2b0ecfa0800000000000000
+      internalID: -5778668990302783830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_40
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 6
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55e8e485081a58ad0800000000000000
+      internalID: -2700574828929315243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALLTURRET_41
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 6
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13530d3ad36aaf300800000000000000
+      internalID: 286724309962994993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ALLTURRET_0: 7960835599286627114
+      ALLTURRET_1: 4627122113975909374
+      ALLTURRET_10: -7666103965377555822
+      ALLTURRET_11: 5759924451597843190
+      ALLTURRET_12: 1409706522398490395
+      ALLTURRET_13: 7954960103636708726
+      ALLTURRET_14: -4798758766390909186
+      ALLTURRET_15: 2055322602493298393
+      ALLTURRET_16: -5640835974177437461
+      ALLTURRET_17: -8133468976925156363
+      ALLTURRET_18: -1277519059853208310
+      ALLTURRET_19: -6970037316273430990
+      ALLTURRET_2: 3242374346778776157
+      ALLTURRET_20: 5622507089983137499
+      ALLTURRET_21: -2314032267143378320
+      ALLTURRET_22: -7660939124935409222
+      ALLTURRET_23: -4259581854397910161
+      ALLTURRET_24: -5615907321519316635
+      ALLTURRET_25: 3888946735210694228
+      ALLTURRET_26: -4506207289435751826
+      ALLTURRET_27: 3328003110372449646
+      ALLTURRET_28: 6781537527837944108
+      ALLTURRET_29: -7773638495038794063
+      ALLTURRET_3: 1287118085595594176
+      ALLTURRET_30: 984167142447975255
+      ALLTURRET_31: -4700774968643072574
+      ALLTURRET_32: -132678633006404530
+      ALLTURRET_33: 6852877830564638730
+      ALLTURRET_34: 2812343037197603102
+      ALLTURRET_35: -8388625094868267203
+      ALLTURRET_36: 3646421557974906070
+      ALLTURRET_37: 5879196993675506827
+      ALLTURRET_38: 6618817742626562027
+      ALLTURRET_39: -5778668990302783830
+      ALLTURRET_4: 8811660738832690630
+      ALLTURRET_40: -2700574828929315243
+      ALLTURRET_41: 286724309962994993
+      ALLTURRET_5: 8887688867331128032
+      ALLTURRET_6: -8395786699229033419
+      ALLTURRET_7: -3449064550799518653
+      ALLTURRET_8: 8679967300685498094
+      ALLTURRET_9: -7271665410235173491
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
