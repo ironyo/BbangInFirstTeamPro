@@ -56,7 +56,7 @@ public class KU_WeaponShooter : TurretBase
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        KU_Bullet bullet = Instantiate(bulletPref, firePos.position, Quaternion.identity).GetComponent<KU_Bullet>();
+        KU_Bullet bullet = Instantiate(bulletPref, _muzzle.position, Quaternion.identity).GetComponent<KU_Bullet>();
         bullet.damage = turretData.AttackPower;
         Instantiate(shootParticlePref, firePos.position, Quaternion.identity);
         Debug.Log(firePos.position - bullet.transform.position);
