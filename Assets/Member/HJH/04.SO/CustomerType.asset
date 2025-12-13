@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CustomerType
   m_EditorClassIdentifier: 
   customerCategory: 0
-  customerDamage: 5
+  customerDamage: 1
   attackInterval: 1.5
   customerHP: 10
   customerSpeed: 8
