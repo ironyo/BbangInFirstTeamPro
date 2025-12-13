@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class StartFade : MonoBehaviour
 {
-    [SerializeField] private GameObject FadeObj;
-    [SerializeField] private TextMeshProUGUI Text;
+    [SerializeField] private CanvasGroup _canvasGroup;
+    [SerializeField] private CanvasGroup _texts;
     [SerializeField] private GameObject MainUI;
     [SerializeField] private float _showTime;
     private bool _hide = false;
     private void Start()
     {
-        Text.DOFade(1, 0.4f);
+        _texts.DOFade(1, 0.6f);
         MainUI.gameObject.SetActive(false);
     }
     private void Update()
@@ -24,9 +24,10 @@ public class StartFade : MonoBehaviour
 
             Sequence seq = DOTween.Sequence();
 
-            seq.Append(Text.DOFade(0, 0.4f));
-            seq.Append(FadeObj.transform.DOScale(30, 0.4f));
-            
+            seq.Append(_canvasGroup.DOFade(0, 0.8f));
+            //seq.AppendCallback(() => MainUI.SetActive(true));
+            MainUI.SetActive(true);
+
         }
     }
 

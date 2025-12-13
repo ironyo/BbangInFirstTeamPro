@@ -53,5 +53,8 @@ TagManager:
   - name: Particle
     uniqueID: 4152769147
     locked: 0
+  - name: FadeOutPanel
+    uniqueID: 3127063165
+    locked: 0
   m_RenderingLayers:
   - Default

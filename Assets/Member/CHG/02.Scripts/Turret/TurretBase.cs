@@ -1,5 +1,6 @@
 using Assets.Member.CHG._04.SO.Scripts;
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -72,7 +73,14 @@ public abstract class TurretBase : MonoBehaviour
 
     private void Damageup(int amount)
     {
+        _damage += amount;
+        StartCoroutine(DiasbleDamageUpCoroutine(amount));
+    }
 
+    private IEnumerator DiasbleDamageUpCoroutine(int amount)
+    {
+        yield return new WaitForSeconds(5f);
+        _damage -= amount;
     }
 
     public void SpawnTurret(Transform _spawnParent)

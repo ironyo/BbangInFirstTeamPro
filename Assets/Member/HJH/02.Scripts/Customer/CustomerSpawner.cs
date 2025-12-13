@@ -4,14 +4,14 @@ using UnityEngine.InputSystem;
 
 public class CustomerSpawner : MonoSingleton<CustomerSpawner>
 {
-    [SerializeField] private EventChannelSO_T<int> _onStageDifficultyIncreased;
-
-    private float _difficultyMultiplier = 1f;
+    public float _difficultyMultiplier = 1f;
 
     [SerializeField] private GameObject[] customerPrefab;
     [SerializeField] private Transform[] spawnPoints;
 
     [SerializeField] private CustomerTypeList typeList;
+
+    [SerializeField] private StageChannelInt _stageChannelInt;
 
     [Header("Target References")]
     public Transform[] runTargets;
@@ -20,20 +20,23 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
     private int spawnNum;
     private void OnEnable()
     {
-        _onStageDifficultyIncreased.OnEventRaised += HandleStageDifficulty;
+        _stageChannelInt.OnEventRaised += HandleStageDifficulty;
     }
 
     private void OnDisable()
     {
-        _onStageDifficultyIncreased.OnEventRaised -= HandleStageDifficulty;
+        _stageChannelInt.OnEventRaised -= HandleStageDifficulty;
     }
     public void StartSpawn()
     {
         spawnNum = Random.Range(0, spawnPoints.Length);
         CustomerSpawn(spawnNum);
     }
-    
 
+    private void Update()
+    {
+        HandleStageDifficulty(_stageChannelInt.CurrentStage);
+    }
     public void AddTargets(GameObject parent)
     {
         List<Transform> runList = new List<Transform>();
