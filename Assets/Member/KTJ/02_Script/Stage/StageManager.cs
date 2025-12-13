@@ -62,7 +62,7 @@ public class StageManager : MonoSingleton<StageManager>
         }
 
         CameraEffectManager.Instance.CameraZoom(5, 1f);
-        TruckHealthManager.Instance.TruckHeal();
+        TruckHealthManager.Instance.TruckHealAll();
         _onArrivalStage.RaiseEvent(ClearStage);
         _stageChannelInt.RaiseEvent();
     }
