@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class HealSkill : MonoBehaviour
+public class HealSkill : SlotSkillBase
 {
     private int _count = 5;
     private int _currentCount = 0;
