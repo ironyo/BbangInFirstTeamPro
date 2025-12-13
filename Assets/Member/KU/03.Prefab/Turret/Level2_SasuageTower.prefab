@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 3557069002873533195}
   m_Layer: 0
   m_Name: Level2_SasuageTower
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
