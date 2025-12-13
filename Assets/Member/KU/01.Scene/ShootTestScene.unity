@@ -1474,9 +1474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e2018b5c213a046aaa73398cde3964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turretSO: {fileID: 11400000, guid: ef192691b72b9974db0f49dd9c89a0d6, type: 2}
-  _gunDataSO: {fileID: 0}
-  _affixSO: {fileID: 0}
+  turret: {fileID: 5905195679837564984, guid: b38f41049c8a51a44b253bbe0861ab40, type: 3}
+  _affixSO: {fileID: 11400000, guid: 9db32e47218880b448265bda5a33ad2c, type: 2}
 --- !u!4 &1084543343
 Transform:
   m_ObjectHideFlags: 0
