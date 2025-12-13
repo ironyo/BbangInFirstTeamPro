@@ -76,10 +76,11 @@ public class AttackState : IEnemyState
                 animator.SetBool("isAttack", true);
 
                 await UniTask.Delay(
-                    TimeSpan.FromSeconds(attackInterval),
+                    TimeSpan.FromSeconds(attackInterval/2),
                     cancellationToken: token
                 );
 
+                customer.avatar.transform.rotation = Quaternion.identity;
                 animator.SetBool("isAttack", false);
 
                 await UniTask.Delay(

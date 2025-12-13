@@ -436,14 +436,14 @@ Transform:
   m_GameObject: {fileID: 632161232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.14, y: 3.89, z: 0}
+  m_LocalPosition: {x: -1.36, y: 3.4, z: 0}
   m_LocalScale: {x: 0.37244, y: 0.37244, z: 0.37244}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &632161235
-PolygonCollider2D:
+--- !u!61 &632161235
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -476,7 +476,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.21133333}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28866667}
@@ -486,12 +486,8 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
-  m_UseDelaunayMesh: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &804863266
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,8 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e2018b5c213a046aaa73398cde3964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turretSO: {fileID: 11400000, guid: 3fae08d3888f54e429cd1844c4f728d3, type: 2}
-  _gunDataSO: {fileID: 0}
+  turret: {fileID: 3538944490583202499, guid: ac705b49d74fe3a4a83b8926559c6dc1, type: 3}
   _affixSO: {fileID: 11400000, guid: 9db32e47218880b448265bda5a33ad2c, type: 2}
 --- !u!4 &842150864
 Transform:
@@ -859,6 +854,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Customer
       objectReference: {fileID: 0}
+    - target: {fileID: 2502679962241808410, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8219143982439835981, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
     - target: {fileID: 5065707676273653239, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.56

@@ -6946,6 +6946,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7628199977685421960, guid: 876a915ab0e2287449338775e5de8cca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 1208704758444133777, guid: 876a915ab0e2287449338775e5de8cca, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -12154,7 +12157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turretSO: {fileID: 0}
-  _gunDataSO: {fileID: 11400000, guid: 78309a5142beb214ead0c703bc009d30, type: 2}
+  _gunDataSO: {fileID: 11400000, guid: 56cf1d67e3100524e8fb30ace5628410, type: 2}
+  _affixSO: {fileID: 0}
 --- !u!4 &636405084
 Transform:
   m_ObjectHideFlags: 0
@@ -18906,6 +18910,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2909289422753737250, guid: d0df329569ddc2242b4a9f4fafeee544, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 5856155836451104827, guid: d0df329569ddc2242b4a9f4fafeee544, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -24686,6 +24693,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4912489033324248163, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 4410795742738595450, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -25013,7 +25023,6 @@ MonoBehaviour:
   itemDataList: {fileID: 11400000, guid: 5aa7d95fef643ca4e9f37b1f73ef83f4, type: 2}
   curveHeight: 2
   dropDuration: 0.7
-  pickDuration: 0.4
 --- !u!4 &1605856133
 Transform:
   m_ObjectHideFlags: 0

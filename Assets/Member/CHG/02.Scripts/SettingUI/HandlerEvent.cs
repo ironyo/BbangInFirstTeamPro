@@ -9,7 +9,6 @@ namespace Assets.Member.CHG._02.Scripts.SettingUI
         [SerializeField] private SoundValueChangedAnim _anim;
         public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log("Click");
             _anim.OnPointerDown();
         }
     }
