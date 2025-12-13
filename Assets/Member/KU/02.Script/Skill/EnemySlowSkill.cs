@@ -8,19 +8,20 @@ public class EnemySlowSkill : MonoBehaviour
 
     [SerializeField] ItemDataSO _data;
 
-    private void Awake()
-    {
-        Customer[] customers = FindObjectsOfType<Customer>();
-    }
-
     private void OnEnable()
     {
         customer.OnSlowChanged += customer.HandleSlow;
     }
+
     private void Start()
     {
-        //customer.OnSlowChanged?.Invoke(true);
+        foreach (var item in Customer.All)
+        {
+            item.SetSlow();
+        }
     }
+
+
 
     private void Update()
     {
