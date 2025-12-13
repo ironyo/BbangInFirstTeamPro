@@ -1,6 +1,6 @@
+using System;
 using Assets.Member.CHG._02.Scripts.Bullet;
 using Assets.Member.CHG._02.Scripts.Pooling;
-using System;
 using UnityEngine;
 
 public class ProjectileCurve : ProjectileBase, IRecycleObject
@@ -93,8 +93,11 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
 
     protected override void OnHit(Collider2D collision)
     {
+
+        Debug.Log("aa");
         if (collision.CompareTag("Enemy"))
         {
+            Debug.Log("bb");
             IRecycleObject particle = _particlefaFactory.Get();
             particle.GameObject.transform.position = collision.gameObject.transform.position;
 
@@ -103,8 +106,9 @@ public class ProjectileCurve : ProjectileBase, IRecycleObject
             if (_isHit) return;
             ProjectileReturn();
         }
-        else if (collision.CompareTag("Player"))
+        else if (collision.CompareTag("Turret"))
         {
+            Debug.Log("cc");
             if (_isHit)
             {
                 Destroyed?.Invoke(this);

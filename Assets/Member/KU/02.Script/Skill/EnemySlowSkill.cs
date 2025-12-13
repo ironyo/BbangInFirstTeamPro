@@ -14,6 +14,10 @@ public class EnemySlowSkill : MonoBehaviour
     {
         customer.OnSlowChanged += customer.HandleSlow;
     }
+    private void Start()
+    {
+        //customer.OnSlowChanged.Invoke(true);
+    }
 
     private void OnDisable()
     {

@@ -32,8 +32,8 @@ namespace Assets.Member.CHG._02.Scripts.Bullet
                 lastHitTime = Time.time;
 
                 collision.gameObject.GetComponent<Customer>().TakeDamage(Damage);
-                OnHit(collision);
             }
+                OnHit(collision);
         }
         protected abstract void OnHit(Collider2D collision);
     }
