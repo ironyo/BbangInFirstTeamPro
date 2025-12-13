@@ -95,23 +95,24 @@ public class UIParticleSystem : Graphic
             out Vector2 localPoint // 결과 로컬 좌표
         );
 
-
+        Camera renderCam = (canvas.worldCamera != null) ? canvas.worldCamera : Camera.main;
         // 파티클 개수만큼 메시 생성
         for (int i = 0; i < targetParticleSystem.particleCount; i++)
         {
             ParticleSystem.Particle p = particles[i];
 
-            // 파티클의 월드 좌표를 UI의 로컬 좌표로 변환
-            // 파티클 시스템은 자체 Transform을 기준으로 파티클을 방출하므로
-            // 먼저 파티클의 로컬 좌표를 월드 좌표로 변환해야 합니다.
+            // 파티클의 로컬 좌표를 월드 좌표로 변환
             Vector3 particleWorldPos = targetParticleSystem.transform.TransformPoint(p.position);
 
-            // 월드 좌표를 이 UI 요소의 RectTransform의 로컬 좌표로 변환
+            // 월드 좌표를 렌더링 카메라의 화면 좌표로 변환
+            Vector3 screenPos = renderCam.WorldToScreenPoint(particleWorldPos);
+
+            // 2. 화면 좌표를 이 UI 요소의 로컬 좌표로 변환
             Vector2 particleLocalPos;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                rectTransform, // 이 UI 요소의 RectTransform (UIParticleParent의 RectTransform)
-                targetParticleSystem.worldCamera != null ? targetParticleSystem.worldCamera.WorldToScreenPoint(particleWorldPos) : Camera.main.WorldToScreenPoint(particleWorldPos),
-                canvas.worldCamera, // 현재 캔버스를 렌더링하는 카메라
+                rectTransform, // 이 UI 요소의 RectTransform
+                screenPos,     // 화면 좌표 (Screen Point)
+                canvas.worldCamera, // EventCamera: Overlay 모드일 경우 null이 전달되도록 함
                 out particleLocalPos
             );
 
