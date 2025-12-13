@@ -13953,8 +13953,8 @@ MonoBehaviour:
   - "\uC640\uB530\uB9C8\uC744"
   - "\uBFE1\uBFE1\uB9C8\uC744"
   - "\uD0DC\uC900\uB9C8\uC744"
-  minLength: 3
-  maxLength: 5
+  minLength: 10
+  maxLength: 30
 --- !u!4 &1062537615
 Transform:
   m_ObjectHideFlags: 0
