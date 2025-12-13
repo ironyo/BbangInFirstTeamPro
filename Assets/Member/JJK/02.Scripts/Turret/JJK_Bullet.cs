@@ -10,7 +10,8 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
     private Rigidbody2D _rb;
     private BulletDataSO _bulletData;
     private BulletMove _bulletMove;
-    
+
+    private int _damage;
     private float _lifeTime = 3f;
     private float _timer;
     private bool _throughFire;
@@ -42,12 +43,13 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
         }
     }
 
-    public void SetData(BulletDataSO bulletData, bool throughFire)
+    public void SetData(BulletDataSO bulletData, int damage, bool throughFire)
     {
         _bulletData = bulletData;
         _throughFire = throughFire;
         _lifeTime = bulletData.LifeTime;
         _bulletMove.Speed = bulletData.Speed;
+        _damage = damage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -59,7 +61,7 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
                 if (_bulletData.CollisionParticle != null)
                     Instantiate(_bulletData.CollisionParticle, transform.position, Quaternion.identity);
                 
-                collision.gameObject.GetComponent<Customer>().TakeDamage(_bulletData.Damage);
+                collision.gameObject.GetComponent<Customer>().TakeDamage(_damage);
                 CameraShake.Instance.ImpulseForce(_bulletData.CameraShakeForce);
             
                 if (_throughFire)
@@ -92,7 +94,8 @@ public class JJK_Bullet : MonoBehaviour, IRecycleObject
                 _bulletData,
                 firstEnemy,
                 throughData.BulletData.Speed,
-                throughData.BulletData.LifeTime
+                throughData.BulletData.LifeTime,
+                _damage / 2
             );
         }
     }

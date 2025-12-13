@@ -6,6 +6,7 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
 {
     private BulletDataSO _bulletData;
     private BulletMove _bulletMove;
+    private int _damage;
     private float _lifeTime;
     private float _timer;
     private bool _isAttack;
@@ -26,7 +27,7 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
         _ignoreTarget = null;
     }
 
-    public void SetData(BulletDataSO data, Collider2D firstEnemy, float speed, float lifeTime)
+    public void SetData(BulletDataSO data, Collider2D firstEnemy, float speed, float lifeTime, int damage)
     {
         _bulletData = data;
         _lifeTime = lifeTime;
@@ -65,7 +66,7 @@ public class ThroughBullet : MonoBehaviour, IRecycleObject
         {
             if (!_isAttack)
             {
-                collision.gameObject.GetComponent<Customer>().TakeDamage(_bulletData.Damage);
+                collision.gameObject.GetComponent<Customer>().TakeDamage(_damage);
                 CameraShake.Instance.ImpulseForce(_bulletData.CameraShakeForce);
 
                 if (_bulletData.CollisionParticle != null)

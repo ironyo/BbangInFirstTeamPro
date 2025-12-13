@@ -39,7 +39,7 @@ public class Gun : TurretBase
 
             bullet.transform.position = _firePos.position;
             bullet.transform.rotation = transform.rotation * CalculateAngle(i);
-            bullet.GetComponent<JJK_Bullet>().SetData(bulletData, _gunData.ThroughFire);
+            bullet.GetComponent<JJK_Bullet>().SetData(bulletData, _gunData.Damage, _gunData.ThroughFire);
         }
     }
 
