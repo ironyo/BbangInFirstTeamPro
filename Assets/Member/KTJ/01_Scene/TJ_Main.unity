@@ -24456,6 +24456,7 @@ MonoBehaviour:
   customerSpawner: {fileID: 2003237847}
   _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
   _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
+  spawnInterval: 5
 --- !u!4 &1391517502
 Transform:
   m_ObjectHideFlags: 0
@@ -24525,6 +24526,7 @@ MonoBehaviour:
   _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
   _setUIStage: {fileID: 11400000, guid: ebc70b53cacdf66468b3f27fe18145c1, type: 2}
   _onArrivalStage: {fileID: 11400000, guid: 3d86a553bc9b0e64d87e0672ebd86248, type: 2}
+  _stageChannelInt: {fileID: 11400000, guid: d1346465ce0f3324499d677053c4a1d5, type: 2}
 --- !u!1 &1397188207
 GameObject:
   m_ObjectHideFlags: 0
@@ -25309,7 +25311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1610976771}
-  - component: {fileID: 1610976770}
+  - component: {fileID: 1610976772}
   m_Layer: 0
   m_Name: CustomerPoolManager
   m_TagString: Untagged
@@ -25317,18 +25319,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1610976770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610976769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc41a557c1b9fb4bbb3e3e49764c44f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1610976771
 Transform:
   m_ObjectHideFlags: 0
@@ -25344,6 +25334,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1610976772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610976769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8c3046dca6265429f146df5eadda84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1651808606
 GameObject:
   m_ObjectHideFlags: 0
@@ -27340,7 +27342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7af221acdaa9df4a83356cafb93aeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onStageDifficultyIncreased: {fileID: 0}
+  _difficultyMultiplier: 1
   customerPrefab:
   - {fileID: 1402475380841491785, guid: c9f8884494877ae459d8381f68c9a86e, type: 3}
   - {fileID: 1402475380841491785, guid: 876a915ab0e2287449338775e5de8cca, type: 3}
@@ -27349,6 +27351,7 @@ MonoBehaviour:
   - {fileID: 1862412230}
   - {fileID: 1980259919}
   typeList: {fileID: 11400000, guid: cd6d6a39a5c49e445b92903c34a76ff6, type: 2}
+  _stageChannelInt: {fileID: 11400000, guid: d1346465ce0f3324499d677053c4a1d5, type: 2}
   runTargets:
   - {fileID: 0}
   - {fileID: 0}
