@@ -29701,26 +29701,26 @@ MonoBehaviour:
   _turrets:
   - TurretGroupName: "\uBE59\uC218"
     Turrets:
-    - {fileID: 11400000, guid: 78309a5142beb214ead0c703bc009d30, type: 2}
-    - {fileID: 11400000, guid: 56cf1d67e3100524e8fb30ace5628410, type: 2}
-    - {fileID: 11400000, guid: 74d344426bc22ab44b0eba51aa65170e, type: 2}
+    - {fileID: 11400000, guid: 1b91131bd6bdeb64fa6bf30f11d326b7, type: 2}
+    - {fileID: 11400000, guid: 2037c761376d2364e9d599b9e7cae875, type: 2}
+    - {fileID: 11400000, guid: 390f452f0a638884fa879d30ee6a83a6, type: 2}
   - TurretGroupName: "\uB3C4\uB11B"
     Turrets:
-    - {fileID: 11400000, guid: 1780c37b5ab0f9f419207e5acd752123, type: 2}
-    - {fileID: 11400000, guid: 5b090d47de5a00549b24a817b95e4218, type: 2}
-    - {fileID: 11400000, guid: 3fae08d3888f54e429cd1844c4f728d3, type: 2}
+    - {fileID: 11400000, guid: 10a68e14e812c7b49850da6a1d2fbab5, type: 2}
+    - {fileID: 11400000, guid: 50bb7e343d860a445b0dfc82eb091743, type: 2}
+    - {fileID: 11400000, guid: 283fcb2e9196a7144a16554def0a2a94, type: 2}
   - TurretGroupName: "\uD56B\uB3C4\uADF8"
     Turrets:
-    - {fileID: 11400000, guid: ef192691b72b9974db0f49dd9c89a0d6, type: 2}
-    - {fileID: 11400000, guid: 6e5b2d7311104c745b2ceed436e88168, type: 2}
-    - {fileID: 11400000, guid: facdb92fb848e274c9ef15f8fdbab02a, type: 2}
-    - {fileID: 11400000, guid: 9edd4e5fd8ba6a84cb0c857534ab4f15, type: 2}
+    - {fileID: 11400000, guid: 4490160fecca75c45af4b786cdac29ad, type: 2}
+    - {fileID: 11400000, guid: 5eee1f55282aad544a5fbabe0de9cbec, type: 2}
+    - {fileID: 11400000, guid: fd2a05d9f938d2c43b28c4b532e3f6ea, type: 2}
+    - {fileID: 11400000, guid: 87b30093de4060f4ca0eb14bb5432919, type: 2}
   - TurretGroupName: "\uD53C\uC790"
     Turrets:
-    - {fileID: 11400000, guid: b96a7e23057bd58459a5ba654bc1b7ad, type: 2}
-    - {fileID: 11400000, guid: 6e7915278fc8b4f4b8f08aa74a9b83df, type: 2}
-    - {fileID: 11400000, guid: 02e164c304bb4fe40b5ea7fa5e16c3e3, type: 2}
-    - {fileID: 11400000, guid: 2fb18726bf1f3994d868b5016940f8f1, type: 2}
+    - {fileID: 11400000, guid: 039d2d2d512be2146a48f7bd52eee44c, type: 2}
+    - {fileID: 11400000, guid: 3f2962e1383bf86488c97b549bd78cf3, type: 2}
+    - {fileID: 11400000, guid: e6a08331cc546ee498e03fe51a63a756, type: 2}
+    - {fileID: 11400000, guid: 14e5ce43ddded23488a39c2e5e8727da, type: 2}
   _onRepairStoreUIReady: {fileID: 11400000, guid: 0c95291488f74fb47be8dcf2a7d10cd1, type: 2}
   _setTruckLabel: {fileID: 11400000, guid: 88b39b812829ce345a83de2728bc0129, type: 2}
   _onLabelClick: {fileID: 11400000, guid: 63c13f5cd43c7ae498569a83f820c03c, type: 2}
