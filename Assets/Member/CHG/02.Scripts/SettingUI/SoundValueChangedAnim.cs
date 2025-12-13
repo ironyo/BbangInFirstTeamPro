@@ -18,7 +18,6 @@ public class SoundValueChangedAnim : MonoBehaviour
     private readonly int ValueDownHash = Animator.StringToHash("ValueDown");
     private void Start()
     {
-        Debug.Log(gameObject.name);
         _img = GetComponent<Image>();
         _animator = GetComponent<Animator>();
         _lastValue = _slider.value;

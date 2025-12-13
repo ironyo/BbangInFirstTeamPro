@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 9025367132267428974}
   m_Layer: 0
   m_Name: Level2_SprinkleTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +233,7 @@ Transform:
   m_GameObject: {fileID: 4560950151559165403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.12, y: -0.54, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -372,6 +372,7 @@ MonoBehaviour:
   _firePos: {fileID: 5745062634277520519}
   _attackSpeedSliderPrefab: {fileID: 6560060808592047826, guid: c83974a16944f494897089526a539d1a, type: 3}
   _onRaiseDamage: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
+  _onRaiseDamageTime: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
   ProjectilePrefab: {fileID: 6856611375793059518, guid: 1ec283260d22fd94c85e279d3241df4f, type: 3}
 --- !u!1 &4727621934417451052
 GameObject:
