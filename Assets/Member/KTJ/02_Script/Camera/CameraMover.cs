@@ -69,7 +69,7 @@ public class CameraMover : MonoBehaviour
     {
         _canvasGroup.gameObject.SetActive(true);
         _canvasGroup.DOFade(1, 0.5f);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         _canvasGroup.DOFade(0, 0.5f).OnComplete(() =>
         {
             _canvasGroup.gameObject.SetActive(false);
