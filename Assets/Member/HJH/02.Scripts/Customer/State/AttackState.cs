@@ -31,10 +31,7 @@ public class AttackState : IEnemyState
         rb = customer.GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
 
-        if(customer.customerType.customerCategory != CustomerCategory.trashPerson)
-        {
-            LookAtClosestTarget();
-        }
+        LookAtClosestTarget();
 
         attackCTS = new CancellationTokenSource();
         AttackLoopAsync(attackCTS.Token).Forget();
@@ -86,7 +83,7 @@ public class AttackState : IEnemyState
                 animator.SetBool("isAttack", false);
 
                 await UniTask.Delay(
-                    TimeSpan.FromSeconds(attackInterval),
+                    TimeSpan.FromSeconds(attackInterval * 3),
                     cancellationToken: token
                 );
             }
@@ -123,7 +120,7 @@ public class AttackState : IEnemyState
         Vector2 dir = target.position - avatar.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (dir.y < 0)
+        if (dir.y <= 0)
             angle += 180f;
         else
             angle -= 180f;
