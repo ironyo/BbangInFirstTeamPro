@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a88fe55026d56c408d0db4830073fcb, type: 3}
   m_Name: AttackPlus
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: AttackPlus
+  <Name>k__BackingField: AttackPlusSkill
   <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: e2bf2f275e75be64f86cf813cce3c348, type: 3}
   <Icon>k__BackingField: {fileID: -2413806693520163455, guid: 3bea975d9d6f37f45813c7d941e2dbc6, type: 3}
   <Description>k__BackingField: "\uBAA8\uB4E0 \uD130\uB81B\uC758 \uACF5\uACA9\uB825\uC774
