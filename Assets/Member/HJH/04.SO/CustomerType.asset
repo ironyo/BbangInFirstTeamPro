@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerCategory: 0
   customerDamage: 5
-  attackInterval: 0.39
+  attackInterval: 1
   customerHP: 5
   customerSpeed: 8
   money: 5
