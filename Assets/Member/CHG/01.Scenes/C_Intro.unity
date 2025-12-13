@@ -1704,8 +1704,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC885\uB8CC\uD558\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
-  m_sharedMaterial: {fileID: 3193030865358514994, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 46198b4001028f6408231e2d276491d8, type: 2}
+  m_sharedMaterial: {fileID: 6683494630584172670, guid: 46198b4001028f6408231e2d276491d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2224,8 +2224,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uCD08\uAE30\uD654"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
-  m_sharedMaterial: {fileID: 3193030865358514994, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 46198b4001028f6408231e2d276491d8, type: 2}
+  m_sharedMaterial: {fileID: 6683494630584172670, guid: 46198b4001028f6408231e2d276491d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4594,8 +4594,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  extraPadding: 1
   strings: []
+  _fadeOut: {fileID: 0}
   _endRollText: {fileID: 0}
   _endPos: {fileID: 0}
   _endRollTime: 0
@@ -6034,8 +6034,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC2DC\uC791\uD558\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
-  m_sharedMaterial: {fileID: 3193030865358514994, guid: 8af89e58168b71b4081e66bccd3ea714, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 46198b4001028f6408231e2d276491d8, type: 2}
+  m_sharedMaterial: {fileID: 6683494630584172670, guid: 46198b4001028f6408231e2d276491d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
