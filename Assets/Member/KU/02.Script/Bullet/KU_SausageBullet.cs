@@ -4,7 +4,6 @@ using UnityEngine;
 public class KU_SausageBullet : KU_Bullet
 {
     [SerializeField] private int _bounceCount = 2;
-    [SerializeField] private int damage = 1;
 
     private bool isAttack = false;
 

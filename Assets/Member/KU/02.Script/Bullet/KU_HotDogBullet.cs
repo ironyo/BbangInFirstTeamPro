@@ -1,7 +1,5 @@
 using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.Triggers;
 using DG.Tweening;
-using System.Net.NetworkInformation;
 using System.Threading;
 using UnityEngine;
 
@@ -12,7 +10,6 @@ public class KU_HotDogBullet : KU_Bullet
     [SerializeField] private GameObject _sasuagePref;
 
     [SerializeField] private int _sourceCount = 2;
-    [SerializeField] private int damage = 1;
     [SerializeField] private Vector3 _explosionSize = new Vector3(3, 3, 3);
 
     private SpriteRenderer _spriteRenderer;
@@ -61,7 +58,7 @@ public class KU_HotDogBullet : KU_Bullet
         StopBullet();
         BoomParticle();
 
-        transform.DOScale(new Vector3(transform.localScale.x+0.1f, transform.localScale.y + 0.1f), 0.2f);
+        transform.DOScale(new Vector3(transform.localScale.x + 0.1f, transform.localScale.y + 0.1f), 0.2f);
         await _spriteRenderer.DOFade(0, 0.2f);
 
         await UniTask.WaitForSeconds(0, cancellationToken: cancelToken);
@@ -79,7 +76,7 @@ public class KU_HotDogBullet : KU_Bullet
                     obj.transform.localScale = _explosionSize;
                     GameObject sasuage = Instantiate(_sasuagePref, transform.position, Quaternion.identity);
                     Rigidbody2D rb = sasuage.GetComponent<Rigidbody2D>();
-                    rb.linearVelocity = new Vector2(1,1) * moveSpeed;
+                    rb.linearVelocity = new Vector2(1, 1) * moveSpeed;
 
                     customer.TakeDamage(damage);
                     NowDeadTime(cancellationTokenSource.Token).Forget();
