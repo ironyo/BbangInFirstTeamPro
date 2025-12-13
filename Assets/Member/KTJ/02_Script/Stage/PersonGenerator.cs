@@ -14,6 +14,7 @@ public class PersonGenerator : MonoBehaviour
     [Header("Event")]
     [SerializeField] private EventChannelSO_T<int> _onStageRoadStart;
     [SerializeField] private EventChannelSO _onStageRoadEnd;
+    [SerializeField] private EventChannelSO _onGameOver;
 
     private List<(AgentMovement, Person)> _spawnedPerson = new List<(AgentMovement, Person)>();
 
@@ -23,16 +24,26 @@ public class PersonGenerator : MonoBehaviour
         _onStageRoadEnd.OnEventRaised += OnStageEnd;
     }
 
+    private void OnEnable()
+    {
+        _onGameOver.OnEventRaised += () => DeletePersonAll();
+    }
+
     private void OnStageEnd()
     {
+        if (GameOverUI.Instance.IsGameOver) return;
         StartCoroutine(OnStageEndIEnum());
+    }
+    private void DeletePersonAll()
+    {
+        _spawnedPerson.ForEach((x) => Destroy(x.Item1.gameObject));
+        _spawnedPerson.Clear();
     }
     IEnumerator OnStageEndIEnum()
     {
         if (_spawnedPerson.Count != 0)
         {
-            _spawnedPerson.ForEach((x) => Destroy(x.Item1.gameObject));
-            _spawnedPerson.Clear();
+            DeletePersonAll();
         }
 
         GameObject per_1 = Instantiate(_mechanic, _spawnPos);

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Level3_TomatoSauceTurret
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uD1A0\uB9C8\uD1A0 \uC18C\uC2A4 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 0}
+  <TurretImage>k__BackingField: {fileID: -132678633006404530, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 15
   Turret: {fileID: 8863896744074977298, guid: 3ab9b2ebd4312ee4b842fb719c1c908b, type: 3}
-  AttackCoolTime: 0.7
+  AttackCoolTime: 1.2
   AttackRange: 10
   AttackPower: 2
   TargetingClosedEnemy: 0

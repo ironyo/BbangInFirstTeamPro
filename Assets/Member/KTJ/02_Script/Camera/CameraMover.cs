@@ -15,12 +15,23 @@ public class CameraMover : MonoBehaviour
     [Header("Ui Setting")]
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private Slider _posSlider;
+
+    [Header("Event")]
+    [SerializeField] private EventChannelSO _onGameOver;
+
     private float _time = 0.1f;
     private float _currentTime;
 
     private float _camXPos;
 
     private Coroutine _coroutine;
+
+    private bool _canMove = true;
+
+    private void OnEnable()
+    {
+        _onGameOver.OnEventRaised += () => _canMove = false;
+    }
     public float CamXPos
     {
         get
@@ -38,6 +49,8 @@ public class CameraMover : MonoBehaviour
 
         if (Mathf.Abs(input) > 0)
         {
+            if (_canMove == false) return;
+
             _currentTime += Time.deltaTime;
             if (_currentTime >= _time)
             {
@@ -56,7 +69,7 @@ public class CameraMover : MonoBehaviour
     {
         _canvasGroup.gameObject.SetActive(true);
         _canvasGroup.DOFade(1, 0.5f);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         _canvasGroup.DOFade(0, 0.5f).OnComplete(() =>
         {
             _canvasGroup.gameObject.SetActive(false);

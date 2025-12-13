@@ -31,7 +31,10 @@ public class AttackState : IEnemyState
         rb = customer.GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
 
-        LookAtClosestTarget();
+        if(customer.customerType.customerCategory != CustomerCategory.trashPerson)
+        {
+            LookAtClosestTarget();
+        }
 
         attackCTS = new CancellationTokenSource();
         AttackLoopAsync(attackCTS.Token).Forget();
@@ -41,7 +44,7 @@ public class AttackState : IEnemyState
     {
         if (customer.customerHP <= 0)
         {
-            customer.ChangeState(customer.ClearState);
+            customer.ChangeState(customer.DeadState);
             return;
         }
 
@@ -74,13 +77,12 @@ public class AttackState : IEnemyState
                 }
 
                 animator.SetBool("isAttack", true);
-
                 await UniTask.Delay(
-                    TimeSpan.FromSeconds(attackInterval/3),
+                    TimeSpan.FromSeconds(attackInterval),
                     cancellationToken: token
                 );
 
-                customer.transform.rotation = Quaternion.identity;
+                customer.avatar.transform.rotation = Quaternion.identity;
                 animator.SetBool("isAttack", false);
 
                 await UniTask.Delay(

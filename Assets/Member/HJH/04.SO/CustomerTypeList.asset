@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerTypes:
   - type: {fileID: 11400000, guid: 076098317ae51104991b7641dd8ddbfe, type: 2}
-    weight: 34
+    weight: 25
   - type: {fileID: 11400000, guid: 326340cfd55b5674bb5eac32b2a5ca4b, type: 2}
-    weight: 33
+    weight: 25
   - type: {fileID: 11400000, guid: dcb14877dd4aa534fa86762463cbb992, type: 2}
-    weight: 33
+    weight: 25
+  - type: {fileID: 11400000, guid: 89305a3ab53130d4f882aaf29a3699ff, type: 2}
+    weight: 25
