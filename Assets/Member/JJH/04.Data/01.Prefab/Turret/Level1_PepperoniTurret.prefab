@@ -181,6 +181,7 @@ MonoBehaviour:
   pepperoni: {fileID: 4696753182146962447, guid: dc4dd855b6fab6c4397e07efc7b576fc, type: 3}
   shotParticle: {fileID: 8103605189167414420, guid: 507086721f0a2104292da50a91f06d4a, type: 3}
   firePos: {fileID: 9076225916266739549}
+  soundData: {fileID: 11400000, guid: 5de63b956fadba94e96979d67a62cbfb, type: 2}
 --- !u!120 &1654320303294143650
 LineRenderer:
   serializedVersion: 2

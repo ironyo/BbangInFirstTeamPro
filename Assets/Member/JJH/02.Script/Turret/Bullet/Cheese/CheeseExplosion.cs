@@ -6,13 +6,20 @@ public class CheeseExplosion : MonoBehaviour, IRecycleObject
 {
     [SerializeField] private GameObject cheesePuddle;
     [SerializeField] private GameObject cheeseExplosionParticle;
+    [SerializeField] private SoundDataSO soundData;
 
     Factory factory;
 
     private void Start()
     {
-        Instantiate(cheeseExplosionParticle, transform.position, Quaternion.identity);
         factory = new Factory(cheesePuddle, 1);
+    }
+
+    private void OnEnable()
+    {
+        SoundManager.Instance.PlaySound(soundData);
+        GameObject particle = Instantiate(cheeseExplosionParticle, transform.position, Quaternion.identity);
+        particle.transform.SetParent(null);
     }
 
     public Action<IRecycleObject> Destroyed { get; set; }
