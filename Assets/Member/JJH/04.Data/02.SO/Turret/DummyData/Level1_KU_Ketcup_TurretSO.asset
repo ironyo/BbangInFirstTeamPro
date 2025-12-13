@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level1_KU_Ketcup_TurretSO
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uCF00\uCC39 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 21300000, guid: 64c5a86c227f2fb46a05b09fabf9a150, type: 3}
+  <TurretImage>k__BackingField: {fileID: -2314032267143378320, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 5
   Turret: {fileID: 378329891138309096, guid: dfd50b11972a416419bd15748b57e79d, type: 3}
   AttackCoolTime: 2

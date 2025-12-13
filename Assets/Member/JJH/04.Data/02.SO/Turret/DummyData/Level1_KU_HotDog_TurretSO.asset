@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level1_KU_HotDog_TurretSO
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: "\uD56B\uB3C4\uADF8 \uD3EC\uD0D1"
-  <TurretImage>k__BackingField: {fileID: 21300000, guid: 64c5a86c227f2fb46a05b09fabf9a150, type: 3}
+  <TurretImage>k__BackingField: {fileID: 3646421557974906070, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 10
   Turret: {fileID: 378329891138309096, guid: b38f41049c8a51a44b253bbe0861ab40, type: 3}
   AttackCoolTime: 2
