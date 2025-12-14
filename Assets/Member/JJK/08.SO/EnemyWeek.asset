@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a88fe55026d56c408d0db4830073fcb, type: 3}
   m_Name: EnemyWeek
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: EnemyWeek
+  <Name>k__BackingField: EnemyWeekSkill
   <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: aa2f0eafb7ed04a40be1721c59ae8b36, type: 3}
   <Icon>k__BackingField: {fileID: -2413806693520163455, guid: 3bea975d9d6f37f45813c7d941e2dbc6, type: 3}
   <Description>k__BackingField: "\uD2B8\uB7ED\uC758 \uBC1B\uB294 \uD53C\uD574\uB7C9\uC774

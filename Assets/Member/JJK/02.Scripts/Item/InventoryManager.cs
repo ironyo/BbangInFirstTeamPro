@@ -30,6 +30,4 @@ public class InventoryManager : MonoSingleton<InventoryManager>
         Items[slotIndex] = data;
         OnInventoryChanged?.Invoke();
     }
-
-    //public ItemDataSO[] GetItems() => Items;
 }

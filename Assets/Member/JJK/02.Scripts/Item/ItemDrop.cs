@@ -44,7 +44,7 @@ public class ItemDrop : MonoBehaviour
             .OnComplete(() =>
             {
                 InventoryManager.Instance.AddItemToSlot(_data, emptySlot);
-                //Destroy(gameObject);
+                Destroy(gameObject);
             });
     }
 }
