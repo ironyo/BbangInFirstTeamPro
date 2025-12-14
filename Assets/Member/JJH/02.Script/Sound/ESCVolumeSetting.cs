@@ -35,13 +35,6 @@ public class ESCVolumeSetting : MonoBehaviour
     {
         SetVolume();
         escButton.SetActive(true);
-
-
-        _fadeTween?.Kill();
-        settingPanel.raycastTarget = false;
-        _fadeTween = settingPanel.DOFade(0, 0.0f).SetUpdate(true);
-        _uiContents.DOAnchorPos(new Vector3(0, 1200, 0), 0.3f).SetUpdate(true);
-        Time.timeScale = 1f;
     }
 
     private void Update()
@@ -155,10 +148,7 @@ public class ESCVolumeSetting : MonoBehaviour
 
     public void LobbyButton()
     {
-        if (SceneManager.sceneCount == 0) return;
-        showType = SettingType.Hide;
-        SetShowType();
-        SceneLoadManager.Instance.SceneMove(0);
+        Application.Quit();
     }
     #endregion
 }
