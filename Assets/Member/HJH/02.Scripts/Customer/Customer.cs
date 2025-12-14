@@ -1,8 +1,10 @@
 using DG.Tweening;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public interface IEnemyState
 {
@@ -125,6 +127,8 @@ public class Customer : MonoBehaviour
     {
         UpdateHPUI();
         currentState?.Update();
+
+       
     }
 
     private void InitializeStats()
@@ -257,7 +261,7 @@ public class Customer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("DeadZone"))
+        if(collision.CompareTag("DeadZone"))
         {
             Destroy(gameObject);
         }

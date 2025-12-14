@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.Rendering;
 
 public class SoundPlayer : MonoBehaviour
 {
@@ -9,11 +12,10 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioMixerGroup systemGroup;
     private AudioSource audioSource;
 
-    public void PlaySound(SoundDataSO soundData)
+    public async void PlaySound(SoundDataSO soundData)
     {
         if (soundData.soundType == SoundType.BGM)
-            RemoveExistingBgmPlayers();
-
+            RemoveEX();
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = soundData.audioClip;
 
@@ -39,26 +41,24 @@ public class SoundPlayer : MonoBehaviour
             StartCoroutine(DestroySound(audioSource.clip.length));
     }
 
-    private void RemoveExistingBgmPlayers()
+    private void RemoveEX()
     {
-        SoundPlayer[] soundPlayers = Object.FindObjectsByType<SoundPlayer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-
-        foreach (SoundPlayer p in soundPlayers)
+        SoundPlayer[] soundPlayers = FindObjectsByType<SoundPlayer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach(SoundPlayer player in soundPlayers)
         {
-            if (p == this)
+            if (player == this)
                 continue;
 
-            AudioSource src = p.GetComponent<AudioSource>();
-            if (src == null)
+            AudioSource audioSource = player.GetComponent<AudioSource>();
+            if(audioSource == null)
                 continue;
 
-            bool isBgm = src.loop && src.outputAudioMixerGroup == bgmGroup && src.isPlaying;
+            bool isBgm = audioSource.loop && audioSource.outputAudioMixerGroup == bgmGroup && audioSource.isPlaying;
 
             if (isBgm)
-                Destroy(p.gameObject);
+                Destroy(player.gameObject);
         }
     }
-
 
     private IEnumerator DestroySound(float time)
     {

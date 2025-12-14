@@ -21,13 +21,13 @@ public class InventorySlotUI : MonoBehaviour
     public void Setup(ItemDataSO data)
     {
         Clear();
-        icon.enabled = true;
         icon.sprite = data.Icon;
+        icon.enabled = true;
         backGroundIcon.enabled = true;
         backGroundIcon.sprite = data.Icon;
         _itemData = data;
         
-        _skillInstance = Instantiate(data.Prefab, transform);
+        _skillInstance = Instantiate(data.SkillPrefab, transform);
         var skill = _skillInstance.GetComponent<SlotSkillBase>();
         skill.BindSlot(this);
     }
@@ -44,9 +44,9 @@ public class InventorySlotUI : MonoBehaviour
 
     public void Clear()
     {
+        icon.sprite = null;
         icon.enabled = false;
         backGroundIcon.enabled = false;
-        icon.sprite = null;
 
         if (_skillInstance != null)
             Destroy(_skillInstance);

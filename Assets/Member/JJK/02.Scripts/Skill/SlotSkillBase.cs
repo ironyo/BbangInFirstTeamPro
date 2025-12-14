@@ -15,7 +15,7 @@ public abstract class SlotSkillBase : MonoBehaviour
         if (_slot != null)
         {
             _slot.Clear();
-            Debug.Log("clear");
+            Debug.Log("Clear");
         }
     }
 }

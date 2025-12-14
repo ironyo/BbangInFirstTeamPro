@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: MoneyPlus
   m_EditorClassIdentifier: 
   <Name>k__BackingField: MoneyPlusSkill
-  <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: e42b0760f770b814a92580929835541c, type: 3}
+  <DropPrefab>k__BackingField: {fileID: 1401912080541144655, guid: 9b3b7efc7e0cf50488baed1f488cabb4, type: 3}
+  <SkillPrefab>k__BackingField: {fileID: 1401912080541144655, guid: e42b0760f770b814a92580929835541c, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: 27a31f1e54fd1f84c90f5968e1cfbe5a, type: 3}
   <Description>k__BackingField: "\uB3C8 \uD68D\uB4DD\uB7C9\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."
   <Value>k__BackingField: 20

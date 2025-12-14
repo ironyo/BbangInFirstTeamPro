@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: AttackPlus
   m_EditorClassIdentifier: 
   <Name>k__BackingField: AttackPlusSkill
-  <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: e2bf2f275e75be64f86cf813cce3c348, type: 3}
+  <DropPrefab>k__BackingField: {fileID: 1401912080541144655, guid: e2bf2f275e75be64f86cf813cce3c348, type: 3}
+  <SkillPrefab>k__BackingField: {fileID: 1401912080541144655, guid: 4bf0748744d193341a74866c6156b7d6, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: e16625af96c9b9545800dfe2c75e795a, type: 3}
   <Description>k__BackingField: "\uBAA8\uB4E0 \uD130\uB81B\uC758 \uACF5\uACA9\uB825\uC774
     \uC99D\uAC00\uD569\uB2C8\uB2E4."

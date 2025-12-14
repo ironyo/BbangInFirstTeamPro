@@ -12,7 +12,6 @@ public class MoneyUI : MonoBehaviour
 
     private void UpdateMoney(int oldMoney, int newMoney)
     {
-        Debug.Log("Money changed");
         string oldStr = oldMoney.ToString().PadLeft(slots.Length, '0');
         string newStr = newMoney.ToString().PadLeft(slots.Length, '0');
 
