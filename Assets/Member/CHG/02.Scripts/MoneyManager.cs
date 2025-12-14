@@ -4,6 +4,10 @@ using UnityEngine;
 public class MoneyManager : MonoSingleton<MoneyManager>
 {
     [SerializeField] private int _money = 0;
+
+    private float _moneyMultiplier = 1f;
+    public void AddMultiplier(float value) => _moneyMultiplier += value;
+    public void RemoveMultiplier(float value) => _moneyMultiplier -= value;
     
     public Action<int, int> OnMoneyChanged;
 
@@ -34,7 +38,10 @@ public class MoneyManager : MonoSingleton<MoneyManager>
     public void AddMoney(int amount)
     {
         int old = Money;
-        _money += amount;
+        
+        int finalAmount = Mathf.RoundToInt(amount * _moneyMultiplier);
+        _money += finalAmount;
+        
         OnMoneyChanged?.Invoke(old, _money);
     }
 
