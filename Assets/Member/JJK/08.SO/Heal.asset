@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: HealSkill
   <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: fe22e8c7e539b9f45afbd5cd6e7cf239, type: 3}
-  <Icon>k__BackingField: {fileID: -2413806693520163455, guid: 3bea975d9d6f37f45813c7d941e2dbc6, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: be843383f71207941b31657b459f3842, type: 3}
   <Description>k__BackingField: "\uD2B8\uB7ED\uC758 \uCCB4\uB825\uC774 5\uCD08\uC5D0
     \uAC78\uCCD0 \uD68C\uBCF5\uB429\uB2C8\uB2E4."
   <Value>k__BackingField: 5

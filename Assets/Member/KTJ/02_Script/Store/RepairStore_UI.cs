@@ -109,7 +109,15 @@ public class RepairStore_UI : Store_UI
                 _truckSlots.Add(btn.gameObject);
                 btn.onClick.AddListener(() =>
                 {
-                    TruckManager.Instance.AddTruck();
+                    if (MoneyManager.Instance.SpendMoney(30))
+                    {
+                        TruckManager.Instance.AddTruck();
+                        ToolTipManager.Instance.ShowToolTip("트럭이 한칸 늘어났습니다.");
+                    }
+                    else
+                    {
+                        ToolTipManager.Instance.ShowToolTip("30원이 필요합니다.");
+                    }
                     SetTruckUI();
                 });
                 continue;
