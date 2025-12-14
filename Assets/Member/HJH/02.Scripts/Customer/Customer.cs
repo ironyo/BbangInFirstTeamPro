@@ -1,8 +1,9 @@
 using DG.Tweening;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
-using System.Collections.Generic;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -83,6 +84,9 @@ public class Customer : MonoBehaviour
     public float cm_value;
 
     private float difficultyMultiplier;
+    public Transform CurrentRunTarget { get; private set; }
+    public Transform CurrentHitTarget { get; private set; }
+
 
     private void Awake()
     {
@@ -100,11 +104,14 @@ public class Customer : MonoBehaviour
     }
     private void OnEnable()
     {
+        runTargets = CustomerSpawner.Instance.runTargets;
+        hitTagets = CustomerSpawner.Instance.heatTargets;
+
         InitializeStats();
 
         All.Add(this);
-        runTargets = CustomerSpawner.Instance.runTargets;
-        hitTagets = CustomerSpawner.Instance.heatTargets;
+
+        PickRandomRunTarget();
     }
 
     private void Start()
@@ -115,6 +122,7 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
+
         UpdateHPUI();
         currentState?.Update();
         IsAttackTargetInRange();
@@ -130,6 +138,33 @@ public class Customer : MonoBehaviour
             ChangeState(ClearState);
         }*/
     }
+    private Transform[] FilterByParity(Transform[] source, int spawnIndex)
+    {
+        if (source == null || source.Length == 0)
+            return Array.Empty<Transform>();
+
+        List<Transform> result = new List<Transform>();
+
+        for (int i = 0; i < source.Length; i++)
+        {
+            if (i % 2 == spawnIndex % 2)
+                result.Add(source[i]);
+        }
+
+        return result.ToArray();
+    }
+    public void InitializeTargets(
+    Transform[] allRunTargets,
+    Transform[] allHitTargets,
+    int spawnIndex
+)
+    {
+        runTargets = FilterByParity(allRunTargets, spawnIndex);
+        hitTagets = FilterByParity(allHitTargets, spawnIndex);
+
+        PickRandomRunTarget();
+    }
+
     private void InitializeStats()
     {
         maxHp = Mathf.RoundToInt(customerType.customerHP * difficultyMultiplier);
@@ -143,6 +178,27 @@ public class Customer : MonoBehaviour
         healthParent.transform.localScale = new Vector3(ratio, 1f, 1f);
         hpText.text = $"{customerHP}/{maxHp}";
     }
+    public void PickRandomRunTarget()
+    {
+        if(runTargets == null || runTargets.Length == 0)
+        {
+            Debug.LogWarning("RunTargets 없음");
+            return;
+        }
+
+        if (hitTagets == null || hitTagets.Length == 0)
+        {
+            Debug.LogWarning("hitTargets 없음");
+            return;
+        }
+
+        CurrentRunTarget = runTargets[UnityEngine.Random.Range(0, runTargets.Length)];
+        CurrentHitTarget = hitTagets[UnityEngine.Random.Range(0, hitTagets.Length)];
+
+        Debug.Log("CurrentRunTarget: " + CurrentRunTarget.name);
+        Debug.Log("CurrentHitTarget: " + CurrentHitTarget.name);
+    }
+
     public void ChangeState(IEnemyState newState)
     {
         if (isCleared) return;
@@ -259,7 +315,7 @@ public class Customer : MonoBehaviour
         Transform closest = null;
         float minDist = Mathf.Infinity;
 
-        foreach (var t in runTargets)
+        foreach (var t in hitTagets)
         {
             float dist = Vector2.Distance(transform.position, t.position);
 

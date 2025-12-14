@@ -72,7 +72,7 @@ public class AttackState : IEnemyState
                     animator.SetBool("isAttack", false);
                     return;
                 }
-
+                LookAtClosestTarget();
                 animator.SetBool("isAttack", true);
                 await UniTask.Delay(
                     TimeSpan.FromSeconds(attackInterval),
@@ -99,7 +99,7 @@ public class AttackState : IEnemyState
         Transform closest = null;
         float minDist = Mathf.Infinity;
 
-        foreach (var t in customer.runTargets)
+        foreach (var t in customer.hitTagets)
         {
             float dist = Vector2.Distance(customer.transform.position, t.position);
             if (dist < minDist)
@@ -117,13 +117,13 @@ public class AttackState : IEnemyState
         Transform target = GetClosestTarget();
         if (target == null) return;
 
-        Vector2 dir = target.position - avatar.position;
+        Vector3 dir = target.position - avatar.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (dir.y <= 0)
-            angle += 180f;
+        if (dir.y < 0)
+            angle += target.rotation.z - avatar.rotation.z;
         else
-            angle -= 180f;
+            angle -= target.rotation.z - avatar.rotation.z;
 
         Quaternion targetRot = Quaternion.Euler(0, 0, angle);
         avatar.rotation = targetRot;
