@@ -31,10 +31,11 @@ public class CloseState : IEnemyState
         moveSpeed = customer.customerSpeed - 2;
         maxSpeed = customer.customerSpeed * 0.4f;
 
-        target = GetClosestTarget();
+        target = customer.CurrentHitTarget;
+        if (target == null) return;
 
-        if (target != null)
-            currentDir = (target.position - customer.transform.position).normalized;
+        currentDir = (target.position - customer.transform.position).normalized;
+        rb.linearVelocity = currentDir * moveSpeed;
 
         random = Random.Range(-1.25f, 1.25f);
     }
