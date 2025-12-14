@@ -44,7 +44,10 @@ public class CameraMoverManager : MonoSingleton<CameraMoverManager>
 
         if (Mathf.Abs(input) > 0)
         {
-            if (_canMove == false) return;
+            if (_canMove == false)
+            {
+                return;
+            }
 
             _currentTime += Time.deltaTime;
             if (_currentTime >= _time)

@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoSingleton<GameOverUI>
 {
@@ -50,6 +51,6 @@ public class GameOverUI : MonoSingleton<GameOverUI>
 
     public void Retry()
     {
-        
+        SceneManager.LoadScene(1);
     }
 }
