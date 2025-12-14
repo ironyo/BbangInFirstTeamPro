@@ -315,7 +315,7 @@ public class Customer : MonoBehaviour
         Transform closest = null;
         float minDist = Mathf.Infinity;
 
-        foreach (var t in runTargets)
+        foreach (var t in hitTagets)
         {
             float dist = Vector2.Distance(transform.position, t.position);
 
