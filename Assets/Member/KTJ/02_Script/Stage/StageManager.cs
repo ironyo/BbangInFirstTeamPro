@@ -41,7 +41,7 @@ public class StageManager : MonoSingleton<StageManager>
     public void StartStage()
     {
         if (IsRunning) return;
-
+        BGMManager.Instance.MainSound();
         StartCoroutine(StartStageIEnum());
     }
 
@@ -68,6 +68,7 @@ public class StageManager : MonoSingleton<StageManager>
     {
         if (!IsRunning) return;
 
+        BGMManager.Instance.FightSound();
         IsRunning = false;
         ClearStage++;
 
