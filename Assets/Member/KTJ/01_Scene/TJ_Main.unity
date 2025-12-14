@@ -30863,6 +30863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1cce0e5df37bf4481e30a3d6819ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _turretSetSound: {fileID: 11400000, guid: 2bc7cad440bf610438037d7113c841d1, type: 2}
   _labelSpawnPos: {fileID: 401701812}
   _unlockPref: {fileID: 3365597665506616726, guid: aa3d7976c391a5642a7691f80668c18e, type: 3}
   _turrets:
