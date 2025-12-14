@@ -110,7 +110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 840d63f46ee279542922d6b4a9ab0189, type: 3}
   m_Color: {r: 0.8113208, g: 0.66139024, b: 0.36585975, a: 1}
   m_FlipX: 0
@@ -201,6 +201,6 @@ MonoBehaviour:
   _moveParticlePref: {fileID: 1877947173164280765, guid: 5d87b17b51b7a634581400c0de38a018, type: 3}
   _boomParticlePref: {fileID: 8138828134208471545, guid: 1b0b4dad4976d9f478f5a3d409266c2c, type: 3}
   _particlePoint: {fileID: 7548753495308494405}
+  soundData: {fileID: 11400000, guid: f0b6e737a60a1ff449e13d38eef40c9c, type: 2}
   _explosionPref: {fileID: 6349553283840770036, guid: e5dbae5091afb734c8802efb8f8356c5, type: 3}
   _explosionSize: {x: 3, y: 3, z: 3}
-  soundData: {fileID: 11400000, guid: f0b6e737a60a1ff449e13d38eef40c9c, type: 2}

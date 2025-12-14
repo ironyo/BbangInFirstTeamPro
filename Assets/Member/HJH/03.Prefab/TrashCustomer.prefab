@@ -73,7 +73,7 @@ MonoBehaviour:
   eatMotion: {fileID: 8449508995756778761}
   customerTypeList: {fileID: 11400000, guid: cd6d6a39a5c49e445b92903c34a76ff6, type: 2}
   _animator: {fileID: 3454013481859027561}
-  customerType: {fileID: 11400000, guid: 076098317ae51104991b7641dd8ddbfe, type: 2}
+  customerType: {fileID: 11400000, guid: 89305a3ab53130d4f882aaf29a3699ff, type: 2}
   customerHP: 0
   damage: 0
   sr: {fileID: 3741644935010643690}
