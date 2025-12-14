@@ -69,9 +69,6 @@ public class AttackState : IEnemyState
                     cancellationToken: token
                 );
 
-                // 角力 单固瘤 贸府
-                customer.InflictDamage();
-
                 animator.SetBool("isAttack", false);
                 avatar.rotation = Quaternion.identity;
 
