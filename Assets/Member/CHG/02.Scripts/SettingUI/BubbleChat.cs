@@ -48,7 +48,6 @@ public class BubbleChat : MonoBehaviour, IRecycleObject
               .OnComplete(() =>
               {
                   IsMoving = false;
-                  Debug.Log("aaa");
                   _returnRoutine = StartCoroutine(TextReturn());
               });
     }
@@ -56,11 +55,10 @@ public class BubbleChat : MonoBehaviour, IRecycleObject
     {
         RectTransform bgRect = _bg.rectTransform;
 
-        // ½ÇÁ¦ ·»´õµÈ ÅØ½ºÆ® Æø
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ® ï¿½ï¿½
         float textWidth = _tmp.textBounds.size.x;
 
         float targetWidth = textWidth + _bgHorizontalPadding;
-        Debug.Log(targetWidth);
         
 
         bgRect.SetSizeWithCurrentAnchors(
@@ -85,11 +83,8 @@ public class BubbleChat : MonoBehaviour, IRecycleObject
 
     private IEnumerator TextReturn()
     {
-        Debug.Log("bba");
-        Debug.Log(_liveTime);
         yield return new WaitForSeconds(_liveTime);
-
-        Debug.Log(IsMoving);
+        
         IsMoving = false;
         yield return new WaitUntil(() => !IsMoving);
 

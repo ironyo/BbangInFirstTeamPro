@@ -22,26 +22,36 @@ public class InventoryUI : MonoSingleton<InventoryUI>
     
     private void CreateSlots()
     {
-        int slotCount = InventoryManager.Instance.Items.Length;
+        int slotCount = InventoryManager.Instance.items.Length;
         _slots = new InventorySlotUI[slotCount];
 
         for (int i = 0; i < slotCount; i++)
         {
             GameObject obj = Instantiate(slotPrefab, slotParent);
             _slots[i] = obj.GetComponent<InventorySlotUI>();
+            _slots[i].SetSlotIndex(i);
         }
     }
     
     public void Refresh()
     {
-        var items = InventoryManager.Instance.Items;
+        var items = InventoryManager.Instance.items;
 
         for (int i = 0; i < _slots.Length; i++)
         {
+            if (_slots[i].CurrentItem == items[i])
+                continue;
+            
             if (items[i] != null)
+            {
                 _slots[i].Setup(items[i]);
+                Debug.Log("SetUp");
+            }
             else
-                _slots[i].Clear(); 
+            {
+                _slots[i].ClearUIOnly();
+                Debug.Log("Clear");
+            }
         }
     }
 }

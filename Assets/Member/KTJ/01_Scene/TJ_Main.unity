@@ -21659,6 +21659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySize: 3
+  items: []
 --- !u!4 &1332850161
 Transform:
   m_ObjectHideFlags: 0
