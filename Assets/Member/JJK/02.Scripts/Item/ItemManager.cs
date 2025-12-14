@@ -32,7 +32,7 @@ public class ItemManager : MonoSingleton<ItemManager>
     public void ItemDrop(Transform parent)
     {
         ItemDataSO data = itemDataList.list[Random.Range(0, itemDataList.list.Count)];
-        GameObject obj = Instantiate(data.Prefab, parent.position, Quaternion.identity);
+        GameObject obj = Instantiate(data.DropPrefab, parent.position, Quaternion.identity);
         ItemDrop dropped = obj.GetComponent<ItemDrop>();
         
         Vector3 startPos = obj.transform.position;
