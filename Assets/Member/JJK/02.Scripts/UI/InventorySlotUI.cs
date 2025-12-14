@@ -21,8 +21,8 @@ public class InventorySlotUI : MonoBehaviour
     public void Setup(ItemDataSO data)
     {
         Clear();
-        icon.enabled = true;
         icon.sprite = data.Icon;
+        icon.enabled = true;
         backGroundIcon.enabled = true;
         backGroundIcon.sprite = data.Icon;
         _itemData = data;
@@ -44,9 +44,9 @@ public class InventorySlotUI : MonoBehaviour
 
     public void Clear()
     {
+        icon.sprite = null;
         icon.enabled = false;
         backGroundIcon.enabled = false;
-        icon.sprite = null;
 
         if (_skillInstance != null)
             Destroy(_skillInstance);
