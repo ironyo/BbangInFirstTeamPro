@@ -22,6 +22,7 @@ public class ESCVolumeSetting : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
 
     [SerializeField] private RectTransform _uiContents;
+    [SerializeField] private GameObject SettingUI;
     private Tween _fadeTween;
     enum SettingType
     {
@@ -33,6 +34,7 @@ public class ESCVolumeSetting : MonoBehaviour
 
     private void Start()
     {
+        UIHide();
         SetVolume();
         escButton.SetActive(true);
     }
@@ -83,7 +85,7 @@ public class ESCVolumeSetting : MonoBehaviour
         _fadeTween = settingPanel.DOFade(0, 0.3f).SetUpdate(true);
         settingPanel.raycastTarget = false;
 
-        _uiContents.DOAnchorPos(new Vector3(0, 1200, 0), 0.3f).SetUpdate(true);
+        _uiContents.DOAnchorPos(new Vector3(0, 1200, 0), 0.3f).SetUpdate(true).OnComplete(() => SettingUI.SetActive(false));
         Time.timeScale = 1f;
     }
 
@@ -94,6 +96,7 @@ public class ESCVolumeSetting : MonoBehaviour
 
         _fadeTween.Kill();
         _fadeTween = settingPanel.DOFade(0.7f, 0.3f).SetUpdate(true);
+        SettingUI.SetActive(true);
         _uiContents.DOAnchorPos(new Vector3(0, 0, 0), 0.3f).SetUpdate(true);
         Time.timeScale = 0f;
     }
