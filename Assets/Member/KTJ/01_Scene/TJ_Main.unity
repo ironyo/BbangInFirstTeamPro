@@ -27878,14 +27878,11 @@ MonoBehaviour:
   _canvas: {fileID: 834698887}
   _upvalue: 89
   strings:
-  - "\uC7AC\uB8CC \uC74C\uC2DD\uC744 \uB2E4 \uBAA8\uC73C\uBA74 <shake a=0.1>\uCD5C\uC885
-    \uBB34\uAE30</shake>\uAC00 \uB098\uC635\uB2C8\uB2E4!"
+  - "<shake a=0.1>\uC74C\uC2DD</shake>\uB9DB\uC774 \uC5B4\uB5A0\uB0D0!!"
   - "\uCD1D <b><incr a=0.2>20\uB77C\uC6B4\uB4DC</incr></b>\uB97C \uBC84\uD2F0\uBA74...."
-  - "<color=red><wiggle a=0.1>\uB6B1\uB6B1\uD55C \uC801<color=black></wiggle>\uC740
-    \uCCB4\uB825\uC774 \uB192\uC2B5\uB2C8\uB2E4!"
+  - "\uBC30\uACE0\uD508 \uC0AC\uB78C\uB4E4\uC774 <color=red><wiggle a=0.1>\uBAB0\uB824\uC628\uB2E4!<color=black></wiggle>"
   - "<b><wave a=0.1>\uC2A4\uD0AC</b></wave>\uC744 \uC0AC\uC6A9\uD574 \uC704\uAE30\uB97C
     \uB118\uAE38 \uC218 \uC788\uC2B5\uB2C8\uB2E4!"
-  - "<rainb>2025 \uC218\uACE0\uD588\uC2B5\uB2C8\uB2E4!>"
   _reloadTime: 2.71
 --- !u!114 &1699785037
 MonoBehaviour:
