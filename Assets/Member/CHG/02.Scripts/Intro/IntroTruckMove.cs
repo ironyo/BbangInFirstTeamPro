@@ -29,7 +29,6 @@ namespace Assets.Member.CHG._02.Scripts.Intro
             _onStartSceneReady.RaiseEvent();
             seq.Append(_truck.transform.DOMove(_backPos.position, _backSpeed));
             seq.Append(_truck.transform.DOMove(_endPos.position, _endSpeed));
-            //seq.AppendCallback(() => SceneLoadManager.Instance.SceneMove(1));
             seq.InsertCallback(1.4f, () =>
             {
                 SceneLoadManager.Instance.SceneMove(1);
