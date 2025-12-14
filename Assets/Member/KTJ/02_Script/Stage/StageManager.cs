@@ -32,6 +32,14 @@ public class StageManager : MonoSingleton<StageManager>
         StartStage();
     }
 
+    private void Update()
+    {
+        if(ClearStage >= 20)
+        {
+            Debug.Log("ƒÚÀ½");
+        }
+    }
+
     public void StartStage()
     {
         if (IsRunning) return;
