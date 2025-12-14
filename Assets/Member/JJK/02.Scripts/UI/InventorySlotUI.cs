@@ -22,5 +22,11 @@ public class InventorySlotUI : MonoBehaviour
     public void Clear()
     {
         icon.enabled = false;
+        icon.sprite = null;
+
+        if (_skillInstance != null)
+            Destroy(_skillInstance);
+
+        _skillInstance = null;
     }
 }

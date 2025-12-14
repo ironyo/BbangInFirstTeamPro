@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Member/KTJ/01_Scene/TJ_Main.unity
     guid: efe01f2d9ab14c84c9a9b615bd75e567
+  - enabled: 1
+    path: Assets/Member/CHG/01.Scenes/C_Outro.unity
+    guid: 6c6362b04d2c5fc4f9b661ad435b3a72
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02

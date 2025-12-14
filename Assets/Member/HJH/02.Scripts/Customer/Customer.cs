@@ -16,6 +16,7 @@ public interface IEnemyState
 public class Customer : MonoBehaviour
 {
     public event Action OnClearRequested;
+    [SerializeField] private EventChannelSO _onGameOver;
 
     [Header("Gizmo Range")]
     [SerializeField] private Vector2 closeRange;
@@ -69,7 +70,6 @@ public class Customer : MonoBehaviour
 
     public float FinalSpeed =>
         customerType.customerSpeed
-        * difficultyMultiplier
         * GlobalEnemyModifier.Instance.GlobalSpeedMultiplier
         * debuff.SpeedMultiplier;
 
@@ -99,12 +99,17 @@ public class Customer : MonoBehaviour
 
     private void OnDestroy()
     {
+        _onGameOver.OnEventRaised -= HandleClearRequested;
+        OnClearRequested -= HandleClearRequested;
         debuff.OnChanged -= OnStatChanged;
         GlobalEnemyModifier.Instance.OnChanged -= OnStatChanged;
     }
 
     private void OnEnable()
     {
+        OnClearRequested += HandleClearRequested;
+        _onGameOver.OnEventRaised += HandleClearRequested;
+
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTargets = CustomerSpawner.Instance.heatTargets;
 
@@ -250,5 +255,13 @@ public class Customer : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange.x);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, closeRange.x);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("DeadZone"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

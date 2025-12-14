@@ -3,15 +3,19 @@ using UnityEngine;
 
 public abstract class SlotSkillBase : MonoBehaviour
 {
-    protected InventorySlotUI slot;
+    protected InventorySlotUI _slot;
 
     public void BindSlot(InventorySlotUI slot)
     {
-        this.slot = slot;
+        _slot = slot;
     }
 
     private void OnDisable()
     {
-        slot.Clear();
+        if (_slot != null)
+        {
+            _slot.Clear();
+            Debug.Log("clear");
+        }
     }
 }

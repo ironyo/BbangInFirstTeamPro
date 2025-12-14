@@ -27,7 +27,6 @@ public class DeadState : IEnemyState
         customer.tag = "DeadCustomer";
         customer.gameObject.layer =
             LayerMask.NameToLayer("DeadCustomer");
-
         MoneyManager.Instance.AddMoney(rewardMoney);
     }
 

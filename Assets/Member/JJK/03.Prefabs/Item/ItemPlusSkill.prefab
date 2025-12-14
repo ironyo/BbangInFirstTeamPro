@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4132952766468128202}
   - component: {fileID: 9045202890466318408}
   - component: {fileID: 8367302344839776860}
-  - component: {fileID: 2913556322640030882}
+  - component: {fileID: 3871728457500548456}
   m_Layer: 0
-  m_Name: EnemySlowItem
+  m_Name: ItemPlusSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: 3bea975d9d6f37f45813c7d941e2dbc6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ffcb4edc99d98ed4a963971475e3f388, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e670993c5278942ac9162da30db7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2913556322640030882
+--- !u!114 &3871728457500548456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1401912080541144655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32a6160780f7256438b5014770896c65, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ad0bc5b4a7eaf04382c4fae38cf6269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 3f90f6eef6e1b3e4fbb12305cb5dafe2, type: 2}
+  _data: {fileID: 11400000, guid: 8e13a3c4ff06de74889af1372034aee2, type: 2}
