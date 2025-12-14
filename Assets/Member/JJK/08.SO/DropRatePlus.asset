@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: DropRatePlus
   m_EditorClassIdentifier: 
   <Name>k__BackingField: ItemPlusSkill
-  <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: e42b0760f770b814a92580929835541c, type: 3}
-  <Icon>k__BackingField: {fileID: -2413806693520163455, guid: 3bea975d9d6f37f45813c7d941e2dbc6, type: 3}
+  <DropPrefab>k__BackingField: {fileID: 1401912080541144655, guid: eff3635800999d04bba4d247714913d6, type: 3}
+  <SkillPrefab>k__BackingField: {fileID: 1401912080541144655, guid: 6a79472b17accf847bc095f42586a50f, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: ffcb4edc99d98ed4a963971475e3f388, type: 3}
   <Description>k__BackingField: "\uC544\uC774\uD15C \uD68D\uB4DD \uD655\uB960\uC774
     \uC99D\uAC00\uD569\uB2C8\uB2E4."
   <Value>k__BackingField: 5
