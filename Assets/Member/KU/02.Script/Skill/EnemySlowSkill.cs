@@ -3,15 +3,9 @@ using UnityEngine;
 
 public class EnemySlowSkill : SlotSkillBase
 {
-    private Customer customer;
     private float _currentTime;
 
     [SerializeField] ItemDataSO _data;
-
-    private void OnEnable()
-    {
-        customer.OnSlowChanged += customer.HandleSlow;
-    }
 
     private void Start()
     {
@@ -34,10 +28,5 @@ public class EnemySlowSkill : SlotSkillBase
     private void TimeEnd()
     {
         Destroy(gameObject);
-    }
-
-    private void OnDisable()
-    {
-        customer.OnSlowChanged -= customer.HandleSlow;
     }
 }

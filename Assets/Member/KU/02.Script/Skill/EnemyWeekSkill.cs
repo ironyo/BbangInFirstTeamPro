@@ -4,15 +4,28 @@ public class EnemyWeekSkill : SlotSkillBase
 {
     [SerializeField] ItemDataSO _data;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private float _currentTime;
+
+    private void Start()
     {
-        
+        foreach (var item in Customer.All)
+        {
+            item.SetSlow();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    private void Update()
     {
-        
+        _currentTime += Time.deltaTime;
+        if (_currentTime >= _data.Duration)
+        {
+            TimeEnd();
+        }
+    }
+    private void TimeEnd()
+    {
+        Destroy(gameObject);
     }
 }
