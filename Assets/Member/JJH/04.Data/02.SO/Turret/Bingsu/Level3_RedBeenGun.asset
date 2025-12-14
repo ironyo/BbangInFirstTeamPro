@@ -26,4 +26,4 @@ MonoBehaviour:
   <SpreadAngle>k__BackingField: 20
   <MultiFire>k__BackingField: 1
   <ThroughFire>k__BackingField: 0
-  damage: 4
+  damage: 1
