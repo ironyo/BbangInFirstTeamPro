@@ -15772,8 +15772,8 @@ MonoBehaviour:
   - "\uC640\uB530\uB9C8\uC744"
   - "\uBFE1\uBFE1\uB9C8\uC744"
   - "\uD0DC\uC900\uB9C8\uC744"
-  minLength: 2
-  maxLength: 5
+  minLength: 20
+  maxLength: 50
 --- !u!4 &1062537615
 Transform:
   m_ObjectHideFlags: 0
@@ -26692,6 +26692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _generator: {fileID: 1062537614}
   _maxStage: 20
+  _canvas: {fileID: 834698886}
   _onRoadFinished: {fileID: 11400000, guid: 8ce04edf61fcfec408fb7d70a726dd4d, type: 2}
   _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
   _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}

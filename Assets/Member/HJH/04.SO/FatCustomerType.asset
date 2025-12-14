@@ -15,6 +15,6 @@ MonoBehaviour:
   customerCategory: 1
   customerDamage: 3
   attackInterval: 0.6
-  customerHP: 30
+  customerHP: 20
   customerSpeed: 6
   money: 10
