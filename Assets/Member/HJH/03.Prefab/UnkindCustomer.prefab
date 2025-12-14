@@ -59,7 +59,7 @@ MonoBehaviour:
   runTargets:
   - {fileID: 0}
   - {fileID: 0}
-  hitTagets: []
+  hitTargets: []
   truckMask:
     serializedVersion: 2
     m_Bits: 64
@@ -68,17 +68,14 @@ MonoBehaviour:
     m_Bits: 2048
   hpText: {fileID: 2264482578012137635}
   damageText: {fileID: 6969584323715818152}
-  deadMotion: {fileID: 5464474911314246173}
-  eatMotion: {fileID: 6590219853500137364}
-  customerTypeList: {fileID: 11400000, guid: cd6d6a39a5c49e445b92903c34a76ff6, type: 2}
-  _animator: {fileID: 3454013481859027561}
-  customerType: {fileID: 11400000, guid: dcb14877dd4aa534fa86762463cbb992, type: 2}
-  customerHP: 0
-  damage: 0
-  sr: {fileID: 3741644935010643690}
-  avatar: {fileID: 7517697709507148184}
   healthParent: {fileID: 334012062643981363}
-  cm_value: 0
+  sr: {fileID: 3741644935010643690}
+  eatMotion: {fileID: 6590219853500137364}
+  _nurfParticle: {fileID: 5560586333515141895, guid: 2b8416baef392f14f9aa97600d148272, type: 3}
+  customerType: {fileID: 11400000, guid: dcb14877dd4aa534fa86762463cbb992, type: 2}
+  debuff: {fileID: 0}
+  animator: {fileID: 0}
+  avatar: {fileID: 7517697709507148184}
 --- !u!114 &4750885722810583720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,11 +452,6 @@ PrefabInstance:
 --- !u!4 &333476870910146364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5125919489444726959, guid: c52c628a0acfc624fb076002b9312698, type: 3}
-  m_PrefabInstance: {fileID: 4864542822553010067}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &5464474911314246173 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 601200960615335310, guid: c52c628a0acfc624fb076002b9312698, type: 3}
   m_PrefabInstance: {fileID: 4864542822553010067}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6173401335038830627
