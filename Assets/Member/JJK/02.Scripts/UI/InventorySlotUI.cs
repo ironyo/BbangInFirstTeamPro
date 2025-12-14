@@ -15,8 +15,7 @@ public class InventorySlotUI : MonoBehaviour
     private void Awake()
     {
         _mouseEnterExit = GetComponent<MouseEnterExit>();
-        //_mouseEnterExit.OnMouseEnter += () => ToolTipManager.Instance.ShowToolTip(_itemData.Description);
-        //_mouseEnterExit.OnMouseExit += () => ToolTipManager.Instance.RemoveActive();
+        _mouseEnterExit.OnMouseEnter += () => ToolTipManager.Instance.ShowToolTip(_itemData.Description);
     }
 
     public void Setup(ItemDataSO data)
