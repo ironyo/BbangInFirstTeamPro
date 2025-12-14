@@ -19,18 +19,6 @@ public abstract class Person : MonoBehaviour, IPointerEnterHandler, IPointerExit
         nameTxt.text = personName;
     }
 
-    //private void Update()
-    //{
-    //    if (_isClicked == true)
-    //    {
-    //        if (Input.GetMouseButtonDown(0))
-    //        {
-    //            if (StageManager.Instance.IsRunning) return;
-    //            UnClicked();
-    //        }
-    //    }
-    //}
-
     public virtual void Clicked()
     {
         CameraEffectManager.Instance.CameraMoveTarget(gameObject);
@@ -43,7 +31,8 @@ public abstract class Person : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public virtual void UnClicked()
     {
         CameraEffectManager.Instance.CameraMoveTarget(CameraEffectManager.Instance.CameraTarget.gameObject);
-        CameraEffectManager.Instance.CameraZoom(5f, 0.1f);
+        //CameraEffectManager.Instance.CameraZoom(5f, 0.1f);
+        Debug.Log("Ä«¸Þ¶óÁÜ!!!!!!!!!!! => 5");
         _clickedUI.SetActive(false);
 
         _isClicked = false;
