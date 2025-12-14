@@ -169,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -296,4 +296,4 @@ MonoBehaviour:
   _tmp: {fileID: 3071241928811570450}
   _bg: {fileID: 28926047175690203}
   _liveTime: 2.11
-  _bgHorizontalPadding: -321.2
+  _bgHorizontalPadding: -129
