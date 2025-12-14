@@ -24,6 +24,11 @@ public class InventoryManager : MonoSingleton<InventoryManager>
         }
         return -1;
     }
+    
+    public bool IsFull()
+    {
+        return GetFirstEmptySlot() == -1;
+    }
 
     public void AddItemToSlot(ItemDataSO data, int slotIndex)
     {
