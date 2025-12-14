@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Member.CHG._02.Scripts.Intro
 {
-    public class IntroManager : MonoSingleton<IntroManager>
+    public class IntroTruckMove : MonoBehaviour
     {
         private StageData _current;
         private StageData _previous;
@@ -13,39 +13,27 @@ namespace Assets.Member.CHG._02.Scripts.Intro
         [SerializeField] private Transform _endPos;
         [SerializeField] private float _backSpeed;
         [SerializeField] private float _endSpeed;
-        private FadeOut _fadeOut;
 
         [Header("Event")]
         [SerializeField] private EventChannelSO _onStartSceneReady;
-        private void Awake()
-        {
-            base.Awake();
-        }
 
         private void Start()
         {
             CameraEffectManager.Instance.CameraZoom(7, 1f);
             CameraEffectManager.Instance.CameraMoveTarget(CameraEffectManager.Instance.CameraTarget.gameObject);
-            _fadeOut = GetComponent<FadeOut>();
         }
-
 
         public void StartGame()
         {
             Sequence seq = DOTween.Sequence();
-
-            //seq.Append(_introUI.HideUI());
+            _onStartSceneReady.RaiseEvent();
             seq.Append(_truck.transform.DOMove(_backPos.position, _backSpeed));
             seq.Append(_truck.transform.DOMove(_endPos.position, _endSpeed));
-            //seq.Append();
-            seq.Insert(1.4f, _fadeOut.FadeSet(0,1.4f));
-
-            _onStartSceneReady.RaiseEvent();
+            //seq.AppendCallback(() => SceneLoadManager.Instance.SceneMove(1));
+            seq.InsertCallback(1.4f, () =>
+            {
+                SceneLoadManager.Instance.SceneMove(1);
+            });
         }
-
-        //public StageData GetCurrent() => _current;
-        //public StageData GetPrevious() => _previous;
-
-
     }
 }
