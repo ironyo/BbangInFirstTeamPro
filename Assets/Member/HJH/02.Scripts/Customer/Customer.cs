@@ -128,8 +128,7 @@ public class Customer : MonoBehaviour
         UpdateHPUI();
         currentState?.Update();
 
-        if (Keyboard.current.pKey.wasPressedThisFrame)
-            TakeDamage(1);
+       
     }
 
     private void InitializeStats()
