@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888ed5e06f2d31449bd07dffbe3b4bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _burfParticle: {fileID: 2908349088131545457, guid: 2752ed529066b284384f0df451956a3c, type: 3}
   _data: {fileID: 11400000, guid: 96e8772f14610b24f911b2c8dba78968, type: 2}
   damageSo: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
   timeSo: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
