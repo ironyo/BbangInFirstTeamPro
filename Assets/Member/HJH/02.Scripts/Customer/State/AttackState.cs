@@ -72,7 +72,7 @@ public class AttackState : IEnemyState
                     animator.SetBool("isAttack", false);
                     return;
                 }
-
+                LookAtClosestTarget();
                 animator.SetBool("isAttack", true);
                 await UniTask.Delay(
                     TimeSpan.FromSeconds(attackInterval),
@@ -99,7 +99,7 @@ public class AttackState : IEnemyState
         Transform closest = null;
         float minDist = Mathf.Infinity;
 
-        foreach (var t in customer.runTargets)
+        foreach (var t in customer.hitTagets)
         {
             float dist = Vector2.Distance(customer.transform.position, t.position);
             if (dist < minDist)
