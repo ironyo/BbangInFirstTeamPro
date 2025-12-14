@@ -296,6 +296,4 @@ MonoBehaviour:
   _tmp: {fileID: 3071241928811570450}
   _bg: {fileID: 28926047175690203}
   _liveTime: 2.11
-  _bgHorizontalPadding: 20.5
-  _minBgWidth: 0.3
-  _maxBgWidth: 4445.6
+  _bgHorizontalPadding: -321.2
