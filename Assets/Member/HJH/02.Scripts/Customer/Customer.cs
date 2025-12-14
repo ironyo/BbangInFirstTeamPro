@@ -16,6 +16,7 @@ public interface IEnemyState
 public class Customer : MonoBehaviour
 {
     public event Action OnClearRequested;
+    [SerializeField] private EventChannelSO _onGameOver;
 
     [Header("Gizmo Range")]
     [SerializeField] private Vector2 closeRange;
@@ -98,6 +99,7 @@ public class Customer : MonoBehaviour
 
     private void OnDestroy()
     {
+        _onGameOver.OnEventRaised -= HandleClearRequested;
         OnClearRequested -= HandleClearRequested;
         debuff.OnChanged -= OnStatChanged;
         GlobalEnemyModifier.Instance.OnChanged -= OnStatChanged;
@@ -106,6 +108,7 @@ public class Customer : MonoBehaviour
     private void OnEnable()
     {
         OnClearRequested += HandleClearRequested;
+        _onGameOver.OnEventRaised += HandleClearRequested;
 
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTargets = CustomerSpawner.Instance.heatTargets;

@@ -15,5 +15,11 @@ public class StageChannelInt : ScriptableObject
         OnEventRaised?.Invoke(stageNum);
     }
 
+    public void ResetStage()
+    {
+        stageNum = 0;
+        OnEventRaised?.Invoke(stageNum);
+    }
+
     public int CurrentStage => stageNum;
 }
