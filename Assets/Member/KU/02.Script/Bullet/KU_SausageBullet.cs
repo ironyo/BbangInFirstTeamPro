@@ -22,7 +22,6 @@ public class KU_SausageBullet : KU_Bullet
             {
                 if (enemy != targetEnemy && _startCount == _bounceCount && targetEnemy != null) return;
 
-                StartCoroutine(LifeTime());
                 SoundManager.Instance.PlaySound(soundData);
                 enemy.TakeDamage(damage);
                 _bounceCount--;
