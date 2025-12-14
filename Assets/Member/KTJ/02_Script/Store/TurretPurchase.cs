@@ -125,7 +125,7 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
         _removeLabels.RaiseEvent();
 
         TurretGroup group = _turrets[_currentPage];
-        _turretName.text = group.TurretGroupName;
+        _turretName.text = group.TurretGroupName + "[클릭]";
 
         int curLevel = group.GetCurrrentLevel();
         if (_unlockPrefClone != null) Destroy(_unlockPrefClone);
