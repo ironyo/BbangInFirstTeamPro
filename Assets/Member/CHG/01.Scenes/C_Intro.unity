@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1984554803}
-  _onGameOver: {fileID: 0}
+  _onGameOver: {fileID: 11400000, guid: 36a10d9aadc5a334093b5a426efedd6a, type: 2}
   CameraTarget: {fileID: 232257536}
 --- !u!1 &388168438
 GameObject:
