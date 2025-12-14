@@ -12,8 +12,8 @@ public class BubbleChat : MonoBehaviour, IRecycleObject
     [SerializeField] private Image _bg;
     [SerializeField] private float _liveTime = 2f;
     [SerializeField] private float _bgHorizontalPadding = 40f;
-    [SerializeField] private float _minBgWidth = 120f; 
-    [SerializeField] private float _maxBgWidth = 600f; 
+    //[SerializeField] private float _minBgWidth = 120f;
+    //[SerializeField] private float _maxBgWidth = 600f;
     private RectTransform _rect;
     private Vector2 _originPos;
     private Coroutine _returnRoutine;
@@ -43,25 +43,30 @@ public class BubbleChat : MonoBehaviour, IRecycleObject
 
         IsMoving = true;
 
-       _tween = _rect.DOAnchorPosX(endPos.position.x, 1.3f)
-             .SetEase(Ease.OutBack)
-             .OnComplete(() =>
-             {
-                 IsMoving = false;
-                 Debug.Log("aaa");
-                 _returnRoutine = StartCoroutine(TextReturn());
-             });
+        _tween = _rect.DOAnchorPosX(endPos.position.x, 1.3f)
+              .SetEase(Ease.OutBack)
+              .OnComplete(() =>
+              {
+                  IsMoving = false;
+                  Debug.Log("aaa");
+                  _returnRoutine = StartCoroutine(TextReturn());
+              });
     }
     private void ResizeBackground()
     {
         RectTransform bgRect = _bg.rectTransform;
 
-        float targetWidth = _tmp.preferredWidth + _bgHorizontalPadding;
+        // 실제 렌더된 텍스트 폭
+        float textWidth = _tmp.textBounds.size.x;
 
-        // 최소 / 최대 제한 (선택)
-        targetWidth = Mathf.Clamp(targetWidth, _minBgWidth, _maxBgWidth);
+        float targetWidth = textWidth + _bgHorizontalPadding;
+        Debug.Log(targetWidth);
+        
 
-        bgRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth);
+        bgRect.SetSizeWithCurrentAnchors(
+            RectTransform.Axis.Horizontal,
+            targetWidth
+            );
     }
     public void MoveUp(float amount)
     {
@@ -71,7 +76,7 @@ public class BubbleChat : MonoBehaviour, IRecycleObject
 
         IsMoving = true;
 
-        Vector2 target = new Vector2(_rect.position.x,_rect.position.y) + Vector2.up * amount;
+        Vector2 target = new Vector2(_rect.position.x, _rect.position.y) + Vector2.up * amount;
 
         _rect.DOAnchorPos(target, 0.3f)
              .SetEase(Ease.OutQuad)
