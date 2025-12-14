@@ -32,7 +32,7 @@ public class MoneyManager : MonoSingleton<MoneyManager>
 
     private void Start()
     {
-        AddMoney(1000);
+        AddMoney(60);
     }
 
     public void AddMoney(int amount)

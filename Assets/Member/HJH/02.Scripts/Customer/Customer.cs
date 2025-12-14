@@ -205,7 +205,10 @@ public class Customer : MonoBehaviour
         StartCoroutine(HitColorEffect());
 
         if (CurrentHP <= 0)
+        {
             ChangeState(DeadState);
+            ItemManager.Instance.TryItemDrop(gameObject.transform);
+        }
     }
 
     private IEnumerator HitColorEffect()
