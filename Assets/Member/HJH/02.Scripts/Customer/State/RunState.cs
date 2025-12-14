@@ -22,12 +22,12 @@ public class RunState : IEnemyState
     public void Enter()
     {
         animator.SetBool("OnWalk", true);
-        target = GetClosestTarget();
 
-        if (target != null)
-            currentDir = (target.position - customer.transform.position).normalized;
+        target = customer.CurrentRunTarget;
+        if (target == null) return;
 
-        rb.linearVelocity = currentDir.normalized * 10f;
+        currentDir = (target.position - customer.transform.position).normalized;
+        rb.linearVelocity = currentDir * moveSpeed;
     }
 
     public void Update()
