@@ -11,8 +11,8 @@ public class ItemManager : MonoSingleton<ItemManager>
     [SerializeField] private float dropDuration = 0.7f;
     
     private float _multiplier = 1f;
-    public void AddMultiplier(float value) => _multiplier += value;
-    public void RemoveMultiplier(float value) => _multiplier -= value;
+    public void AddMultiplier(float value) => _multiplier += value * 0.01f;
+    public void RemoveMultiplier(float value) => _multiplier -= value * 0.01f;
     
     public void TryItemDrop(Transform enemyPos)
     {
