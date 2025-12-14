@@ -117,15 +117,15 @@ public class AttackState : IEnemyState
         Transform target = GetClosestTarget();
         if (target == null) return;
 
-        Vector2 dir = target.position - avatar.position;
+        Vector3 dir = target.position - avatar.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
         if (dir.y < 0)
-            angle += 0;
+            angle += target.rotation.z - avatar.rotation.z;
         else
-            angle -= 180f;
+            angle -= target.rotation.z - avatar.rotation.z;
 
-        Quaternion targetRot = Quaternion.Euler(0, 0, 0);
+        Quaternion targetRot = Quaternion.Euler(0, 0, angle);
         avatar.rotation = targetRot;
     }
 
