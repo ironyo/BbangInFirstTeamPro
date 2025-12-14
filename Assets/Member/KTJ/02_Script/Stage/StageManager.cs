@@ -56,8 +56,6 @@ public class StageManager : MonoSingleton<StageManager>
 
         _onStageRoadStart.RaiseEvent(_current.RoadTotalLength);
         _setUIStage.RaiseEvent(_previous.Name, _current.Name);
-
-        CameraMoverManager.Instance.UnlockCamMove();
     }
 
     public void EndStage()
