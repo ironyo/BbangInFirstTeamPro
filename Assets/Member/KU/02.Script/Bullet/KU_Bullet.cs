@@ -36,10 +36,8 @@ public abstract class KU_Bullet : MonoBehaviour
     public virtual void Update()
     {
         transform.rotation *= Quaternion.Euler(rotationSpeed);
-        if (targetEnemy != null && _nowTargetSet)
-        {
-            StartCoroutine(LifeTime());
-        }
+        StartCoroutine(LifeTime());
+
     }
     public void BoomParticle()
     {

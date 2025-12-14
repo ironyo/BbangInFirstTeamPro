@@ -16,6 +16,8 @@ public class HealSkill : SlotSkillBase
 
     private void Start()
     {
+        if (InventoryManager.Instance.IsFull()) return;
+
         _secHeal = (int)_data.Value / (int)_data.Duration;
         StartCoroutine(HealCount());
 
