@@ -2664,7 +2664,7 @@ MonoBehaviour:
   sfxSlider: {fileID: 1767968091}
   audioMixer: {fileID: 24100000, guid: 24351b3dbdceaed4dbced9c2dc446075, type: 2}
   _uiContents: {fileID: 1027935108}
-  SettingUI: {fileID: 0}
+  SettingUI: {fileID: 208051699}
 --- !u!1 &632897781
 GameObject:
   m_ObjectHideFlags: 0
