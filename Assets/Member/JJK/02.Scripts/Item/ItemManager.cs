@@ -22,12 +22,6 @@ public class ItemManager : MonoSingleton<ItemManager>
         if (index < finalProbability)
             ItemDrop(enemyPos);
     }
-
-    private void Update()
-    {
-        if (Keyboard.current.rKey.wasPressedThisFrame)
-            ItemDrop(transform);
-    }
     
     public void ItemDrop(Transform parent)
     {
