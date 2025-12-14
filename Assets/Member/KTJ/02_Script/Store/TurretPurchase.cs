@@ -29,6 +29,7 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
             return TurretCurrentLevel;
         }
     }
+    [SerializeField] private SoundDataSO _turretSetSound;
 
     [Header("UI")]
     [SerializeField] private RectTransform _labelSpawnPos;
@@ -93,7 +94,6 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
 
         // 만약 돈이 부족하다면 -> return;
 
-        Debug.Log(turSO.TurretCost + "를 지불하고 " + turSO.TurretName + "을 구매함.");
         if (MoneyManager.Instance.SpendMoney(turSO.TurretCost) == false)
         {
             ToolTipManager.Instance.ShowToolTip("잔액이 부족합니다");
@@ -115,6 +115,8 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
             SetTruckLabelUI();
 
             ToolTipManager.Instance.ShowToolTip("터렛 구매완료");
+
+            SoundManager.Instance.PlaySound(_turretSetSound);
         }
     }
 
