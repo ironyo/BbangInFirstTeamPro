@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4750885722810583720}
   - component: {fileID: 3535975797766400408}
   - component: {fileID: 7480093067012579887}
+  - component: {fileID: 3922505061514020334}
   m_Layer: 7
   m_Name: Customer
   m_TagString: Enemy
@@ -60,7 +61,7 @@ MonoBehaviour:
   runTargets:
   - {fileID: 0}
   - {fileID: 0}
-  hitTagets: []
+  hitTargets: []
   truckMask:
     serializedVersion: 2
     m_Bits: 64
@@ -69,17 +70,13 @@ MonoBehaviour:
     m_Bits: 2048
   hpText: {fileID: 8295202835205455586}
   damageText: {fileID: 921977794793370857}
-  deadMotion: {fileID: 1341366903956772989}
-  eatMotion: {fileID: 8449508995756778761}
-  customerTypeList: {fileID: 11400000, guid: cd6d6a39a5c49e445b92903c34a76ff6, type: 2}
-  _animator: {fileID: 3454013481859027561}
-  customerType: {fileID: 11400000, guid: 076098317ae51104991b7641dd8ddbfe, type: 2}
-  customerHP: 0
-  damage: 0
-  sr: {fileID: 3741644935010643690}
-  avatar: {fileID: 7069535431084754249}
   healthParent: {fileID: 7553050996131601010}
-  cm_value: 0
+  sr: {fileID: 3741644935010643690}
+  eatMotion: {fileID: 8449508995756778761}
+  customerType: {fileID: 11400000, guid: 076098317ae51104991b7641dd8ddbfe, type: 2}
+  debuff: {fileID: 3922505061514020334}
+  animator: {fileID: 3454013481859027561}
+  avatar: {fileID: 7069535431084754249}
 --- !u!114 &4750885722810583720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +154,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.004388412, y: 0.17788164}
   m_Size: {x: 0.7501364, y: 1.2460556}
   m_Direction: 0
+--- !u!114 &3922505061514020334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402475380841491785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cea62154b3fac41b3143b4f7f88cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4794993469236932888
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,11 +396,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c52c628a0acfc624fb076002b9312698, type: 3}
---- !u!198 &1341366903956772989 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 601200960615335310, guid: c52c628a0acfc624fb076002b9312698, type: 3}
-  m_PrefabInstance: {fileID: 1930525819949997555}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6766789965785077084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5125919489444726959, guid: c52c628a0acfc624fb076002b9312698, type: 3}
