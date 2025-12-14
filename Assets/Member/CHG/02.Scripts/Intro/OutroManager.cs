@@ -30,6 +30,7 @@ namespace Assets.Member.CHG._02.Scripts.Intro
 
         private int _count = 0;
         private bool _endRoll = false;
+        GameObject _manager;
 
         void Awake()
         {
@@ -38,7 +39,10 @@ namespace Assets.Member.CHG._02.Scripts.Intro
 
             ChangeText(); 
         }
-
+        private void Start()
+        {
+            _manager = GameObject.Find("SceneLoadManager");
+        }
         void Update()
         {
             if (_endRoll) return;
@@ -91,7 +95,7 @@ namespace Assets.Member.CHG._02.Scripts.Intro
 
             seq.Append(_fadeOut.FadeSet(0, 0.8f));
             seq.Append(_endRollText.transform.DOMoveY(_endPos.position.y, _endRollTime));
-            seq.AppendCallback(() => SceneManager.LoadScene(0));
+            seq.AppendCallback(() => SceneLoadManager.Instance.SceneMove(0));
 
         }
     }

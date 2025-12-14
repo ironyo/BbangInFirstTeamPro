@@ -15,9 +15,8 @@ public interface IEnemyState
 
 public class Customer : MonoBehaviour
 {
-    public static List<Customer> All = new List<Customer>();
-
     public event Action OnClearRequested;
+    [SerializeField] private EventChannelSO _onGameOver;
 
     [Header("Gizmo Range")]
     [SerializeField] private Vector2 closeRange;
@@ -48,6 +47,7 @@ public class Customer : MonoBehaviour
     [Header("Visual")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private ParticleSystem eatMotion;
+    [SerializeField] private GameObject _nurfParticle;
 
     [Header("Data")]
     public CustomerType customerType;
@@ -70,7 +70,6 @@ public class Customer : MonoBehaviour
 
     public float FinalSpeed =>
         customerType.customerSpeed
-        * difficultyMultiplier
         * GlobalEnemyModifier.Instance.GlobalSpeedMultiplier
         * debuff.SpeedMultiplier;
 
@@ -100,19 +99,22 @@ public class Customer : MonoBehaviour
 
     private void OnDestroy()
     {
+        _onGameOver.OnEventRaised -= HandleClearRequested;
+        OnClearRequested -= HandleClearRequested;
         debuff.OnChanged -= OnStatChanged;
         GlobalEnemyModifier.Instance.OnChanged -= OnStatChanged;
     }
 
     private void OnEnable()
     {
+        OnClearRequested += HandleClearRequested;
+        _onGameOver.OnEventRaised += HandleClearRequested;
+
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTargets = CustomerSpawner.Instance.heatTargets;
 
         InitializeStats();
         PickRandomTargets();
-
-        All.Add(this);
     }
 
     private void Start()
@@ -139,7 +141,7 @@ public class Customer : MonoBehaviour
 
     private void OnStatChanged()
     {
-        // 강유야 여기서 파티클이나 소리
+        Instantiate(_nurfParticle, transform.position, Quaternion.identity);
     }
 
     private void UpdateHPUI()
@@ -247,16 +249,19 @@ public class Customer : MonoBehaviour
         hitParticle.PlayAt(CurrentHitTarget.parent.position);
     }
 
-    private void OnDisable()
-    {
-        All.Remove(this);
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange.x);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, closeRange.x);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("DeadZone"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

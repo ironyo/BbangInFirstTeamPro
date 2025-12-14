@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ESCVolumeSetting : MonoBehaviour
@@ -11,7 +12,7 @@ public class ESCVolumeSetting : MonoBehaviour
 
     [Header("GameObject")]
     [SerializeField] private GameObject escButton;
-    [SerializeField] private CanvasGroup settingPanel;
+    [SerializeField] private Image settingPanel;
 
     [Header("Slider")]
     [SerializeField] private Slider bgmSlider;
@@ -20,7 +21,7 @@ public class ESCVolumeSetting : MonoBehaviour
     [Header("AudioMixer")]
     [SerializeField] private AudioMixer audioMixer;
 
-    private RectTransform panelRect;
+    [SerializeField] private RectTransform _uiContents;
     private Tween _fadeTween;
     enum SettingType
     {
@@ -32,9 +33,8 @@ public class ESCVolumeSetting : MonoBehaviour
 
     private void Start()
     {
-        panelRect = settingPanel.GetComponent<RectTransform>();
         SetVolume();
-        UIHide();
+        escButton.SetActive(true);
     }
 
     private void Update()
@@ -81,23 +81,20 @@ public class ESCVolumeSetting : MonoBehaviour
         escButton.SetActive(true);
         _fadeTween?.Kill();
         _fadeTween = settingPanel.DOFade(0, 0.3f).SetUpdate(true);
-        panelRect.DOAnchorPos(new Vector3(0, 1200, 0), 0.3f).SetUpdate(true)
-            .OnComplete(() =>
-            {
-                settingPanel.interactable = false;
-                settingPanel.blocksRaycasts = false;
-            });
+        settingPanel.raycastTarget = false;
+
+        _uiContents.DOAnchorPos(new Vector3(0, 1200, 0), 0.3f).SetUpdate(true);
         Time.timeScale = 1f;
     }
 
     private void UIShow()
     {
         escButton.SetActive(false);
-        settingPanel.interactable = true;
-        settingPanel.blocksRaycasts = true;
+        settingPanel.raycastTarget = true;
+
         _fadeTween.Kill();
-        _fadeTween = settingPanel.DOFade(1, 0.3f).SetUpdate(true);
-        panelRect.DOAnchorPos(new Vector3(0, 0, 0), 0.3f).SetUpdate(true);
+        _fadeTween = settingPanel.DOFade(0.7f, 0.3f).SetUpdate(true);
+        _uiContents.DOAnchorPos(new Vector3(0, 0, 0), 0.3f).SetUpdate(true);
         Time.timeScale = 0f;
     }
 
@@ -140,16 +137,18 @@ public class ESCVolumeSetting : MonoBehaviour
     public void ESCButton()
     {
         showType = SettingType.Show;
+        SetShowType();
     }
 
     public void BackButton()
     {
         showType = SettingType.Hide;
+        SetShowType();
     }
 
     public void LobbyButton()
     {
-        //씬 이동(메인 화면으로 나가기)
+        Application.Quit();
     }
     #endregion
 }

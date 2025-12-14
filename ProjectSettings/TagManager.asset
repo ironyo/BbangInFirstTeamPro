@@ -11,6 +11,7 @@ TagManager:
   - 'DeadCustomer '
   - CheesePuddle
   - Turret
+  - DeadCustomer
   layers:
   - Default
   - TransparentFX

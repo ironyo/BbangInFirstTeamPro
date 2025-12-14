@@ -16,7 +16,7 @@ public class RiderPersonChatManager : MonoSingleton<RiderPersonChatManager>
     private float _currentTime;
     [SerializeField] private float _reloadTime = 2f;
 
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         _factory = new Factory(_textPrefab, 3);

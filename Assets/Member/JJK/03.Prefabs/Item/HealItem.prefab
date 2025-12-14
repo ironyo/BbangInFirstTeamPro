@@ -113,4 +113,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e296492000d19c4ca227e31e2bd5a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healParticle: {fileID: 8196020510778353813, guid: cc9dff59b3326544989b7b91b3abb1e5, type: 3}
   _data: {fileID: 11400000, guid: 11f2a0e72ac74194ca990c5029a5da70, type: 2}
