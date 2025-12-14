@@ -18,9 +18,9 @@ MonoBehaviour:
   Turret: {fileID: 7793336519847305636, guid: 9b98832eb26071a40bd0bcf33820f698, type: 3}
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: 20d8dde52fe5a4b42b7b1d8a0481f9f5, type: 2}
   <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 54fc967c455dfdb4d97502f795633010, type: 3}
-  <CoolDown>k__BackingField: 1.5
+  <CoolDown>k__BackingField: 0.7
   <AttackRange>k__BackingField: 10
-  <Damage>k__BackingField: 0
+  <Damage>k__BackingField: 5
   <CameraShakeForce>k__BackingField: 0.15
   bulletCount: 0
   <SpreadAngle>k__BackingField: 0

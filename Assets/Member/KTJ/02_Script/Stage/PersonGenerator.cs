@@ -24,6 +24,11 @@ public class PersonGenerator : MonoBehaviour
         _onStageRoadEnd.OnEventRaised += OnStageEnd;
     }
 
+    private void Start()
+    {
+        OnStageEnd();
+    }
+
     private void OnEnable()
     {
         _onGameOver.OnEventRaised += () => DeletePersonAll();
