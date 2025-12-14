@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4750885722810583720}
   - component: {fileID: 3535975797766400408}
   - component: {fileID: 7480093067012579887}
+  - component: {fileID: 2985871707367532060}
   m_Layer: 7
   m_Name: FatCustomer
   m_TagString: Enemy
@@ -72,10 +73,9 @@ MonoBehaviour:
   healthParent: {fileID: 4981462867666250137}
   sr: {fileID: 3741644935010643690}
   eatMotion: {fileID: 2496078211779410503}
-  _nurfParticle: {fileID: 5560586333515141895, guid: 2b8416baef392f14f9aa97600d148272, type: 3}
   customerType: {fileID: 11400000, guid: 326340cfd55b5674bb5eac32b2a5ca4b, type: 2}
-  debuff: {fileID: 0}
-  animator: {fileID: 0}
+  debuff: {fileID: 2985871707367532060}
+  animator: {fileID: 3454013481859027561}
   avatar: {fileID: 2427726779591851826}
 --- !u!114 &4750885722810583720
 MonoBehaviour:
@@ -154,6 +154,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.004388412, y: 0.17788164}
   m_Size: {x: 0.7501364, y: 1.2460556}
   m_Direction: 0
+--- !u!114 &2985871707367532060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402475380841491785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cea62154b3fac41b3143b4f7f88cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2427726779591851826
 GameObject:
   m_ObjectHideFlags: 0

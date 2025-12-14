@@ -69,7 +69,6 @@ public class Customer : MonoBehaviour
 
     public float FinalSpeed =>
         customerType.customerSpeed
-        * difficultyMultiplier
         * GlobalEnemyModifier.Instance.GlobalSpeedMultiplier
         * debuff.SpeedMultiplier;
 
