@@ -42,4 +42,14 @@ public class GameOverUI : MonoSingleton<GameOverUI>
             });
         });
     }
+
+    public void BackToLobby()
+    {
+
+    }
+
+    public void Retry()
+    {
+        
+    }
 }
