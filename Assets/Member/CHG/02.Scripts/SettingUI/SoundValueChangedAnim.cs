@@ -57,13 +57,11 @@ public class SoundValueChangedAnim : MonoBehaviour
     {
         if (_slider.value > _lastValue)
         {
-            Debug.Log("Up");
             _animator.SetBool(ValueDownHash, false);
             _animator.SetBool(ValueUpHash, true);
         }
         else if (_slider.value < _lastValue)
         {
-            Debug.Log("Down");
             _animator.SetBool(ValueUpHash, false);
             _animator.SetBool(ValueDownHash, true);
         }
@@ -84,13 +82,13 @@ public class SoundValueChangedAnim : MonoBehaviour
         _animator.SetBool(ValueUpHash, false);
         _animator.SetBool(ValueDownHash, false);
         _animator.enabled = false;
-        _img.DOFade(0, 0.3f);
+        _img.DOFade(0, 0.3f).SetUpdate(true);
     }
     public void OnPointerDown()
     {
         _animator.enabled = true;
         _isPointing = true;
-        _img.DOFade(1, 0.3f);
+        _img.DOFade(1, 0.3f).SetUpdate(true);
     }
 
 }

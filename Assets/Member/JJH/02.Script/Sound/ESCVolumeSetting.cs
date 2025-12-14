@@ -11,7 +11,7 @@ public class ESCVolumeSetting : MonoBehaviour
 
     [Header("GameObject")]
     [SerializeField] private GameObject escButton;
-    [SerializeField] private GameObject settingPanel;
+    [SerializeField] private CanvasGroup settingPanel;
 
     [Header("Slider")]
     [SerializeField] private Slider bgmSlider;
@@ -67,7 +67,9 @@ public class ESCVolumeSetting : MonoBehaviour
         if (showType == SettingType.Show)
         {
             escButton.SetActive(false);
-            settingPanel.SetActive(true);
+            settingPanel.interactable = true;
+            settingPanel.blocksRaycasts = true;
+            settingPanel.DOFade(1, 0.3f).SetUpdate(true);
             panelRect.DOAnchorPos(new Vector3(0, 0, 0), 0.3f).SetUpdate(true);
             Time.timeScale = 0f;
         }
@@ -75,7 +77,12 @@ public class ESCVolumeSetting : MonoBehaviour
         {
             escButton.SetActive(true);
             panelRect.DOAnchorPos(new Vector3(0, 1200, 0), 0.3f).SetUpdate(true)
-                .OnComplete(() => settingPanel.SetActive(false));
+                .OnComplete(() =>
+                {
+                    settingPanel.interactable = false;
+                    settingPanel.blocksRaycasts = false;
+                    settingPanel.DOFade(0, 0.3f).SetUpdate(true);
+                });
             Time.timeScale = 1f;
         }
     }
