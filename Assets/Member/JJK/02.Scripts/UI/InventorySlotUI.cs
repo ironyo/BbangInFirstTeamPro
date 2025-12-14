@@ -27,7 +27,7 @@ public class InventorySlotUI : MonoBehaviour
         backGroundIcon.sprite = data.Icon;
         _itemData = data;
         
-        _skillInstance = Instantiate(data.Prefab, transform);
+        _skillInstance = Instantiate(data.SkillPrefab, transform);
         var skill = _skillInstance.GetComponent<SlotSkillBase>();
         skill.BindSlot(this);
     }
