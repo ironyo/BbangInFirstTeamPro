@@ -8,6 +8,8 @@ public class EnemyWeekSkill : SlotSkillBase
 
     private void Start()
     {
+        if (InventoryManager.Instance.IsFull()) return;
+
         GlobalEnemyModifier.Instance.SetGlobalWeaken(_data.Value);
     }
 
