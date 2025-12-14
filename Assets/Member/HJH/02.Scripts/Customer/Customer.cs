@@ -1,110 +1,118 @@
 using DG.Tweening;
-using NUnit.Framework;
-using NUnit.Framework.Interfaces;
-using System.Collections.Generic;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+
 public interface IEnemyState
 {
     void Enter();
     void Update();
     void Exit();
 }
+
 public class Customer : MonoBehaviour
 {
     public static List<Customer> All = new List<Customer>();
 
-    public event System.Action OnClearRequested;
+    public event Action OnClearRequested;
 
     [Header("Gizmo Range")]
     [SerializeField] private Vector2 closeRange;
     [SerializeField] private Vector2 attackRange;
 
-    [SerializeField]private CustomerHitParticle hitParticle;
-    
+    [SerializeField] private CustomerHitParticle hitParticle;
+
+    [Header("Targets")]
     public Transform[] runTargets;
-    public Transform[] hitTagets;
+    public Transform[] hitTargets;
 
     [SerializeField] private LayerMask truckMask;
     [SerializeField] private LayerMask closeMask;
 
     private IEnemyState currentState;
 
-    public RunState RunState { get; set; } // 달려가는 기본 추격
-    public AttackState AttackState { get; set; } // 닿았을 떄, 공격
-    public ClearState ClearState{ get; set; } // 적의 포 만감을 다 채웠을 때, 자동으로 떠남
-    public CloseState CloseState { get; set; } // 가까이 왔을 때, 트럭으로 이동
-    public DeadState DeadState { get; set; } // 죽었을 때
-    
+    public RunState RunState { get; private set; }
+    public AttackState AttackState { get; private set; }
+    public CloseState CloseState { get; private set; }
+    public ClearState ClearState { get; private set; }
+    public DeadState DeadState { get; private set; }
+
+    [Header("UI")]
     [SerializeField] private TextMeshPro hpText;
     [SerializeField] private TextMeshPro damageText;
-    [SerializeField] private ParticleSystem deadMotion;
+    [SerializeField] private GameObject healthParent;
+
+    [Header("Visual")]
+    [SerializeField] private SpriteRenderer sr;
     [SerializeField] private ParticleSystem eatMotion;
 
-    [SerializeField] private CustomerTypeList customerTypeList;
-
-    public Animator _animator;
-
+    [Header("Data")]
     public CustomerType customerType;
+    [SerializeField] private CustomerDebuff debuff;
 
-    public float customerHP;// { get; set; }    
-    private float maxHp;
-    public int damage ;//{ get; set; }
-    public float customerSpeed { get; set; }
-
-    [SerializeField]private SpriteRenderer sr;
-    private Color originalColor;
-
+    public Animator animator;
     public GameObject avatar;
 
-    public GameObject healthParent;
+    private float difficultyMultiplier;
+
+    private float maxHp;
+    public float CurrentHP { get; private set; }
+
+    public Transform CurrentRunTarget { get; private set; }
+    public Transform CurrentHitTarget { get; private set; }
+
+    private Color originalColor;
 
     private bool isCleared = false;
 
-    public event System.Action<bool> OnSlowChanged;
+    public float FinalSpeed =>
+        customerType.customerSpeed
+        * difficultyMultiplier
+        * GlobalEnemyModifier.Instance.GlobalSpeedMultiplier
+        * debuff.SpeedMultiplier;
 
-    private bool _isSlow;
-    public bool isSlow
-    {
-        get => _isSlow;
-        private set
-        {
-            if (_isSlow == value) return;
-            _isSlow = value;
-            OnSlowChanged?.Invoke(_isSlow);
-        }
-    }
-
-
-    public float cm_value;
-
-    private float difficultyMultiplier;
+    public int FinalDamage =>
+        Mathf.RoundToInt(
+            customerType.customerDamage
+            * difficultyMultiplier
+            * GlobalEnemyModifier.Instance.GlobalDamageMultiplier
+            * debuff.DamageMultiplier
+        );
 
     private void Awake()
     {
         difficultyMultiplier = CustomerSpawner.Instance._difficultyMultiplier;
 
-        customerSpeed = customerType.customerSpeed;
-
         RunState = new RunState(this);
         AttackState = new AttackState(this);
-        ClearState = new ClearState(this);
         CloseState = new CloseState(this);
+        ClearState = new ClearState(this);
         DeadState = new DeadState(this);
 
         originalColor = sr.color;
+
+        debuff.OnChanged += OnStatChanged;
+        GlobalEnemyModifier.Instance.OnChanged += OnStatChanged;
     }
+
+    private void OnDestroy()
+    {
+        debuff.OnChanged -= OnStatChanged;
+        GlobalEnemyModifier.Instance.OnChanged -= OnStatChanged;
+    }
+
     private void OnEnable()
     {
+        runTargets = CustomerSpawner.Instance.runTargets;
+        hitTargets = CustomerSpawner.Instance.heatTargets;
+
         InitializeStats();
+        PickRandomTargets();
 
         All.Add(this);
-        runTargets = CustomerSpawner.Instance.runTargets;
-        hitTagets = CustomerSpawner.Instance.heatTargets;
     }
 
     private void Start()
@@ -117,36 +125,45 @@ public class Customer : MonoBehaviour
     {
         UpdateHPUI();
         currentState?.Update();
-        IsAttackTargetInRange();
-        IsCloseTargetInRange();
 
         if (Keyboard.current.pKey.wasPressedThisFrame)
-        {
             TakeDamage(1);
-        }
-
-        /*if (도착함)
-        {
-            ChangeState(ClearState);
-        }*/
     }
+
     private void InitializeStats()
     {
         maxHp = Mathf.RoundToInt(customerType.customerHP * difficultyMultiplier);
-        customerHP = maxHp;
-
-        damage = Mathf.RoundToInt(customerType.customerDamage * difficultyMultiplier);
+        CurrentHP = maxHp;
+        UpdateHPUI();
     }
+
+    private void OnStatChanged()
+    {
+        // 강유야 여기서 파티클이나 소리
+    }
+
     private void UpdateHPUI()
     {
-        float ratio = (float)customerHP / maxHp;
+        float ratio = CurrentHP / maxHp;
         healthParent.transform.localScale = new Vector3(ratio, 1f, 1f);
-        hpText.text = $"{customerHP}/{maxHp}";
+        hpText.text = $"{CurrentHP}/{maxHp}";
     }
+
+    public void PickRandomTargets()
+    {
+        if (runTargets == null || runTargets.Length == 0) return;
+        if (hitTargets == null || hitTargets.Length == 0) return;
+
+        CurrentRunTarget =
+            runTargets[UnityEngine.Random.Range(0, runTargets.Length)];
+
+        CurrentHitTarget =
+            hitTargets[UnityEngine.Random.Range(0, hitTargets.Length)];
+    }
+
     public void ChangeState(IEnemyState newState)
     {
         if (isCleared) return;
-        Debug.Log(newState.ToString());
 
         currentState?.Exit();
         currentState = newState;
@@ -158,57 +175,35 @@ public class Customer : MonoBehaviour
 
     public Collider2D IsAttackTargetInRange()
     {
-        return Physics2D.OverlapCircle(transform.position, attackRange.x, truckMask);
+        return Physics2D.OverlapCircle(
+            transform.position,
+            attackRange.x,
+            truckMask
+        );
     }
 
     public Collider2D IsCloseTargetInRange()
     {
-        return Physics2D.OverlapCircle(transform.position, closeRange.x, closeMask);
+        return Physics2D.OverlapCircle(
+            transform.position,
+            closeRange.x,
+            closeMask
+        );
     }
 
-    // 총 맞으면 이거 사용해
     public void TakeDamage(int damage)
     {
-
         Sequence seq = DOTween.Sequence();
-        seq.AppendCallback(()=>damageText.text = "-" + damage.ToString());
+        seq.AppendCallback(() => damageText.text = "-" + damage);
         seq.Append(damageText.DOFade(1, 0));
         seq.AppendInterval(0.75f);
-        //seq.JoinCallback(damageText.transform.DOMove());
         seq.Append(damageText.DOFade(0, 0.75f));
-        customerHP = Mathf.Max(customerHP - damage, 0);
 
+        CurrentHP = Mathf.Max(CurrentHP - damage, 0);
         StartCoroutine(HitColorEffect());
 
-        if (customerHP <= 0)
-        {
+        if (CurrentHP <= 0)
             ChangeState(DeadState);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("CheesePuddle"))
-        {
-            isSlow = true;
-        }
-        else
-        {
-            isSlow = false;
-        }
-
-        if (collision.gameObject.CompareTag("DeadZone"))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position,attackRange.x);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position,closeRange.x);
     }
 
     private IEnumerator HitColorEffect()
@@ -230,6 +225,12 @@ public class Customer : MonoBehaviour
 
         sr.color = originalColor;
     }
+
+    public void InflictDamage()
+    {
+        TruckHealthManager.Instance.TruckHit(FinalDamage);
+    }
+
     public void RequestClear()
     {
         OnClearRequested?.Invoke();
@@ -239,61 +240,23 @@ public class Customer : MonoBehaviour
     {
         ChangeState(ClearState);
     }
-        
+
     public void PlayHitParticle()
     {
-        Transform closest = GetClosestTarget();
-        if (closest == null)
-        {
-            Debug.LogWarning("Closest target not found");
-            return;
-        }
-
-        Vector3 spawnPos = closest.parent.position;
-
-        hitParticle.PlayAt(spawnPos);
+        if (CurrentHitTarget == null) return;
+        hitParticle.PlayAt(CurrentHitTarget.parent.position);
     }
 
-    public Transform GetClosestTarget()
-    {
-        Transform closest = null;
-        float minDist = Mathf.Infinity;
-
-        foreach (var t in runTargets)
-        {
-            float dist = Vector2.Distance(transform.position, t.position);
-
-            if (dist < minDist)
-            {
-                minDist = dist;
-                closest = t;
-            }
-        }
-
-        return closest;
-    }
-
-    public void InflictDamage()
-    {
-        TruckHealthManager.Instance.TruckHit(damage);
-    }
-    public void HandleSlow(bool isSlow)
-    {
-        if (isSlow)
-        {
-            Debug.Log("느려짐");
-        }
-        else
-        {
-            Debug.Log("원래 속도로 돌아옴");
-        }
-    }
     private void OnDisable()
     {
         All.Remove(this);
     }
-    public void SetSlow()
+
+    private void OnDrawGizmos()
     {
-        OnSlowChanged?.Invoke(true);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange.x);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, closeRange.x);
     }
 }

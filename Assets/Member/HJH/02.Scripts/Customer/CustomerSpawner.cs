@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -29,7 +30,7 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
     }
     public void StartSpawn()
     {
-        spawnNum = Random.Range(0, spawnPoints.Length);
+        spawnNum = UnityEngine.Random.Range(0, spawnPoints.Length);
         CustomerSpawn(spawnNum);
     }
 
@@ -39,15 +40,21 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
     }
     public void AddTargets(GameObject parent)
     {
-        List<Transform> runList = new List<Transform>();
-        List<Transform> heatList = new List<Transform>();
+        List<Transform> runList = new List<Transform>(runTargets ?? Array.Empty<Transform>());
+        List<Transform> heatList = new List<Transform>(heatTargets ?? Array.Empty<Transform>());
 
         foreach (Transform child in parent.GetComponentsInChildren<Transform>())
         {
             if (child.CompareTag("RunTarget"))
-                runList.Add(child);
+            {
+                if (!runList.Contains(child))
+                    runList.Add(child);
+            }
             else if (child.CompareTag("CloseTarget"))
-                heatList.Add(child);
+            {
+                if (!heatList.Contains(child))
+                    heatList.Add(child);
+            }
         }
 
         runTargets = runList.ToArray();
@@ -56,7 +63,7 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
 
     public void CustomerSpawn(int num)
     {
-        int rnd = Random.Range(1, 100);
+        int rnd = UnityEngine.Random.Range(1, 100);
 
         Debug.Log("rnd °ªÀÌ: " + rnd);
 
@@ -81,11 +88,14 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
         else if (rnd <= sumTrash)
             customerSpawnNum = 3;
 
-        GameObject obj = Instantiate(customerPrefab[customerSpawnNum], spawnPoints[num].position, Quaternion.identity);
+        GameObject obj = Instantiate(
+        customerPrefab[customerSpawnNum],
+        spawnPoints[spawnNum].position,
+        Quaternion.identity
+    );
+
 
         Customer customer = obj.GetComponent<Customer>();
-        customer.runTargets = runTargets;
-        customer.hitTagets = heatTargets;
 
         customer.OnClearRequested += customer.HandleClearRequested;
     }

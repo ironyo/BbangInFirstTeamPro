@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e2018b5c213a046aaa73398cde3964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 3538944490583202499, guid: ac705b49d74fe3a4a83b8926559c6dc1, type: 3}
+  turret: {fileID: 5905195679837564984, guid: dfd50b11972a416419bd15748b57e79d, type: 3}
   _affixSO: {fileID: 11400000, guid: 9db32e47218880b448265bda5a33ad2c, type: 2}
 --- !u!4 &842150864
 Transform:

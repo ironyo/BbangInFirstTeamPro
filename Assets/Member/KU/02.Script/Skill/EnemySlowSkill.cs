@@ -1,24 +1,15 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class EnemySlowSkill : MonoBehaviour
+public class EnemySlowSkill : SlotSkillBase
 {
-    private Customer customer;
-    private float _currentTime;
-
     [SerializeField] ItemDataSO _data;
 
-    private void OnEnable()
-    {
-        customer.OnSlowChanged += customer.HandleSlow;
-    }
+    private float _currentTime;
 
     private void Start()
     {
-        foreach (var item in Customer.All)
-        {
-            item.SetSlow();
-        }
+        GlobalEnemyModifier.Instance.SetGlobalSlow(_data.Value);
     }
 
 
@@ -33,11 +24,7 @@ public class EnemySlowSkill : MonoBehaviour
     }
     private void TimeEnd()
     {
+        GlobalEnemyModifier.Instance.ClearSlow();
         Destroy(gameObject);
-    }
-
-    private void OnDisable()
-    {
-        customer.OnSlowChanged -= customer.HandleSlow;
     }
 }

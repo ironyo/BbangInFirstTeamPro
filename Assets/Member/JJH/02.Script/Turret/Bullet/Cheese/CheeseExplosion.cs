@@ -15,11 +15,13 @@ public class CheeseExplosion : MonoBehaviour, IRecycleObject
         factory = new Factory(cheesePuddle, 1);
     }
 
-    private void OnEnable()
+    public void Play(Vector3 pos)
     {
+        transform.position = pos;
+
         SoundManager.Instance.PlaySound(soundData);
-        GameObject particle = Instantiate(cheeseExplosionParticle, transform.position, Quaternion.identity);
-        particle.transform.SetParent(null);
+
+        GameObject particle = Instantiate(cheeseExplosionParticle, pos, Quaternion.identity);
     }
 
     public Action<IRecycleObject> Destroyed { get; set; }

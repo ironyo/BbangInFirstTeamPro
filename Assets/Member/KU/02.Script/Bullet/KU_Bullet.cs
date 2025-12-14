@@ -1,9 +1,11 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
 public abstract class KU_Bullet : MonoBehaviour
 {
     public Rigidbody2D _rigidbodyCompo { get; private set; }
+    private SpriteRenderer _spriteRenderer;
 
     private Vector2 _moveDir;
     public float moveSpeed { get; set; } = 5;
@@ -25,6 +27,7 @@ public abstract class KU_Bullet : MonoBehaviour
     protected virtual void Awake()
     {
         _rigidbodyCompo = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
@@ -66,6 +69,9 @@ public abstract class KU_Bullet : MonoBehaviour
     {
         _nowTargetSet = false;
         yield return new WaitForSeconds(_lifeTime);
-        Destroy(gameObject);
+        _spriteRenderer.DOFade(0, 0.5f).OnComplete(() =>
+        {
+            Destroy(gameObject);
+        });
     }
 }

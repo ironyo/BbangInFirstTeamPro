@@ -2,35 +2,39 @@ using UnityEngine;
 
 public class DeadState : IEnemyState
 {
-    private Customer customer;
-    private Rigidbody2D rb;
+    private readonly Customer customer;
+    private readonly Rigidbody2D rb;
+    private readonly Animator animator;
 
-    private Animator animator;
+    private readonly int rewardMoney;
 
-    private int deadMoney;
     public DeadState(Customer customer)
     {
-        animator = customer._animator;
         this.customer = customer;
         rb = customer.GetComponent<Rigidbody2D>();
-        deadMoney = customer.customerType.money;
+        animator = customer.animator;
+        rewardMoney = customer.customerType.money;
     }
+
     public void Enter()
     {
-        customer.avatar.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        rb.linearVelocity = Vector2.zero;
+
+        customer.avatar.transform.rotation = Quaternion.identity;
+
         animator.SetBool("isDead", true);
+
         customer.tag = "DeadCustomer";
-        customer.gameObject.layer = LayerMask.NameToLayer("DeadCustomer");
-        MoneyManager.Instance.AddMoney(deadMoney);
-    }
+        customer.gameObject.layer =
+            LayerMask.NameToLayer("DeadCustomer");
 
-    public void Exit()
-    {
-
+        MoneyManager.Instance.AddMoney(rewardMoney);
     }
 
     public void Update()
     {
-        rb.linearVelocity = new Vector2(-3.5f,0);
+        rb.linearVelocity = new Vector2(-3.5f, 0f);
     }
+
+    public void Exit() { }
 }

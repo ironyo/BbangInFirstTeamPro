@@ -13,7 +13,7 @@ public class ClearState : IEnemyState
         this.customer = enemy;
         customerTransform = enemy.transform;
         rb = this.customer.GetComponent<Rigidbody2D>();
-        animator = customer._animator;
+        animator = customer.animator;
     }
 
     public void Enter()

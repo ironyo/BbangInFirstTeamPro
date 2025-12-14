@@ -40,6 +40,7 @@ public class RoadManager : MonoBehaviour
         StartCoroutine(SpeedUp(true, () =>
         {
             Debug.Log("속도 증가 완료");
+            CameraMoverManager.Instance.UnlockCamMove();
         }));
     }
 

@@ -94,19 +94,28 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
         // 만약 돈이 부족하다면 -> return;
 
         Debug.Log(turSO.TurretCost + "를 지불하고 " + turSO.TurretName + "을 구매함.");
-
-        (TurretGroup, int) tg = FindTurretGroup(turSO);
-        if (tg.Item2 == tg.Item1.GetCurrrentLevel())
+        if (MoneyManager.Instance.SpendMoney(turSO.TurretCost) == false)
         {
-            tg.Item1.LevelUp();
+            ToolTipManager.Instance.ShowToolTip("잔액이 부족합니다");
         }
+        else
+        {
 
-        _setTurretOnTruck.RaiseEvent(turSO, truckNum);
-        TruckManager.Instance.SetTurret(truckNum, turSO);
+            (TurretGroup, int) tg = FindTurretGroup(turSO);
+            if (tg.Item2 == tg.Item1.GetCurrrentLevel())
+            {
+                tg.Item1.LevelUp();
+            }
 
-        CameraShake.Instance.ImpulseForce(0.3f);
+            _setTurretOnTruck.RaiseEvent(turSO, truckNum);
+            TruckManager.Instance.SetTurret(truckNum, turSO);
 
-        SetTruckLabelUI();
+            CameraShake.Instance.ImpulseForce(0.3f);
+
+            SetTruckLabelUI();
+
+            ToolTipManager.Instance.ShowToolTip("터렛 구매완료");
+        }
     }
 
     private void SetTruckLabelUI()

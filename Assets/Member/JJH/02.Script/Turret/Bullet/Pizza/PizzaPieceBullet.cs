@@ -48,6 +48,8 @@ public class PizzaPieceBullet : MonoBehaviour, IRecycleObject
             IRecycleObject obj = factory.Get();
             obj.GameObject.transform.position = transform.position;
             obj.GameObject.transform.rotation = Quaternion.identity;
+            CheeseExplosion cheeseExplosion = obj.GameObject.GetComponent<CheeseExplosion>();
+            cheeseExplosion.Play(transform.position);
 
             Destroyed?.Invoke(this);
         }
