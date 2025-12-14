@@ -10,6 +10,14 @@ public class InventorySlotUI : MonoBehaviour
     private GameObject _skillInstance;
     private ItemDataSO _itemData;
     private float _timer;
+    private MouseEnterExit _mouseEnterExit;
+
+    private void Awake()
+    {
+        _mouseEnterExit = GetComponent<MouseEnterExit>();
+        //_mouseEnterExit.OnMouseEnter += () => ToolTipManager.Instance.ShowToolTip(_itemData.Description);
+        //_mouseEnterExit.OnMouseExit += () => ToolTipManager.Instance.RemoveActive();
+    }
 
     public void Setup(ItemDataSO data)
     {
@@ -27,9 +35,12 @@ public class InventorySlotUI : MonoBehaviour
 
     private void Update()
     {
-        _timer += Time.deltaTime;
-        float fill = 1 - _timer / _itemData.Duration;
-        icon.fillAmount = fill;
+        if (icon.sprite != null)
+        {
+            _timer += Time.deltaTime;
+            float fill = 1 - _timer / _itemData.Duration;
+            icon.fillAmount = fill;
+        }
     }
 
     public void Clear()
