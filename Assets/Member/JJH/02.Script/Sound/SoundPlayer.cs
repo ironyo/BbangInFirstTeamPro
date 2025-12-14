@@ -9,8 +9,11 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioMixerGroup systemGroup;
     private AudioSource audioSource;
 
-    public async void PlaySound(SoundDataSO soundData)
+    public void PlaySound(SoundDataSO soundData)
     {
+        if (soundData.soundType == SoundType.BGM)
+            RemoveExistingBgmPlayers();
+
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = soundData.audioClip;
 
@@ -35,6 +38,27 @@ public class SoundPlayer : MonoBehaviour
         if (soundData.soundType != SoundType.BGM) //BGM이 아니면 사운드 파괴
             StartCoroutine(DestroySound(audioSource.clip.length));
     }
+
+    private void RemoveExistingBgmPlayers()
+    {
+        SoundPlayer[] soundPlayers = Object.FindObjectsByType<SoundPlayer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (SoundPlayer p in soundPlayers)
+        {
+            if (p == this)
+                continue;
+
+            AudioSource src = p.GetComponent<AudioSource>();
+            if (src == null)
+                continue;
+
+            bool isBgm = src.loop && src.outputAudioMixerGroup == bgmGroup && src.isPlaying;
+
+            if (isBgm)
+                Destroy(p.gameObject);
+        }
+    }
+
 
     private IEnumerator DestroySound(float time)
     {
