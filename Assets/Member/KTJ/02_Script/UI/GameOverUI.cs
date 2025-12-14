@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoSingleton<GameOverUI>
 {
@@ -41,5 +42,15 @@ public class GameOverUI : MonoSingleton<GameOverUI>
                 _gameOverUI.DOFade(1f, 1f);
             });
         });
+    }
+
+    public void BackToLobby()
+    {
+
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(1);
     }
 }

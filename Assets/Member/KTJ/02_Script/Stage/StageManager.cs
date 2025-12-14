@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class StageManager : MonoSingleton<StageManager>
@@ -35,7 +36,17 @@ public class StageManager : MonoSingleton<StageManager>
     {
         if (IsRunning) return;
 
+        StartCoroutine(StartStageIEnum());
+    }
+
+    IEnumerator StartStageIEnum()
+    {
+        CameraEffectManager.Instance.CameraZoom(7, 1f);
+        CameraEffectManager.Instance.CameraMoveTarget(CameraEffectManager.Instance.CameraTarget.gameObject);
         IsRunning = true;
+
+        yield return new WaitForSeconds(1);
+
 
         _previous = ClearStage == 0
             ? StageData.Create("출발지점", 0)
@@ -45,8 +56,6 @@ public class StageManager : MonoSingleton<StageManager>
 
         _onStageRoadStart.RaiseEvent(_current.RoadTotalLength);
         _setUIStage.RaiseEvent(_previous.Name, _current.Name);
-        CameraEffectManager.Instance.CameraZoom(7, 1f);
-        CameraEffectManager.Instance.CameraMoveTarget(CameraEffectManager.Instance.CameraTarget.gameObject);
     }
 
     public void EndStage()
@@ -65,6 +74,8 @@ public class StageManager : MonoSingleton<StageManager>
         TruckHealthManager.Instance.TruckHealAll();
         _onArrivalStage.RaiseEvent(ClearStage);
         _stageChannelInt.RaiseEvent();
+
+        CameraMoverManager.Instance.LockCamMove();
     }
 
     public StageData GetCurrent() => _current;

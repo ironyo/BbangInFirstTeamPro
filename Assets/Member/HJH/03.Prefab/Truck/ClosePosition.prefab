@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 991285435172004942}
   - component: {fileID: 3286948100569702743}
   m_Layer: 6
-  m_Name: closePosition2
+  m_Name: closePosition1
   m_TagString: CloseTarget
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -135,8 +135,8 @@ Transform:
   m_LocalScale: {x: 10.461595, y: 2.7673876, z: 0.8459}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9015374806305105691}
   - {fileID: 4525885516391176935}
+  - {fileID: 9015374806305105691}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8091417429096264924
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 5571488977068876758}
   - component: {fileID: 3595364768836361901}
   m_Layer: 6
-  m_Name: closePosition1
+  m_Name: closePosition2
   m_TagString: CloseTarget
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
