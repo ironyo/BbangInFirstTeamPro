@@ -81,16 +81,16 @@ public abstract class TurretBase : MonoBehaviour
 
     private void Damageup(int amount)
     {
-        _damage += amount;
-        StartCoroutine(DiasbleDamageUpCoroutine(amount));
+        int added = Mathf.RoundToInt(_damage * (amount / 100f));
+        _damage += added;
+        StartCoroutine(DiasbleDamageUpCoroutine(added));
     }
 
-    private IEnumerator DiasbleDamageUpCoroutine(int amount)
+    private IEnumerator DiasbleDamageUpCoroutine(int added)
     {
         yield return new WaitForSeconds(time);
-        _damage -= amount;
+        _damage -= added;
     }
-
     public void SpawnTurret(Transform _spawnParent)
     {
     }
