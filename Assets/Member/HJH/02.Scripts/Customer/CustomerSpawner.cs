@@ -94,13 +94,8 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
         Quaternion.identity
     );
 
-        Customer customer = obj.GetComponent<Customer>();
 
-        customer.InitializeTargets(
-            runTargets,
-            heatTargets,
-            spawnNum
-        );
+        Customer customer = obj.GetComponent<Customer>();
 
         customer.OnClearRequested += customer.HandleClearRequested;
     }
