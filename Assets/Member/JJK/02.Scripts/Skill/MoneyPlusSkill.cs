@@ -22,6 +22,7 @@ public class MoneyPlusSkill : SlotSkillBase
     private void TimeEnd()
     {
         MoneyManager.Instance.RemoveMultiplier(_data.Value);
+        //_slot.Clear();
         Destroy(gameObject);
     }
 }

@@ -12,6 +12,10 @@ public class InventorySlotUI : MonoBehaviour
     private float _timer;
     private MouseEnterExit _mouseEnterExit;
 
+    private int _slotIndex;
+    public void SetSlotIndex(int index) => _slotIndex = index;
+    public ItemDataSO CurrentItem => _itemData;
+
     private void Awake()
     {
         _mouseEnterExit = GetComponent<MouseEnterExit>();
@@ -20,7 +24,9 @@ public class InventorySlotUI : MonoBehaviour
 
     public void Setup(ItemDataSO data)
     {
-        Clear();
+        if (_skillInstance != null)
+            Destroy(_skillInstance);
+        
         icon.sprite = data.Icon;
         icon.enabled = true;
         backGroundIcon.enabled = true;
@@ -29,7 +35,7 @@ public class InventorySlotUI : MonoBehaviour
         
         _skillInstance = Instantiate(data.SkillPrefab, transform);
         var skill = _skillInstance.GetComponent<SlotSkillBase>();
-        skill.BindSlot(this);
+        skill.BindSlot(this, _slotIndex);
     }
 
     private void Update()
@@ -42,15 +48,25 @@ public class InventorySlotUI : MonoBehaviour
         }
     }
 
-    public void Clear()
+    public void ClearUIOnly()
     {
         icon.sprite = null;
         icon.enabled = false;
+
         backGroundIcon.enabled = false;
+
+        _itemData = null;
+        _timer = 0f;
 
         if (_skillInstance != null)
             Destroy(_skillInstance);
 
         _skillInstance = null;
+    }
+    
+    public void ClearCompletely()
+    {
+        ClearUIOnly();
+        InventoryManager.Instance.ClearSlot(_slotIndex);
     }
 }

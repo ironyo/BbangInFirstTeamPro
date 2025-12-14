@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4132952766468128202}
   - component: {fileID: 9045202890466318408}
   - component: {fileID: 8367302344839776860}
-  - component: {fileID: -1919630290136824009}
   m_Layer: 0
   m_Name: AttackPlusItem
   m_TagString: Untagged
@@ -101,19 +100,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e670993c5278942ac9162da30db7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1919630290136824009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401912080541144655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888ed5e06f2d31449bd07dffbe3b4bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _burfParticle: {fileID: 2908349088131545457, guid: 2752ed529066b284384f0df451956a3c, type: 3}
-  _data: {fileID: 11400000, guid: 96e8772f14610b24f911b2c8dba78968, type: 2}
-  damageSo: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
-  timeSo: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
