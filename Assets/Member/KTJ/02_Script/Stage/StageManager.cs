@@ -40,6 +40,11 @@ public class StageManager : MonoSingleton<StageManager>
         }
     }
 
+    public void OnClickNewGame()
+    {
+        _stageChannelInt.ResetStage();
+    }
+
     public void StartStage()
     {
         if (IsRunning) return;
