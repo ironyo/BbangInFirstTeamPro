@@ -12,6 +12,7 @@ public class StageManager : MonoSingleton<StageManager>
     [Header("Setting")]
     [SerializeField] private StageGenerator _generator;
     [SerializeField] private int _maxStage = 20;
+    [SerializeField] private Canvas _canvas;
 
     [Header("Event")]
     [SerializeField] private EventChannelSO _onRoadFinished;
@@ -70,6 +71,7 @@ public class StageManager : MonoSingleton<StageManager>
         if (ClearStage == _maxStage)
         {
             Debug.Log("스테이지 클리어");
+            _canvas.gameObject.SetActive(false);
             SceneLoadManager.Instance.SceneMove(2);
         }
 
