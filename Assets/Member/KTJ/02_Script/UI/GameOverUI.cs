@@ -49,8 +49,8 @@ public class GameOverUI : MonoSingleton<GameOverUI>
         SceneLoadManager.Instance.SceneMove(0);
     }
 
-    public void Retry()
+    public void Exit()
     {
-        SceneLoadManager.Instance.SceneMove(1);
+        Application.Quit();
     }
 }

@@ -131,3 +131,4 @@ public class StageManager : MonoSingleton<StageManager>
     public StageData GetCurrent() => _current;
     public StageData GetPrevious() => _previous;
 }
+    

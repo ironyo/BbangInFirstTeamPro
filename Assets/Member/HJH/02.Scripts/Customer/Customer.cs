@@ -40,7 +40,7 @@ public class Customer : MonoBehaviour
     public DeadState DeadState { get; private set; }
 
     [Header("UI")]
-    [SerializeField] private TextMeshPro hpText;
+    public TextMeshPro hpText;
     [SerializeField] private TextMeshPro damageText;
     [SerializeField] private GameObject healthParent;
 
