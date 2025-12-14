@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.Rendering;
 
 public class SoundPlayer : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class SoundPlayer : MonoBehaviour
 
     public async void PlaySound(SoundDataSO soundData)
     {
+        if (soundData.soundType == SoundType.BGM)
+            RemoveEX();
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = soundData.audioClip;
 
@@ -34,6 +39,25 @@ public class SoundPlayer : MonoBehaviour
 
         if (soundData.soundType != SoundType.BGM) //BGM이 아니면 사운드 파괴
             StartCoroutine(DestroySound(audioSource.clip.length));
+    }
+
+    private void RemoveEX()
+    {
+        SoundPlayer[] soundPlayers = FindObjectsByType<SoundPlayer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach(SoundPlayer player in soundPlayers)
+        {
+            if (player == this)
+                continue;
+
+            AudioSource audioSource = player.GetComponent<AudioSource>();
+            if(audioSource == null)
+                continue;
+
+            bool isBgm = audioSource.loop && audioSource.outputAudioMixerGroup == bgmGroup && audioSource.isPlaying;
+
+            if (isBgm)
+                Destroy(player.gameObject);
+        }
     }
 
     private IEnumerator DestroySound(float time)
