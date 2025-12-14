@@ -8,10 +8,7 @@ public class EnemyWeekSkill : SlotSkillBase
 
     private void Start()
     {
-        foreach (var item in Customer.All)
-        {
-            item.SetSlow();
-        }
+        GlobalEnemyModifier.Instance.SetGlobalWeaken(_data.Value);
     }
 
 
@@ -26,6 +23,7 @@ public class EnemyWeekSkill : SlotSkillBase
     }
     private void TimeEnd()
     {
+        GlobalEnemyModifier.Instance.ClearWeaken();
         Destroy(gameObject);
     }
 }

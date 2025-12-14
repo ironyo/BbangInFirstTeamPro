@@ -3,16 +3,13 @@ using UnityEngine;
 
 public class EnemySlowSkill : SlotSkillBase
 {
-    private float _currentTime;
-
     [SerializeField] ItemDataSO _data;
+
+    private float _currentTime;
 
     private void Start()
     {
-        foreach (var item in Customer.All)
-        {
-            item.SetSlow();
-        }
+        GlobalEnemyModifier.Instance.SetGlobalSlow(_data.Value);
     }
 
 
@@ -27,6 +24,7 @@ public class EnemySlowSkill : SlotSkillBase
     }
     private void TimeEnd()
     {
+        GlobalEnemyModifier.Instance.ClearSlow();
         Destroy(gameObject);
     }
 }
