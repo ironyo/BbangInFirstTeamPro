@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
   m_Name: Level3_KU_Ketcup_TurretSO
   m_EditorClassIdentifier: 
-  <TurretName>k__BackingField: "\uCF00\uCC39 \uD3EC\uD0D1"
+  <TurretName>k__BackingField: "\uCF00\uCC39"
   <TurretImage>k__BackingField: {fileID: -4259581854397910161, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 30
   Turret: {fileID: 378329891138309096, guid: 17fb252e727d04a41804795858663b54, type: 3}
   AttackCoolTime: 0.7
   AttackRange: 10
-  AttackPower: 5
+  AttackPower: 2
   TargetingClosedEnemy: 0
