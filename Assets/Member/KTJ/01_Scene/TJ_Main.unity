@@ -15772,8 +15772,8 @@ MonoBehaviour:
   - "\uC640\uB530\uB9C8\uC744"
   - "\uBFE1\uBFE1\uB9C8\uC744"
   - "\uD0DC\uC900\uB9C8\uC744"
-  minLength: 5
-  maxLength: 15
+  minLength: 20
+  maxLength: 50
 --- !u!4 &1062537615
 Transform:
   m_ObjectHideFlags: 0
@@ -26691,13 +26691,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _generator: {fileID: 1062537614}
-  _maxStage: 2
+  _maxStage: 20
   _onRoadFinished: {fileID: 11400000, guid: 8ce04edf61fcfec408fb7d70a726dd4d, type: 2}
   _onStageRoadEnd: {fileID: 11400000, guid: 71dc2adf01fab0343a504031d99a5cbb, type: 2}
   _onStageRoadStart: {fileID: 11400000, guid: 05ba72b7769eaef44a58930073352756, type: 2}
   _setUIStage: {fileID: 11400000, guid: ebc70b53cacdf66468b3f27fe18145c1, type: 2}
   _onArrivalStage: {fileID: 11400000, guid: 3d86a553bc9b0e64d87e0672ebd86248, type: 2}
   _stageChannelInt: {fileID: 11400000, guid: d1346465ce0f3324499d677053c4a1d5, type: 2}
+  customerSpawnManager: {fileID: 1391517501}
 --- !u!1 &1397188207
 GameObject:
   m_ObjectHideFlags: 0
