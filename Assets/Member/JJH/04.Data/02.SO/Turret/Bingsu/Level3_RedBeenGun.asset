@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04537ae5fa12464780b3f641b9c8268, type: 3}
   m_Name: Level3_RedBeenGun
   m_EditorClassIdentifier: 
-  <TurretName>k__BackingField: "\uD325 \uD3EC\uD0D1"
+  <TurretName>k__BackingField: "\uB2E8\uD325"
   <TurretImage>k__BackingField: {fileID: 8679967300685498094, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
-  <TurretCost>k__BackingField: 15
+  <TurretCost>k__BackingField: 20
   Turret: {fileID: 7793336519847305636, guid: 56c6ca77310bf1c4986df1eab949daaf, type: 3}
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: 906decc5259d5df4e859bc33cb95193c, type: 2}
   <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 56eef0cb30dd8c745b4199b65dd9f12a, type: 3}
-  <CoolDown>k__BackingField: 2
+  <CoolDown>k__BackingField: 0.7
   <AttackRange>k__BackingField: 10
-  <Damage>k__BackingField: 0
+  <Damage>k__BackingField: 6
   <CameraShakeForce>k__BackingField: 0.2
   bulletCount: 6
   <SpreadAngle>k__BackingField: 20
   <MultiFire>k__BackingField: 1
   <ThroughFire>k__BackingField: 0
-  damage: 1
+  damage: 4

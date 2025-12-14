@@ -10,33 +10,43 @@ public class InventorySlotUI : MonoBehaviour
     private GameObject _skillInstance;
     private ItemDataSO _itemData;
     private float _timer;
+    private MouseEnterExit _mouseEnterExit;
+
+    private void Awake()
+    {
+        _mouseEnterExit = GetComponent<MouseEnterExit>();
+        _mouseEnterExit.OnMouseEnter += () => ToolTipManager.Instance.ShowToolTip(_itemData.Description);
+    }
 
     public void Setup(ItemDataSO data)
     {
         Clear();
-        icon.enabled = true;
         icon.sprite = data.Icon;
+        icon.enabled = true;
         backGroundIcon.enabled = true;
         backGroundIcon.sprite = data.Icon;
         _itemData = data;
         
-        _skillInstance = Instantiate(data.Prefab, transform);
+        _skillInstance = Instantiate(data.SkillPrefab, transform);
         var skill = _skillInstance.GetComponent<SlotSkillBase>();
         skill.BindSlot(this);
     }
 
     private void Update()
     {
-        _timer += Time.deltaTime;
-        float fill = 1 - _timer / _itemData.Duration;
-        icon.fillAmount = fill;
+        if (icon.sprite != null)
+        {
+            _timer += Time.deltaTime;
+            float fill = 1 - _timer / _itemData.Duration;
+            icon.fillAmount = fill;
+        }
     }
 
     public void Clear()
     {
+        icon.sprite = null;
         icon.enabled = false;
         backGroundIcon.enabled = false;
-        icon.sprite = null;
 
         if (_skillInstance != null)
             Destroy(_skillInstance);

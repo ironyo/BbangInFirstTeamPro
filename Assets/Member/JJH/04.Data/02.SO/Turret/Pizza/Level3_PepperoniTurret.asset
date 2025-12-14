@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
   m_Name: Level3_PepperoniTurret
   m_EditorClassIdentifier: 
-  <TurretName>k__BackingField: "\uD398\uD37C\uB85C\uB2C8 \uD3EC\uD0D1"
+  <TurretName>k__BackingField: "\uD398\uD37C\uB85C\uB2C8"
   <TurretImage>k__BackingField: {fileID: 5622507089983137499, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 15
   Turret: {fileID: 222687924827019184, guid: 61e9d7732f3be5649a8159979fe369d7, type: 3}
   AttackCoolTime: 0.3
   AttackRange: 8
-  AttackPower: 2
+  AttackPower: 8
   TargetingClosedEnemy: 1

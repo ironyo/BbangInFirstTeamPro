@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04537ae5fa12464780b3f641b9c8268, type: 3}
   m_Name: Level3_BingsuGun
   m_EditorClassIdentifier: 
-  <TurretName>k__BackingField: "\uBE59\uC218 \uD3EC\uD0D1"
+  <TurretName>k__BackingField: "\uBE59\uC218"
   <TurretImage>k__BackingField: {fileID: 8887688867331128032, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
-  <TurretCost>k__BackingField: 45
+  <TurretCost>k__BackingField: 2500
   Turret: {fileID: 7793336519847305636, guid: d23348a1b3637bc4ea3b1b8292b40613, type: 3}
   <DefaultBullet>k__BackingField: {fileID: 11400000, guid: b747cd44a6f0eac43ba684a66c34e8b7, type: 2}
   <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 1954a40c0b76e994a98092cb667ed0db, type: 3}
-  <CoolDown>k__BackingField: 1.5
+  <CoolDown>k__BackingField: 0.5
   <AttackRange>k__BackingField: 10
-  <Damage>k__BackingField: 0
+  <Damage>k__BackingField: 20
   <CameraShakeForce>k__BackingField: 0.15
   bulletCount: 6
   <SpreadAngle>k__BackingField: 20
   <MultiFire>k__BackingField: 1
   <ThroughFire>k__BackingField: 1
-  damage: 13
+  damage: 15
