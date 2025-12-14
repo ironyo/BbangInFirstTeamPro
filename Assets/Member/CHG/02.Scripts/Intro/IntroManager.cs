@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Member.CHG._02.Scripts.Intro
 {
-    public class IntroManager : MonoBehaviour
+    public class IntroManager : MonoSingleton<IntroManager>
     {
         private StageData _current;
         private StageData _previous;
@@ -17,7 +17,10 @@ namespace Assets.Member.CHG._02.Scripts.Intro
 
         [Header("Event")]
         [SerializeField] private EventChannelSO _onStartSceneReady;
-
+        private void Awake()
+        {
+            base.Awake();
+        }
 
         private void Start()
         {

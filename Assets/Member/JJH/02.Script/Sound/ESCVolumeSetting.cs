@@ -21,7 +21,7 @@ public class ESCVolumeSetting : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
 
     private RectTransform panelRect;
-
+    private Tween _fadeTween;
     enum SettingType
     {
         Show,
@@ -34,6 +34,7 @@ public class ESCVolumeSetting : MonoBehaviour
     {
         panelRect = settingPanel.GetComponent<RectTransform>();
         SetVolume();
+        UIHide();
     }
 
     private void Update()
@@ -58,6 +59,7 @@ public class ESCVolumeSetting : MonoBehaviour
         if (Keyboard.current.escapeKey.wasPressedThisFrame && inGame)
         {
             showType = showType == SettingType.Show ? SettingType.Hide : SettingType.Show;
+            Debug.Log(showType);
             SetShowType();
         }
     }
@@ -66,25 +68,37 @@ public class ESCVolumeSetting : MonoBehaviour
     {
         if (showType == SettingType.Show)
         {
-            escButton.SetActive(false);
-            settingPanel.interactable = true;
-            settingPanel.blocksRaycasts = true;
-            settingPanel.DOFade(1, 0.3f).SetUpdate(true);
-            panelRect.DOAnchorPos(new Vector3(0, 0, 0), 0.3f).SetUpdate(true);
-            Time.timeScale = 0f;
+            UIShow();
         }
         else
         {
-            escButton.SetActive(true);
-            panelRect.DOAnchorPos(new Vector3(0, 1200, 0), 0.3f).SetUpdate(true)
-                .OnComplete(() =>
-                {
-                    settingPanel.interactable = false;
-                    settingPanel.blocksRaycasts = false;
-                    settingPanel.DOFade(0, 0.3f).SetUpdate(true);
-                });
-            Time.timeScale = 1f;
+            UIHide();
         }
+    }
+
+    private void UIHide()
+    {
+        escButton.SetActive(true);
+        _fadeTween?.Kill();
+        _fadeTween = settingPanel.DOFade(0, 0.3f).SetUpdate(true);
+        panelRect.DOAnchorPos(new Vector3(0, 1200, 0), 0.3f).SetUpdate(true)
+            .OnComplete(() =>
+            {
+                settingPanel.interactable = false;
+                settingPanel.blocksRaycasts = false;
+            });
+        Time.timeScale = 1f;
+    }
+
+    private void UIShow()
+    {
+        escButton.SetActive(false);
+        settingPanel.interactable = true;
+        settingPanel.blocksRaycasts = true;
+        _fadeTween.Kill();
+        _fadeTween = settingPanel.DOFade(1, 0.3f).SetUpdate(true);
+        panelRect.DOAnchorPos(new Vector3(0, 0, 0), 0.3f).SetUpdate(true);
+        Time.timeScale = 0f;
     }
 
     private void SetBGMToMixer(float volume)
