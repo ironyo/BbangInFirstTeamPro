@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class EnemySlowSkill : MonoBehaviour
+public class EnemySlowSkill : SlotSkillBase
 {
     private Customer customer;
     private float _currentTime;

@@ -173,14 +173,14 @@ public abstract class TurretBase : MonoBehaviour
             Target = farTarget;
         }
 
-        Quaternion dir = transform.rotation;
         _lineRenderer.SetPosition(0, _firePos.position);
-        if (Target != null) 
+
+        if (Target != null)
         {
             _lineRenderer.SetPosition(1, Target.position);
-            dir = Quaternion.Euler(Target.position - transform.position);
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            angle -= 90f;
+
+            Vector2 dir = Target.position - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 

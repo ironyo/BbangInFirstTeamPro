@@ -1,24 +1,34 @@
-using DG.Tweening;
-using System.Collections;
-using TMPro;
+using Assets.Member.CHG._02.Scripts.Pooling;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RiderPersonChatManager : MonoSingleton<RiderPersonChatManager>
 {
-    [SerializeField] RectTransform _messagePos;
-    [SerializeField] TextMeshProUGUI _messageText;
-    [SerializeField] RiderPersonTalkSO _soData;
+    [SerializeField] private RectTransform _spawnPos;
+    [SerializeField] private RectTransform _endPos;
+    [SerializeField] private GameObject _textPrefab;
+    [SerializeField] private RectTransform _canvas;
+    [SerializeField] private float _upvalue;
+    [SerializeField, TextArea] private List<string> strings = new List<string>();
+    private readonly List<BubbleChat> _activeChats = new();
 
+    private Factory _factory;
     private float _currentTime;
-    private float _reloadTime = 5;
+    [SerializeField] private float _reloadTime = 2f;
+
+    private void Awake()
+    {
+        base.Awake();
+        _factory = new Factory(_textPrefab, 3);
+    }
 
     private void Update()
     {
         _currentTime += Time.deltaTime;
-        if(_currentTime >= _reloadTime)
+        if (_currentTime >= _reloadTime)
         {
             _currentTime = 0;
-            SetRiderText(_soData.messageList[Random.Range(0, _soData.messageList.Count-1)]);
+            SetRiderText(strings[Random.Range(0, strings.Count)]);
         }
     }
 
@@ -30,8 +40,31 @@ public class RiderPersonChatManager : MonoSingleton<RiderPersonChatManager>
 
     private void SetRiderText(string text)
     {
-        _messageText.text = text;
-        _messagePos.rotation = Quaternion.Euler(0f, 0f, 50f);
-        _messagePos.DORotate(Vector3.zero, 0.5f).SetEase(Ease.InOutQuad);
+        // 기존 채팅 전부 위로 이동
+        for (int i = 0; i < _activeChats.Count; i++)
+        {
+            _activeChats[i].MoveUp(_upvalue);
+        }
+
+        IRecycleObject obj = _factory.Get();
+        RectTransform rect = obj.GameObject.GetComponent<RectTransform>();
+        BubbleChat chat = obj.GameObject.GetComponent<BubbleChat>();
+
+        rect.SetParent(_canvas, false);
+        rect.position = _spawnPos.position;
+
+        chat.SetText(text, _endPos);
+
+        _activeChats.Add(chat);
+
+        // 풀로 돌아가면 리스트에서 제거
+        chat.Destroyed += OnChatDestroyed;
+        chat.Destroyed += (_) => Debug.Log("aa");
+    }
+
+    private void OnChatDestroyed(IRecycleObject obj)
+    {
+        BubbleChat chat = obj.GameObject.GetComponent<BubbleChat>();
+        _activeChats.Remove(chat);
     }
 }

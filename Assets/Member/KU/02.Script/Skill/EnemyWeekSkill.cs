@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyWeekSkill : MonoBehaviour
+public class EnemyWeekSkill : SlotSkillBase
 {
     [SerializeField] ItemDataSO _data;
 

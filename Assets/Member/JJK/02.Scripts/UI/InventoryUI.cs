@@ -3,44 +3,45 @@ using UnityEngine;
 
 public class InventoryUI : MonoSingleton<InventoryUI>
 {
-    [SerializeField] private RectTransform[] slotRects;
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform slotParent;
+    
+    private InventorySlotUI[] _slots;
 
     private void Start()
     {
-        Refresh();
-    }
-
-    private void OnEnable()
-    {
         InventoryManager.Instance.OnInventoryChanged += Refresh;
+        CreateSlots();
+        Refresh();
     }
 
     public RectTransform GetSlotRect(int index)
     {
-        return slotRects[index];
+        return _slots[index].GetComponent<RectTransform>();
+    }
+    
+    private void CreateSlots()
+    {
+        int slotCount = InventoryManager.Instance.Items.Length;
+        _slots = new InventorySlotUI[slotCount];
+
+        for (int i = 0; i < slotCount; i++)
+        {
+            GameObject obj = Instantiate(slotPrefab, slotParent);
+            _slots[i] = obj.GetComponent<InventorySlotUI>();
+        }
     }
     
     public void Refresh()
     {
-        foreach (Transform pos in slotRects)
+        var items = InventoryManager.Instance.Items;
+
+        for (int i = 0; i < _slots.Length; i++)
         {
-            for (int i = pos.childCount - 1; i >= 0; i--)
-                Destroy(pos.GetChild(i).gameObject);
-        }
-
-        ItemDataSO[] items = InventoryManager.Instance.Items;
-
-        for (int i = 0; i < items.Length && i < slotRects.Length; i++)
-        {
-            GameObject slot = Instantiate(slotPrefab, slotRects[i]);
-            InventorySlotUI ui = slot.GetComponent<InventorySlotUI>();
-
             if (items[i] != null)
-                ui.Setup(items[i]);
+                _slots[i].Setup(items[i]);
             else
-                ui.Clear();
+                _slots[i].Clear(); 
         }
     }
 }

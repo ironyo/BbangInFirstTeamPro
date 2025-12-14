@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AttackPlusSkill : MonoBehaviour
+public class AttackPlusSkill : SlotSkillBase
 {
     [SerializeField] ItemDataSO _data;
 
