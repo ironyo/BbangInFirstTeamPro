@@ -4881,10 +4881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3243c9027d4d09d4f90ae48275790d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotRects:
-  - {fileID: 741772268}
-  - {fileID: 931568999}
-  - {fileID: 301762901}
   slotPrefab: {fileID: 5623448774721667667, guid: 3f9bbbc7b09996542b988b05d3f854fd, type: 3}
   slotParent: {fileID: 983468938}
 --- !u!1 &1338322610
