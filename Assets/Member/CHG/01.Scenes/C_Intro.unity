@@ -976,7 +976,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 2e834c4b2a785fc4f9063fb990b2d5cd, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -2664,6 +2664,7 @@ MonoBehaviour:
   sfxSlider: {fileID: 1767968091}
   audioMixer: {fileID: 24100000, guid: 24351b3dbdceaed4dbced9c2dc446075, type: 2}
   _uiContents: {fileID: 1027935108}
+  SettingUI: {fileID: 0}
 --- !u!1 &632897781
 GameObject:
   m_ObjectHideFlags: 0

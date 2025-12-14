@@ -22,6 +22,8 @@ public class AttackPlusSkill : SlotSkillBase
     }
     private void Start()
     {
+        if (InventoryManager.Instance.IsFull()) return;
+
         turrets.AddRange(Object.FindObjectsByType<TurretBase>(FindObjectsSortMode.None));
         foreach (var item in turrets)
         {
