@@ -11,7 +11,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     private void Awake()
     {
         base.Awake();
-
+        DontDestroyOnLoad(Instance);
         _fadeOut = GetComponentInChildren<FadeOut>();
     }
     public void SceneMove(int index)

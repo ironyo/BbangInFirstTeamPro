@@ -1,24 +1,12 @@
 using UnityEngine;
 using System;
 
-public class GlobalEnemyModifier : MonoBehaviour
+public class GlobalEnemyModifier : MonoSingleton<GlobalEnemyModifier>
 {
-    public static GlobalEnemyModifier Instance { get; private set; }
-
     public event Action OnChanged;
 
     public float GlobalSpeedMultiplier { get; private set; } = 1f;
     public float GlobalDamageMultiplier { get; private set; } = 1f;
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
 
     public void SetGlobalSlow(float multiplier)
     {
@@ -32,9 +20,13 @@ public class GlobalEnemyModifier : MonoBehaviour
         OnChanged?.Invoke();
     }
 
-    public void Clear()
+    public void ClearSlow()
     {
         GlobalSpeedMultiplier = 1f;
+        OnChanged?.Invoke();
+    }
+    public void ClearWeaken()
+    {
         GlobalDamageMultiplier = 1f;
         OnChanged?.Invoke();
     }
