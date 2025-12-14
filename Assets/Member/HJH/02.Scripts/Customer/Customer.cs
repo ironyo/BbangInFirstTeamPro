@@ -98,12 +98,15 @@ public class Customer : MonoBehaviour
 
     private void OnDestroy()
     {
+        OnClearRequested -= HandleClearRequested;
         debuff.OnChanged -= OnStatChanged;
         GlobalEnemyModifier.Instance.OnChanged -= OnStatChanged;
     }
 
     private void OnEnable()
     {
+        OnClearRequested += HandleClearRequested;
+
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTargets = CustomerSpawner.Instance.heatTargets;
 
@@ -249,5 +252,13 @@ public class Customer : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange.x);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, closeRange.x);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("DeadZone"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
