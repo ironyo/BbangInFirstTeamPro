@@ -32,19 +32,6 @@ public class StageManager : MonoSingleton<StageManager>
         StartStage();
     }
 
-    private void Update()
-    {
-        if(ClearStage >= 20)
-        {
-            Debug.Log("꺴음");
-        }
-    }
-
-    public void OnClickNewGame()
-    {
-        _stageChannelInt.ResetStage();
-    }
-
     public void StartStage()
     {
         if (IsRunning) return;
@@ -81,6 +68,7 @@ public class StageManager : MonoSingleton<StageManager>
         if (ClearStage == _maxStage)
         {
             Debug.Log("스테이지 클리어");
+            SceneLoadManager.Instance.SceneMove(2);
         }
 
         CameraEffectManager.Instance.CameraZoom(5, 1f);
