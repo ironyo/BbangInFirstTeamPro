@@ -85,7 +85,7 @@ public class ProjectileBoomerang : ProjectileBase, IRecycleObject
 
             CameraShake.Instance.ImpulseForce(0.03f);
         }
-        else if (collision.CompareTag("Player"))
+        else if (collision.CompareTag("Turret"))
         {
             if (_isHit)
             {

@@ -22,6 +22,7 @@ public class DropRatePlusSkill : SlotSkillBase
     private void TimeEnd()
     {
         ItemManager.Instance.RemoveMultiplier(_data.Value);
+        //_slot.Clear();
         Destroy(gameObject);
     }
 }

@@ -10,37 +10,63 @@ public class InventorySlotUI : MonoBehaviour
     private GameObject _skillInstance;
     private ItemDataSO _itemData;
     private float _timer;
+    private MouseEnterExit _mouseEnterExit;
+
+    private int _slotIndex;
+    public void SetSlotIndex(int index) => _slotIndex = index;
+    public ItemDataSO CurrentItem => _itemData;
+
+    private void Awake()
+    {
+        _mouseEnterExit = GetComponent<MouseEnterExit>();
+        _mouseEnterExit.OnMouseEnter += () => ToolTipManager.Instance.ShowToolTip(_itemData.Description);
+    }
 
     public void Setup(ItemDataSO data)
     {
-        Clear();
-        icon.enabled = true;
+        if (_skillInstance != null)
+            Destroy(_skillInstance);
+        
         icon.sprite = data.Icon;
+        icon.enabled = true;
         backGroundIcon.enabled = true;
         backGroundIcon.sprite = data.Icon;
         _itemData = data;
         
-        _skillInstance = Instantiate(data.Prefab, transform);
+        _skillInstance = Instantiate(data.SkillPrefab, transform);
         var skill = _skillInstance.GetComponent<SlotSkillBase>();
-        skill.BindSlot(this);
+        skill.BindSlot(this, _slotIndex);
     }
 
     private void Update()
     {
-        _timer += Time.deltaTime;
-        float fill = 1 - _timer / _itemData.Duration;
-        icon.fillAmount = fill;
+        if (icon.sprite != null)
+        {
+            _timer += Time.deltaTime;
+            float fill = 1 - _timer / _itemData.Duration;
+            icon.fillAmount = fill;
+        }
     }
 
-    public void Clear()
+    public void ClearUIOnly()
     {
-        icon.enabled = false;
-        backGroundIcon.enabled = false;
         icon.sprite = null;
+        icon.enabled = false;
+
+        backGroundIcon.enabled = false;
+
+        _itemData = null;
+        _timer = 0f;
 
         if (_skillInstance != null)
             Destroy(_skillInstance);
 
         _skillInstance = null;
+    }
+    
+    public void ClearCompletely()
+    {
+        ClearUIOnly();
+        InventoryManager.Instance.ClearSlot(_slotIndex);
     }
 }

@@ -8,7 +8,7 @@ public class MoneyManager : MonoSingleton<MoneyManager>
     private float _moneyMultiplier = 1f;
     public void AddMultiplier(float value) => _moneyMultiplier += value;
     public void RemoveMultiplier(float value) => _moneyMultiplier -= value;
-    
+
     public Action<int, int> OnMoneyChanged;
 
     public int Money
@@ -38,17 +38,19 @@ public class MoneyManager : MonoSingleton<MoneyManager>
     public void AddMoney(int amount)
     {
         int old = Money;
-        
-        int finalAmount = Mathf.RoundToInt(amount * _moneyMultiplier);
+
+        float rate = 1f + (_moneyMultiplier * 0.01f);
+
+        int finalAmount = Mathf.RoundToInt(amount * rate);
         _money += finalAmount;
-        
+
         OnMoneyChanged?.Invoke(old, _money);
     }
 
     public bool SpendMoney(int amount)
     {
-        if (amount <= 0 ||_money < amount) return false;
-       
+        if (amount <= 0 || _money < amount) return false;
+
         int old = Money;
         _money -= amount;
         OnMoneyChanged?.Invoke(old, _money);

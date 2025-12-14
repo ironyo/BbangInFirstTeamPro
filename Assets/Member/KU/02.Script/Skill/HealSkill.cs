@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class HealSkill : SlotSkillBase
 {
@@ -14,8 +16,12 @@ public class HealSkill : SlotSkillBase
 
     private int _secHeal;
 
+    private float _currentTime;
+
     private void Start()
     {
+        if (InventoryManager.Instance.IsFull()) return;
+
         _secHeal = (int)_data.Value / (int)_data.Duration;
         StartCoroutine(HealCount());
 
@@ -26,15 +32,22 @@ public class HealSkill : SlotSkillBase
         }
     }
 
+    private void Update()
+    {
+        _currentTime += Time.deltaTime;
+        if (_currentTime >= _data.Duration)
+        {
+            TimeEnd();
+        }
+    }
+
     private IEnumerator HealCount()
     {
         yield return new WaitForSeconds(1);
         TruckHealthManager.Instance.TruckHealAmount(_secHeal);
         _currentCount++;
-        if (_currentCount < _count)
+        if (_currentCount <= _count)
             StartCoroutine(HealCount());
-        else
-            TimeEnd();
 
     }
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733235775957949784}
   - component: {fileID: 5435479515587266166}
+  - component: {fileID: 1006464324585082438}
   m_Layer: 5
   m_Name: SlotPrefab
   m_TagString: Untagged
@@ -53,6 +54,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 4623906252618763907}
   backGroundIcon: {fileID: 4106707032506849561}
+--- !u!114 &1006464324585082438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623448774721667667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19cffaa41dfd5b4996978d4754520be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5889926024707267613
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,14 +124,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2413806693520163455, guid: 3bea975d9d6f37f45813c7d941e2dbc6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -255,7 +268,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7238560911932063168}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -268,7 +281,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2413806693520163455, guid: 3bea975d9d6f37f45813c7d941e2dbc6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

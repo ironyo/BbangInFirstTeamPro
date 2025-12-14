@@ -40,7 +40,7 @@ public class RiderPersonChatManager : MonoSingleton<RiderPersonChatManager>
 
     private void SetRiderText(string text)
     {
-        // ±âÁ¸ Ã¤ÆÃ ÀüºÎ À§·Î ÀÌµ¿
+        // ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         for (int i = 0; i < _activeChats.Count; i++)
         {
             _activeChats[i].MoveUp(_upvalue);
@@ -57,9 +57,8 @@ public class RiderPersonChatManager : MonoSingleton<RiderPersonChatManager>
 
         _activeChats.Add(chat);
 
-        // Ç®·Î µ¹¾Æ°¡¸é ¸®½ºÆ®¿¡¼­ Á¦°Å
+        // Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         chat.Destroyed += OnChatDestroyed;
-        chat.Destroyed += (_) => Debug.Log("aa");
     }
 
     private void OnChatDestroyed(IRecycleObject obj)

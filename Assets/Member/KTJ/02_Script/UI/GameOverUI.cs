@@ -46,11 +46,11 @@ public class GameOverUI : MonoSingleton<GameOverUI>
 
     public void BackToLobby()
     {
-
+        SceneLoadManager.Instance.SceneMove(0);
     }
 
-    public void Retry()
+    public void Exit()
     {
-        SceneManager.LoadScene(1);
+        Application.Quit();
     }
 }

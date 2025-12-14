@@ -91,12 +91,12 @@ public class ESCVolumeSetting : MonoBehaviour
 
     private void UIShow()
     {
+        SettingUI.SetActive(true);
         escButton.SetActive(false);
         settingPanel.raycastTarget = true;
 
         _fadeTween.Kill();
         _fadeTween = settingPanel.DOFade(0.7f, 0.3f).SetUpdate(true);
-        SettingUI.SetActive(true);
         _uiContents.DOAnchorPos(new Vector3(0, 0, 0), 0.3f).SetUpdate(true);
         Time.timeScale = 0f;
     }

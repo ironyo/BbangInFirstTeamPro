@@ -40,7 +40,7 @@ public class Customer : MonoBehaviour
     public DeadState DeadState { get; private set; }
 
     [Header("UI")]
-    [SerializeField] private TextMeshPro hpText;
+    public TextMeshPro hpText;
     [SerializeField] private TextMeshPro damageText;
     [SerializeField] private GameObject healthParent;
 
@@ -128,8 +128,7 @@ public class Customer : MonoBehaviour
         UpdateHPUI();
         currentState?.Update();
 
-        if (Keyboard.current.pKey.wasPressedThisFrame)
-            TakeDamage(1);
+       
     }
 
     private void InitializeStats()

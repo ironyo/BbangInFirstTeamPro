@@ -39,17 +39,22 @@ public class CustomerSpawnManager : MonoBehaviour
 
     private void AA(int v)
     {
-        StartCoroutine(SpawnCustomer());
+        int r = Random.Range(1,3);
+        StartCoroutine(SpawnCustomer(r));
     }
 
-    public IEnumerator SpawnCustomer()
+    public IEnumerator SpawnCustomer(int random)
     {
         isSpawning = true;
 
         while (isSpawning)
         {
-            customerSpawner.StartSpawn();
+            for(int i = 0; i < random; i++)
+            {
+                customerSpawner.StartSpawn();
+            }
             yield return new WaitForSeconds(spawnInterval);  
         }
     }
 }
+
