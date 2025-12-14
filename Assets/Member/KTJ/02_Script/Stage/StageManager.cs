@@ -11,7 +11,7 @@ public class StageManager : MonoSingleton<StageManager>
 
     [Header("Setting")]
     [SerializeField] private StageGenerator _generator;
-    [SerializeField] private int _maxStage;
+    [SerializeField] private int _maxStage = 20;
 
     [Header("Event")]
     [SerializeField] private EventChannelSO _onRoadFinished;
@@ -20,6 +20,8 @@ public class StageManager : MonoSingleton<StageManager>
     [SerializeField] private EventChannel_TT<string, string> _setUIStage;
     [SerializeField] private EventChannelSO_T<int> _onArrivalStage;
     [SerializeField] private StageChannelInt _stageChannelInt;
+
+    [SerializeField] private CustomerSpawnManager customerSpawnManager;
 
     protected override void Awake()
     {
@@ -77,6 +79,73 @@ public class StageManager : MonoSingleton<StageManager>
         _stageChannelInt.RaiseEvent();
 
         CameraMoverManager.Instance.LockCamMove();
+        switch (ClearStage)
+        {
+            case 0:
+                customerSpawnManager.CustomerSpawner(100, 0, 0, 0, 5);
+                break;
+            case 1:
+                customerSpawnManager.CustomerSpawner(70, 30, 0, 0, 5);
+                break;
+            case 2:
+                customerSpawnManager.CustomerSpawner(70, 30, 0, 0, 5);
+                break;
+            case 3:
+                customerSpawnManager.CustomerSpawner(70, 30, 0, 0, 5);
+                break;
+            case 4:
+                customerSpawnManager.CustomerSpawner(50, 30, 20, 0, 4.5f);
+                break;
+            case 5:
+                customerSpawnManager.CustomerSpawner(50, 30, 20, 0, 4.5f);
+                break;
+            case 6:
+                customerSpawnManager.CustomerSpawner(50, 30, 20, 0, 4.5f);
+                break;
+            case 7:
+                customerSpawnManager.CustomerSpawner(50, 30, 20, 0, 4.5f);
+                break;
+            case 8:
+                customerSpawnManager.CustomerSpawner(50, 30, 20, 0, 4.5f);
+                break;
+            case 9:
+                customerSpawnManager.CustomerSpawner(30, 30, 20, 20, 4);
+                break;
+            case 10:
+                customerSpawnManager.CustomerSpawner(30, 30, 20, 20, 4);
+                break;
+            case 11:
+                customerSpawnManager.CustomerSpawner(30, 30, 20, 20, 4);
+                break;
+            case 12:
+                customerSpawnManager.CustomerSpawner(15, 30, 25, 30, 4);
+                break;
+            case 13:
+                customerSpawnManager.CustomerSpawner(15, 30, 25, 30, 4);
+                break;
+            case 14:
+                customerSpawnManager.CustomerSpawner(15, 30, 25, 30, 4);
+                break;
+            case 15:
+                customerSpawnManager.CustomerSpawner(15, 35, 15, 35, 3.75f);
+                break;
+            case 16:
+                customerSpawnManager.CustomerSpawner(15, 35, 15, 35, 3.75f);
+                break;
+            case 17:
+                customerSpawnManager.CustomerSpawner(15, 35, 15, 35, 3.75f);
+                break;
+            case 18:
+                customerSpawnManager.CustomerSpawner(15, 35, 15, 35, 3.75f);
+                break;
+            case 19:
+                customerSpawnManager.CustomerSpawner(15, 35, 15, 35, 3.75f);
+                break;
+        }
+    }
+
+    private void Update()
+    {
     }
 
     public StageData GetCurrent() => _current;

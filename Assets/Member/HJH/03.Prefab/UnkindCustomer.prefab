@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de505dac4f41e674f8200f13619b87c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onGameOver: {fileID: 11400000, guid: 36a10d9aadc5a334093b5a426efedd6a, type: 2}
   closeRange: {x: 5.88, y: 0}
   attackRange: {x: 1.5, y: 0}
   hitParticle: {fileID: 5363540364311237156}
@@ -72,7 +73,7 @@ MonoBehaviour:
   healthParent: {fileID: 334012062643981363}
   sr: {fileID: 3741644935010643690}
   eatMotion: {fileID: 6590219853500137364}
-  _nurfParticle: {fileID: 0}
+  _nurfParticle: {fileID: 5560586333515141895, guid: 2b8416baef392f14f9aa97600d148272, type: 3}
   customerType: {fileID: 11400000, guid: dcb14877dd4aa534fa86762463cbb992, type: 2}
   debuff: {fileID: -8139883424869618136}
   animator: {fileID: 3454013481859027561}
