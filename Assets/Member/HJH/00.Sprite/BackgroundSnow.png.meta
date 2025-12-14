@@ -104,12 +104,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 320
-        height: 317
+        y: 238
+        width: 295
+        height: 79
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 44, y: 58, z: 43, w: 56}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -117,6 +117,72 @@ TextureImporter:
       bones: []
       spriteID: b4f27ad162354ed30800000000000000
       internalID: 4459780954174992203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundSnow_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 159
+        width: 295
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e93c0685d5ac874188f0f9e3a7994ab
+      internalID: 1443868037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundSnow_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 295
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe8d77f29abd4cb41831097610c4f3be
+      internalID: -1281827930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundSnow_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 295
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34a0e0b7eed744c46914df25e91aefae
+      internalID: 678987801
       vertices: []
       indices: 
       edges: []
@@ -136,6 +202,9 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       BackgroundSnow_0: 4459780954174992203
+      BackgroundSnow_1: 1443868037
+      BackgroundSnow_2: -1281827930
+      BackgroundSnow_3: 678987801
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
