@@ -1,45 +1,36 @@
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using System;
-using System.Collections;
 using System.Threading;
 using UnityEngine;
 
 public class AttackState : IEnemyState
 {
-    private Customer customer;
-    private Rigidbody2D rb;
-    private Animator animator;
-
+    private readonly Customer customer;
+    private readonly Animator animator;
     private Transform avatar;
 
-    private float attackInterval;
-
-    private CancellationTokenSource attackCTS;
+    private CancellationTokenSource cts;
 
     public AttackState(Customer customer)
     {
         this.customer = customer;
-        animator = customer._animator;
-        attackInterval = customer.customerType.attackInterval;
+        animator = customer.animator;
     }
 
     public void Enter()
     {
         avatar = customer.avatar.transform;
 
-        rb = customer.GetComponent<Rigidbody2D>();
+        var rb = customer.GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
 
-        LookAtClosestTarget();
-
-        attackCTS = new CancellationTokenSource();
-        AttackLoopAsync(attackCTS.Token).Forget();
+        cts = new CancellationTokenSource();
+        AttackLoopAsync(cts.Token).Forget();
     }
 
     public void Update()
     {
-        if (customer.customerHP <= 0)
+        if (customer.CurrentHP <= 0)
         {
             customer.ChangeState(customer.DeadState);
             return;
@@ -48,111 +39,62 @@ public class AttackState : IEnemyState
         if (!customer.IsAttackTargetInRange())
         {
             customer.ChangeState(customer.CloseState);
-            return;
         }
     }
 
     public void Exit()
     {
-        attackCTS?.Cancel();
-        attackCTS?.Dispose();
-        attackCTS = null;
+        cts?.Cancel();
+        cts?.Dispose();
+        cts = null;
 
         animator.SetBool("isAttack", false);
+        avatar.rotation = Quaternion.identity;
     }
 
     private async UniTaskVoid AttackLoopAsync(CancellationToken token)
     {
+        float animTime = customer.customerType.attackInterval;
+
         try
         {
             while (!token.IsCancellationRequested)
             {
-                if (!customer.IsAttackTargetInRange() || customer.customerHP <= 0)
-                {
-                    animator.SetBool("isAttack", false);
-                    return;
-                }
+                LookAtTarget();
 
                 animator.SetBool("isAttack", true);
+
                 await UniTask.Delay(
-                    TimeSpan.FromSeconds(attackInterval),
+                    TimeSpan.FromSeconds(animTime),
                     cancellationToken: token
                 );
 
-                customer.avatar.transform.rotation = Quaternion.identity;
+                // 실제 데미지 처리
+                customer.InflictDamage();
+
                 animator.SetBool("isAttack", false);
+                avatar.rotation = Quaternion.identity;
 
                 await UniTask.Delay(
-                    TimeSpan.FromSeconds(attackInterval * 3),
+                    TimeSpan.FromSeconds(animTime * 3f),
                     cancellationToken: token
                 );
             }
         }
         catch (OperationCanceledException)
         {
-            customer.ChangeState(customer.CloseState);
+            // 정상 종료
         }
     }
 
-    private Transform GetClosestTarget()
+    private void LookAtTarget()
     {
-        Transform closest = null;
-        float minDist = Mathf.Infinity;
-
-        foreach (var t in customer.runTargets)
-        {
-            float dist = Vector2.Distance(customer.transform.position, t.position);
-            if (dist < minDist)
-            {
-                minDist = dist;
-                closest = t;
-            }
-        }
-
-        return closest;
-    }
-
-    private void LookAtClosestTarget()
-    {
-        Transform target = GetClosestTarget();
+        Transform target = customer.CurrentHitTarget;
         if (target == null) return;
 
         Vector2 dir = target.position - avatar.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (dir.y <= 0)
-            angle += 180f;
-        else
-            angle -= 180f;
-
-        Quaternion targetRot = Quaternion.Euler(0, 0, angle);
-        avatar.rotation = targetRot;
-    }
-
-    private void BackMotion()
-    {
-        float y = avatar.position.y;
-        Vector3 offset = (y < 0f)
-            ? new Vector3(-10f, -3f, 0f)
-            : new Vector3(-10f, 3f, 0f);
-
-        customer.StartCoroutine(BackOffRoutine(offset, 0.5f));
-    }
-
-    private IEnumerator BackOffRoutine(Vector3 offset, float duration)
-    {
-        Vector3 start = customer.transform.position;
-        Vector3 end = start + offset;
-
-        float t = 0f;
-
-        while (t < 1f)
-        {
-            t += Time.deltaTime / duration;
-            customer.transform.position = Vector3.Lerp(start, end, t);
-            yield return null;
-        }
-
-        avatar.rotation = Quaternion.identity;
+        avatar.rotation = Quaternion.Euler(0, 0, angle);
     }
 }

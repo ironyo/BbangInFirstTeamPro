@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CameraMover : MonoBehaviour
+public class CameraMoverManager : MonoSingleton<CameraMoverManager>
 {
     [SerializeField] private Transform _cam;
     [SerializeField] private float _xMaxPos; // 6
@@ -16,9 +16,6 @@ public class CameraMover : MonoBehaviour
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private Slider _posSlider;
 
-    [Header("Event")]
-    [SerializeField] private EventChannelSO _onGameOver;
-
     private float _time = 0.1f;
     private float _currentTime;
 
@@ -28,10 +25,6 @@ public class CameraMover : MonoBehaviour
 
     private bool _canMove = true;
 
-    private void OnEnable()
-    {
-        _onGameOver.OnEventRaised += () => _canMove = false;
-    }
     public float CamXPos
     {
         get
@@ -45,11 +38,16 @@ public class CameraMover : MonoBehaviour
     }
     private void Update()
     {
+        if (GameOverUI.Instance.IsGameOver == true) return; // 게임오버라면 카메라 이동 막기
+
         float input = Input.GetAxisRaw("Horizontal"); // -1, 0, 1
 
         if (Mathf.Abs(input) > 0)
         {
-            if (_canMove == false) return;
+            if (_canMove == false)
+            {
+                return;
+            }
 
             _currentTime += Time.deltaTime;
             if (_currentTime >= _time)
@@ -62,6 +60,15 @@ public class CameraMover : MonoBehaviour
         {
             _currentTime = 0f;
         }
+    }
+
+    public void LockCamMove()
+    {
+        _canMove = false;
+    }
+    public void UnlockCamMove()
+    {
+        _canMove = true;
     }
 
 

@@ -19,11 +19,11 @@ public class RoadMover : MonoBehaviour
 
         float moveValue = _manager.CurrentSpeed * Time.deltaTime;
 
+        leftPos = Camera.main.ScreenToWorldPoint(
+        new Vector3(0f, Screen.height * 0.5f, Camera.main.nearClipPlane));
+
         foreach (var road in _roads)
         {
-            leftPos = Camera.main.ScreenToWorldPoint(
-            new Vector3(0f, Screen.height * 0.5f, Camera.main.nearClipPlane));
-
             road.position += Vector3.left * moveValue;
 
             if (road.position.x <= leftPos.x - _roadLength/2)
