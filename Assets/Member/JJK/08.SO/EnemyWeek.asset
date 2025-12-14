@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: EnemyWeekSkill
   <Prefab>k__BackingField: {fileID: 1401912080541144655, guid: aa2f0eafb7ed04a40be1721c59ae8b36, type: 3}
-  <Icon>k__BackingField: {fileID: -2413806693520163455, guid: 3bea975d9d6f37f45813c7d941e2dbc6, type: 3}
+  <Icon>k__BackingField: {fileID: -6253549516363600717, guid: cb5b17388e049404db79d30a70516358, type: 3}
   <Description>k__BackingField: "\uD2B8\uB7ED\uC758 \uBC1B\uB294 \uD53C\uD574\uB7C9\uC774
     \uAC10\uC18C\uD569\uB2C8\uB2E4."
   <Value>k__BackingField: 5
-  <Duration>k__BackingField: 5
+  <Duration>k__BackingField: 30
