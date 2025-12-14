@@ -120,12 +120,12 @@ public class AttackState : IEnemyState
         Vector2 dir = target.position - avatar.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (dir.y <= 0)
-            angle += 180f;
+        if (dir.y < 0)
+            angle += 0;
         else
             angle -= 180f;
 
-        Quaternion targetRot = Quaternion.Euler(0, 0, angle);
+        Quaternion targetRot = Quaternion.Euler(0, 0, 0);
         avatar.rotation = targetRot;
     }
 
