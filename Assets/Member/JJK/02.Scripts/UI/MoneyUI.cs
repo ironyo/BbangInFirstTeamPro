@@ -7,7 +7,7 @@ public class MoneyUI : MonoBehaviour
     [SerializeField] private DigitSlot[] slots;
     [SerializeField] private int testMoney = 1;
     
-    private void Start()
+    private void Awake()
     {
         MoneyManager.Instance.OnMoneyChanged += UpdateMoney;
     }
@@ -27,6 +27,7 @@ public class MoneyUI : MonoBehaviour
 
     private void UpdateMoney(int oldMoney, int newMoney)
     {
+        Debug.Log("Money changed");
         string oldStr = oldMoney.ToString().PadLeft(slots.Length, '0');
         string newStr = newMoney.ToString().PadLeft(slots.Length, '0');
         
