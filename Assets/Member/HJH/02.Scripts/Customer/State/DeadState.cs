@@ -17,6 +17,7 @@ public class DeadState : IEnemyState
     }
     public void Enter()
     {
+        customer.avatar.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         animator.SetBool("isDead", true);
         customer.tag = "DeadCustomer";
         customer.gameObject.layer = LayerMask.NameToLayer("DeadCustomer");

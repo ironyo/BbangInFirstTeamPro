@@ -203,4 +203,4 @@ MonoBehaviour:
   _particlePoint: {fileID: 7548753495308494405}
   _explosionPref: {fileID: 6349553283840770036, guid: e5dbae5091afb734c8802efb8f8356c5, type: 3}
   _explosionSize: {x: 3, y: 3, z: 3}
-  damage: 0
+  soundData: {fileID: 11400000, guid: f0b6e737a60a1ff449e13d38eef40c9c, type: 2}

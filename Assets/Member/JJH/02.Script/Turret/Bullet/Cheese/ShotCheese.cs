@@ -5,7 +5,9 @@ public class ShotCheese : TurretBase
 {
     [SerializeField] private GameObject cheese;
     [SerializeField] private Transform firePos;
+    [SerializeField] private SoundDataSO soundData;
     Factory factory;
+
     private float spread = 15f;
 
     private void Start()
@@ -20,6 +22,8 @@ public class ShotCheese : TurretBase
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         CameraShake.Instance.ImpulseForce(0.2f);
+        SoundManager.Instance.PlaySound(soundData);
+
 
         SpawnCheese(rotation);
         SpawnCheese(rotation * Quaternion.Euler(0, 0, -spread));

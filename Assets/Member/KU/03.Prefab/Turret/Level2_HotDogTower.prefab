@@ -148,6 +148,7 @@ MonoBehaviour:
   firePos: {fileID: 2216632356219467353}
   bulletPref: {fileID: 8138199493044080686, guid: 598ca4af660e1484084c16ec12f16abb, type: 3}
   shootParticlePref: {fileID: 5317297048274311949, guid: b360cac2defdef7479e43693aae7603f, type: 3}
+  shotSoundData: {fileID: 11400000, guid: 5de63b956fadba94e96979d67a62cbfb, type: 2}
 --- !u!120 &3557069002873533195
 LineRenderer:
   serializedVersion: 2
