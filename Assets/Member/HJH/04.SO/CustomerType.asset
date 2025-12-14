@@ -17,4 +17,4 @@ MonoBehaviour:
   attackInterval: 0.4
   customerHP: 10
   customerSpeed: 8
-  money: 7
+  money: 5

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aeea05e7422984e96b8832d76671cb, type: 3}
   m_Name: Level3_KU_Bread_TurretSO
   m_EditorClassIdentifier: 
-  <TurretName>k__BackingField: "\uBE75 \uD3EC\uD0D1"
+  <TurretName>k__BackingField: "\uBE75"
   <TurretImage>k__BackingField: {fileID: -4798758766390909186, guid: c96b9463635a36c42bc50e8c68f676e3, type: 3}
   <TurretCost>k__BackingField: 45
   Turret: {fileID: 378329891138309096, guid: d2d4d949e5ba0b540bfe0e1a48685f4f, type: 3}
