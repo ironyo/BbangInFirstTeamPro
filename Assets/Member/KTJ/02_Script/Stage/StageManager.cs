@@ -32,7 +32,10 @@ public class StageManager : MonoSingleton<StageManager>
     private void Start()
     {
         _onRoadFinished.OnEventRaised += EndStage;
-        StartStage();
+        //StartStage();
+
+        //_onArrivalStage.RaiseEvent(ClearStage);
+        //_stageChannelInt.RaiseEvent();
     }
 
     public void StartStage()

@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2483f081d490a5418916160ba300bee, type: 3}
-  m_Name: StageChannelInt
+  m_Script: {fileID: 11500000, guid: 06afca432bdb97b40aadf543fbb55f24, type: 3}
+  m_Name: TurretSetSound
   m_EditorClassIdentifier: 
-  stageNum: 2
+  soundType: 0
+  audioClip: {fileID: 8300000, guid: 2aab181ad3d96604f8ae72ceeea50778, type: 3}
