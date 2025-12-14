@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -31,13 +32,13 @@ public class SoundPlayer : MonoBehaviour
         }
         audioSource.Play();
 
-
-        await Awaitable.WaitForSecondsAsync(10); //10초 기다리기
-
-        if (this == null)
-            return;
-
         if (soundData.soundType != SoundType.BGM) //BGM이 아니면 사운드 파괴
-            Destroy(gameObject);
+            StartCoroutine(DestroySound(audioSource.clip.length));
+    }
+
+    private IEnumerator DestroySound(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
     }
 }

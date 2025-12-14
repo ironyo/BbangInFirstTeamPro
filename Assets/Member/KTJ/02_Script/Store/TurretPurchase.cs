@@ -100,6 +100,7 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
         }
         else
         {
+
             (TurretGroup, int) tg = FindTurretGroup(turSO);
             if (tg.Item2 == tg.Item1.GetCurrrentLevel())
             {
@@ -112,6 +113,8 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
             CameraShake.Instance.ImpulseForce(0.3f);
 
             SetTruckLabelUI();
+
+            ToolTipManager.Instance.ShowToolTip("터렛 구매완료");
         }
     }
 

@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 96e8772f14610b24f911b2c8dba78968, type: 2}
-  damageSo: {fileID: 0}
-  timeSo: {fileID: 0}
+  damageSo: {fileID: 11400000, guid: ed1d6d19f106b68478b491d1c1c582e9, type: 2}
+  timeSo: {fileID: 11400000, guid: 8382dfcc006ef0f478276a818141ab5e, type: 2}
