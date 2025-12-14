@@ -18,5 +18,5 @@ MonoBehaviour:
   Turret: {fileID: 378329891138309096, guid: 17fb252e727d04a41804795858663b54, type: 3}
   AttackCoolTime: 0.7
   AttackRange: 10
-  AttackPower: 2
+  AttackPower: 8
   TargetingClosedEnemy: 0

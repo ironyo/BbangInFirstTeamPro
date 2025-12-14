@@ -1,40 +1,34 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StageManager : MonoSingleton<StageManager>
 {
-    [Serializable]
-    public class StageSpawnConfig
-    {
-        public int stage;
-        public float wA, wB, wC, wD;
-        public float interval;
-    }
+    private StageData _current;
+    private StageData _previous;
 
-    [Header("Stage")]
-    [SerializeField] private StageGenerator generator;
-    [SerializeField] private int maxStage = 20;
-    [SerializeField] private Canvas canvas;
+    public bool IsRunning { get; private set; } = false;
+    public int ClearStage { get; private set; } = 0;
 
-    [Header("Spawn Config")]
-    [SerializeField] private List<StageSpawnConfig> spawnConfigs;
+    [Header("Setting")]
+    [SerializeField] private StageGenerator _generator;
+    [SerializeField] private int _maxStage = 20;
+    [SerializeField] private Canvas _canvas;
 
-    [Header("Managers")]
-    [SerializeField] private CustomerSpawnManager spawnManager;
-
-    [Header("Events")]
+    [Header("Event")]
     [SerializeField] private EventChannelSO _onRoadFinished;
+    [SerializeField] private EventChannelSO _onStageRoadEnd;
     [SerializeField] private EventChannelSO_T<int> _onStageRoadStart;
     [SerializeField] private EventChannel_TT<string, string> _setUIStage;
     [SerializeField] private EventChannelSO_T<int> _onArrivalStage;
+    [SerializeField] private StageChannelInt _stageChannelInt;
 
-    public int ClearStage { get; private set; }
-    public bool IsRunning { get; private set; }
+    [SerializeField] private CustomerSpawnManager customerSpawnManager;
 
-    private StageData current;
-    private StageData previous;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     private void Start()
     {
@@ -44,50 +38,96 @@ public class StageManager : MonoSingleton<StageManager>
     public void StartStage()
     {
         if (IsRunning) return;
-        StartCoroutine(StartStageRoutine());
+
+        BGMManager.Instance.FightSound();
+        StartCoroutine(StartStageIEnum());
     }
 
-    private IEnumerator StartStageRoutine()
+    private IEnumerator StartStageIEnum()
     {
-        IsRunning = true;
+        CameraEffectManager.Instance.CameraZoom(7, 1f);
+        CameraEffectManager.Instance.CameraMoveTarget(
+            CameraEffectManager.Instance.CameraTarget.gameObject
+        );
 
+        IsRunning = true;
         yield return new WaitForSeconds(1f);
 
-        previous = ClearStage == 0 ? StageData.Create("출발지점", 0) : current;
-        current = generator.CreateRandomStage();
+        _previous = ClearStage == 0
+            ? StageData.Create("출발지점", 0)
+            : _current;
 
-        _onStageRoadStart.RaiseEvent(current.RoadTotalLength);
-        _setUIStage.RaiseEvent(previous.Name, current.Name);
+        _current = _generator.CreateRandomStage();
+
+        _onStageRoadStart.RaiseEvent(_current.RoadTotalLength);
+        _setUIStage.RaiseEvent(_previous.Name, _current.Name);
     }
 
-    private void EndStage()
+    public void EndStage()
     {
         if (!IsRunning) return;
 
+        BGMManager.Instance.MainSound();
         IsRunning = false;
         ClearStage++;
 
-        ApplySpawnConfig(ClearStage);
-        _onArrivalStage.RaiseEvent(ClearStage);
-
-        if (ClearStage >= maxStage)
+        if (ClearStage == _maxStage)
         {
-            canvas.gameObject.SetActive(false);
+            Debug.Log("스테이지 클리어");
+            _canvas.gameObject.SetActive(false);
             SceneLoadManager.Instance.SceneMove(2);
+        }
+
+        CameraEffectManager.Instance.CameraZoom(5, 1f);
+        TruckHealthManager.Instance.TruckHealAll();
+
+        _onArrivalStage.RaiseEvent(ClearStage);
+        _stageChannelInt.RaiseEvent();
+
+        CameraMoverManager.Instance.LockCamMove();
+
+        switch (ClearStage)
+        {
+            case 0:
+                customerSpawnManager.CustomerSpawner(100, 0, 0, 0, 5f);
+                break;
+
+            case 1:
+            case 2:
+            case 3:
+                customerSpawnManager.CustomerSpawner(70, 30, 0, 0, 5f);
+                break;
+
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+                customerSpawnManager.CustomerSpawner(50, 30, 20, 0, 4.5f);
+                break;
+
+            case 9:
+            case 10:
+            case 11:
+                customerSpawnManager.CustomerSpawner(30, 30, 20, 20, 4f);
+                break;
+
+            case 12:
+            case 13:
+            case 14:
+                customerSpawnManager.CustomerSpawner(15, 30, 25, 30, 4f);
+                break;
+
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+                customerSpawnManager.CustomerSpawner(15, 35, 15, 35, 3.75f);
+                break;
         }
     }
 
-    private void ApplySpawnConfig(int stage)
-    {
-        var config = spawnConfigs.Find(c => c.stage == stage);
-        if (config == null) return;
-
-        spawnManager.ApplySpawnSetting(
-            config.wA,
-            config.wB,
-            config.wC,
-            config.wD,
-            config.interval
-        );
-    }
+    public StageData GetCurrent() => _current;
+    public StageData GetPrevious() => _previous;
 }

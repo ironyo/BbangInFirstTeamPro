@@ -15920,8 +15920,8 @@ MonoBehaviour:
   - "\uD759\uB2F4\uB9C8\uC744"
   - "\uACE0\uC6D0\uB9C8\uC744"
   - "\uAE38\uBAA9\uB9C8\uC744"
-  minLength: 20
-  maxLength: 50
+  minLength: 15
+  maxLength: 40
 --- !u!4 &1062537615
 Transform:
   m_ObjectHideFlags: 0
@@ -31118,6 +31118,12 @@ MonoBehaviour:
   _labelSpawnPos: {fileID: 401701812}
   _unlockPref: {fileID: 3365597665506616726, guid: aa3d7976c391a5642a7691f80668c18e, type: 3}
   _turrets:
+  - TurretGroupName: "\uD53C\uC790"
+    Turrets:
+    - {fileID: 11400000, guid: 039d2d2d512be2146a48f7bd52eee44c, type: 2}
+    - {fileID: 11400000, guid: 3f2962e1383bf86488c97b549bd78cf3, type: 2}
+    - {fileID: 11400000, guid: e6a08331cc546ee498e03fe51a63a756, type: 2}
+    - {fileID: 11400000, guid: 14e5ce43ddded23488a39c2e5e8727da, type: 2}
   - TurretGroupName: "\uBE59\uC218"
     Turrets:
     - {fileID: 11400000, guid: 1b91131bd6bdeb64fa6bf30f11d326b7, type: 2}
@@ -31134,12 +31140,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5eee1f55282aad544a5fbabe0de9cbec, type: 2}
     - {fileID: 11400000, guid: fd2a05d9f938d2c43b28c4b532e3f6ea, type: 2}
     - {fileID: 11400000, guid: 87b30093de4060f4ca0eb14bb5432919, type: 2}
-  - TurretGroupName: "\uD53C\uC790"
-    Turrets:
-    - {fileID: 11400000, guid: 039d2d2d512be2146a48f7bd52eee44c, type: 2}
-    - {fileID: 11400000, guid: 3f2962e1383bf86488c97b549bd78cf3, type: 2}
-    - {fileID: 11400000, guid: e6a08331cc546ee498e03fe51a63a756, type: 2}
-    - {fileID: 11400000, guid: 14e5ce43ddded23488a39c2e5e8727da, type: 2}
   _onRepairStoreUIReady: {fileID: 11400000, guid: 0c95291488f74fb47be8dcf2a7d10cd1, type: 2}
   _setTruckLabel: {fileID: 11400000, guid: 88b39b812829ce345a83de2728bc0129, type: 2}
   _onLabelClick: {fileID: 11400000, guid: 63c13f5cd43c7ae498569a83f820c03c, type: 2}
