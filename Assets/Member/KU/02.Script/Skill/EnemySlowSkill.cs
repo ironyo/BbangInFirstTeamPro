@@ -9,6 +9,8 @@ public class EnemySlowSkill : SlotSkillBase
 
     private void Start()
     {
+        if (InventoryManager.Instance.IsFull()) return;
+
         GlobalEnemyModifier.Instance.SetGlobalSlow(_data.Value);
     }
 
