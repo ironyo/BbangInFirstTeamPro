@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2483f081d490a5418916160ba300bee, type: 3}
   m_Name: StageChannelInt
   m_EditorClassIdentifier: 
-  stageNum: 13
+  stageNum: 0
