@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,7 +34,12 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     private void SceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         SceneManager.sceneLoaded -= SceneLoaded;
-        _fadeOut.FadeSet(30, 1.1f).OnComplete(() => _settingBtn.DOAnchorPosY(-15, 0.3f).SetUpdate(true).SetEase(Ease.OutSine));
+        _fadeOut.FadeSet(35, 1.1f).OnComplete(() => _settingBtn.DOAnchorPosY(-15, 0.3f).SetUpdate(true).SetEase(Ease.OutSine));
     }
+
+    //private IEnumerator SceneChanged()
+    //{
+    //    //yield return new 
+    //}
 
 }
