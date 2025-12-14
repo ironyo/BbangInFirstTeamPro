@@ -98,12 +98,15 @@ public class Customer : MonoBehaviour
 
     private void OnDestroy()
     {
+        OnClearRequested -= HandleClearRequested;
         debuff.OnChanged -= OnStatChanged;
         GlobalEnemyModifier.Instance.OnChanged -= OnStatChanged;
     }
 
     private void OnEnable()
     {
+        OnClearRequested += HandleClearRequested;
+
         runTargets = CustomerSpawner.Instance.runTargets;
         hitTargets = CustomerSpawner.Instance.heatTargets;
 
