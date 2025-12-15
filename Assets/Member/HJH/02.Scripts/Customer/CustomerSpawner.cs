@@ -118,6 +118,6 @@ public class CustomerSpawner : MonoSingleton<CustomerSpawner>
     }
     private void HandleStageDifficulty(int stageCount)
     {
-        _difficultyMultiplier = 1f + stageCount * 0.15f;
+        _difficultyMultiplier = 1f + stageCount * 0.115f;
     }
 }
