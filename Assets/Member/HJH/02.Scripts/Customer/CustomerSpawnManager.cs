@@ -19,6 +19,13 @@ public class CustomerSpawnManager : MonoBehaviour
         _onStageRoadStart.OnEventRaised += AA;
     }
 
+    private void OnDisable()
+    {
+        _onStageRoadEnd.OnEventRaised -= AllClearCustomer;
+
+        _onStageRoadStart.OnEventRaised -= AA;
+    }
+
     public void AllClearCustomer()
     {
         Customer[] customers = (Customer[])FindObjectsByType<Customer>(FindObjectsSortMode.None);
