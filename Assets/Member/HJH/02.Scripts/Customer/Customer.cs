@@ -40,9 +40,11 @@ public class Customer : MonoBehaviour
     public DeadState DeadState { get; private set; }
 
     [Header("UI")]
-    public TextMeshPro hpText;
+    [SerializeField] private TextMeshPro hpText;
     [SerializeField] private TextMeshPro damageText;
     [SerializeField] private GameObject healthParent;
+
+    public GameObject healthBG;
 
     [Header("Visual")]
     [SerializeField] private SpriteRenderer sr;
@@ -83,6 +85,8 @@ public class Customer : MonoBehaviour
 
     private void Awake()
     {
+        healthBG.SetActive(true);
+
         difficultyMultiplier = CustomerSpawner.Instance._difficultyMultiplier;
 
         RunState = new RunState(this);

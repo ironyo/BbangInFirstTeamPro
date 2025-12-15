@@ -72,6 +72,7 @@ MonoBehaviour:
   hpText: {fileID: 6840438756146007305}
   damageText: {fileID: 2394754064830875394}
   healthParent: {fileID: 4981462867666250137}
+  healthBG: {fileID: 3266048814708862732}
   sr: {fileID: 3741644935010643690}
   eatMotion: {fileID: 2496078211779410503}
   _nurfParticle: {fileID: 5560586333515141895, guid: 2b8416baef392f14f9aa97600d148272, type: 3}
@@ -422,6 +423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3266048814708862732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3481483601859923965, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}
+  m_PrefabInstance: {fileID: 2090761992217026801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4981462867666250137 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6350733951311563112, guid: 21818c52e378be94a9eb572e69ea9413, type: 3}

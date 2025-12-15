@@ -18,6 +18,8 @@ public class DeadState : IEnemyState
 
     public void Enter()
     {
+        customer.healthBG.SetActive(false);
+
         rb.linearVelocity = Vector2.zero;
 
         customer.avatar.transform.rotation = Quaternion.identity;
@@ -32,7 +34,7 @@ public class DeadState : IEnemyState
 
     public void Update()
     {
-        rb.linearVelocity = new Vector2(-4.5f, 0f);
+        rb.linearVelocity = new Vector2(-10f, 0f);
     }
 
     public void Exit() { }
