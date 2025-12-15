@@ -28,7 +28,7 @@ public class CheesePuddle : MonoBehaviour, IRecycleObject
 
     private void Update()
     {
-        rigid.linearVelocity = new Vector2(-3.5f, 0);
+        rigid.linearVelocity = new Vector2(-10f, 0);
     }
 
     private void OnEnable()

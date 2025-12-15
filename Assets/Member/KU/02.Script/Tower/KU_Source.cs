@@ -44,7 +44,7 @@ public class KU_Source : KU_Bullet
     public override void Update()
     {
         if (_isStop)
-            _rigidbodyCompo.linearVelocity = new Vector2(-3.5f, 0);
+            _rigidbodyCompo.linearVelocity = new Vector2(-10f, 0);
     }
 
     private IEnumerator DropSource()
