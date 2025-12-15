@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -22,7 +23,13 @@ public class ItemManager : MonoSingleton<ItemManager>
         if (index < finalProbability)
             ItemDrop(enemyPos);
     }
-    
+
+    private void Update()
+    {
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+            ItemDrop(transform);
+    }
+
     public void ItemDrop(Transform parent)
     {
         ItemDataSO data = itemDataList.list[Random.Range(0, itemDataList.list.Count)];
