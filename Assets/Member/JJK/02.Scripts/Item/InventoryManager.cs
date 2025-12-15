@@ -1,25 +1,24 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoSingleton<InventoryManager>
 {
     [SerializeField] private int inventorySize = 20;
-    public ItemDataSO[] items;
+    [NonSerialized] public ItemDataSO[] Items;
 
     public event Action OnInventoryChanged;
 
     protected override void Awake()
     {
         base.Awake();
-        items = new ItemDataSO[inventorySize];
+        Items = new ItemDataSO[inventorySize];
     }
 
     public int GetFirstEmptySlot()
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < Items.Length; i++)
         {
-            if (items[i] == null)
+            if (Items[i] == null)
                 return i;
         }
         return -1;
@@ -32,13 +31,13 @@ public class InventoryManager : MonoSingleton<InventoryManager>
 
     public void AddItemToSlot(ItemDataSO data, int slotIndex)
     {
-        items[slotIndex] = data;
+        Items[slotIndex] = data;
         OnInventoryChanged?.Invoke();
     }
     
     public void ClearSlot(int index)
     {
-        items[index] = null;
+        Items[index] = null;
         OnInventoryChanged?.Invoke();
     }
 }
