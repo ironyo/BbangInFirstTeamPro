@@ -34,6 +34,22 @@ public class TurretPurchaseUI : MonoBehaviour
         _removeLabels.OnEventRaised += RemoveTruckLabel;
     }
 
+    private void OnDisable()
+    {
+        _setTruckLabel.OnEventRaised -= SetLabel;
+
+        _onRepairStoreUIReady.OnEventRaised -= () =>
+        {
+            Uis.gameObject.SetActive(true);
+        };
+
+        _onRepairStoreUIClose.OnEventRaised -= () =>
+        {
+            Uis.gameObject.SetActive(false);
+        };
+
+        _removeLabels.OnEventRaised -= RemoveTruckLabel;
+    }
     private void SetLabel(TurretSO_TJ _turret, Action _act, bool _isLocked)
     {
         TurretLabel _tl = Instantiate(_labelPref, _labelSpawnPos).GetComponent<TurretLabel>();

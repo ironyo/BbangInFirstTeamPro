@@ -117,6 +117,11 @@ public class Customer : MonoBehaviour
         PickRandomTargets();
     }
 
+    private void OnDisable()
+    {
+        OnClearRequested -= HandleClearRequested;
+        _onGameOver.OnEventRaised -= HandleClearRequested;
+    }
     private void Start()
     {
         ChangeState(RunState);

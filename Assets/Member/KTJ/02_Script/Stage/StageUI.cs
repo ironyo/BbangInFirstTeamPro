@@ -21,6 +21,12 @@ public class StageUI : MonoBehaviour
         _onArrivalStage.OnEventRaised += OnArrivalStage;
     }
 
+    private void OnDisable()
+    {
+        _setUIStage.OnEventRaised -= SetStageUI;
+        _onArrivalStage.OnEventRaised -= OnArrivalStage;
+    }
+
     public void SetStageUI(string _pre, string _cur)
     {
         _previousStageTxt.text = _pre;

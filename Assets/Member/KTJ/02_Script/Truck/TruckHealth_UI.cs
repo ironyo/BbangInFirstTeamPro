@@ -14,6 +14,10 @@ public class TruckHealth_UI : MonoBehaviour
         _onHealthChange.OnEventRaised += UpdateHealth;
     }
 
+    private void OnDisable()
+    {
+        _onHealthChange.OnEventRaised -= UpdateHealth;
+    }
     public void UpdateHealth(int currentH)
     {
         // 외부에서 이벤트로 부를 메서드 (단일 책임)

@@ -15,6 +15,11 @@ public class StartScene_UI : MonoBehaviour
         _onStartSceneReady.OnEventRaised += Starttt;
     }
 
+    private void OnDisable()
+    {
+        _onStartSceneReady.OnEventRaised -= Starttt;
+    }
+
     private void Starttt()
     {
         StartCoroutine(StartUI());

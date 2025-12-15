@@ -73,6 +73,11 @@ public class TurretPurchase : MonoBehaviour // 일단은 구매 씬 들어갈때 세팅을 못
         _onTryPurchase.OnEventRaised += TryPurchaseTur;
     }
 
+    private void OnDisable()
+    {
+        _onRepairStoreUIReady.OnEventRaised -= SetTruckLabelUI;
+        _onTryPurchase.OnEventRaised -= TryPurchaseTur;
+    }
     private (TurretGroup, int) FindTurretGroup(TurretSO_TJ _turSO)
     {
         for (int  i = 0; i < _turrets.Count; i++)
