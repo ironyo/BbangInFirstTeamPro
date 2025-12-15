@@ -8,4 +8,9 @@ public class NewGameManager : MonoBehaviour
     {
         stageChannelInt.ResetStage();
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

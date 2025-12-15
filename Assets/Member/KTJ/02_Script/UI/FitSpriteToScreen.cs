@@ -13,8 +13,8 @@ public class FitSpriteToScreen : MonoBehaviour
         Vector2 spriteSize = sr.sprite.bounds.size;
 
         transform.localScale = new Vector3(
-            screenWidth / spriteSize.x,
-            screenHeight / spriteSize.y,
+            screenWidth / spriteSize.x + 50,
+            screenHeight / spriteSize.y + 50,
             1f
         );
     }
