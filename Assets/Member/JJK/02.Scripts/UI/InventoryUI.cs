@@ -22,7 +22,7 @@ public class InventoryUI : MonoSingleton<InventoryUI>
     
     private void CreateSlots()
     {
-        int slotCount = InventoryManager.Instance.items.Length;
+        int slotCount = InventoryManager.Instance.Items.Length;
         _slots = new InventorySlotUI[slotCount];
 
         for (int i = 0; i < slotCount; i++)
@@ -35,7 +35,7 @@ public class InventoryUI : MonoSingleton<InventoryUI>
     
     public void Refresh()
     {
-        var items = InventoryManager.Instance.items;
+        var items = InventoryManager.Instance.Items;
 
         for (int i = 0; i < _slots.Length; i++)
         {
