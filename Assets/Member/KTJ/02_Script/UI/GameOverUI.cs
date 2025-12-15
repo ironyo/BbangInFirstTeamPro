@@ -22,10 +22,10 @@ public class GameOverUI : MonoSingleton<GameOverUI>
         _onGameOver.OnEventRaised += OnGameOver;
     }
 
-    //private void OnDisable()
-    //{
-    //    _onGameOver.OnEventRaised -= OnGameOver;
-    //}
+    private void OnDisable()
+    {
+       _onGameOver.OnEventRaised -= OnGameOver;
+    }
 
     public void OnGameOver()
     {
