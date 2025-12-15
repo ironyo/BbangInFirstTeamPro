@@ -13246,6 +13246,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9048012198163166347, guid: 5e967519dbee57c4fbad30a51efb6027, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21659,7 +21663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySize: 3
-  items: []
 --- !u!4 &1332850161
 Transform:
   m_ObjectHideFlags: 0
