@@ -20,6 +20,7 @@ MonoBehaviour:
   <MuzzleFlash>k__BackingField: {fileID: 424554162163838278, guid: 1954a40c0b76e994a98092cb667ed0db, type: 3}
   <CoolDown>k__BackingField: 1.5
   <AttackRange>k__BackingField: 10
+  <Damage>k__BackingField: 0
   <CameraShakeForce>k__BackingField: 0.15
   bulletCount: 6
   <SpreadAngle>k__BackingField: 20
